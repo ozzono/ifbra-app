@@ -1,5 +1,9 @@
 # app
 
+## Installing node 12.x
+sudo curl -sL https://deb.nodesource.com/setup_12.x | sudo bash -
+sudo aptitude install nodejs -y
+
 ## Project setup
 ```
 npm install
