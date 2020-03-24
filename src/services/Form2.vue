@@ -1,19 +1,21 @@
 <template>
-    <div>
-        <div class="list-group">
-            <li class="list-group-item" v-for="funcao in services.funcoes">
-                {{funcao.tipo}}
-            </li>
-        </div>
+    <div id="app">
+        {{ funcoes }}
     </div>
 </template>
 
 <script>
-    export default {
-        
+import axios from "axios";
+
+export default {
+  data () {
+    return {
+      funcoes: []
     }
+  },
+  mounted () {
+    axios.get("https://ifbra-forms.appspot.com/forms/2")
+      .then(response => {this.funcoes = response.data})
+  }
+};
 </script>
-
-<style lang="scss" scoped>
-
-</style>
