@@ -1,21 +1,19 @@
 <template>
   <div id="app">
     <top-header></top-header>
-    <customer-list></customer-list>
-    <!-- <api-example></api-example> -->
+    <form2></form2>
     <router-view />
   </div>
 </template>
 
 <script>
 import TopHeader from "@/components/TopHeader";
-import CustomerList from "@/components/CustomerList";
-// import ApiExample from "@/components/ApiExample";
+import Form2 from "@/services/Form2";
 export default {
   components: {
     "top-header": TopHeader,
-    CustomerList
-    // "api-example": ApiExample
+    // CustomerList
+    "form2": Form2
   }
 };
 </script>
