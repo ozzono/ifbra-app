@@ -13,14 +13,16 @@
 
 export default {
   data: () => ({
-    funcoes: "teste",
+    funcoes: [],
+    errors:[]
   }),
   created: function() {
     fetch('http://localhost:8000/form2.json').then((response) => {
       response.json().then((json) => {
-        this.funcoes=json;
+        this.funcoes.push(json.Funcoes)
       })
-    });
+    })
+    .catch(error => {this.errors.push(error)})
   }
-};
+}
 </script>
