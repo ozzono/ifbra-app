@@ -9,19 +9,18 @@
 </template>
 
 <script>
-import axios from "axios";
+// import axios from "axios";
 
 export default {
-  data () {
-    return {
-      funcoes: [],
-      errors:[]
-    }
-  },
-  mounted () {
-    axios.get("https://ifbra-forms.appspot.com/forms/2")
-    .then(response => {this.funcoes.push(response.data.Funcoes)})
-    .catch(error => {this.errors.push(error)})
+  data: () => ({
+    funcoes: "teste",
+  }),
+  created: function() {
+    fetch('http://localhost:8000/form2.json').then((response) => {
+      response.json().then((json) => {
+        this.funcoes=json;
+      })
+    });
   }
 };
 </script>
