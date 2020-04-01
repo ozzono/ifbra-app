@@ -13,7 +13,7 @@ export default {
   components: {
     "top-header": TopHeader,
     // CustomerList
-    "form2": Form2
+    form2: Form2
   }
 };
 </script>

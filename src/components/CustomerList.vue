@@ -1,17 +1,15 @@
 <template>
-    <div>
-        <h2>teste</h2>
-        <ul>
-            <li>1</li>
-            <li>2</li>
-        </ul>
-    </div>
+  <div>
+    <h2>teste</h2>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+    </ul>
+  </div>
 </template>
 
 <script>
-    export default {}
+export default {};
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
