@@ -1,7 +1,8 @@
 <template>
     <div>
-        {{ funcoes }}
-        <!-- <div v-for="(err,index) in data.errors" :key="index"> -->
+      <li v-for="(funcao,index) of funcoes" :key="index">
+        {{ funcao.Tipo }}
+      </li>
         <div>
             {{errors}}
         </div>
@@ -9,20 +10,26 @@
 </template>
 
 <script>
-// import axios from "axios";
+import axios from "axios";
 
 export default {
   data: () => ({
     funcoes: [],
     errors:[]
   }),
-  created: function() {
-    fetch('http://localhost:8000/form2.json').then((response) => {
-      response.json().then((json) => {
-        this.funcoes.push(json.Funcoes)
+  mounted () {
+    axios(
+      'http://ifbra-forms.appspot.com/form2.json',
+        {
+          method:"GET",
+          crossdomain: true,
+        },
+      )
+      .then(response => {
+        // JSON responses are automatically parsed.
+        this.funcoes = response.data.Funcao;
       })
-    })
-    .catch(error => {this.errors.push(error)})
+      .catch(error => {this.errors.push(error)})
   }
 }
 </script>
