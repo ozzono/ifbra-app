@@ -1,19 +1,22 @@
 <template>
   <div id="app">
     <top-header></top-header>
-    <form2></form2>
+    <CheckTest></CheckTest>
     <router-view />
   </div>
 </template>
 
 <script>
 import TopHeader from "@/components/TopHeader";
-import Form2 from "@/services/Form2";
+// import Form2 from "@/components/Form2";
+// import Form1 from "@/components/Form1";
+import CheckTest from "@/components/CheckList";
 export default {
   components: {
     "top-header": TopHeader,
-    // CustomerList
-    form2: Form2
+    // form1: Form1
+    // form2: Form2
+    CheckTest: CheckTest
   }
 };
 </script>
