@@ -13,7 +13,7 @@
     "axios": "^0.19.2",
     "bootstrap-vue": "^2.9.0",
     "core-js": "^3.4.4",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "roboto-fontface": "*",
     "vue": "^2.6.11",
     "vue-axios": "^2.1.5",
