@@ -1,19 +1,30 @@
 <template>
   <v-app id="app">
-    <top-header></top-header>
+    <VuetifyHeader></VuetifyHeader>
     <CheckTest></CheckTest>
+    <CheckTest></CheckTest>
+    <CheckTest></CheckTest>
+    <CheckTest></CheckTest>
+    <CheckTest></CheckTest>
+    <CheckTest></CheckTest>
+    <CheckTest></CheckTest>
+    <CheckTest></CheckTest>
+    <CheckTest></CheckTest>
+    <VuetifyFooter></VuetifyFooter>
     <router-view />
   </v-app>
 </template>
 
 <script>
-import TopHeader from "@/components/TopHeader";
+import VuetifyHeader from "@/components/VuetifyHeader";
+import VuetifyFooter from "@/components/VuetifyFooter";
 // import Form2 from "@/components/Form2";
 // import Form1 from "@/components/Form1";
 import CheckTest from "@/components/CheckList";
 export default {
   components: {
-    "top-header": TopHeader,
+    "VuetifyHeader": VuetifyHeader,
+    "VuetifyFooter": VuetifyFooter,
     // form1: Form1
     // form2: Form2
     CheckTest: CheckTest
