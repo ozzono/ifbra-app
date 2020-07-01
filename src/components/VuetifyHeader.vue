@@ -1,12 +1,10 @@
 <template>
   <v-toolbar dark fixed>
     <v-toolbar-side-icon></v-toolbar-side-icon>
-    <v-toolbar-title>Title</v-toolbar-title>
-    <v-spacer></v-spacer>
+    <v-toolbar-title>IFBr-A</v-toolbar-title>
     <v-toolbar-items class="hidden-sm-and-down">
-      <v-btn flat>Link One</v-btn>
-      <v-btn flat>Link Two</v-btn>
-      <v-btn flat>Link Three</v-btn>
+      <v-btn flat>Legenda</v-btn>
+      <v-btn flat>Manual</v-btn>
     </v-toolbar-items>
   </v-toolbar>
 </template>

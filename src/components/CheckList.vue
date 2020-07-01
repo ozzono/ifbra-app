@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import Fruits from "@/assets/fruits.json";
+import Fruits from "@/assets/json/fruits.json";
   export default {
     data: () => ({
       fruits: Object.values(Fruits),//.split(","),

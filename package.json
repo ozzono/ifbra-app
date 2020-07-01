@@ -14,6 +14,7 @@
     "bootstrap-vue": "^2.9.0",
     "core-js": "^3.4.4",
     "jquery": "^3.5.0",
+    "jsonloader": "^1.0.1",
     "roboto-fontface": "*",
     "vue": "^2.6.11",
     "vue-axios": "^2.1.5",

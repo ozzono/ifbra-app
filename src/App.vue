@@ -1,15 +1,8 @@
 <template>
   <v-app id="app">
     <VuetifyHeader></VuetifyHeader>
-    <CheckTest></CheckTest>
-    <CheckTest></CheckTest>
-    <CheckTest></CheckTest>
-    <CheckTest></CheckTest>
-    <CheckTest></CheckTest>
-    <CheckTest></CheckTest>
-    <CheckTest></CheckTest>
-    <CheckTest></CheckTest>
-    <CheckTest></CheckTest>
+    <!-- <CheckTest></CheckTest> -->
+    <Form2></Form2>
     <VuetifyFooter></VuetifyFooter>
     <router-view />
   </v-app>
@@ -18,16 +11,15 @@
 <script>
 import VuetifyHeader from "@/components/VuetifyHeader";
 import VuetifyFooter from "@/components/VuetifyFooter";
-// import Form2 from "@/components/Form2";
+import Form2 from "@/components/forms/Form2";
 // import Form1 from "@/components/Form1";
-import CheckTest from "@/components/CheckList";
+// import CheckTest from "@/components/CheckList";
 export default {
   components: {
     "VuetifyHeader": VuetifyHeader,
     "VuetifyFooter": VuetifyFooter,
-    // form1: Form1
-    // form2: Form2
-    CheckTest: CheckTest
+    Form2: Form2
+    // CheckTest: CheckTest
   }
 };
 </script>
