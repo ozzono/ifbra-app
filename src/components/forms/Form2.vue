@@ -1,14 +1,17 @@
 <template>
   <div class="form">
     <v-banner>
-      <h5>Formulário 2</h5>
-      <h6>Funções corporais acometidas <i>(a ser preenchido pelo médico perito)</i></h6>
       <v-container class="grey lighten-5">
+        <FormHeader
+          title="Formulário 2"
+          subtitle="Funções corporais acometidas"
+          comment="a ser preenchido pelo médico perito"
+        ></FormHeader>
         <div v-for="(funcao,i) in funcoes[0]" :key=i>
           {{i+1}}. {{funcao.Tipo}}
           <div class="d-flex" no-gutters v-for="(subfuncao,j) in funcao.SubFuncao" :key=j>
             <div cols="pa-1">
-              <RowSwitch>Rowswitch</RowSwitch>
+              <RowSwitch></RowSwitch>
             </div>
             <div cols="pa-11" class="align-self-center">
               {{i+1}}.{{j+1}} {{subfuncao.Tipo}}: {{subfuncao.Detalhe}}
@@ -23,12 +26,14 @@
 <script>
 import Funcoes from "@/assets/json/form2.json";
 import RowSwitch from "@/components/RowSwitch";
+import FormHeader from "@/components/forms/FormHeader";
 export default {
     data: () => ({
       funcoes: Object.values(Funcoes)
     }),
     components:{
-      RowSwitch:RowSwitch
+      RowSwitch:RowSwitch,
+      FormHeader:FormHeader
     }
 }
 </script>
