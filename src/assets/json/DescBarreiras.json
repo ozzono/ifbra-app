@@ -1,0 +1,27 @@
+[
+    {
+        "Nome":"P e T",
+        "Desc":"Produtos e Tecnologia",
+        "Detalhe":"Qualquer produto, instrumento, equipamento ou tecnologia adaptado ou especialmente projetado para melhorar a funcionalidade de uma pessoa com deficiência. Exclui cuidadores e assistentes pessoais."
+    },
+    {
+        "Nome":"Amb",
+        "Desc":"Ambiente",
+        "Detalhe":"Refere-se ao ambiente natural ou físico. Aspectos geográficos, populacionais, da flora, da fauna, do clima, guerras e conflitos."
+    },
+    {
+        "Nome":"A e R",
+        "Desc":"Apoio e Relacionamento",
+        "Detalhe":"Pessoas ou animais que fornecem apoio físico ou emocional prático, educação, proteção e assistência e de relacionamento com outras pessoas em todos os aspectos da vida diária. Excluir as atitudes das pessoas que fornecem o apoio."
+    },
+    {
+        "Nome":"At",
+        "Desc":"Atitude",
+        "Detalhe":"São as consequências observáveis dos costumes, práticas, ideologias, valores, normas e crenças. Excluir as atitudes da própria pessoa."
+    },
+    {
+        "Nome":"SS e P",
+        "Desc":"Serviços, Sistemas e Políticas",
+        "Detalhe":"Rede de servoços, sistemas e políticas que garantem proteção social."
+    }
+]
