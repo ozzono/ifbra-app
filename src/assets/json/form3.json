@@ -1,200 +1,200 @@
 [
     {
       "Desc": "Domínio Sensorial",
-      "Dominios": [
+      "SubDominios": [
         {
-          "Dominio": "Observar",
-          "Desc": "Enxergar, reconhecer, e interpretar o que enxerga."
+          "Desc": "Observar",
+          "Detalhe": "Enxergar, reconhecer, e interpretar o que enxerga."
         },
         {
-          "Dominio": "Ouvir",
-          "Desc": "Perceber, discriminar, reconhecer e interpretar sons."
+          "Desc": "Ouvir",
+          "Detalhe": "Perceber, discriminar, reconhecer e interpretar sons."
         }
       ]
     },
     {
       "Desc": "Domínio de comunicação",
-      "Dominios": [
+      "SubDominios": [
         {
-          "Dominio": "Comunicar-se ",
-          "Desc": "Compreender mensagens."
+          "Desc": "Comunicar-se ",
+          "Detalhe": "Compreender mensagens."
         },
         {
-          "Dominio": "Conversar ",
-          "Desc": "Iniciar, manter e finalizar uma troca de pensamentos e idéias, realizadas através da linguagem oral e ou de sinais"
+          "Desc": "Conversar ",
+          "Detalhe": "Iniciar, manter e finalizar uma troca de pensamentos e idéias, realizadas através da linguagem oral e ou de sinais"
         },
         {
-          "Dominio": "Conversar ",
-          "Desc": "Iniciar, manter e finalizar uma troca de pensamentos e idéias, realizada através da linguagem oral e ou de sinais"
+          "Desc": "Conversar ",
+          "Detalhe": "Iniciar, manter e finalizar uma troca de pensamentos e idéias, realizada através da linguagem oral e ou de sinais"
         },
         {
-          "Dominio": "Discutir ",
-          "Desc": "Iniciar, manter e finalizar uma troca de pensamentos e idéias, realizada através da linguagem oral e ou de sinais"
+          "Desc": "Discutir ",
+          "Detalhe": "Iniciar, manter e finalizar uma troca de pensamentos e idéias, realizada através da linguagem oral e ou de sinais"
         },
         {
-          "Dominio": "Utilização de dispositivos de comunicação à distância ",
-          "Desc": "A utilização de dispositivos de comunicação à distância"
+          "Desc": "Utilização de dispositivos de comunicação à distância ",
+          "Detalhe": "A utilização de dispositivos de comunicação à distância"
         }
       ]
     },
     {
       "Desc": "Domínio Mobilidade",
-      "Dominios": [
+      "SubDominios": [
         {
-          "Dominio": "Mudar e manter a posição do corpo",
-          "Desc": "Sem detalhes"
+          "Desc": "Mudar e manter a posição do corpo",
+          "Detalhe": ""
         },
         {
-          "Dominio": "Alcançar, transportar e mover objetos",
-          "Desc": "Transportar e mover objeto de posição e alcançar acima da cabeça, à frente, ao lado e abaixo"
+          "Desc": "Alcançar, transportar e mover objetos",
+          "Detalhe": "Transportar e mover objeto de posição e alcançar acima da cabeça, à frente, ao lado e abaixo"
         },
         {
-          "Dominio": "Movimentos finos da mão",
-          "Desc": "Manusear objetos, manipulá-los e soltá-los utilizando as mãos, dedos e polega"
+          "Desc": "Movimentos finos da mão",
+          "Detalhe": "Manusear objetos, manipulá-los e soltá-los utilizando as mãos, dedos e polega"
         },
         {
-          "Dominio": "Deslocar se dentro de casa",
-          "Desc": "Andar ou deslocar-se dentro da própria casa, em um ambiente, incluindo áreas anexas quando aplicável"
+          "Desc": "Deslocar se dentro de casa",
+          "Detalhe": "Andar ou deslocar-se dentro da própria casa, em um ambiente, incluindo áreas anexas quando aplicável"
         },
         {
-          "Dominio": "Deslocar-se dentro de edifícios que não a própria casa",
-          "Desc": "Andar ou deslocar-se dentro de edifícios que não a própria residência, incluindo áreas anexas quando aplicável"
+          "Desc": "Deslocar-se dentro de edifícios que não a própria casa",
+          "Detalhe": "Andar ou deslocar-se dentro de edifícios que não a própria residência, incluindo áreas anexas quando aplicável"
         },
         {
-          "Dominio": "Deslocar-se fora de sua casa e de outros edifícios",
-          "Desc": "Andar ou deslocar-se perto ou longe da própria casa e de outros edifícios, sem utilização de transporte público ou privado"
+          "Desc": "Deslocar-se fora de sua casa e de outros edifícios",
+          "Detalhe": "Andar ou deslocar-se perto ou longe da própria casa e de outros edifícios, sem utilização de transporte público ou privado"
         },
         {
-          "Dominio": "Utilizar transporte coletivo",
-          "Desc": "Utilizar transporte coletivo para se deslocar, como passageiro, por meio terrestre, aqüaviário ou aéreo"
+          "Desc": "Utilizar transporte coletivo",
+          "Detalhe": "Utilizar transporte coletivo para se deslocar, como passageiro, por meio terrestre, aqüaviário ou aéreo"
         },
         {
-          "Dominio": "Utilizar transporte individual como passageiro",
-          "Desc": "Utilizar transporte para se deslocar, como passageiro, por meio terrestre, aqüaviário ou aéreo"
+          "Desc": "Utilizar transporte individual como passageiro",
+          "Detalhe": "Utilizar transporte para se deslocar, como passageiro, por meio terrestre, aqüaviário ou aéreo"
         }
       ]
     },
     {
       "Desc": "Domínio Cuidados Pessoais",
-      "Dominios": [
+      "SubDominios": [
         {
-          "Dominio": "Lavar-se",
-          "Desc": "Tomar banho e limpar o corpo de forma completa incluindo lavar e secar todas as partes do corpo da forma habitual"
+          "Desc": "Lavar-se",
+          "Detalhe": "Tomar banho e limpar o corpo de forma completa incluindo lavar e secar todas as partes do corpo da forma habitual"
         },
         {
-          "Dominio": "Cuidar de partes do corpo",
-          "Desc": "Realizar cuidados pessoais"
+          "Desc": "Cuidar de partes do corpo",
+          "Detalhe": "Realizar cuidados pessoais"
         },
         {
-          "Dominio": "Regulação da micção",
-          "Desc": "Reconhecer a necessidade de urinar, escolher a forma e o local apropriado, manipular a roupa, urinar e secar-se"
+          "Desc": "Regulação da micção",
+          "Detalhe": "Reconhecer a necessidade de urinar, escolher a forma e o local apropriado, manipular a roupa, urinar e secar-se"
         },
         {
-          "Dominio": "Regulação da defecação",
-          "Desc": "Reconhecer a necessidade de evacuar, escolher a forma e o local apropriado, manipular a roupa, evacuar e limpar-se"
+          "Desc": "Regulação da defecação",
+          "Detalhe": "Reconhecer a necessidade de evacuar, escolher a forma e o local apropriado, manipular a roupa, evacuar e limpar-se"
         },
         {
-          "Dominio": "Vestir-se",
-          "Desc": "Vestir e retirar peças habituais, incluíndo calçados"
+          "Desc": "Vestir-se",
+          "Detalhe": "Vestir e retirar peças habituais, incluíndo calçados"
         },
         {
-          "Dominio": "Comer",
-          "Desc": "Levar à boca e comer alimento preparado e servido de forma de forma habitual"
+          "Desc": "Comer",
+          "Detalhe": "Levar à boca e comer alimento preparado e servido de forma de forma habitual"
         },
         {
-          "Dominio": "Beber",
-          "Desc": "Levar à boca e beber bebida preparada e servida de forma de forma habitual e com deglutição segura"
+          "Desc": "Beber",
+          "Detalhe": "Levar à boca e beber bebida preparada e servida de forma de forma habitual e com deglutição segura"
         },
         {
-          "Dominio": "Capacidade de identificar agravos à saúde",
-          "Desc": "Identificar sinais e sintomas que possam potencialmente comprometer a saúde e a integridade física, reconhecer abusos e violência"
+          "Desc": "Capacidade de identificar agravos à saúde",
+          "Detalhe": "Identificar sinais e sintomas que possam potencialmente comprometer a saúde e a integridade física, reconhecer abusos e violência"
         }
       ]
     },
     {
       "Desc": "Domínio Vida Doméstica",
-      "Dominios": [
+      "SubDominios": [
         {
-          "Dominio": "Preparar refeições tipo lanches",
-          "Desc": "Preparar e escolher alimentos simples para lanches"
+          "Desc": "Preparar refeições tipo lanches",
+          "Detalhe": "Preparar e escolher alimentos simples para lanches"
         },
         {
-          "Dominio": "Cozinhar",
-          "Desc": "Planejar, organizar e executar o preparo de refeições que exijam varios ingredientes ou utensílios, ou uma sequência de ações"
+          "Desc": "Cozinhar",
+          "Detalhe": "Planejar, organizar e executar o preparo de refeições que exijam varios ingredientes ou utensílios, ou uma sequência de ações"
         },
         {
-          "Dominio": "Realizar tarefas doméstica",
-          "Desc": ""
+          "Desc": "Realizar tarefas doméstica",
+          "Detalhe": ""
         },
         {
-          "Dominio": "Manutenção e uso apropriado de objetos pessoais e utensílios da cas",
-          "Desc": "Utilizar, guardar e conservar objetos pessoais, cuidar da casa e dos utensílios domésticos"
+          "Desc": "Manutenção e uso apropriado de objetos pessoais e utensílios da cas",
+          "Detalhe": "Utilizar, guardar e conservar objetos pessoais, cuidar da casa e dos utensílios domésticos"
         },
         {
-          "Dominio": "Cuidar dos Outro",
-          "Desc": ""
+          "Desc": "Cuidar dos Outro",
+          "Detalhe": ""
         }
       ]
     },
     {
       "Desc": "Domínio Educação",
-      "Dominios": [
+      "SubDominios": [
         {
-          "Dominio": "Educação",
-          "Desc": "Adquirir habilidades e conhecimentos educacionais, dentro e fora da escola, considerando acessibilidade e disponibilidade de recursos educacionais adequados"
+          "Desc": "Educação",
+          "Detalhe": "Adquirir habilidades e conhecimentos educacionais, dentro e fora da escola, considerando acessibilidade e disponibilidade de recursos educacionais adequados"
         },
         {
-          "Dominio": "Qualificação Profissional",
-          "Desc": "Adquirir habilidades e conhecimentos específicos para atividade profissional, considerando acessibilidade e disponibilidade de recursos educacionais adequados"
+          "Desc": "Qualificação Profissional",
+          "Detalhe": "Adquirir habilidades e conhecimentos específicos para atividade profissional, considerando acessibilidade e disponibilidade de recursos educacionais adequados"
         },
         {
-          "Dominio": "Trabalho Remunerado",
-          "Desc": "Exerce trabalho remunerado, considerando localizar, escolher, permanecer, progredir e sair de forma adequada"
+          "Desc": "Trabalho Remunerado",
+          "Detalhe": "Exerce trabalho remunerado, considerando localizar, escolher, permanecer, progredir e sair de forma adequada"
         },
         {
-          "Dominio": "Fazer compras e contratar serviços",
-          "Desc": "Ober, em troca de dinheiros, bens e serviços necessários para a vida diária"
+          "Desc": "Fazer compras e contratar serviços",
+          "Detalhe": "Ober, em troca de dinheiros, bens e serviços necessários para a vida diária"
         },
         {
-          "Dominio": "Administração de recursos Econômicos Pessoais",
-          "Desc": ""
+          "Desc": "Administração de recursos Econômicos Pessoais",
+          "Detalhe": ""
         }
       ]
     },
     {
       "Desc": "Domínio Socialização e Vida Comunitária",
-      "Dominios": [
+      "SubDominios": [
         {
-          "Dominio": "Regular o comportamento nas interações",
-          "Desc": "Controlar o próprio comportamento, emoções e impulsos, agressão verbal e física nas interações, de maneira contextual e socialmente apropriada"
+          "Desc": "Regular o comportamento nas interações",
+          "Detalhe": "Controlar o próprio comportamento, emoções e impulsos, agressão verbal e física nas interações, de maneira contextual e socialmente apropriada"
         },
         {
-          "Dominio": "Interagir de acordo com as regras sociais",
-          "Desc": "Agir independentemente nas interações sociais e adaptar-se às convenções sociais que regem o papel, posição ou status social das pessoas nas interações com os outros"
+          "Desc": "Interagir de acordo com as regras sociais",
+          "Detalhe": "Agir independentemente nas interações sociais e adaptar-se às convenções sociais que regem o papel, posição ou status social das pessoas nas interações com os outros"
         },
         {
-          "Dominio": "Relacionamentos com estranhos",
-          "Desc": "Estabelecer contatos e ligações temporários com estranhos para fins específicos como, quando aplicável"
+          "Desc": "Relacionamentos com estranhos",
+          "Detalhe": "Estabelecer contatos e ligações temporários com estranhos para fins específicos como, quando aplicável"
         },
         {
-          "Dominio": "Relacionamentos familiares e com pessoas familiares",
-          "Desc": "Criar e manter relações de parentesco com membros do núcleo familiar ou pessoas próximas. Participar da rotina familiar"
+          "Desc": "Relacionamentos familiares e com pessoas familiares",
+          "Detalhe": "Criar e manter relações de parentesco com membros do núcleo familiar ou pessoas próximas. Participar da rotina familiar"
         },
         {
-          "Dominio": "Relacionamentos Íntimos",
-          "Desc": "Verificar detalhe desse item"
+          "Desc": "Relacionamentos Íntimos",
+          "Detalhe": "Verificar detalhe desse item"
         },
         {
-          "Dominio": "Socialização",
-          "Desc": "Participar de eventos sociais"
+          "Desc": "Socialização",
+          "Detalhe": "Participar de eventos sociais"
         },
         {
-          "Dominio": "Fazer as próprias escolhas",
-          "Desc": "Exercer a capacidade de tomar decisões sobre a sua própria vida"
+          "Desc": "Fazer as próprias escolhas",
+          "Detalhe": "Exercer a capacidade de tomar decisões sobre a sua própria vida"
         },
         {
-          "Dominio": "Vida política e cidadania",
-          "Desc": "Exercer a cidadania"
+          "Desc": "Vida política e cidadania",
+          "Detalhe": "Exercer a cidadania"
         }
       ]
     }
