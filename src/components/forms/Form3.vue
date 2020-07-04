@@ -11,10 +11,10 @@
           <v-col :cols="ContentCols">
             Domínios e Atividades
           </v-col>
-          <v-col class="justify-center" :cols="SelectCols*2">
+          <v-col class="text-center" :cols="SelectCols*2">
             Pontuação INSS
           </v-col>
-          <v-col class="justify-center" :cols="CheckListCols">
+          <v-col class="text-center" :cols="CheckListCols">
             Barreira Ambiental
           </v-col>
         </v-row>
@@ -63,7 +63,7 @@ export default {
     components:{
       FormHeader:FormHeader,
       Barreiras:Barreiras,
-      INSSSelect:INSSSelect
+      INSSSelect:INSSSelect,
     }
 }
 </script>

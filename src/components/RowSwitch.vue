@@ -6,12 +6,12 @@
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-        switch1: true,
-        switch2: false,
-      }
-    },
+export default {
+  data() {
+    return {
+      switch1: true,
+      switch2: false
+    };
   }
+};
 </script>

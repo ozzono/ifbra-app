@@ -2,10 +2,7 @@
   <v-form v-model="valid">
     <v-container>
       <v-row>
-        <v-col
-          cols="12"
-          md="4"
-        >
+        <v-col cols="12" md="4">
           <v-text-field
             v-model="forms.Nome"
             :rules="nameRules"
@@ -15,10 +12,7 @@
           ></v-text-field>
         </v-col>
 
-        <v-col
-          cols="12"
-          md="4"
-        >
+        <v-col cols="12" md="4">
           <v-text-field
             v-model="lastname"
             :rules="nameRules"
@@ -28,10 +22,7 @@
           ></v-text-field>
         </v-col>
 
-        <v-col
-          cols="12"
-          md="4"
-        >
+        <v-col cols="12" md="4">
           <v-text-field
             v-model="email"
             :rules="emailRules"
@@ -44,12 +35,11 @@
   </v-form>
 </template>
 
-
 <script>
 import axios from "axios";
 export default {
   data: () => ({
-    valid:true,
+    valid: true,
     form: "",
     errors: []
   }),
@@ -68,6 +58,4 @@ export default {
   }
 };
 </script>
-<style>
-
-</style>
+<style></style>
