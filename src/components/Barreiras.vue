@@ -12,10 +12,9 @@
         <template v-slot:prepend-item>
           <v-list-item ripple @click="toggle">
             <v-list-item-action>
-              <v-icon
-                :color="selectedBarreiras.length > 0 ? 'indigo darken-4' : ''"
-                >{{ icon }}</v-icon
-              >
+              <v-icon :color="selectedBarreiras.length > 0 ? 'indigo darken-4' : ''">
+                {{ icon }}
+              </v-icon>
             </v-list-item-action>
             <v-list-item-content>
               <v-list-item-title>Todas</v-list-item-title>
@@ -25,12 +24,13 @@
         </template>
       </v-select>
     </v-container>
-
+    <Tooltip></Tooltip>
   </div>
 </template>
 
 <script>
 import Barreiras from "@/assets/json/barreiras.json";
+import Tooltip from "@/components/BarreirasTooltip"
 export default {
   data: () => ({
     barreiras: Object.values(Barreiras), //.split(","),
@@ -48,6 +48,9 @@ export default {
       if (this.algumasBarreiras) return "mdi-minus-box";
       return "mdi-checkbox-blank-outline";
     }
+  },
+  components:{
+    Tooltip:Tooltip
   },
   methods: {
     toggle() {

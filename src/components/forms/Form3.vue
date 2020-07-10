@@ -51,7 +51,7 @@
 import Dominios from "@/assets/json/form3.json";
 import FormHeader from "@/components/forms/FormHeader";
 import INSSSelect from "@/components/forms/INSSSelect";
-import Barreiras from "@/components/forms/Barreiras";
+import Barreiras from "@/components/Barreiras";
 export default {
     data: () => ({
       ContentCols:8,

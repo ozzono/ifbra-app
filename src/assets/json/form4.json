@@ -1,34 +1,22 @@
 [
-    {
-      "Desc": "Auditiva",
-      "Agravante": false,
-      "Obs": [
-        "A surdez ocorreu antes dos 6 anos",
-        "Não dispõe de auxílio de terceiros sempre que necessário"
-      ]
-    },
-    {
-      "Desc": "Intelectual (Cognitiva ou Mental)",
-      "Agravante": false,
-      "Obs": [
-        "Não pode ficar sozinho em segurança",
-        "Não dispõe de auxílio de terceiros sempre que necessário"
-      ]
-    },
-    {
-      "Desc": "Motora",
-      "Agravante": false,
-      "Obs": [
-        "Desloca-se exclusivamente em cadeira de rodas",
-        "Não dispõe de auxílio de terceiros sempre que necessário"
-      ]
-    },
-    {
-      "Desc": "Visual",
-      "Agravante": false,
-      "Obs": [
-        "A pessoa já não enxergava ao nascer",
-        "Não dispõe de auxílio de terceiros sempre que necessário"
-      ]
-    }
-  ]
+  {
+    "Desc": "Auditiva",
+    "Obs": "A surdez ocorreu antes dos 6 anos",
+    "Dominios":"Comunicação ou Socialização"
+  },
+  {
+    "Desc": "Intelectual (Cognitiva ou Mental)",
+    "Obs": "Não pode ficar sozinho em segurança",
+    "Dominios":"Vida Doméstica ou Socialização"
+  },
+  {
+    "Desc": "Motora",
+    "Obs": "Desloca-se exclusivamente em cadeira de rodas",
+    "Dominios":"Mobilidade ou Cuidados Pessoais"
+  },
+  {
+    "Desc": "Visual",
+    "Obs": "A pessoa já não enxergava ao nascer",
+    "Dominios":"Mobilidade ou Vida Doméstica"
+  }
+]

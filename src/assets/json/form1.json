@@ -9,18 +9,18 @@
     "DataNascimento": "",
     "Idade": 0,
     "TipoDeficiencia": [
-      "física",
-      "visual",
-      "auditiva",
-      "multipla",
-      "intelectual ou cognitiva"
+      "Física",
+      "Visual",
+      "Auditiva",
+      "Multipla",
+      "Intelectual ou Cognitiva"
     ],
     "Etnia": [
-      "branca",
-      "preta",
-      "amarela",
-      "parda",
-      "indígena"
+      "Branca",
+      "Preta",
+      "Amarela",
+      "Parda",
+      "Indígena"
     ],
     "Diagnostico": {
       "CID": "",

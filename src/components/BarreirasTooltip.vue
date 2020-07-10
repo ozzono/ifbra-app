@@ -10,43 +10,30 @@
         >mdi-comment-question</v-icon>
       </template>
       <span>
-        <v-row>
-          <v-col></v-col>
-          <v-col></v-col>
+        <v-row dense v-for="(barreira,i) in barreiras" :key="i">
+          <v-col>{{barreira.Nome}}</v-col>
+          <v-col>{{barreira.Desc}}</v-col>
         </v-row>
-        <v-row>
-          <v-col></v-col>
-          <v-col></v-col>
-        </v-row>
-        <v-row>
-          <v-col></v-col>
-          <v-col></v-col>
-        </v-row>
-        <v-row>
-          <v-col></v-col>
-          <v-col></v-col>
-        </v-row>
-        <v-row>
-          <v-col></v-col>
-          <v-col></v-col>
-        </v-row>
+        <span>Para descrição completa das barreiras consulte o manual</span>
       </span>
     </v-tooltip>
   </div>
 </template>
 
 <script>
+import Barreiras from "@/assets/json/DescBarreiras.json"
 export default {
   name: "BottomTooltip",
   props: {
     content: String,
     tooltip: String
   },
+  data: () => ({
+    barreiras: Object.values(Barreiras), //.split(","),
+  }),
 }
 </script>
 
 <style>
- tooltip-ul{
-   list-style-type:none;
- }
+
 </style>
