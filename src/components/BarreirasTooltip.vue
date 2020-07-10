@@ -30,6 +30,7 @@ export default {
   },
   data: () => ({
     barreiras: Object.values(Barreiras), //.split(","),
+    teste:[{1:"1",2:"2"},{1:"1",2:"2"}],
   }),
 }
 </script>

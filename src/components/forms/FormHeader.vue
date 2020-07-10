@@ -1,9 +1,10 @@
 <template>
-  <v-row>
-    <v-col cols="11">
+  <v-row class="flex">
+    <v-col cols="10">
       <v-card-title>{{ title }}</v-card-title>
       <v-card-subtitle
-        >{{ subtitle }}
+      >
+        {{ subtitle }}
         <i v-if="comment.length > 0">({{ comment }})</i>
       </v-card-subtitle>
     </v-col>

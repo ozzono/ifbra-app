@@ -1,12 +1,14 @@
 <template>
   <div class="form">
-    <v-banner>
+    <v-flex>
       <v-container class="grey lighten-5">
-        <FormHeader
-          title="Formulário 2"
-          subtitle="Funções corporais acometidas"
-          comment="a ser preenchido pelo médico perito"
-        ></FormHeader>
+        <v-row align="center" dense class="flex">
+          <FormHeader
+            title="Formulário 2"
+            subtitle="Funções corporais acometidas"
+            comment="a ser preenchido pelo médico perito"
+          />
+        </v-row>
         <div v-for="(funcao, i) in funcoes[0]" :key="i">
           {{ i + 1 }}. {{ funcao.Tipo }}
           <div
@@ -26,7 +28,7 @@
           <hr />
         </div>
       </v-container>
-    </v-banner>
+    </v-flex>
   </div>
 </template>
 <script>
