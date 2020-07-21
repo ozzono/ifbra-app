@@ -11,22 +11,15 @@
 </template>
 
 <script>
-import VuetifyHeader from "@/components/VuetifyHeader";
-import VuetifyFooter from "@/components/VuetifyFooter";
-import Form1 from "@/components/forms/Form1";
-import Form2 from "@/components/forms/Form2";
-import Form3 from "@/components/forms/Form3";
-import Form4 from "@/components/forms/Form4";
-import Evaluation from "@/components/Evaluation";
 export default {
   components: {
-    VuetifyHeader: VuetifyHeader,
-    VuetifyFooter: VuetifyFooter,
-    Form1: Form1,
-    Form2: Form2,
-    Form3: Form3,
-    Form4: Form4,
-    Evaluation: Evaluation
+    VuetifyHeader:()=> import ("@/components/VuetifyHeader"),
+    VuetifyFooter:()=> import ("@/components/VuetifyFooter"),
+    Evaluation:   ()=> import ("@/components/Evaluation"),
+    Form1:        ()=> import ("@/components/forms/Form1"),
+    Form2:        ()=> import ("@/components/forms/Form2"),
+    Form3:        ()=> import ("@/components/forms/Form3"),
+    Form4:        ()=> import ("@/components/forms/Form4"),
   }
 };
 </script>
