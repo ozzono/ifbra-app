@@ -10,10 +10,9 @@
     <template v-if="allowMultiple" v-slot:prepend-item>
       <v-list-item ripple @click="toggle">
         <v-list-item-action>
-          <v-icon
-            :color="selectedItems.length > 0 ? 'indigo darken-4' : ''"
-            >{{ icon }}</v-icon
-          >
+          <v-icon :color="selectedItems.length > 0 ? 'indigo darken-4' : ''">
+            {{ icon }}
+          </v-icon>
         </v-list-item-action>
         <v-list-item-content>
           <v-list-item-title>Todos</v-list-item-title>
@@ -26,16 +25,24 @@
 
 <script>
 export default {
+  name: "CheckList",
   data: () => ({
     selectedItems: []
   }),
-  props:{
-    innerItems: Object,
-    innerLabel: String,
-    allowMultiple: Boolean,
-    makeClearable: Boolean,
-    makeOutlined: Boolean,
-  },
+  props: [
+    "innerItems",
+    "innerLabel",
+    "allowMultiple",
+    "makeClearable",
+    "makeOutlined"
+  ],
+  // props: {
+  //   innerItems: [],
+  //   innerLabel: String,
+  //   allowMultiple: Boolean,
+  //   makeClearable: Boolean,
+  //   makeOutlined: Boolean
+  // },
   computed: {
     allItems() {
       return this.selectedItems.length === this.innerItems.length;

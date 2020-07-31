@@ -7,6 +7,7 @@
 
 <script>
 export default {
+  name: "RowSwitch",
   data() {
     return {
       switch1: true,

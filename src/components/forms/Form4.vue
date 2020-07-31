@@ -8,25 +8,26 @@
           comment=""
         />
         <v-row class="d-flex">
-          <v-col :cols="ContentCols">
+          <v-col :cols="2">
             Domínios e Atividades
           </v-col>
         </v-row>
-        <v-row dense v-for="(deficiecia,i) in Deficiencias" :key="i">
+        <v-row dense v-for="(deficiecia, i) in Deficiencias" :key="i">
           <v-col cols="2">
-            {{deficiecia.Desc}}
+            {{ deficiecia.Desc }}
           </v-col>
           <v-col cols="1">
             <RowSwitch></RowSwitch>
           </v-col>
           <v-col>
-            {{deficiecia.Obs}}
+            {{ deficiecia.Obs }}
           </v-col>
           <v-col cols="1">
             <RowSwitch></RowSwitch>
           </v-col>
           <v-col>
-            Houve pontuação 25,50 ou 75 em alguma atividade do Domínio {{deficiecia.Dominios}}
+            Houve pontuação 25,50 ou 75 em alguma atividade do Domínio
+            {{ deficiecia.Dominios }}
           </v-col>
         </v-row>
       </v-container>
@@ -35,16 +36,16 @@
 </template>
 
 <script>
-import FormHeader from "@/components/forms/FormHeader"
-import RowSwitch from "@/components/RowSwitch"
-import Deficiencias from "@/assets/json/form4.json"
+import FormHeader from "@/components/forms/FormHeader";
+import RowSwitch from "@/components/RowSwitch";
+import Deficiencias from "@/assets/json/form4.json";
 export default {
-    data: () => ({
-      Deficiencias: Object.values(Deficiencias)
-    }),
-    components:{
-        FormHeader:FormHeader,
-        RowSwitch:RowSwitch,
-    }
-}
+  data: () => ({
+    Deficiencias: Object.values(Deficiencias)
+  }),
+  components: {
+    FormHeader: FormHeader,
+    RowSwitch: RowSwitch
+  }
+};
 </script>
