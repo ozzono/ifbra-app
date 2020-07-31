@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import "@babel/polyfill";
 import "mutationobserver-shim";
 import Vue from "vue";

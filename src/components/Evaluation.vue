@@ -8,41 +8,99 @@
           </v-col>
         </v-row>
         <v-row align="center" dense class="d-flex">
-          <v-col md="3" cols="6"> <!-- small col -->
+          <v-col md="3" cols="6">
+            <!-- small col -->
             <DatePicker innerLabel="Data da Avaliação"></DatePicker>
           </v-col>
-          <v-col md="9" cols="6" class="d-flex">
-            <v-text-field justify-start label="Avaliadores" />
-            <v-btn icon justify-end align-self="center">
+        </v-row>
+        <v-row align="center" dense class="d-flex">
+          <v-col md="3" cols="6">
+            <CheckList
+              :innerItems="evaluatorType"
+              innerLabel="Tipo de avaliador"
+              @allItems="type = $event"
+              ref="checklist"
+            />
+          </v-col>
+          <v-col md="8" cols="5" class="d-flex">
+            <v-text-field
+              v-model="name"
+              justify-start
+              label="Nome do avaliador"
+            />
+          </v-col>
+          <v-col md="1" cols="1" class="d-flex">
+            <v-btn @click="addEval()" icon align="center">
               <v-icon>mdi-plus-box</v-icon>
             </v-btn>
           </v-col>
         </v-row>
-        <v-card>
-          <v-row align="center" dense class="flex">
-            <v-col cols="3">
-              <CheckList :innerItems="avaliadores" innerLabel="Tipo de avaliador" />
-            </v-col>
-            <v-col cols="9">
-                <v-text-field label="Avaliadores"  append-icon="mdi-account-edit"/>
-            </v-col>
-          </v-row>
-        </v-card>
+        <v-row
+          v-for="evaluator in allEvaluators"
+          :key="evaluator.id"
+          align="center"
+          dense
+          outlined
+          class="d-flex"
+        >
+          <v-col md="3" cols="6" class="d-flex">
+            <v-text-field
+              :value="evaluator.type"
+              label="Tipo de avaliador"
+              rows="1"
+              disabled
+              auto-grow
+              class="align-start"
+            />
+          </v-col>
+          <v-col md="8" cols="5" class="d-flex">
+            <v-text-field
+              :value="evaluator.name"
+              label="Nome do avaliador"
+              rows="1"
+              disabled
+              auto-grow
+              class="align-start"
+            />
+          </v-col>
+          <v-col md="1" cols="1" class="d-flex">
+            <v-btn @click="removeEvaluator(evaluator.id)" icon align="center">
+              <v-icon>mdi-minus-box</v-icon>
+            </v-btn>
+          </v-col>
+        </v-row>
       </v-container>
     </v-flex>
   </div>
 </template>
 
 <script>
-import DatePicker from "@/components/DatePicker"
-import CheckList from "@/components/CheckList"
+/* eslint-disable no-console */
+import { mapActions, mapGetters } from "vuex";
 export default {
-  data: ()=>({
-    avaliadores:["Médico","Assistente Social"],
+  data: () => ({
+    evaluatorType: ["Médico", "Assistente Social"],
+    name: "",
+    type: "",
+    count: 0
   }),
-  components:{
-    CheckList:CheckList,
-    DatePicker:DatePicker,
-  }
-}
+  components: {
+    CheckList: () => import("@/components/CheckList"),
+    DatePicker: () => import("@/components/DatePicker")
+  },
+  methods: {
+    ...mapActions(["addEvaluator", "removeEvaluator"]),
+    addEval() {
+      const evaluator = {
+        id: this.count++,
+        type: this.type,
+        name: this.name
+      };
+      this.addEvaluator(evaluator);
+      this.name = "";
+      this.$refs.checklist.clear();
+    }
+  },
+  computed: mapGetters(["allEvaluators"])
+};
 </script>

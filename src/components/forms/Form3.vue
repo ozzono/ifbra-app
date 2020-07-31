@@ -87,9 +87,9 @@ import INSSDesc from "@/assets/json/inss.json";
 import BarreirasDesc from "@/assets/json/barreiras.json";
 export default {
   data: () => ({
-    ContentCols: 8,
-    SelectCols: 1,
-    CheckListCols: 2,
+    ContentCols: 5,
+    SelectCols: 2,
+    CheckListCols: 3,
     Barreiras: ["P e T", "Amb", "A e R", "At", "SS e P"],
     Dominios: Object.values(Dominios),
     INSSDesc: Object.values(INSSDesc),
