@@ -10,14 +10,12 @@
   "dependencies": {
     "@mdi/font": "^3.6.95",
     "@vue/cli": "^4.2.3",
-    "axios": "^0.19.2",
     "bootstrap-vue": "^2.9.0",
     "core-js": "^3.4.4",
     "jquery": "^3.5.0",
     "jsonloader": "^1.0.1",
     "roboto-fontface": "*",
     "vue": "^2.6.11",
-    "vue-axios": "^2.1.5",
     "vue-router": "^3.1.3",
     "vuetify": "^2.2.20",
     "vuex": "^3.1.2"
@@ -31,7 +29,6 @@
     "@vue/cli-service": "^4.4.6",
     "@vue/eslint-config-prettier": "^5.0.0",
     "babel-eslint": "^10.0.3",
-    "bootstrap": "^4.4.1",
     "eslint": "^5.16.0",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-vue": "^5.0.0",
