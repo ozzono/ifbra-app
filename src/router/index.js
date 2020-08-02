@@ -1,14 +1,39 @@
 import Vue from "vue";
-import VueRouter from "vue-router";
+import Router from "vue-router";
+import Home from "@/components/Home";
+import Helper from "@/components/Helper";
+import Manual from "@/components/Manual";
+import CID10 from "@/components/CID10";
 
-Vue.use(VueRouter);
+Vue.use(Router);
 
-const routes = [];
-
-const router = new VueRouter({
-  mode: "history",
-  base: process.env.BASE_URL,
-  routes
+export default new Router({
+  routes: [
+    {
+      path: "/",
+      name: "home",
+      component: Home
+    },
+    //this next part doesn't seam right but it works and solved the issue when returning to /#/home
+    {
+      path: "/home",
+      name: "home",
+      component: Home
+    },
+    {
+      path: "/legenda",
+      name: "helper",
+      component: Helper
+    },
+    {
+      path: "/manual",
+      name: "manual",
+      component: Manual
+    },
+    {
+      path: "/cid10",
+      name: "cid10",
+      component: CID10
+    }
+  ]
 });
-
-export default router;
