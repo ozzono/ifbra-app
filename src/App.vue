@@ -10,7 +10,7 @@
 export default {
   components: {
     Header: () => import("@/components/Header"),
-    Footer: () => import("@/components/Footer"),
+    Footer: () => import("@/components/Footer")
   }
 };
 </script>

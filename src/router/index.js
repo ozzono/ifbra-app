@@ -14,10 +14,10 @@ export default new Router({
       name: "home",
       component: Home
     },
-    //this next part doesn't seam right but it works and solved the issue when returning to /#/formularios
+    //this next part doesn't seam right but it works and solved the issue when returning to /#/home
     {
-      path: "/formularios",
-      name: "formularios",
+      path: "/home",
+      name: "home",
       component: Home
     },
     {
