@@ -37,7 +37,7 @@ export default {
   data: () => ({
     drawer: false,
     menu: [
-      ["Formulários", "home"],
+      ["Formulários", "/"],
       ["Legenda", "legenda"],
       ["Manual", "manual"],
       ["CID10", "cid10"]

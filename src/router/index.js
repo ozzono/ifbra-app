@@ -14,12 +14,6 @@ export default new Router({
       name: "home",
       component: Home
     },
-    //this next part doesn't seam right but it works and solved the issue when returning to /#/home
-    {
-      path: "/home",
-      name: "home",
-      component: Home
-    },
     {
       path: "/legenda",
       name: "helper",
