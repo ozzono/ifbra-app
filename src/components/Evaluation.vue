@@ -18,7 +18,7 @@
             <CheckList
               :innerItems="evaluatorType"
               innerLabel="Tipo de avaliador"
-              @allItems="type = $event"
+              @selectedItems="type = $event"
               ref="checklist"
             />
           </v-col>

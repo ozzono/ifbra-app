@@ -6,7 +6,7 @@
     :multiple="allowMultiple"
     :clearable="allowMultiple"
     :outlined="makeOutlined"
-    @change="$emit('allItems', selectedItems)"
+    @change="$emit('selectedItems', selectedItems)"
   >
     <template v-if="allowMultiple" v-slot:prepend-item>
       <v-list-item ripple @click="toggle">
@@ -37,13 +37,6 @@ export default {
     "makeClearable",
     "makeOutlined"
   ],
-  // props: {
-  //   innerItems: [],
-  //   innerLabel: String,
-  //   allowMultiple: Boolean,
-  //   makeClearable: Boolean,
-  //   makeOutlined: Boolean
-  // },
   computed: {
     allItems() {
       return this.selectedItems.length === this.innerItems.length;
