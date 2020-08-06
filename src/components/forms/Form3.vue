@@ -53,7 +53,7 @@
                   :inner-items="INSS"
                   inner-label="Médico"
                   :make-outlined="true"
-                  @selectedItems="refreshScores(0, i, j, $event)"
+                  @selectedItems="refreshScores('medical', i, j, $event)"
                 />
               </v-col>
               <v-col class="align-start justify-md-end" :cols="SelectCols">
@@ -61,7 +61,7 @@
                   :inner-items="INSS"
                   inner-label="Social"
                   :make-outlined="true"
-                  @selectedItems="refreshScores(1, i, j, $event)"
+                  @selectedItems="refreshScores('social', i, j, $event)"
                 />
               </v-col>
               <v-col class="align-start" :cols="CheckListCols">
