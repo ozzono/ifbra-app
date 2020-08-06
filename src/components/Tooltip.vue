@@ -1,5 +1,5 @@
 <template>
-  <v-tooltip bottom>
+  <v-tooltip bottom open-delay="200">
     <template v-slot:activator="{ on, attrs }">
       <span v-bind="attrs" v-on="on">{{ desc }}</span>
     </template>

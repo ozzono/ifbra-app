@@ -4,11 +4,15 @@
       "SubDominios": [
         {
           "Desc": "Observar",
-          "Detalhe": "Enxergar, reconhecer, e interpretar o que enxerga."
+          "Detalhe": "Enxergar, reconhecer, e interpretar o que enxerga.",
+          "id":0,
+          "next":0
         },
         {
           "Desc": "Ouvir",
-          "Detalhe": "Perceber, discriminar, reconhecer e interpretar sons."
+          "Detalhe": "Perceber, discriminar, reconhecer e interpretar sons.",
+          "id":0,
+          "next":0
         }
       ]
     },
@@ -17,23 +21,33 @@
       "SubDominios": [
         {
           "Desc": "Comunicar-se ",
-          "Detalhe": "Compreender mensagens."
+          "Detalhe": "Compreender mensagens.",
+          "id":0,
+          "next":0
         },
         {
           "Desc": "Conversar ",
-          "Detalhe": "Iniciar, manter e finalizar uma troca de pensamentos e idéias, realizadas através da linguagem oral e ou de sinais"
+          "Detalhe": "Iniciar, manter e finalizar uma troca de pensamentos e idéias, realizadas através da linguagem oral e ou de sinais",
+          "id":0,
+          "next":0
         },
         {
           "Desc": "Conversar ",
-          "Detalhe": "Iniciar, manter e finalizar uma troca de pensamentos e idéias, realizada através da linguagem oral e ou de sinais"
+          "Detalhe": "Iniciar, manter e finalizar uma troca de pensamentos e idéias, realizada através da linguagem oral e ou de sinais",
+          "id":0,
+          "next":0
         },
         {
           "Desc": "Discutir ",
-          "Detalhe": "Iniciar, manter e finalizar uma troca de pensamentos e idéias, realizada através da linguagem oral e ou de sinais"
+          "Detalhe": "Iniciar, manter e finalizar uma troca de pensamentos e idéias, realizada através da linguagem oral e ou de sinais",
+          "id":0,
+          "next":0
         },
         {
           "Desc": "Utilização de dispositivos de comunicação à distância ",
-          "Detalhe": "A utilização de dispositivos de comunicação à distância"
+          "Detalhe": "A utilização de dispositivos de comunicação à distância",
+          "id":0,
+          "next":0
         }
       ]
     },
@@ -42,35 +56,51 @@
       "SubDominios": [
         {
           "Desc": "Mudar e manter a posição do corpo",
-          "Detalhe": ""
+          "Detalhe": "",
+          "id":0,
+          "next":0
         },
         {
           "Desc": "Alcançar, transportar e mover objetos",
-          "Detalhe": "Transportar e mover objeto de posição e alcançar acima da cabeça, à frente, ao lado e abaixo"
+          "Detalhe": "Transportar e mover objeto de posição e alcançar acima da cabeça, à frente, ao lado e abaixo",
+          "id":0,
+          "next":0
         },
         {
           "Desc": "Movimentos finos da mão",
-          "Detalhe": "Manusear objetos, manipulá-los e soltá-los utilizando as mãos, dedos e polega"
+          "Detalhe": "Manusear objetos, manipulá-los e soltá-los utilizando as mãos, dedos e polega",
+          "id":0,
+          "next":0
         },
         {
           "Desc": "Deslocar se dentro de casa",
-          "Detalhe": "Andar ou deslocar-se dentro da própria casa, em um ambiente, incluindo áreas anexas quando aplicável"
+          "Detalhe": "Andar ou deslocar-se dentro da própria casa, em um ambiente, incluindo áreas anexas quando aplicável",
+          "id":0,
+          "next":0
         },
         {
           "Desc": "Deslocar-se dentro de edifícios que não a própria casa",
-          "Detalhe": "Andar ou deslocar-se dentro de edifícios que não a própria residência, incluindo áreas anexas quando aplicável"
+          "Detalhe": "Andar ou deslocar-se dentro de edifícios que não a própria residência, incluindo áreas anexas quando aplicável",
+          "id":0,
+          "next":0
         },
         {
           "Desc": "Deslocar-se fora de sua casa e de outros edifícios",
-          "Detalhe": "Andar ou deslocar-se perto ou longe da própria casa e de outros edifícios, sem utilização de transporte público ou privado"
+          "Detalhe": "Andar ou deslocar-se perto ou longe da própria casa e de outros edifícios, sem utilização de transporte público ou privado",
+          "id":0,
+          "next":0
         },
         {
           "Desc": "Utilizar transporte coletivo",
-          "Detalhe": "Utilizar transporte coletivo para se deslocar, como passageiro, por meio terrestre, aqüaviário ou aéreo"
+          "Detalhe": "Utilizar transporte coletivo para se deslocar, como passageiro, por meio terrestre, aqüaviário ou aéreo",
+          "id":0,
+          "next":0
         },
         {
           "Desc": "Utilizar transporte individual como passageiro",
-          "Detalhe": "Utilizar transporte para se deslocar, como passageiro, por meio terrestre, aqüaviário ou aéreo"
+          "Detalhe": "Utilizar transporte para se deslocar, como passageiro, por meio terrestre, aqüaviário ou aéreo",
+          "id":0,
+          "next":0
         }
       ]
     },
@@ -79,35 +109,51 @@
       "SubDominios": [
         {
           "Desc": "Lavar-se",
-          "Detalhe": "Tomar banho e limpar o corpo de forma completa incluindo lavar e secar todas as partes do corpo da forma habitual"
+          "Detalhe": "Tomar banho e limpar o corpo de forma completa incluindo lavar e secar todas as partes do corpo da forma habitual",
+          "id":0,
+          "next":0
         },
         {
           "Desc": "Cuidar de partes do corpo",
-          "Detalhe": "Realizar cuidados pessoais"
+          "Detalhe": "Realizar cuidados pessoais",
+          "id":0,
+          "next":0
         },
         {
           "Desc": "Regulação da micção",
-          "Detalhe": "Reconhecer a necessidade de urinar, escolher a forma e o local apropriado, manipular a roupa, urinar e secar-se"
+          "Detalhe": "Reconhecer a necessidade de urinar, escolher a forma e o local apropriado, manipular a roupa, urinar e secar-se",
+          "id":0,
+          "next":0
         },
         {
           "Desc": "Regulação da defecação",
-          "Detalhe": "Reconhecer a necessidade de evacuar, escolher a forma e o local apropriado, manipular a roupa, evacuar e limpar-se"
+          "Detalhe": "Reconhecer a necessidade de evacuar, escolher a forma e o local apropriado, manipular a roupa, evacuar e limpar-se",
+          "id":0,
+          "next":0
         },
         {
           "Desc": "Vestir-se",
-          "Detalhe": "Vestir e retirar peças habituais, incluíndo calçados"
+          "Detalhe": "Vestir e retirar peças habituais, incluíndo calçados",
+          "id":0,
+          "next":0
         },
         {
           "Desc": "Comer",
-          "Detalhe": "Levar à boca e comer alimento preparado e servido de forma de forma habitual"
+          "Detalhe": "Levar à boca e comer alimento preparado e servido de forma de forma habitual",
+          "id":0,
+          "next":0
         },
         {
           "Desc": "Beber",
-          "Detalhe": "Levar à boca e beber bebida preparada e servida de forma de forma habitual e com deglutição segura"
+          "Detalhe": "Levar à boca e beber bebida preparada e servida de forma de forma habitual e com deglutição segura",
+          "id":0,
+          "next":0
         },
         {
           "Desc": "Capacidade de identificar agravos à saúde",
-          "Detalhe": "Identificar sinais e sintomas que possam potencialmente comprometer a saúde e a integridade física, reconhecer abusos e violência"
+          "Detalhe": "Identificar sinais e sintomas que possam potencialmente comprometer a saúde e a integridade física, reconhecer abusos e violência",
+          "id":0,
+          "next":0
         }
       ]
     },
@@ -116,23 +162,33 @@
       "SubDominios": [
         {
           "Desc": "Preparar refeições tipo lanches",
-          "Detalhe": "Preparar e escolher alimentos simples para lanches"
+          "Detalhe": "Preparar e escolher alimentos simples para lanches",
+          "id":0,
+          "next":0
         },
         {
           "Desc": "Cozinhar",
-          "Detalhe": "Planejar, organizar e executar o preparo de refeições que exijam varios ingredientes ou utensílios, ou uma sequência de ações"
+          "Detalhe": "Planejar, organizar e executar o preparo de refeições que exijam varios ingredientes ou utensílios, ou uma sequência de ações",
+          "id":0,
+          "next":0
         },
         {
           "Desc": "Realizar tarefas doméstica",
-          "Detalhe": ""
+          "Detalhe": "",
+          "id":0,
+          "next":0
         },
         {
           "Desc": "Manutenção e uso apropriado de objetos pessoais e utensílios da cas",
-          "Detalhe": "Utilizar, guardar e conservar objetos pessoais, cuidar da casa e dos utensílios domésticos"
+          "Detalhe": "Utilizar, guardar e conservar objetos pessoais, cuidar da casa e dos utensílios domésticos",
+          "id":0,
+          "next":0
         },
         {
           "Desc": "Cuidar dos Outro",
-          "Detalhe": ""
+          "Detalhe": "",
+          "id":0,
+          "next":0
         }
       ]
     },
@@ -141,23 +197,33 @@
       "SubDominios": [
         {
           "Desc": "Educação",
-          "Detalhe": "Adquirir habilidades e conhecimentos educacionais, dentro e fora da escola, considerando acessibilidade e disponibilidade de recursos educacionais adequados"
+          "Detalhe": "Adquirir habilidades e conhecimentos educacionais, dentro e fora da escola, considerando acessibilidade e disponibilidade de recursos educacionais adequados",
+          "id":0,
+          "next":0
         },
         {
           "Desc": "Qualificação Profissional",
-          "Detalhe": "Adquirir habilidades e conhecimentos específicos para atividade profissional, considerando acessibilidade e disponibilidade de recursos educacionais adequados"
+          "Detalhe": "Adquirir habilidades e conhecimentos específicos para atividade profissional, considerando acessibilidade e disponibilidade de recursos educacionais adequados",
+          "id":0,
+          "next":0
         },
         {
           "Desc": "Trabalho Remunerado",
-          "Detalhe": "Exerce trabalho remunerado, considerando localizar, escolher, permanecer, progredir e sair de forma adequada"
+          "Detalhe": "Exerce trabalho remunerado, considerando localizar, escolher, permanecer, progredir e sair de forma adequada",
+          "id":0,
+          "next":0
         },
         {
           "Desc": "Fazer compras e contratar serviços",
-          "Detalhe": "Ober, em troca de dinheiros, bens e serviços necessários para a vida diária"
+          "Detalhe": "Ober, em troca de dinheiros, bens e serviços necessários para a vida diária",
+          "id":0,
+          "next":0
         },
         {
           "Desc": "Administração de recursos Econômicos Pessoais",
-          "Detalhe": ""
+          "Detalhe": "",
+          "id":0,
+          "next":0
         }
       ]
     },
@@ -166,35 +232,51 @@
       "SubDominios": [
         {
           "Desc": "Regular o comportamento nas interações",
-          "Detalhe": "Controlar o próprio comportamento, emoções e impulsos, agressão verbal e física nas interações, de maneira contextual e socialmente apropriada"
+          "Detalhe": "Controlar o próprio comportamento, emoções e impulsos, agressão verbal e física nas interações, de maneira contextual e socialmente apropriada",
+          "id":0,
+          "next":0
         },
         {
           "Desc": "Interagir de acordo com as regras sociais",
-          "Detalhe": "Agir independentemente nas interações sociais e adaptar-se às convenções sociais que regem o papel, posição ou status social das pessoas nas interações com os outros"
+          "Detalhe": "Agir independentemente nas interações sociais e adaptar-se às convenções sociais que regem o papel, posição ou status social das pessoas nas interações com os outros",
+          "id":0,
+          "next":0
         },
         {
           "Desc": "Relacionamentos com estranhos",
-          "Detalhe": "Estabelecer contatos e ligações temporários com estranhos para fins específicos como, quando aplicável"
+          "Detalhe": "Estabelecer contatos e ligações temporários com estranhos para fins específicos como, quando aplicável",
+          "id":0,
+          "next":0
         },
         {
           "Desc": "Relacionamentos familiares e com pessoas familiares",
-          "Detalhe": "Criar e manter relações de parentesco com membros do núcleo familiar ou pessoas próximas. Participar da rotina familiar"
+          "Detalhe": "Criar e manter relações de parentesco com membros do núcleo familiar ou pessoas próximas. Participar da rotina familiar",
+          "id":0,
+          "next":0
         },
         {
           "Desc": "Relacionamentos Íntimos",
-          "Detalhe": "Verificar detalhe desse item"
+          "Detalhe": "Verificar detalhe desse item",
+          "id":0,
+          "next":0
         },
         {
           "Desc": "Socialização",
-          "Detalhe": "Participar de eventos sociais"
+          "Detalhe": "Participar de eventos sociais",
+          "id":0,
+          "next":0
         },
         {
           "Desc": "Fazer as próprias escolhas",
-          "Detalhe": "Exercer a capacidade de tomar decisões sobre a sua própria vida"
+          "Detalhe": "Exercer a capacidade de tomar decisões sobre a sua própria vida",
+          "id":0,
+          "next":0
         },
         {
           "Desc": "Vida política e cidadania",
-          "Detalhe": "Exercer a cidadania"
+          "Detalhe": "Exercer a cidadania",
+          "id":0,
+          "next":0
         }
       ]
     }

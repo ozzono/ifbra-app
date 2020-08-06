@@ -53,6 +53,7 @@
                   :inner-items="INSS"
                   inner-label="Médico"
                   :make-outlined="true"
+                  @selectedItems="refreshScores(0, i, j, $event)"
                 />
               </v-col>
               <v-col class="align-start justify-md-end" :cols="SelectCols">
@@ -60,6 +61,7 @@
                   :inner-items="INSS"
                   inner-label="Social"
                   :make-outlined="true"
+                  @selectedItems="refreshScores(1, i, j, $event)"
                 />
               </v-col>
               <v-col class="align-start" :cols="CheckListCols">
@@ -79,14 +81,14 @@
   </div>
 </template>
 <script>
+/* eslint-disable no-console */
 import Dominios from "@/assets/json/form3.json";
-import FormHeader from "@/components/forms/FormHeader";
-import CheckList from "@/components/CheckList";
-import Tooltip from "@/components/Tooltip";
 import INSSDesc from "@/assets/json/inss.json";
 import BarreirasDesc from "@/assets/json/barreiras.json";
+import { mapGetters, mapActions } from "vuex";
 export default {
   data: () => ({
+    filledStatus: false,
     ContentCols: 5,
     SelectCols: 2,
     CheckListCols: 3,
@@ -97,9 +99,26 @@ export default {
     INSS: ["25", "50", "75", "100"]
   }),
   components: {
-    FormHeader: FormHeader,
-    CheckList: CheckList,
-    Tooltip: Tooltip
+    FormHeader: () => import("@/components/forms/FormHeader"),
+    CheckList: () => import("@/components/CheckList"),
+    Tooltip: () => import("@/components/Tooltip")
+  },
+  methods: {
+    ...mapActions(["setScores", "updateScores", "cycleScores", "calcScores"]),
+    refreshScores(col, i, j, value) {
+      const update = { col: col, i: i, j: j, value: value };
+      this.updateScores(update);
+      this.cycleScores(update);
+      if (this.allScores.filled) {
+        this.calcScores();
+      }
+    }
+  },
+  computed: {
+    ...mapGetters(["allScores"])
+  },
+  created() {
+    this.setScores(Dominios);
   }
 };
 </script>

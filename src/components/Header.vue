@@ -19,10 +19,7 @@
 
     <v-navigation-drawer v-model="drawer" height="400" absolute temporary>
       <v-list nav dense>
-        <v-list-item-group
-          v-model="group"
-          active-class="deep-purple--text text--accent-4"
-        >
+        <v-list-item-group active-class="deep-purple--text text--accent-4">
           <v-list-item v-for="(item, i) in menu" :key="i" :to="item[1]">
             <v-list-item-title>{{ item[0] }}</v-list-item-title>
           </v-list-item>
