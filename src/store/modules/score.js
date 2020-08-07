@@ -1,6 +1,8 @@
 /* eslint-disable no-console */
 const state = {
-  filled: false
+  filled: false,
+  scores: [],
+  linkedScores: []
 };
 const actions = {
   setScores({ commit }, dominio) {
@@ -10,8 +12,6 @@ const actions = {
     commit("mutateScores", state.scores);
   },
   updateScores({ commit }, score) {
-    console.log("updateScores");
-    console.log(score);
     var value = parseInt(score.value, 10);
     if (score.col === "medical") {
       state.scores[score.i].SubDominios[score.j].medical = value;
@@ -28,14 +28,15 @@ const actions = {
     commit("mutateScores", state.scores);
   },
   cycleScores({ commit }, score) {
-    console.log("cycleScores");
     var i = state.scores[score.i].SubDominios[score.j].id;
     const start = state.linkedScores[i];
     var stop = false;
     while (!stop) {
       if (
-        state.linkedScores[state.linkedScores[i].next].medical === 0 ||
-        state.linkedScores[state.linkedScores[i].next].social === 0
+        parseInt(state.linkedScores[state.linkedScores[i].next].medical, 10) ===
+          0 ||
+        parseInt(state.linkedScores[state.linkedScores[i].next].social, 10) ===
+          0
       ) {
         state.filled = false;
         stop = true;
@@ -46,16 +47,53 @@ const actions = {
       }
       i = state.linkedScores[i].next;
     }
-    console.log({ filled: state.filled });
     commit("mutateScores", state.scores);
   },
+  calcScores({ commit }) {
+    console.log("calculating scores");
+    var total = {
+      medical: 0,
+      social: 0
+    };
+    //groups
+    for (let i = 0; i < state.scores.length; i++) {
+      var medical = 0;
+      var social = 0;
+      var count = 0;
+      console.log("[" + i + "]:");
+      //subgroups
+      for (let j = 0; j < state.scores[i].SubDominios.length; j++) {
+        medical = parseInt(
+          medical + parseInt(state.scores[i].SubDominios[j].medical, 10),
+          10
+        );
+        social = parseInt(
+          social + parseInt(state.scores[i].SubDominios[j].social, 10),
+          10
+        );
+        count++;
+      }
+      console.log({
+        medical: medical,
+        social: social,
+        count: count
+      });
+      state.scores[i].SubDominios.average = {
+        medical: medical / count,
+        social: social / count
+      };
+    }
+    state.scores.total = total.medical;
+    state.scores.total = total.social;
+    commit("mutateScores", state.scores);
+  }
 };
 const mutations = {
   mutateScores: (state, scores) => (state.scores = scores),
   mutateFilled: (state, filled) => (state.filled = filled)
 };
 const getters = {
-  allScores: state => state
+  filledStatus: state => state.filled
 };
 
 function setValues(dominio) {
@@ -70,8 +108,8 @@ function setValues(dominio) {
   for (let i = 0; i < dominio.length; i++) {
     for (let j = 0; j < dominio[i].SubDominios.length; j++) {
       dominio[i].SubDominios[j].id = id++;
-      dominio[i].SubDominios[j].medical = 0;
-      dominio[i].SubDominios[j].social = 0;
+      dominio[i].SubDominios[j].medical = 1;
+      dominio[i].SubDominios[j].social = 1;
       if (id === max) {
         dominio[i].SubDominios[j].next = 0;
       } else {

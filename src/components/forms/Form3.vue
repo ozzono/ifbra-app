@@ -88,7 +88,6 @@ import BarreirasDesc from "@/assets/json/barreiras.json";
 import { mapGetters, mapActions } from "vuex";
 export default {
   data: () => ({
-    filledStatus: false,
     ContentCols: 5,
     SelectCols: 2,
     CheckListCols: 3,
@@ -109,13 +108,13 @@ export default {
       const update = { col: col, i: i, j: j, value: value };
       this.updateScores(update);
       this.cycleScores(update);
-      if (this.allScores.filled) {
+      if (this.filledStatus) {
         this.calcScores();
       }
     }
   },
   computed: {
-    ...mapGetters(["allScores"])
+    ...mapGetters(["filledStatus"])
   },
   created() {
     this.setScores(Dominios);
