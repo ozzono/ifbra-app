@@ -51,15 +51,15 @@ const actions = {
   },
   calcScores({ commit }) {
     console.log("calculating scores");
-    var total = {
-      medical: 0,
-      social: 0
-    };
+    // var Average = {
+    //   medical: 0,
+    //   social: 0
+    // };
     //groups
     for (let i = 0; i < state.scores.length; i++) {
       var medical = 0;
       var social = 0;
-      var count = 0;
+      var length = state.scores[i].SubDominios.length;
       console.log("[" + i + "]:");
       //subgroups
       for (let j = 0; j < state.scores[i].SubDominios.length; j++) {
@@ -71,20 +71,19 @@ const actions = {
           social + parseInt(state.scores[i].SubDominios[j].social, 10),
           10
         );
-        count++;
       }
       console.log({
-        medical: medical,
-        social: social,
-        count: count
+        medical: medical / length,
+        social: social / length
       });
-      state.scores[i].SubDominios.average = {
-        medical: medical / count,
-        social: social / count
+      var Average = {
+        medical: medical / length,
+        social: social / length
       };
+      state.scores[i].Average = Average;
+      console.log(Average);
+      console.log(state.scores[i].Average);
     }
-    state.scores.total = total.medical;
-    state.scores.total = total.social;
     commit("mutateScores", state.scores);
   }
 };
@@ -93,7 +92,8 @@ const mutations = {
   mutateFilled: (state, filled) => (state.filled = filled)
 };
 const getters = {
-  filledStatus: state => state.filled
+  filledStatus: state => state.filled,
+  allScores: state => state.scores
 };
 
 function setValues(dominio) {
