@@ -1,6 +1,6 @@
 <template>
   <v-card>
-    <v-app-bar dense dark>
+    <v-app-bar tile dense dark>
       <div class="hidden-md-and-up">
         <v-btn @click="drawer = true">Menu</v-btn>
       </div>

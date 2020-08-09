@@ -50,11 +50,6 @@ const actions = {
     commit("mutateScores", state.scores);
   },
   calcScores({ commit }) {
-    console.log("calculating scores");
-    // var Average = {
-    //   medical: 0,
-    //   social: 0
-    // };
     //groups
     for (let i = 0; i < state.scores.length; i++) {
       var medical = 0;
@@ -72,17 +67,11 @@ const actions = {
           10
         );
       }
-      console.log({
-        medical: medical / length,
-        social: social / length
-      });
       var Average = {
         medical: medical / length,
         social: social / length
       };
       state.scores[i].Average = Average;
-      console.log(Average);
-      console.log(state.scores[i].Average);
     }
     commit("mutateScores", state.scores);
   }

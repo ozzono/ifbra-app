@@ -1,6 +1,10 @@
 [
     {
       "Desc": "Domínio Sensorial",
+      "Average":{
+        "medical":0,
+        "social":0
+      },
       "SubDominios": [
         {
           "Desc": "Observar",
@@ -18,6 +22,10 @@
     },
     {
       "Desc": "Domínio de comunicação",
+      "Average":{
+        "medical":0,
+        "social":0
+      },
       "SubDominios": [
         {
           "Desc": "Comunicar-se ",
@@ -53,6 +61,10 @@
     },
     {
       "Desc": "Domínio Mobilidade",
+      "Average":{
+        "medical":0,
+        "social":0
+      },
       "SubDominios": [
         {
           "Desc": "Mudar e manter a posição do corpo",
@@ -106,6 +118,10 @@
     },
     {
       "Desc": "Domínio Cuidados Pessoais",
+      "Average":{
+        "medical":0,
+        "social":0
+      },
       "SubDominios": [
         {
           "Desc": "Lavar-se",
@@ -159,6 +175,10 @@
     },
     {
       "Desc": "Domínio Vida Doméstica",
+      "Average":{
+        "medical":0,
+        "social":0
+      },
       "SubDominios": [
         {
           "Desc": "Preparar refeições tipo lanches",
@@ -194,6 +214,10 @@
     },
     {
       "Desc": "Domínio Educação",
+      "Average":{
+        "medical":0,
+        "social":0
+      },
       "SubDominios": [
         {
           "Desc": "Educação",
@@ -229,6 +253,10 @@
     },
     {
       "Desc": "Domínio Socialização e Vida Comunitária",
+      "Average":{
+        "medical":0,
+        "social":0
+      },
       "SubDominios": [
         {
           "Desc": "Regular o comportamento nas interações",
