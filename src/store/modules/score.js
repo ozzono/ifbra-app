@@ -52,27 +52,26 @@ const actions = {
   calcScores({ commit }) {
     //groups
     for (let i = 0; i < state.scores.length; i++) {
-      var medical = 0;
-      var social = 0;
-      var length = state.scores[i].SubDominios.length;
-      console.log("[" + i + "]:");
       //subgroups
-      for (let j = 0; j < state.scores[i].SubDominios.length; j++) {
-        medical = parseInt(
-          medical + parseInt(state.scores[i].SubDominios[j].medical, 10),
-          10
-        );
-        social = parseInt(
-          social + parseInt(state.scores[i].SubDominios[j].social, 10),
-          10
-        );
-      }
-      var Average = {
-        medical: medical / length,
-        social: social / length
+      var sum = state.scores[i].SubDominios.reduce((accumulator, element) => {
+        return (accumulator = {
+          medical: accumulator.medical + parseInt(element.medical, 10),
+          social: accumulator.social + parseInt(element.social, 10)
+        });
+      });
+      state.scores[i].Average = {
+        medical: sum.medical / state.scores[i].SubDominios.length,
+        social: sum.social / state.scores[i].SubDominios.length
       };
-      state.scores[i].Average = Average;
     }
+    var total = state.scores.reduce((accumulator, element) => {
+      console.log(element.Average);
+      return (accumulator = {
+        medical: accumulator.medical + parseInt(element.Average.medical, 10),
+        social: accumulator.social + parseInt(element.Average.social, 10)
+      });
+    });
+    console.log(total);
     commit("mutateScores", state.scores);
   }
 };
