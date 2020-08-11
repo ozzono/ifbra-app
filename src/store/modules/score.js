@@ -1,6 +1,9 @@
-/* eslint-disable no-console */
 const state = {
   filled: false,
+  total: {
+    medical: 0,
+    social: 0
+  },
   scores: [],
   linkedScores: []
 };
@@ -47,10 +50,14 @@ const actions = {
       }
       i = state.linkedScores[i].next;
     }
-    commit("mutateScores", state.scores);
+    commit("mutateFilled", state.filled);
   },
   calcScores({ commit }) {
     //groups
+    var totalSum = {
+      medical: 0,
+      social: 0
+    };
     for (let i = 0; i < state.scores.length; i++) {
       //subgroups
       var sum = state.scores[i].SubDominios.reduce((accumulator, element) => {
@@ -63,25 +70,26 @@ const actions = {
         medical: sum.medical / state.scores[i].SubDominios.length,
         social: sum.social / state.scores[i].SubDominios.length
       };
+      totalSum.medical += parseInt(state.scores[i].Average.medical, 10);
+      totalSum.social += parseInt(state.scores[i].Average.social, 10);
     }
-    var total = state.scores.reduce((accumulator, element) => {
-      console.log(element.Average);
-      return (accumulator = {
-        medical: accumulator.medical + parseInt(element.Average.medical, 10),
-        social: accumulator.social + parseInt(element.Average.social, 10)
-      });
-    });
-    console.log(total);
+    var total = {
+      medical: totalSum.medical / state.scores.length,
+      social: totalSum.social / state.scores.length
+    };
+    commit("mutateTotal", total);
     commit("mutateScores", state.scores);
   }
 };
 const mutations = {
   mutateScores: (state, scores) => (state.scores = scores),
-  mutateFilled: (state, filled) => (state.filled = filled)
+  mutateFilled: (state, filled) => (state.filled = filled),
+  mutateTotal: (state, total) => (state.total = total)
 };
 const getters = {
   filledStatus: state => state.filled,
-  allScores: state => state.scores
+  allScores: state => state.scores,
+  scoreTotal: state => state.total
 };
 
 function setValues(dominio) {
@@ -106,8 +114,8 @@ function setValues(dominio) {
       var item = {
         id: dominio[i].SubDominios[j].id,
         next: dominio[i].SubDominios[j].next,
-        medical: 1,
-        social: 1
+        medical: 0,
+        social: 0
       };
       linked.push(item);
     }

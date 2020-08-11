@@ -81,7 +81,6 @@
   </div>
 </template>
 <script>
-/* eslint-disable no-console */
 import Dominios from "@/assets/json/form3.json";
 import INSSDesc from "@/assets/json/inss.json";
 import BarreirasDesc from "@/assets/json/barreiras.json";
