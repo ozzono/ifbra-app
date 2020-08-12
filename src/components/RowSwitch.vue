@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <!-- <v-switch v-model="switch1"></v-switch> -->
-    <v-switch></v-switch>
+    <v-switch :label="innerLabel" />
   </v-container>
 </template>
 
@@ -13,6 +13,9 @@ export default {
       switch1: true,
       switch2: false
     };
+  },
+  props: {
+    innerLabel: String
   }
 };
 </script>
