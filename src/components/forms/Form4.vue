@@ -19,25 +19,27 @@
               {{ deficiecia.Desc }}
             </v-col>
             <v-col cols="10">
-              <v-row class="align-center d-flex" flat tile>
-                <v-col cols="12" md="4">
-                  <RowSwitch :innerLabel="deficiecia.Obs" />
-                </v-col>
-                <v-col cols="12" md="4">
-                  <RowSwitch
-                    :innerLabel="
-                      `Houve pontuação 25 ou 50 em alguma atividade dos domínios ${deficiecia.Dominios}`
-                    "
-                  />
-                </v-col>
-                <v-col cols="12" md="4">
-                  <RowSwitch
-                    :innerLabel="
-                      `Houve pontuação 75 em todas as atividade dos domínios ${deficiecia.Dominios}`
-                    "
-                  />
-                </v-col>
-              </v-row>
+              <v-container>
+                <v-row class="align-center d-flex" flat tile>
+                  <v-col class="text-center" cols="12" md="4">
+                    <RowSwitch :innerLabel="deficiecia.Obs" />
+                  </v-col>
+                  <v-col cols="12" md="4">
+                    <RowSwitch
+                      :innerLabel="
+                        `Houve pontuação 25 ou 50 em alguma atividade dos domínios ${deficiecia.Dominios}`
+                      "
+                    />
+                  </v-col>
+                  <v-col cols="12" md="4">
+                    <RowSwitch
+                      :innerLabel="
+                        `Houve pontuação 75 em todas as atividades dos domínios ${deficiecia.Dominios}`
+                      "
+                    />
+                  </v-col>
+                </v-row>
+              </v-container>
             </v-col>
           </v-row>
         </div>
