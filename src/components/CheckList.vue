@@ -2,17 +2,17 @@
   <v-select
     dense
     :label="innerLabel"
-    v-model="selectedItems"
+    v-model="selected"
     :items="innerItems"
     :multiple="allowMultiple"
     :clearable="allowMultiple"
     :outlined="makeOutlined"
-    @change="$emit('selected-items', selectedItems)"
+    @change="$emit('update:selected', selected)"
   >
     <template v-if="allowMultiple" v-slot:prepend-item>
       <v-list-item ripple @click="toggle">
         <v-list-item-action>
-          <v-icon :color="selectedItems.length > 0 ? 'indigo darken-4' : ''">
+          <v-icon :color="selected.length > 0 ? 'indigo darken-4' : ''">
             {{ icon }}
           </v-icon>
         </v-list-item-action>
@@ -28,10 +28,8 @@
 <script>
 export default {
   name: "CheckList",
-  data: () => ({
-    selectedItems: []
-  }),
   props: [
+    "selected",
     "innerItems",
     "innerLabel",
     "allowMultiple",
@@ -40,10 +38,10 @@ export default {
   ],
   computed: {
     allItems() {
-      return this.selectedItems.length === this.innerItems.length;
+      return this.selected.length === this.innerItems.length;
     },
     someItems() {
-      return this.selectedItems.length > 0 && !this.allItems;
+      return this.selected.length > 0 && !this.allItems;
     },
     icon() {
       if (this.allItems) return "mdi-close-box";
@@ -56,14 +54,14 @@ export default {
     toggle() {
       this.$nextTick(() => {
         if (this.allItems) {
-          this.selectedItems = [];
+          this.selected = [];
         } else {
-          this.selectedItems = this.innerItems.slice();
+          this.selected = this.innerItems.slice();
         }
       });
     },
     clear() {
-      this.selectedItems = [];
+      this.selected = [];
     }
   }
 };
