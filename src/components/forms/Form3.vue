@@ -65,8 +65,12 @@
                 />
               </v-col>
               <v-col class="align-start" :cols="CheckListCols">
+                <!-- Precisa fazer essa logica do .sync para todos os CheckLists-->
+                <!-- Se quiser uma trigger de evento sempre que o dado mudar, pode usar: -->
+                <!-- @update:selected="myFunction" -->
                 <CheckList
                   inner-label="Barreira Ambiental"
+                  :selected.sync="barreirasSelecionadas"
                   :inner-items="Barreiras"
                   :allow-multiple="true"
                   :make-outlined="true"
@@ -91,6 +95,7 @@ export default {
     SelectCols: 2,
     CheckListCols: 3,
     Barreiras: ["P e T", "Amb", "A e R", "At", "SS e P"],
+    barreirasSelecionadas: [],
     Dominios: Object.values(Dominios),
     INSSDesc: Object.values(INSSDesc),
     BarreirasDesc: Object.values(BarreirasDesc),
