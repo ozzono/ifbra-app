@@ -1,12 +1,13 @@
 <template>
   <v-select
+    dense
     :label="innerLabel"
     v-model="selectedItems"
     :items="innerItems"
     :multiple="allowMultiple"
     :clearable="allowMultiple"
     :outlined="makeOutlined"
-    @change="$emit('selectedItems', selectedItems)"
+    @change="$emit('selected-items', selectedItems)"
   >
     <template v-if="allowMultiple" v-slot:prepend-item>
       <v-list-item ripple @click="toggle">

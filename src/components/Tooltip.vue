@@ -1,35 +1,20 @@
 <template>
-  <v-tooltip bottom open-delay="200">
+  <v-tooltip :v-model="true" bottom open-delay="200">
     <template v-slot:activator="{ on, attrs }">
-      <span v-bind="attrs" v-on="on">{{ desc }}</span>
+      <v-btn icon v-bind="attrs" v-on="on">
+        <v-icon color="grey lighten-1">
+          {{ mdiIcon }}
+        </v-icon>
+      </v-btn>
     </template>
-    <span>
-      <v-row v-for="(contentRow, i) in content" :key="i">
-        <v-col cols="1" align="center">
-          {{ contentRow.MainCol }}
-        </v-col>
-        <v-col cols="11">
-          {{ contentRow.DescCol }}
-        </v-col>
-      </v-row>
-      <v-row v-if="comment.length > 0">
-        <v-col align="center">
-          {{ comment }}
-        </v-col>
-      </v-row>
-    </span>
+    <span>{{ content }}</span>
   </v-tooltip>
 </template>
 
 <script>
 export default {
   name: "Tooltip",
-  props: ["content", "desc", "comment"]
-  // props: {
-  //   content: Object,
-  //   desc: String,
-  //   comment: String
-  // }
+  props: ["content", "mdi-icon"]
 };
 </script>
 

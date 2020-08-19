@@ -15,17 +15,17 @@
               Domínios e Atividades
             </v-col>
             <v-col class="text-center" :cols="SelectCols * 2">
+              <span>Pontuação INSS</span>
               <Tooltip
-                desc="Pontuação INSS"
-                :content="INSSDesc"
-                comment="Para mais detalhes, consulte o manual do IF-BrA"
+                content="Consulte a legenda para mais critérios de preenchimento da pontuação INSS."
+                mdiIcon="mdi-comment-question-outline"
               />
             </v-col>
             <v-col class="text-center" :cols="CheckListCols">
+              <span>Barreiras Ambientais</span>
               <Tooltip
-                desc="Barreira Ambiental"
-                :content="BarreirasDesc"
-                comment="Para mais detalhes, consulte o manual do IF-BrA"
+                content="Consulte a legenda para mais informações a respeito das Barreiras Ambientais."
+                mdiIcon="mdi-comment-question-outline"
               />
             </v-col>
           </v-row>
@@ -53,7 +53,7 @@
                   :inner-items="INSS"
                   inner-label="Médico"
                   :make-outlined="true"
-                  @selectedItems="refreshScores('medical', i, j, $event)"
+                  @selected-items="refreshScores('medical', i, j, $event)"
                 />
               </v-col>
               <v-col class="align-start justify-md-end" :cols="SelectCols">
@@ -61,7 +61,7 @@
                   :inner-items="INSS"
                   inner-label="Social"
                   :make-outlined="true"
-                  @selectedItems="refreshScores('social', i, j, $event)"
+                  @selected-items="refreshScores('social', i, j, $event)"
                 />
               </v-col>
               <v-col class="align-start" :cols="CheckListCols">
@@ -102,7 +102,13 @@ export default {
     Tooltip: () => import("@/components/Tooltip")
   },
   methods: {
-    ...mapActions(["setScores", "updateScores", "cycleScores", "calcScores"]),
+    ...mapActions([
+      "setScores",
+      "updateScores",
+      "cycleScores",
+      "calcScores",
+      "makeFuzzy"
+    ]),
     refreshScores(col, i, j, value) {
       const update = { col: col, i: i, j: j, value: value };
       this.updateScores(update);
@@ -113,7 +119,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(["filledStatus"])
+    ...mapGetters(["filledStatus", "allScores"])
   },
   created() {
     this.setScores(Dominios);
