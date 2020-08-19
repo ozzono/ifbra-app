@@ -62,6 +62,6 @@ export default {
   min-width: 3rem;
 }
 h3 {
-  padding: 1rem;
+  padding-top: 1rem;
 }
 </style>
