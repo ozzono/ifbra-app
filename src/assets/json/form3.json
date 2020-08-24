@@ -1,6 +1,7 @@
 [
     {
       "Desc": "Domínio Sensorial",
+      "Dominio":"sensorial",
       "Average":{
         "medical":0,
         "social":0
@@ -22,6 +23,7 @@
     },
     {
       "Desc": "Domínio de comunicação",
+      "Dominio":"comunicacao",
       "Average":{
         "medical":0,
         "social":0
@@ -61,6 +63,7 @@
     },
     {
       "Desc": "Domínio Mobilidade",
+      "Dominio":"mobilidade",
       "Average":{
         "medical":0,
         "social":0
@@ -118,6 +121,7 @@
     },
     {
       "Desc": "Domínio Cuidados Pessoais",
+      "Dominio":"cuidados pessoais",
       "Average":{
         "medical":0,
         "social":0
@@ -175,6 +179,7 @@
     },
     {
       "Desc": "Domínio Vida Doméstica",
+      "Dominio":"vida domestica",
       "Average":{
         "medical":0,
         "social":0
@@ -214,6 +219,7 @@
     },
     {
       "Desc": "Domínio Educação",
+      "Dominio":"educacao",
       "Average":{
         "medical":0,
         "social":0
@@ -253,6 +259,7 @@
     },
     {
       "Desc": "Domínio Socialização e Vida Comunitária",
+      "Dominio":"socializacao e vida comunitaria",
       "Average":{
         "medical":0,
         "social":0

@@ -4,9 +4,9 @@
     <v-container>
       <v-card>
         <v-list header two-line flat>
-          <v-header class="header font-weight-medium">
+          <p class="header font-weight-medium">
             Detalhamento de pontuação do INSS
-          </v-header>
+          </p>
           <v-list-item-group v-for="(item, i) in INSSDesc" :key="i">
             <v-list-item>
               <v-list-item-action class="desc justify-center">
@@ -23,9 +23,9 @@
     <v-container>
       <v-card>
         <v-list header two-line flat>
-          <v-header class="header font-weight-medium">
+          <p class="header font-weight-medium">
             Descrição das Barreiras
-          </v-header>
+          </p>
           <v-list-item-group v-for="(item, i) in BarreirasDesc" :key="i">
             <v-list-item>
               <v-list-item-action class="desc justify-center">
@@ -47,6 +47,7 @@
 import INSSDesc from "@/assets/json/inss.json";
 import BarreirasDesc from "@/assets/json/barreiras.json";
 export default {
+  name: "Helper",
   data: () => ({
     INSSDesc: Object.values(INSSDesc),
     BarreirasDesc: Object.values(BarreirasDesc)
