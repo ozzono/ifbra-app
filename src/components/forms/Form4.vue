@@ -51,6 +51,7 @@
 <script>
 /* eslint-disable no-console */
 import Deficiencias from "@/assets/json/form4.json";
+import { mapGetters } from "vuex";
 export default {
   data: () => ({
     Deficiencias: Object.values(Deficiencias)
@@ -58,6 +59,9 @@ export default {
   components: {
     RowSwitch: () => import("@/components/RowSwitch"),
     FormHeader: () => import("@/components/forms/FormHeader")
+  },
+  computed: {
+    ...mapGetters(["fuzzy"])
   }
 };
 </script>
