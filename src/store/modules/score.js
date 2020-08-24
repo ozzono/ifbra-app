@@ -36,10 +36,8 @@ const actions = {
     var stop = false;
     while (!stop) {
       if (
-        parseInt(state.linkedScores[state.linkedScores[i].next].medical, 10) ===
-          0 ||
-        parseInt(state.linkedScores[state.linkedScores[i].next].social, 10) ===
-          0
+        not0(state.linkedScores[state.linkedScores[i].next].medical) ||
+        not0(state.linkedScores[state.linkedScores[i].next].social)
       ) {
         state.filled = false;
         stop = true;
@@ -67,15 +65,15 @@ const actions = {
         });
       });
       state.scores[i].Average = {
-        medical: sum.medical / state.scores[i].SubDominios.length,
-        social: sum.social / state.scores[i].SubDominios.length
+        medical: sum.medical,
+        social: sum.social
       };
       totalSum.medical += parseInt(state.scores[i].Average.medical, 10);
       totalSum.social += parseInt(state.scores[i].Average.social, 10);
     }
     var total = {
-      medical: totalSum.medical / state.scores.length,
-      social: totalSum.social / state.scores.length
+      medical: totalSum.medical,
+      social: totalSum.social
     };
     commit("mutateTotal", total);
     commit("mutateScores", state.scores);
@@ -104,8 +102,8 @@ function setValues(dominio) {
   for (let i = 0; i < dominio.length; i++) {
     for (let j = 0; j < dominio[i].SubDominios.length; j++) {
       dominio[i].SubDominios[j].id = id++;
-      dominio[i].SubDominios[j].medical = 1;
-      dominio[i].SubDominios[j].social = 1;
+      dominio[i].SubDominios[j].medical = null;
+      dominio[i].SubDominios[j].social = null;
       if (id === max) {
         dominio[i].SubDominios[j].next = 0;
       } else {
@@ -124,6 +122,10 @@ function setValues(dominio) {
     dominio: dominio,
     linked: linked
   };
+}
+
+function not0(input) {
+  return input != null && parseInt(input, 10) === 0;
 }
 
 export default {
