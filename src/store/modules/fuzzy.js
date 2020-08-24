@@ -36,10 +36,6 @@ const actions = {
             );
           }
         ));
-    console.log({
-      _50: state.fuzzy[update.i]._50,
-      _75: state.fuzzy[update.i]._75
-    });
     commit("mutateFuzzy", state.fuzzy);
   }
 };
