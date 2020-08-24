@@ -15,9 +15,9 @@
               Domínios e Atividades
             </v-col>
             <v-col class="text-center" :cols="SelectCols * 2">
-              <span>Pontuação INSS</span>
+              <span>Pontuação</span>
               <Tooltip
-                content="Consulte a legenda para mais critérios de preenchimento da pontuação INSS."
+                content="Consulte a legenda para mais critérios de preenchimento da pontuação."
                 mdiIcon="mdi-comment-question-outline"
               />
             </v-col>
@@ -51,7 +51,7 @@
               <v-col class="align-start justify-md-end" :cols="SelectCols">
                 <CheckList
                   :inner-items="INSS"
-                  inner-label="Médico"
+                  inner-label="Médica"
                   :make-outlined="true"
                   @selected-items="refreshScores('medical', i, j, $event)"
                 />
@@ -82,18 +82,14 @@
 </template>
 <script>
 import Dominios from "@/assets/json/form3.json";
-import INSSDesc from "@/assets/json/inss.json";
-import BarreirasDesc from "@/assets/json/barreiras.json";
 import { mapGetters, mapActions } from "vuex";
 export default {
   data: () => ({
     ContentCols: 5,
     SelectCols: 2,
     CheckListCols: 3,
-    Barreiras: ["P e T", "Amb", "A e R", "At", "SS e P"],
     Dominios: Object.values(Dominios),
-    INSSDesc: Object.values(INSSDesc),
-    BarreirasDesc: Object.values(BarreirasDesc),
+    Barreiras: ["P e T", "Amb", "A e R", "At", "SS e P"],
     INSS: ["25", "50", "75", "100"]
   }),
   components: {
@@ -107,7 +103,8 @@ export default {
       "updateScores",
       "cycleScores",
       "calcScores",
-      "makeFuzzy"
+      "makeFuzzy",
+      "updateFuzzy"
     ]),
     refreshScores(col, i, j, value) {
       const update = { col: col, i: i, j: j, value: value };
@@ -116,13 +113,15 @@ export default {
       if (this.filledStatus) {
         this.calcScores();
       }
+      this.updateFuzzy({ i: i, scores: this.allScores });
     }
   },
   computed: {
-    ...mapGetters(["filledStatus", "allScores"])
+    ...mapGetters(["filledStatus", "allScores", "fuzzy"])
   },
   created() {
     this.setScores(Dominios);
+    this.makeFuzzy(this.allScores);
   }
 };
 </script>
