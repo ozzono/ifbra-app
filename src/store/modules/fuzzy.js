@@ -12,13 +12,16 @@ const actions = {
     commit(
       "mutateFuzzy",
       scores.reduce((output, score) => {
-        return [...output, { dominio: score.Dominio, _50: false, _75: false }];
+        output[`${score.Dominio}`] = { _50: false, _75: false };
+        return output;
       }, [])
     );
   },
   updateFuzzy({ commit }, update) {
-    // var count = 0;
-    state.fuzzy[update.i]._50 = update.scores[update.i].SubDominios.some(
+    var dominio = update.scores.filter(score => {
+      return score.Dominio.toLowerCase().includes(update.dominio.toLowerCase());
+    })[0];
+    state.fuzzy[update.dominio.toLowerCase()]._50 = dominio.SubDominios.some(
       subdominio => {
         return (
           parseInt(subdominio.medical, 10) <= 50 ||
@@ -26,16 +29,19 @@ const actions = {
         );
       }
     );
-    state.fuzzy[update.i]._75 = state.fuzzy[update.i]._50
+    state.fuzzy[update.dominio.toLowerCase()]._75 = state.fuzzy[
+      update.dominio.toLowerCase()
+    ]._50
       ? false
-      : (state.fuzzy[update.i]._75 = update.scores[update.i].SubDominios.every(
-          subdominio => {
-            return (
-              parseInt(subdominio.medical, 10) <= 75 &&
-              parseInt(subdominio.social, 10) <= 75
-            );
-          }
-        ));
+      : (state.fuzzy[
+          update.dominio.toLowerCase()
+        ]._75 = dominio.SubDominios.every(subdominio => {
+          return (
+            parseInt(subdominio.medical, 10) == 75 &&
+            parseInt(subdominio.social, 10) == 75
+          );
+        }));
+    console.log(state.fuzzy[update.dominio.toLowerCase()]);
     commit("mutateFuzzy", state.fuzzy);
   }
 };

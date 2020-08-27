@@ -62,6 +62,11 @@ export default {
   },
   computed: {
     ...mapGetters(["fuzzy"])
+  },
+  methods: {
+    strNormalize(str) {
+      return str.normalize("NFD").replace(/[^a-zA-Zs]/g, "");
+    }
   }
 };
 </script>
