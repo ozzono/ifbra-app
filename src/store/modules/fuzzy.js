@@ -12,8 +12,20 @@ const actions = {
     commit(
       "mutateFuzzy",
       scores.reduce((output, score) => {
-        output[`${score.Dominio}`] = { _50: false, _75: false };
+        output[`${score.Dominio}`] = {
+          _50: false,
+          _75: false,
+          dominio: score.Dominio
+        };
         return output;
+        // return [
+        //   ...output,
+        //   {
+        //     _50: false,
+        //     _75: false,
+        //     dominio: score.Dominio
+        //   }
+        // ];
       }, [])
     );
   },
@@ -41,7 +53,6 @@ const actions = {
             parseInt(subdominio.social, 10) == 75
           );
         }));
-    console.log(state.fuzzy[update.dominio.toLowerCase()]);
     commit("mutateFuzzy", state.fuzzy);
   }
 };

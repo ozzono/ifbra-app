@@ -53,7 +53,9 @@
                   :inner-items="INSS"
                   inner-label="Médica"
                   :make-outlined="true"
-                  @selected-items="refreshScores('medical', i, j, $event)"
+                  @selected-items="
+                    refreshScores('medical', i, j, $event, dominio.Dominio)
+                  "
                 />
               </v-col>
               <v-col class="align-start justify-md-end" :cols="SelectCols">
@@ -61,7 +63,9 @@
                   :inner-items="INSS"
                   inner-label="Social"
                   :make-outlined="true"
-                  @selected-items="refreshScores('social', i, j, $event)"
+                  @selected-items="
+                    refreshScores('social', i, j, $event, dominio.Dominio)
+                  "
                 />
               </v-col>
               <v-col class="align-start" :cols="CheckListCols">
@@ -81,6 +85,7 @@
   </div>
 </template>
 <script>
+/* eslint-disable no-console */
 import Dominios from "@/assets/json/form3.json";
 import { mapGetters, mapActions } from "vuex";
 export default {
@@ -106,14 +111,15 @@ export default {
       "makeFuzzy",
       "updateFuzzy"
     ]),
-    refreshScores(col, i, j, value) {
-      const update = { col: col, i: i, j: j, value: value };
+    refreshScores(col, i, j, value, dominio) {
+      const update = { col: col, i: i, j: j, value: value, dominio: dominio };
       this.updateScores(update);
       this.cycleScores(update);
       if (this.filledStatus) {
         this.calcScores();
       }
-      this.updateFuzzy({ i: i, scores: this.allScores });
+      this.updateFuzzy({ dominio: dominio, scores: this.allScores });
+      this.$eventHub.$emit("score");
     }
   },
   computed: {

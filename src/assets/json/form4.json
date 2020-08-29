@@ -2,21 +2,21 @@
   {
     "Desc": "Auditiva",
     "Obs": "A surdez ocorreu antes dos 6 anos",
-    "Dominios":"Comunicação ou Socialização"
+    "Dominios":["Comunicação","Socialização"]
   },
   {
     "Desc": "Intelectual (Cognitiva ou Mental)",
     "Obs": "Não pode ficar sozinho em segurança",
-    "Dominios":"Vida Doméstica ou Socialização"
+    "Dominios":["Socialização","Vida Doméstica"]
   },
   {
     "Desc": "Motora",
     "Obs": "Desloca-se exclusivamente em cadeira de rodas",
-    "Dominios":"Mobilidade ou Cuidados Pessoais"
+    "Dominios":["Mobilidade","Cuidados Pessoais"]
   },
   {
     "Desc": "Visual",
     "Obs": "A pessoa já não enxergava ao nascer",
-    "Dominios":"Mobilidade ou Vida Doméstica"
+    "Dominios":["Mobilidade","Vida Doméstica"]
   }
 ]

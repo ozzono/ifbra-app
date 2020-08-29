@@ -26,16 +26,20 @@
                   </v-col>
                   <v-col cols="12" md="4">
                     <RowSwitch
-                      :innerLabel="
-                        `Houve pontuação 25 ou 50 em alguma atividade dos domínios ${deficiecia.Dominios}`
-                      "
+                      innerLabel="Não dispõe de auxílio de terceiros sempre que necessário."
                     />
                   </v-col>
                   <v-col cols="12" md="4">
-                    <RowSwitch
+                    <FuzzySwitch
                       :innerLabel="
-                        `Houve pontuação 75 em todas as atividades dos domínios ${deficiecia.Dominios}`
+                        `Houve pontuação 25 ou 50 em alguma atividade dos domínios ${deficiecia.Dominios.join(
+                          ' ou '
+                        )}; OU Houve pontuação 75 em todas atividade dos domínios ${deficiecia.Dominios.join(
+                          ' ou '
+                        )}`
                       "
+                      :dominios="deficiecia.Dominios"
+                      :read-only="true"
                     />
                   </v-col>
                 </v-row>
@@ -57,6 +61,7 @@ export default {
     Deficiencias: Object.values(Deficiencias)
   }),
   components: {
+    FuzzySwitch: () => import("@/components/FuzzySwitch"),
     RowSwitch: () => import("@/components/RowSwitch"),
     FormHeader: () => import("@/components/forms/FormHeader")
   },
@@ -67,6 +72,9 @@ export default {
     strNormalize(str) {
       return str.normalize("NFD").replace(/[^a-zA-Zs]/g, "");
     }
+  },
+  created() {
+    this.$eventHub.$emit("score");
   }
 };
 </script>
