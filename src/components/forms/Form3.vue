@@ -48,33 +48,45 @@
                   class="align-start"
                 ></v-textarea>
               </v-col>
-              <v-col class="align-start justify-md-end" :cols="SelectCols">
-                <CheckList
-                  :inner-items="INSS"
-                  inner-label="Médica"
-                  :make-outlined="true"
-                  @selected-items="
-                    refreshScores('medical', i, j, $event, dominio.Dominio)
-                  "
-                />
-              </v-col>
-              <v-col class="align-start justify-md-end" :cols="SelectCols">
-                <CheckList
-                  :inner-items="INSS"
-                  inner-label="Social"
-                  :make-outlined="true"
-                  @selected-items="
-                    refreshScores('social', i, j, $event, dominio.Dominio)
-                  "
-                />
-              </v-col>
-              <v-col class="align-start" :cols="CheckListCols">
-                <CheckList
-                  inner-label="Barreira Ambiental"
-                  :inner-items="Barreiras"
-                  :allow-multiple="true"
-                  :make-outlined="true"
-                />
+              <v-col class="align-start" :cols="7">
+                <v-row>
+                  <v-col
+                    class="align-start justify-md-end"
+                    :cols="6"
+                    :md="SelectCols"
+                  >
+                    <CheckList
+                      :inner-items="INSS"
+                      inner-label="Médica"
+                      :make-outlined="true"
+                      @selected-items="
+                        refreshScores('medical', i, j, $event, dominio.Dominio)
+                      "
+                    />
+                  </v-col>
+                  <v-col
+                    class="align-start justify-md-end"
+                    :cols="6"
+                    :md="SelectCols"
+                  >
+                    <CheckList
+                      :inner-items="INSS"
+                      inner-label="Social"
+                      :make-outlined="true"
+                      @selected-items="
+                        refreshScores('social', i, j, $event, dominio.Dominio)
+                      "
+                    />
+                  </v-col>
+                  <v-col class="align-start" :cols="12" :md="CheckListCols">
+                    <CheckList
+                      inner-label="Barreira Ambiental"
+                      :inner-items="Barreiras"
+                      :allow-multiple="true"
+                      :make-outlined="true"
+                    />
+                  </v-col>
+                </v-row>
               </v-col>
             </v-row>
             <hr />
@@ -91,8 +103,8 @@ import { mapGetters, mapActions } from "vuex";
 export default {
   data: () => ({
     ContentCols: 5,
-    SelectCols: 2,
-    CheckListCols: 3,
+    SelectCols: 3,
+    CheckListCols: 6,
     Dominios: Object.values(Dominios),
     Barreiras: ["P e T", "Amb", "A e R", "At", "SS e P"],
     INSS: ["25", "50", "75", "100"]
