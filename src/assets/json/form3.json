@@ -36,26 +36,26 @@
           "next":0
         },
         {
-          "Desc": "Conversar ",
-          "Detalhe": "Iniciar, manter e finalizar uma troca de pensamentos e idéias, realizadas através da linguagem oral e ou de sinais",
+          "Desc": "Comunicar-se ",
+          "Detalhe": "Produzir mensagens.",
           "id":0,
           "next":0
         },
         {
-          "Desc": "Conversar ",
+          "Desc": "Conversar",
           "Detalhe": "Iniciar, manter e finalizar uma troca de pensamentos e idéias, realizada através da linguagem oral e ou de sinais",
           "id":0,
           "next":0
         },
         {
           "Desc": "Discutir ",
-          "Detalhe": "Iniciar, manter e finalizar uma troca de pensamentos e idéias, realizada através da linguagem oral e ou de sinais",
+          "Detalhe": "Iniciar, manter e terminar a análise de um assunto, com argumentos a favor ou contra, ou um debate através de linguagem oral e ou de sinais",
           "id":0,
           "next":0
         },
         {
           "Desc": "Utilização de dispositivos de comunicação à distância ",
-          "Detalhe": "A utilização de dispositivos de comunicação à distância",
+          "Detalhe": "",
           "id":0,
           "next":0
         }
@@ -83,7 +83,7 @@
         },
         {
           "Desc": "Movimentos finos da mão",
-          "Detalhe": "Manusear objetos, manipulá-los e soltá-los utilizando as mãos, dedos e polega",
+          "Detalhe": "Manusear objetos, manipulá-los e soltá-los utilizando as mãos, dedos e polegares",
           "id":0,
           "next":0
         },
@@ -95,7 +95,7 @@
         },
         {
           "Desc": "Deslocar-se dentro de edifícios que não a própria casa",
-          "Detalhe": "Andar ou deslocar-se dentro de edifícios que não a própria residência, incluindo áreas anexas quando aplicável",
+          "Detalhe": "Andar ou deslocar-se dentro de edifícios que não a própria residência, incluíndo áreas anexas quando aplicável",
           "id":0,
           "next":0
         },
@@ -159,13 +159,13 @@
         },
         {
           "Desc": "Comer",
-          "Detalhe": "Levar à boca e comer alimento preparado e servido de forma de forma habitual",
+          "Detalhe": "Levar à boca e comer alimento preparado e servido de forma habitual",
           "id":0,
           "next":0
         },
         {
           "Desc": "Beber",
-          "Detalhe": "Levar à boca e beber bebida preparada e servida de forma de forma habitual e com deglutição segura",
+          "Detalhe": "Levar à boca e beber bebida preparada e servida de forma habitual e com deglutição segura",
           "id":0,
           "next":0
         },
@@ -198,19 +198,19 @@
           "next":0
         },
         {
-          "Desc": "Realizar tarefas doméstica",
+          "Desc": "Realizar tarefas domésticas",
           "Detalhe": "",
           "id":0,
           "next":0
         },
         {
-          "Desc": "Manutenção e uso apropriado de objetos pessoais e utensílios da cas",
+          "Desc": "Manutenção e uso apropriado de objetos pessoais e utensílios da casa",
           "Detalhe": "Utilizar, guardar e conservar objetos pessoais, cuidar da casa e dos utensílios domésticos",
           "id":0,
           "next":0
         },
         {
-          "Desc": "Cuidar dos Outro",
+          "Desc": "Cuidar dos Outros",
           "Detalhe": "",
           "id":0,
           "next":0
@@ -245,12 +245,12 @@
         },
         {
           "Desc": "Fazer compras e contratar serviços",
-          "Detalhe": "Ober, em troca de dinheiros, bens e serviços necessários para a vida diária",
+          "Detalhe": "Obter, em troca de dinheiros, bens e serviços necessários para a vida diária",
           "id":0,
           "next":0
         },
         {
-          "Desc": "Administração de recursos Econômicos Pessoais",
+          "Desc": "Administração de recursos econômicos pessoais",
           "Detalhe": "",
           "id":0,
           "next":0
@@ -279,7 +279,7 @@
         },
         {
           "Desc": "Relacionamentos com estranhos",
-          "Detalhe": "Estabelecer contatos e ligações temporários com estranhos para fins específicos como, quando aplicável",
+          "Detalhe": "Estabelecer contatos e ligações temporários com estranhos para fins específicos quando aplicável",
           "id":0,
           "next":0
         },
@@ -291,7 +291,7 @@
         },
         {
           "Desc": "Relacionamentos Íntimos",
-          "Detalhe": "Verificar detalhe desse item",
+          "Detalhe": "Criar ou manter relações românticas ou íntimas",
           "id":0,
           "next":0
         },

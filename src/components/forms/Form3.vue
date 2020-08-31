@@ -14,19 +14,23 @@
             <v-col :cols="ContentCols">
               Domínios e Atividades
             </v-col>
-            <v-col class="text-center" :cols="SelectCols * 2">
-              <span>Pontuação</span>
-              <Tooltip
-                content="Consulte a legenda para mais critérios de preenchimento da pontuação."
-                mdiIcon="mdi-comment-question-outline"
-              />
-            </v-col>
-            <v-col class="text-center" :cols="CheckListCols">
-              <span>Barreiras Ambientais</span>
-              <Tooltip
-                content="Consulte a legenda para mais informações a respeito das Barreiras Ambientais."
-                mdiIcon="mdi-comment-question-outline"
-              />
+            <v-col cols="7">
+              <v-row>
+                <v-col class="text-center" :cols="SelectCols * 2">
+                  <span>Pontuação</span>
+                  <Tooltip
+                    content="Consulte a legenda para mais critérios de preenchimento da pontuação."
+                    mdiIcon="mdi-comment-question-outline"
+                  />
+                </v-col>
+                <v-col class="text-center" :cols="CheckListCols">
+                  <span>Barreiras Ambientais</span>
+                  <Tooltip
+                    content="Consulte a legenda para mais informações a respeito das Barreiras Ambientais."
+                    mdiIcon="mdi-comment-question-outline"
+                  />
+                </v-col>
+              </v-row>
             </v-col>
           </v-row>
           <div text-wrap v-for="(dominio, i) in Dominios" :key="i">
@@ -40,9 +44,10 @@
             >
               <v-col class="align-start" :cols="ContentCols">
                 <v-textarea
-                  :value="subdominio.Detalhe"
-                  :label="i + 1 + '.' + (j + 1) + ' ' + subdominio.Desc"
+                  :value="domainFields(i, j, subdominio).Detail"
+                  :label="domainFields(i, j, subdominio).Desc"
                   rows="1"
+                  readonly
                   disabled
                   auto-grow
                   class="align-start"
@@ -123,6 +128,17 @@ export default {
       "makeFuzzy",
       "updateFuzzy"
     ]),
+    domainFields(i, j, subdominio) {
+      if (subdominio.Detalhe.length == 0) {
+        console.log({ i: i + 1, j: j + 1, subdominio: subdominio });
+      }
+      return subdominio.Detalhe.length == 0
+        ? { Detail: `${i + 1}.${j + 1} ${subdominio.Desc}`, Desc: "" }
+        : {
+            Detail: subdominio.Detalhe,
+            Desc: `${i + 1}.${j + 1} ${subdominio.Desc}`
+          };
+    },
     refreshScores(col, i, j, value, dominio) {
       const update = { col: col, i: i, j: j, value: value, dominio: dominio };
       this.updateScores(update);
