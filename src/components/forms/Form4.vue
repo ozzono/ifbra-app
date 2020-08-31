@@ -16,7 +16,7 @@
           <v-divider v-if="i > 0" class="hidden-md-and-up" :inset="true" />
           <v-row class="align-center d-flex">
             <v-col class="text-center" md="2" cols="12">
-              {{ deficiecia.Desc }}
+              Deficiência {{ deficiecia.Desc }}
             </v-col>
             <v-col cols="10">
               <v-container>
