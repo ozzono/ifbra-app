@@ -18,7 +18,7 @@
             <CheckList
               :innerItems="evaluatorType"
               innerLabel="Tipo de avaliador"
-              @selectedItems="type = $event"
+              @selected-items="type = $event"
               ref="checklist"
             />
           </v-col>
@@ -75,6 +75,7 @@
 </template>
 
 <script>
+/* eslint-disable no-console */
 import { mapActions, mapGetters } from "vuex";
 export default {
   data: () => ({
