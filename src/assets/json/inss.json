@@ -1,6 +1,61 @@
 [
-    {"MainCol":"25","DescCol":"Não realiza a atividade ou é totalmente dependente de terceiros para realizá-la. Não participa de nenhuma etapa da atividade."},
-    {"MainCol":"50","DescCol":"Realiza a atividade com auxílio de terceiros, participando de alguma etapa da atividade. Inclui preparo e supervisão."},
-    {"MainCol":"75","DescCol":"Realiza a atividade de forma adaptada, sendo necessário algum tipo de modificação ou adaptação ou realiza a atividade de forma diferente da habitual ou mais lentamente."},
-    {"MainCol":"100","DescCol":"Realiza a atividade de forma independente, sem nenhum tipo de adaptação ou modificação, na velicidade habitual e em segurança."}
+    {
+        "MainCol":"25",
+        "DescCol":"Não realiza a atividade ou é totalmente dependente de terceiros para realizá-la. Não participa de nenhuma etapa da atividade.",
+        "Extras":[
+            {
+                "Detalhe":"Se é necessário o auxílio de 2 ou mais pessoas o escore deve ser 25: totalmente dependente.",
+                "Exemplos":[]
+            }
+        ]
+    },
+    {
+        "MainCol":"50",
+        "DescCol":"Realiza a atividade com auxílio de terceiros, participando de alguma etapa da atividade. Inclui preparo e supervisão.",
+        "Extras":[
+            {
+                "Detalhe":"Supervisão: quando há necessidade de terceiros sem a necessidade de contato físico.",
+                "Exemplos": ["a pessoa necessita de incentivo, de pistas para completar uma atividade, ou a presença de outra pessoa é necessária como medida de segurança."]
+            },
+            {
+                "Detalhe":"Preparo: quando há necessidade de um preparo prévio para a atividade ser realizada.",
+                "Exemplos": ["a colocação de uma adaptação para alimentação, colocar pasta na escoda de dente."]
+            }
+        ]
+    },
+    {
+        "MainCol":"75",
+        "DescCol":"Realiza a atividade de forma adaptada, sendo necessário algum tipo de modificação ou adaptação ou realiza a atividade de forma diferente da habitual ou mais lentamente.",
+        "Extras":[
+            {
+                "Detalhe":"Para realizar a atividade necessita de algum tipo de modificação do ambiente ou do mobiliário ou da forma de execução.",
+                "Exemplos":[
+                    "passar a fazer uma atividade sentado que antes realizava de pé",
+                    "precisar de adaptação que permita a execução da atividade como lupa para leitura ou aparelho auditivo"
+                ]
+            },
+            {
+                "Detalhe":"Com as adaptações e modificações não depende de terceiros para realizar a atividade: tem uma independência modificada.",
+                "Exemplos":[]
+            },
+            {
+                "Detalhe":"Nessa pontuação o indivíduo deve ser independente para colocar a adaptação necessária para a atividade, não dependendo de terceiros para tal.",
+                "Exemplos":[]
+            }
+        ]
+    },
+    {
+        "MainCol":"100",
+        "DescCol":"Realiza a atividade de forma independente, sem nenhum tipo de adaptação ou modificação, na velicidade habitual e em segurança.",
+        "Extras":[
+            {
+                "Detalhe":"Não tem nenhuma restrição ou limitação para realizar a atividade de maneira considerada normal para uma pessoa da mesma idade, cultura e educação.",
+                "Exemplos":[]
+            },
+            {
+                "Detalhe":"Realiza a atividade sem nenhuma modificação, realizando-a da forma e velocidade habitual.",
+                "Exemplos":[]
+            }
+        ]
+    }
 ]
