@@ -41,14 +41,12 @@ export default {
         });
       var _75 = this.dominios
         .reduce((output, element) => {
-          // console.log({ output1: output, element1: element });
           return [...output, this.normalize(element)];
         }, [])
         .reduce((output, element) => {
           return [...output, this.fuzzy[`${element}`]];
         }, [])
         .some(element => {
-          // console.log({ element3: element });
           return element._75;
         });
       this.val = _50 || _75;

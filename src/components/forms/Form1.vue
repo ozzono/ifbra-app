@@ -30,11 +30,15 @@
           </v-col>
           <v-col md="3" cols="6" justify="space-around">
             <!-- small col -->
-            <DatePicker inner-label="Data de nascimento" />
+            <BirthdayPicker
+              inner-label="Data de nascimento"
+              @datechange="calcAge($event)"
+              startYear="70"
+            />
           </v-col>
           <v-col md="3" cols="6">
             <!-- small col -->
-            <v-text-field label="Idade" disabled filled />
+            <v-text-field label="Idade" v-model="idade.text" readonly filled />
           </v-col>
           <v-col md="3" cols="6">
             <!-- small col -->
@@ -82,11 +86,22 @@
             <CheckList
               :inner-items="Form[8].Informante"
               inner-label="Quem prestou as informações"
+              @selected-items="setInformante($event)"
             />
           </v-col>
           <v-col md="3" cols="6">
             <!-- small col -->
-            <v-text-field label="Informante" />
+            <v-text-field
+              id="informante"
+              label="Informante"
+              v-model="informante.nome"
+              :readonly="informante.readonly"
+              :disabled="informante.disabled"
+              :hint="informante.hint"
+              :persistent-hint="informante.hint.length > 0"
+              @blur="blurInformante()"
+              ref="informante"
+            />
           </v-col>
         </v-row>
         <v-row align="center" dense class="flex">
@@ -104,15 +119,20 @@
 </template>
 
 <script>
+/* eslint-disable no-console */
 import Form from "@/assets/json/form1.json";
 import CID10 from "@/assets/json/cid10.min.json";
-import DatePicker from "@/components/DatePicker";
-import CheckList from "@/components/CheckList";
-import AutoComplete from "@/components/AutoComplete";
-import FormHeader from "@/components/forms/FormHeader";
 export default {
   data: () => ({
+    idade: { number: 0, text: "" },
     sexo: ["Masculino", "Feminino"],
+    informante: {
+      tipo: "",
+      nome: "",
+      readonly: true,
+      disabled: true,
+      hint: ""
+    },
     uf: [
       "AC",
       "AL",
@@ -145,10 +165,53 @@ export default {
     CID10: Object.values(CID10)
   }),
   components: {
-    DatePicker: DatePicker,
-    FormHeader: FormHeader,
-    AutoComplete: AutoComplete,
-    CheckList: CheckList
+    BirthdayPicker: () => import("@/components/BirthdayPicker"),
+    AutoComplete: () => import("@/components/AutoComplete"),
+    FormHeader: () => import("@/components/forms/FormHeader"),
+    CheckList: () => import("@/components/CheckList")
+  },
+  methods: {
+    calcAge(date) {
+      var today = new Date();
+      var birthDate = new Date(date);
+      var age = today.getFullYear() - birthDate.getFullYear();
+      var m = today.getMonth() - birthDate.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+      }
+      this.idade.number = age;
+      this.idade.text = `${age} anos`;
+    },
+    normalize(input) {
+      return input
+        .split(" ")
+        .reduce((output, item) => {
+          return [
+            ...output,
+            item
+              .normalize("NFD")
+              .replace(/[^a-zA-Zs]/g, "")
+              .toLowerCase()
+          ];
+        }, [])
+        .join(" ");
+    },
+    setInformante(informante) {
+      if (this.normalize(informante) != "a propria pessoa") {
+        this.informante.readonly = false;
+        this.informante.disabled = false;
+        this.informante.hint = "Insira o nome do informante";
+        this.$nextTick(() => this.$refs.informante.focus());
+      } else {
+        this.informante.readonly = true;
+        this.informante.disabled = true;
+        this.informante.hint = "";
+        this.informante.nome = "";
+      }
+    },
+    blurInformante() {
+      this.informante.hint = "";
+    }
   }
 };
 </script>
