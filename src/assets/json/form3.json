@@ -37,13 +37,13 @@
         },
         {
           "Desc": "Comunicar-se ",
-          "Detalhe": "Produzir mensagens.",
+          "Detalhe": "Produção de mensagens.",
           "id":0,
           "next":0
         },
         {
           "Desc": "Conversar",
-          "Detalhe": "Iniciar, manter e finalizar uma troca de pensamentos e idéias, realizada através da linguagem oral e ou de sinais",
+          "Detalhe": "Iniciar, manter e finalizar uma troca de pensamentos e ideias, realizada através da linguagem oral e ou de sinais",
           "id":0,
           "next":0
         },
@@ -54,8 +54,8 @@
           "next":0
         },
         {
-          "Desc": "Utilização de dispositivos de comunicação à distância ",
-          "Detalhe": "",
+          "Desc": "Utilização de dispositivos de comunicação à distância",
+          "Detalhe": "Utilização de dispositivos de comunicação à distância habituais",
           "id":0,
           "next":0
         }
@@ -95,25 +95,25 @@
         },
         {
           "Desc": "Deslocar-se dentro de edifícios que não a própria casa",
-          "Detalhe": "Andar ou deslocar-se dentro de edifícios que não a própria residência, incluíndo áreas anexas quando aplicável",
+          "Detalhe": "Andar ou deslocar-se dentro de edifícios que não a própria residência, incluindo áreas anexas quando aplicável",
           "id":0,
           "next":0
         },
         {
           "Desc": "Deslocar-se fora de sua casa e de outros edifícios",
-          "Detalhe": "Andar ou deslocar-se perto ou longe da própria casa e de outros edifícios, sem utilização de transporte público ou privado",
+          "Detalhe": "Andar ou deslocar-se perto ou longe da própria casa e de outros edifícios, sem a utilização de transporte público, ou privado",
           "id":0,
           "next":0
         },
         {
           "Desc": "Utilizar transporte coletivo",
-          "Detalhe": "Utilizar transporte coletivo para se deslocar, como passageiro, por meio terrestre, aqüaviário ou aéreo",
+          "Detalhe": "Utilizar transporte coletivo para se deslocar, como passageiro, por meio terrestre, aquaviário ou aéreo",
           "id":0,
           "next":0
         },
         {
           "Desc": "Utilizar transporte individual como passageiro",
-          "Detalhe": "Utilizar transporte para se deslocar, como passageiro, por meio terrestre, aqüaviário ou aéreo",
+          "Detalhe": "Utilizar transporte para se deslocar, como passageiro, por meio terrestre, aquaviário ou aéreo",
           "id":0,
           "next":0
         }
@@ -153,13 +153,13 @@
         },
         {
           "Desc": "Vestir-se",
-          "Detalhe": "Vestir e retirar peças habituais, incluíndo calçados",
+          "Detalhe": "Vestir e retirar peças habituais, incluindo calçados",
           "id":0,
           "next":0
         },
         {
           "Desc": "Comer",
-          "Detalhe": "Levar à boca e comer alimento preparado e servido de forma habitual",
+          "Detalhe": "Levar à boca e comer alimento preparado e servido, de forma habitual",
           "id":0,
           "next":0
         },
@@ -193,7 +193,7 @@
         },
         {
           "Desc": "Cozinhar",
-          "Detalhe": "Planejar, organizar e executar o preparo de refeições que exijam varios ingredientes ou utensílios, ou uma sequência de ações",
+          "Detalhe": "Planejar, organizar e executar o preparo de refeições que exijam vários ingredientes ou utensílios, ou uma sequência de ações",
           "id":0,
           "next":0
         },
@@ -218,7 +218,7 @@
       ]
     },
     {
-      "Desc": "Domínio Educação",
+      "Desc": "Domínio Educação, Trabalho e Vida Econômica",
       "Dominio":"educacao",
       "Average":{
         "medical":0,
@@ -245,7 +245,7 @@
         },
         {
           "Desc": "Fazer compras e contratar serviços",
-          "Detalhe": "Obter, em troca de dinheiros, bens e serviços necessários para a vida diária",
+          "Detalhe": "Obter, em troca de dinheiro, bens e serviços necessários para a vida diária",
           "id":0,
           "next":0
         },
@@ -279,7 +279,7 @@
         },
         {
           "Desc": "Relacionamentos com estranhos",
-          "Detalhe": "Estabelecer contatos e ligações temporários com estranhos para fins específicos quando aplicável",
+          "Detalhe": "Estabelecer contatos e ligações temporárias com estranhos para fins específicos, quando aplicável",
           "id":0,
           "next":0
         },

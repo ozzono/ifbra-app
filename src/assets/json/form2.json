@@ -5,7 +5,7 @@
         "SubFuncao": [
           {
             "Tipo": "Funções Mentais Globais",
-            "Detalhe": "Consciência, orientação, (tempo, lugar, pessoa), intelectuais (inclui desenvolvimento cognitivo e intelectual), psicossociais (inclui altimo), temperamento e personalidade, energia e impulsos, sono."
+            "Detalhe": "Consciência, orientação, (tempo, lugar, pessoa), intelectuais (inclui desenvolvimento cognitivo e intelectual), psicossociais (inclui autismo), temperamento e personalidade, energia e impulsos, sono."
           },
           {
             "Tipo": "Funções Mentais Específicas",
@@ -18,11 +18,11 @@
         "SubFuncao": [
           {
             "Tipo": "Visão e Funções Relacionadas",
-            "Detalhe": "Acuidade Visual, Campos Visual, Funções dos músculos internos e externos do olho, da pálpebra, glândulas lacrimais."
+            "Detalhe": "Acuidade visual, campo visual, funções dos músculos internos e externos do olho, da pálpebra, glândulas lacrimais."
           },
           {
             "Tipo": "Funções Auditivas",
-            "Detalhe": "Detecção, descriminação, localização, do som e da fala."
+            "Detalhe": "Detecção, descriminação, localização do som e da fala."
           },
           {
             "Tipo": "Funções Vestibulares",
@@ -43,7 +43,7 @@
         "SubFuncao": [
           {
             "Tipo": "Voz, articulação, fluência, ritmo da fala",
-            "Detalhe": "Sem mais detalhes."
+            "Detalhe": ""
           }
         ]
       },
@@ -56,28 +56,28 @@
           },
           {
             "Tipo": "Funções do Sistema Hematológico",
-            "Detalhe": "Produção de sangue, transporte de oxigênio e metabólicos e de coagulação."
+            "Detalhe": "Produção de sangue, transporte de oxigênio e metabólitos e de coagulação."
           },
           {
-            "Tipo": "Funções do Sistema Imunológico",
+            "Tipo": "Função do Sistema Imunológico",
             "Detalhe": "Resposta imunológica, reações de hipersensibilidade, funções do sistema linfático."
           },
           {
-            "Tipo": "Funções do Sistema Respiratório",
+            "Tipo": "Função do Sistema Respiratório",
             "Detalhe": "Respiratórias, dos músculos respiratórios, da tolerância aos exercícios."
           }
         ]
       },
       {
-        "Tipo": "Funções dos Sistemas Digestivo, Metabólico e Endócrino",
+        "Tipo": "Função dos Sistemas Digestivo, Metabólico e Endócrino",
         "SubFuncao": [
           {
             "Tipo": "Funções dos Sistemas Digestivos",
             "Detalhe": "Ingestão, deglutição, digestivas, assimilação, defecação, manutenção de peso."
           },
           {
-            "Tipo": "Funções do Metabolismo e Sistema Endócrino",
-            "Detalhe": "Funções Metabólicas gerais, equilíbrio hídrico, mineral e eletrolítico, termorreguladoras, das glândulas endócrinas."
+            "Tipo": "Função do Metabolismo e Sistema Endócrino",
+            "Detalhe": "Funções metabólicas gerais, equilíbrio hídrico, mineral e eletrolítico, termorreguladoras, das glândulas endócrinas."
           }
         ]
       },
@@ -95,7 +95,7 @@
         ]
       },
       {
-        "Tipo": "Funções Neuromusculoesqueléticas e relacionadas a Movimento",
+        "Tipo": "Funções Neuromusculoesqueléticas e relacionadas ao movimento",
         "SubFuncao": [
           {
             "Tipo": "Funções das Articulações e dos Ossos",
@@ -107,7 +107,7 @@
           },
           {
             "Tipo": "Funções dos Movimentos",
-            "Detalhe": "Reflexo motor, movimentos involuntários, controle dos movimentos voluntários, padrão da marcha, sensações relacionadas aos músculos e funções do movimento."
+            "Detalhe": "Reflexo motor, movimentos involuntários, controle dos movimentos voluntários, padrão de marcha, sensações relacionadas aos músculos e funções do movimento."
           }
         ]
       },
@@ -115,7 +115,7 @@
         "Tipo": "Funções de Pele e Estruturas Relacionadas",
         "SubFuncao": [
           {
-            "Tipo": "Funções dos Movimentos",
+            "Tipo": "Funções da pele, pelos e unhas",
             "Detalhe": "Protetora, reparadora, sensação relacionada à pele, pelos e unhas."
           }
         ]
