@@ -2,14 +2,13 @@
   <div>
     <v-flex>
       <v-container class="grey lighten-5">
-        <v-row align="center" dense class="flex">
-          <FormHeader
-            title="Formulário 3"
-            subtitle="Aplicação do Instrumento"
-            comment="Matriz"
-          />
-        </v-row>
-        <div class="form3">
+        <FormHeader
+          title="Formulário 3"
+          subtitle="Aplicação do Instrumento"
+          comment="Matriz"
+          @toggle="showHide($event)"
+        />
+        <div v-bind:class="{ 'd-none': hide }">
           <v-row align="center" dense class="flex">
             <v-col :cols="ContentCols">
               Domínios e Atividades
@@ -112,7 +111,8 @@ export default {
     CheckListCols: 6,
     Dominios: Object.values(Dominios),
     Barreiras: ["P e T", "Amb", "A e R", "At", "SS e P"],
-    INSS: ["25", "50", "75", "100"]
+    INSS: ["25", "50", "75", "100"],
+    hide: false
   }),
   components: {
     FormHeader: () => import("@/components/forms/FormHeader"),
@@ -129,15 +129,15 @@ export default {
       "updateFuzzy"
     ]),
     domainFields(i, j, subdominio) {
-      if (subdominio.Detalhe.length == 0) {
-        console.log({ i: i + 1, j: j + 1, subdominio: subdominio });
-      }
       return subdominio.Detalhe.length == 0
         ? { Detail: `${i + 1}.${j + 1} ${subdominio.Desc}`, Desc: "" }
         : {
             Detail: subdominio.Detalhe,
             Desc: `${i + 1}.${j + 1} ${subdominio.Desc}`
           };
+    },
+    showHide(status) {
+      this.hide = status;
     },
     refreshScores(col, i, j, value, dominio) {
       const update = { col: col, i: i, j: j, value: value, dominio: dominio };

@@ -2,20 +2,18 @@
   <v-row class="flex">
     <v-col cols="10">
       <v-card-title>{{ title }}</v-card-title>
-      <v-card-subtitle
-      >
+      <v-card-subtitle>
         {{ subtitle }}
         <i v-if="comment.length > 0">({{ comment }})</i>
       </v-card-subtitle>
     </v-col>
     <v-col cols="1">
-      <RowSwitch></RowSwitch>
+      <ChipSwitch @toggle="$emit('toggle', $event)" />
     </v-col>
   </v-row>
 </template>
 
 <script>
-import RowSwitch from "@/components/RowSwitch";
 export default {
   name: "FormHeader",
   props: {
@@ -24,7 +22,7 @@ export default {
     comment: String
   },
   components: {
-    RowSwitch: RowSwitch,
+    ChipSwitch: () => import("@/components/ChipSwitch")
   }
 };
 </script>
