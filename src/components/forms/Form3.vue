@@ -32,7 +32,12 @@
               </v-row>
             </v-col>
           </v-row>
-          <div text-wrap v-for="(dominio, i) in Dominios" :key="i">
+          <div
+            text-wrap
+            v-for="(dominio, i) in Dominios"
+            loading="lazy"
+            :key="i"
+          >
             {{ i + 1 }}. {{ dominio.Desc }}
             <v-row
               align="center"
