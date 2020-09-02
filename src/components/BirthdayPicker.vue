@@ -22,6 +22,7 @@
             v-model="date"
             no-title
             @input="menu = false"
+            locale="pt-BR"
           ></v-date-picker>
         </v-menu>
       </v-flex>

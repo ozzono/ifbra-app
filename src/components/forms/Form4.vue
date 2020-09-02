@@ -77,7 +77,6 @@ export default {
       return str.normalize("NFD").replace(/[^a-zA-Zs]/g, "");
     },
     showHide(status) {
-      console.log(`status: ${status}`);
       this.hide = status;
     }
   },

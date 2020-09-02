@@ -10,7 +10,7 @@
             @toggle="showHide($event)"
           />
         </v-row>
-        <div v-bind:class="{ 'd-none': show }">
+        <div v-bind:class="{ 'd-none': hide }">
           <v-row align="center" dense class="flex">
             <v-col md="6" cols="12">
               <v-text-field label="Nome completo" />
@@ -69,10 +69,10 @@
             </v-col>
           </v-row>
           <v-row align="center" dense class="flex">
-            <v-col md="11" cols="11">
+            <v-col md="10" cols="10">
               <v-text-field label="Local da Avaliação" />
             </v-col>
-            <v-col md="1" cols="1">
+            <v-col md="2" cols="2">
               <CheckList :inner-items="uf" inner-label="UF" />
             </v-col>
           </v-row>
@@ -95,6 +95,7 @@
                 :persistent-hint="informante.hint.length > 0"
                 @blur="blurInformante()"
                 ref="informante"
+                v-if="!hideInformante"
               />
             </v-col>
           </v-row>
@@ -121,6 +122,7 @@ export default {
     idade: { number: 0, text: "" },
     sexo: ["Masculino", "Feminino"],
     hide: false,
+    hideInformante: false,
     informante: {
       tipo: "",
       nome: "",
@@ -178,7 +180,6 @@ export default {
       this.idade.text = `${age} anos`;
     },
     showHide(status) {
-      console.log(`status: ${status}`);
       this.hide = status;
     },
     normalize(input) {
@@ -201,7 +202,9 @@ export default {
         this.informante.disabled = false;
         this.informante.hint = "Insira o nome do informante";
         this.$nextTick(() => this.$refs.informante.focus());
+        this.hideInformante = false;
       } else {
+        this.hideInformante = true;
         this.informante.readonly = true;
         this.informante.disabled = true;
         this.informante.hint = "";

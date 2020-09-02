@@ -1,6 +1,6 @@
 <template>
   <v-container class="text-center" v-if="filledStatus">
-    <v-card class="card text-left d-inline-flex" min-width="50%">
+    <v-card class="text-left" color="green lighten-5">
       <v-card-text>
         <div class="text-center">
           <span>
@@ -11,21 +11,37 @@
             mdiIcon="mdi-comment-question-outline"
           />
         </div>
-        <v-row cols="8" v-for="(score, i) in allScores" :key="i">
-          <v-col class="desc">{{ score.Desc }}</v-col>
-          <v-col class="text-center" cols="2">
+        <v-row>
+          <v-col class="desc">
+            <h3>Domínios</h3>
+          </v-col>
+          <v-col class="text-center" cols="2">Score Médico</v-col>
+          <v-col class="text-center" cols="2">Score Social</v-col>
+        </v-row>
+        <v-row
+          class="text-center"
+          v-for="(score, i) in allScores"
+          dense
+          :key="i"
+        >
+          <v-col class="desc text-start">{{ score.Desc }}</v-col>
+          <v-col cols="2">
             {{ score.Average.medical.toFixed(2) }}
           </v-col>
-          <v-col class="text-center" cols="2">
+          <v-col cols="2">
             {{ score.Average.social.toFixed(2) }}
           </v-col>
         </v-row>
-        <v-row>
-          <v-col class="total desc text-center" cols="8">TOTAL</v-col>
-          <v-col class="text-center" cols="2">
+        <v-divider />
+        <v-row class="text-center">
+          <v-col cols="6">TOTAL</v-col>
+          <v-col cols="2">
+            {{ (scoreTotal.medical + scoreTotal.social).toFixed(2) }}
+          </v-col>
+          <v-col cols="2">
             {{ scoreTotal.medical.toFixed(2) }}
           </v-col>
-          <v-col class="text-center" cols="2">
+          <v-col cols="2">
             {{ scoreTotal.social.toFixed(2) }}
           </v-col>
         </v-row>
@@ -42,6 +58,7 @@ export default {
   },
   components: {
     Tooltip: () => import("@/components/Tooltip")
+    // BaseTextField: () => import("@/components/BaseTextField")
   }
 };
 </script>
@@ -50,6 +67,4 @@ export default {
 .desc {
   padding-left: 2rem;
 }
-/* .card {
-} */
 </style>

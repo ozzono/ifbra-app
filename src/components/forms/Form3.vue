@@ -11,9 +11,9 @@
         <div v-bind:class="{ 'd-none': hide }">
           <v-row align="center" dense class="flex">
             <v-col :cols="ContentCols">
-              Domínios e Atividades
+              <BaseTextField comment="" title="Domínios e Atividades" />
             </v-col>
-            <v-col cols="7">
+            <v-col cols="6">
               <v-row>
                 <v-col class="text-center" :cols="SelectCols * 2">
                   <span>Pontuação</span>
@@ -38,7 +38,7 @@
             loading="lazy"
             :key="i"
           >
-            {{ i + 1 }}. {{ dominio.Desc }}
+            <BaseTextField comment="" :title="`${i + 1}. ${dominio.Desc}`" />
             <v-row
               align="center"
               dense
@@ -47,24 +47,22 @@
               :key="j"
             >
               <v-col class="align-start" :cols="ContentCols">
-                <v-textarea
-                  :value="domainFields(i, j, subdominio).Detail"
-                  :label="domainFields(i, j, subdominio).Desc"
-                  rows="1"
-                  readonly
-                  disabled
-                  auto-grow
-                  class="align-start"
-                ></v-textarea>
+                <BaseTextField
+                  comment=""
+                  :title="`${i + 1}.${j + 1} ${subdominio.Desc}`"
+                  :subtitle="subdominio.Detalhe"
+                />
               </v-col>
-              <v-col class="align-start" :cols="7">
+              <v-col class="align-start" cols="6">
                 <v-row>
                   <v-col
                     class="align-start justify-md-end"
-                    :cols="6"
+                    cols="6"
                     :md="SelectCols"
                   >
                     <CheckList
+                      class="checklist"
+                      :makeDense="true"
                       :inner-items="INSS"
                       inner-label="Médica"
                       :make-outlined="true"
@@ -75,10 +73,12 @@
                   </v-col>
                   <v-col
                     class="align-start justify-md-end"
-                    :cols="6"
+                    cols="6"
                     :md="SelectCols"
                   >
                     <CheckList
+                      class="checklist"
+                      :makeDense="true"
                       :inner-items="INSS"
                       inner-label="Social"
                       :make-outlined="true"
@@ -89,6 +89,8 @@
                   </v-col>
                   <v-col class="align-start" :cols="12" :md="CheckListCols">
                     <CheckList
+                      class="checklist"
+                      :makeDense="true"
                       inner-label="Barreira Ambiental"
                       :inner-items="Barreiras"
                       :allow-multiple="true"
@@ -111,7 +113,7 @@ import Dominios from "@/assets/json/form3.json";
 import { mapGetters, mapActions } from "vuex";
 export default {
   data: () => ({
-    ContentCols: 5,
+    ContentCols: 6,
     SelectCols: 3,
     CheckListCols: 6,
     Dominios: Object.values(Dominios),
@@ -122,7 +124,8 @@ export default {
   components: {
     FormHeader: () => import("@/components/forms/FormHeader"),
     CheckList: () => import("@/components/CheckList"),
-    Tooltip: () => import("@/components/Tooltip")
+    Tooltip: () => import("@/components/Tooltip"),
+    BaseTextField: () => import("@/components/BaseTextField")
   },
   methods: {
     ...mapActions([
@@ -133,7 +136,7 @@ export default {
       "makeFuzzy",
       "updateFuzzy"
     ]),
-    domainFields(i, j, subdominio) {
+    BaseTextFields(i, j, subdominio) {
       return subdominio.Detalhe.length == 0
         ? { Detail: `${i + 1}.${j + 1} ${subdominio.Desc}`, Desc: "" }
         : {
@@ -171,5 +174,8 @@ export default {
 }
 v-textarea {
   border-style: none;
+}
+.checklist {
+  padding-top: 1rem !important;
 }
 </style>

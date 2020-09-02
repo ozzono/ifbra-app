@@ -1,6 +1,6 @@
 <template>
   <v-select
-    dense
+    :dense="makeDense"
     :label="innerLabel"
     v-model="selectedItems"
     :items="innerItems"
@@ -36,7 +36,8 @@ export default {
     "innerLabel",
     "allowMultiple",
     "makeClearable",
-    "makeOutlined"
+    "makeOutlined",
+    "makeDense"
   ],
   computed: {
     allItems() {
