@@ -1,12 +1,13 @@
 <template>
   <v-card>
-    <v-app-bar tile dense dark>
+    <v-app-bar tile dense>
       <div class="hidden-md-and-up">
         <v-btn @click="drawer = true">Menu</v-btn>
       </div>
       <v-toolbar-title class="title">IFBr-A</v-toolbar-title>
       <div class="hidden-sm-and-down">
         <v-btn
+          depressed
           active-class="deep-purple--text text--accent-4"
           v-for="(item, i) in menu"
           :key="i"
@@ -15,6 +16,8 @@
           {{ item[0] }}
         </v-btn>
       </div>
+      <v-spacer />
+      <Theme />
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" height="400" absolute temporary>
@@ -39,7 +42,10 @@ export default {
       ["Manual", "manual"],
       ["CID10", "cid10"]
     ]
-  })
+  }),
+  components: {
+    Theme: () => import("@/components/Theme")
+  }
 };
 </script>
 
