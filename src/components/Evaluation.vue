@@ -27,6 +27,7 @@
               v-model="name"
               justify-start
               label="Nome do avaliador"
+              @keydown.enter="addEval()"
             />
           </v-col>
           <v-col md="1" cols="1" class="d-flex">

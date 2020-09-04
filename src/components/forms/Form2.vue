@@ -2,14 +2,12 @@
   <div class="form">
     <v-flex>
       <v-container>
-        <v-row align="center" dense class="flex">
-          <FormHeader
-            title="Formulário 2"
-            subtitle="Funções corporais acometidas"
-            comment="a ser preenchido pelo médico perito"
-            @toggle="showHide($event)"
-          />
-        </v-row>
+        <FormHeader
+          title="Formulário 2"
+          subtitle="Funções corporais acometidas"
+          comment="a ser preenchido pelo médico perito"
+          @toggle="showHide($event)"
+        />
         <div v-bind:class="{ 'd-none': hide }">
           <div v-for="(funcao, i) in funcoes[0]" :key="i">
             {{ i + 1 }}. {{ funcao.Tipo }}

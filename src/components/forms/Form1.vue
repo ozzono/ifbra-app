@@ -2,14 +2,12 @@
   <div class="form">
     <v-flex>
       <v-container>
-        <v-row align="center" dense class="flex">
-          <FormHeader
-            title="Formulário 1"
-            subtitle="Identificação do Avaliado e da Avaliação"
-            comment="Matriz"
-            @toggle="showHide($event)"
-          />
-        </v-row>
+        <FormHeader
+          title="Formulário 1"
+          subtitle="Identificação do Avaliado e da Avaliação"
+          comment="Matriz"
+          @toggle="showHide($event)"
+        />
         <div v-bind:class="{ 'd-none': hide }">
           <v-row align="center" dense class="flex">
             <v-col md="6" cols="12">
@@ -38,7 +36,11 @@
                 label="Idade"
                 v-model="idade.text"
                 readonly
-                filled
+                disabled
+                outlined
+                :persistent-hint="idade.text.length == 0"
+                hint="Calculada automaticamente"
+                @click="customBlur()"
               />
             </v-col>
             <v-col md="3" cols="6">
@@ -213,6 +215,10 @@ export default {
     },
     blurInformante() {
       this.informante.hint = "";
+    },
+    customBlur() {
+      let el = this.$el.querySelector(":focus");
+      if (el) el.blur();
     }
   }
 };

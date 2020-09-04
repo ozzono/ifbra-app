@@ -4,12 +4,10 @@
     v-model="menu"
     :close-on-content-click="false"
     transition="scale-transition"
-    offset-y
-    min-width="290px"
   >
     <template v-slot:activator="{ on, attrs }">
       <v-text-field
-        v-model="date"
+        v-model="dateFormatted"
         :label="innerLabel"
         append-icon="mdi-calendar"
         readonly
@@ -18,10 +16,9 @@
       ></v-text-field>
     </template>
     <v-date-picker
+      locale="pt-BR"
       ref="picker"
       v-model="date"
-      :max="new Date().toISOString().substr(0, 10)"
-      min="1950-01-01"
       @change="save"
     ></v-date-picker>
   </v-menu>
@@ -30,18 +27,35 @@
 <script>
 export default {
   name: "DatePicker",
-  data: () => ({
-    date: null,
+  data: vm => ({
+    date: new Date().toISOString().substr(0, 10),
+    dateFormatted: vm.formatDate(new Date().toISOString().substr(0, 10)),
     menu: false
   }),
   watch: {
     menu(val) {
       val && setTimeout(() => (this.$refs.picker.activePicker = "YEAR"));
+    },
+    date() {
+      this.dateFormatted = this.formatDate(this.date);
+      this.$emit("datechange", this.date);
     }
   },
   methods: {
     save(date) {
       this.$refs.menu.save(date);
+    },
+    formatDate(date) {
+      if (!date) return null;
+      return date
+        .split("-")
+        .reverse()
+        .join("/");
+    },
+    parseDate(date) {
+      if (!date) return null;
+      const [day, month, year] = date.split("/");
+      return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
     }
   },
   props: {
