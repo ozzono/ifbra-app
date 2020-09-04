@@ -1,6 +1,6 @@
 <template>
   <v-container class="text-center" v-if="filledStatus">
-    <v-card class="text-left" color="green lighten-5">
+    <v-card class="text-left">
       <v-card-text>
         <div class="text-center">
           <span>

@@ -1,7 +1,7 @@
 <template>
-  <v-card flat tile :class="`${colored ? 'grey lighten-5' : ''}`">
+  <v-card flat tile>
     <v-container>
-      <v-card flat :class="`${colored ? 'grey lighten-5' : ''}`">
+      <v-card flat>
         <v-card-title class="wrap headline">{{ title }}</v-card-title>
         <v-card-subtitle class="wrap">
           {{ subtitle }}
@@ -15,7 +15,7 @@
 <script>
 /* eslint-disable no-console */
 export default {
-  props: ["title", "subtitle", "comment", "colored"],
+  props: ["title", "subtitle", "comment", "colored"]
 };
 </script>
 

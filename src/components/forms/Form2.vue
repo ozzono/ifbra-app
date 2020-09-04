@@ -1,7 +1,7 @@
 <template>
   <div class="form">
     <v-flex>
-      <v-container class="grey lighten-5">
+      <v-container>
         <v-row align="center" dense class="flex">
           <FormHeader
             title="Formulário 2"

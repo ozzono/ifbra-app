@@ -1,7 +1,7 @@
 <template>
   <div class="form">
     <v-flex>
-      <v-container class="grey lighten-5">
+      <v-container>
         <FormHeader
           title="Formulário 4"
           subtitle="Aplicação do Modelo Linguístico Fuzzy"

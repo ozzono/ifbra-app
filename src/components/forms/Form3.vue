@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-flex>
-      <v-container class="grey lighten-5">
+      <v-container>
         <FormHeader
           title="Formulário 3"
           subtitle="Aplicação do Instrumento"
@@ -169,9 +169,6 @@ export default {
 </script>
 
 <style>
-:disabled {
-  color: black !important;
-}
 v-textarea {
   border-style: none;
 }

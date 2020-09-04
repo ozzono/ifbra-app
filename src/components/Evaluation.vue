@@ -1,7 +1,7 @@
 <template>
   <div class="form">
     <v-flex>
-      <v-container class="grey lighten-5">
+      <v-container>
         <v-row align="center" dense class="d-flex">
           <v-col>
             <h2 class="text-center">Avaliação Médica e Funcional</h2>

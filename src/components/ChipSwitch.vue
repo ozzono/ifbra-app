@@ -1,5 +1,5 @@
 <template>
-  <v-card flat class="rescale grey lighten-5">
+  <v-card flat class="rescale">
     <v-card-text>
       <v-btn-toggle dense rounded mandatory v-model="toggle_exclusive">
         <v-btn @click="status()" :color="!innerValue ? 'primary' : ''">

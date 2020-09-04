@@ -11,6 +11,14 @@ export default {
   components: {
     Header: () => import("@/components/Header"),
     Footer: () => import("@/components/Footer")
+  },
+  methods: {
+    setTheme() {
+      this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
+    }
+  },
+  created() {
+    this.$eventHub.$on("theme", this.setTheme);
   }
 };
 </script>
