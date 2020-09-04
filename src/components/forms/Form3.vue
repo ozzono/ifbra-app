@@ -168,11 +168,14 @@ export default {
 };
 </script>
 
-<style>
-v-textarea {
-  border-style: none;
-}
+<style scoped>
 .checklist {
   padding-top: 1rem !important;
+}
+span {
+  word-break: break-all;
+  /* word-break: break-word; */
+  max-width: 1em;
+  /* white-space: normal; */
 }
 </style>

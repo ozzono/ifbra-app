@@ -9,7 +9,7 @@
             :comment="comment"
           />
         </v-col>
-        <v-col cols="3">
+        <v-col cols="1" class="text-start">
           <ChipSwitch class="chip" @toggle="$emit('toggle', $event)" />
         </v-col>
       </v-row>

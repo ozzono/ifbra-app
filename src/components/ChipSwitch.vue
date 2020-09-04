@@ -39,6 +39,6 @@ export default {
 
 <style scoped>
 .rescale {
-  transform: scale(0.65, 0.65);
+  transform: scale(0.5, 0.5);
 }
 </style>
