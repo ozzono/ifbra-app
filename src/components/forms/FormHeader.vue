@@ -1,15 +1,15 @@
 <template>
   <v-card flat>
-    <v-container :class="{ 'default-grey': theme.dark }">
+    <v-container :class="`${theme.dark ? 'default-grey' : theme.color}`">
       <v-row>
-        <v-col cols="8">
+        <v-col cols="7">
           <BaseTextField
             :title="title"
             :subtitle="subtitle"
             :comment="comment"
           />
         </v-col>
-        <v-col cols="2">
+        <v-col cols="3">
           <ChipSwitch class="chip" @toggle="$emit('toggle', $event)" />
         </v-col>
       </v-row>

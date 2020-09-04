@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :class="`${!theme.dark ? theme.color : ''}`">
     <v-flex>
       <v-container>
         <FormHeader
@@ -159,7 +159,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(["filledStatus", "allScores", "fuzzy"])
+    ...mapGetters(["filledStatus", "allScores", "fuzzy", "theme"])
   },
   created() {
     this.setScores(Dominios);

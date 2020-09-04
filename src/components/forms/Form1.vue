@@ -1,5 +1,5 @@
 <template>
-  <div class="form">
+  <div class="form" :class="`${!theme.dark ? theme.color : ''}`">
     <v-flex>
       <v-container>
         <FormHeader
@@ -119,6 +119,7 @@
 /* eslint-disable no-console */
 import Form from "@/assets/json/form1.json";
 import CID10 from "@/assets/json/cid10.min.json";
+import { mapGetters } from "vuex";
 export default {
   data: () => ({
     idade: { number: 0, text: "" },
@@ -132,34 +133,9 @@ export default {
       disabled: true,
       hint: ""
     },
-    uf: [
-      "AC",
-      "AL",
-      "AP",
-      "AM",
-      "BA",
-      "CE",
-      "DF",
-      "ES",
-      "GO",
-      "MA",
-      "MT",
-      "MG",
-      "MS",
-      "PB",
-      "PR",
-      "PE",
-      "PI",
-      "RJ",
-      "RN",
-      "RS",
-      "RO",
-      "RR",
-      "SC",
-      "SP",
-      "SE",
-      "TO"
-    ],
+    uf: "AC,AL,AP,AM,BA,CE,DF,ES,GO,MA,MT,MG,MS,PB,PR,PE,PI,RJ,RN,RS,RO,RR,SC,SP,SE,TO".split(
+      ","
+    ),
     Form: Object.values(Form),
     CID10: Object.values(CID10)
   }),
@@ -220,6 +196,9 @@ export default {
       let el = this.$el.querySelector(":focus");
       if (el) el.blur();
     }
+  },
+  computed: {
+    ...mapGetters(["theme"])
   }
 };
 </script>

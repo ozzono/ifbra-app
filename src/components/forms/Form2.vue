@@ -1,5 +1,5 @@
 <template>
-  <div class="form">
+  <div class="form" :class="`${!theme.dark ? theme.color : ''}`">
     <v-flex>
       <v-container>
         <FormHeader
@@ -37,6 +37,7 @@
 import Funcoes from "@/assets/json/form2.json";
 import RowSwitch from "@/components/RowSwitch";
 import FormHeader from "@/components/forms/FormHeader";
+import { mapGetters } from "vuex";
 export default {
   data: () => ({
     funcoes: Object.values(Funcoes),
@@ -50,7 +51,8 @@ export default {
     showHide(status) {
       this.hide = status;
     }
-  }
+  },
+  computed: mapGetters(["theme"])
 };
 </script>
 

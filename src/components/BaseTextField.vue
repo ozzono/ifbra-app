@@ -1,9 +1,9 @@
 <template>
-  <v-card flat tile :class="{ 'default-grey': theme.dark }">
-    <v-container :class="{ 'default-grey': theme.dark }">
-      <v-card flat :class="{ 'default-grey': theme.dark }">
+  <v-card flat tile :class="`${theme.dark ? 'default-grey' : theme.color}`">
+    <v-container :class="`${theme.dark ? 'default-grey' : theme.color}`">
+      <v-card flat :class="`${theme.dark ? 'default-grey' : theme.color}`">
         <v-card-title
-          :class="{ 'default-grey': theme.dark }"
+          :class="`${theme.dark ? 'default-grey' : theme.color}`"
           class="wrap-word headline"
           >{{ title }}</v-card-title
         >

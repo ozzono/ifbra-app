@@ -1,5 +1,9 @@
 <template>
-  <v-card flat class="rescale" :class="{ 'default-grey': theme.dark }">
+  <v-card
+    flat
+    class="rescale"
+    :class="`${theme.dark ? 'default-grey' : theme.color}`"
+  >
     <v-card-text>
       <v-btn-toggle dense rounded mandatory v-model="toggle_exclusive">
         <v-btn @click="status()" :color="!innerValue ? 'primary' : ''">
@@ -14,7 +18,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters } from "vuex";
 export default {
   data: () => ({
     toggle_exclusive: true,
@@ -27,7 +31,7 @@ export default {
       this.$emit("toggle", this.innerValue);
     }
   },
-  computed:{
+  computed: {
     ...mapGetters(["theme"])
   }
 };
@@ -35,6 +39,6 @@ export default {
 
 <style scoped>
 .rescale {
-  transform: scale(0.75, 0.75);
+  transform: scale(0.65, 0.65);
 }
 </style>

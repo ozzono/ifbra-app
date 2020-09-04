@@ -1,5 +1,5 @@
 <template>
-  <div class="form">
+  <div class="form" :class="`${!theme.dark ? theme.color : ''}`">
     <v-flex>
       <v-container>
         <v-row align="center" dense class="d-flex">
@@ -102,6 +102,6 @@ export default {
       this.$refs.checklist.clear();
     }
   },
-  computed: mapGetters(["allEvaluators"])
+  computed: mapGetters(["allEvaluators", "theme"])
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="form">
+  <div class="form" :class="`${!theme.dark ? theme.color : ''}`">
     <v-flex>
       <v-container>
         <FormHeader
@@ -70,7 +70,7 @@ export default {
     FormHeader: () => import("@/components/forms/FormHeader")
   },
   computed: {
-    ...mapGetters(["fuzzy"])
+    ...mapGetters(["fuzzy", "theme"])
   },
   methods: {
     strNormalize(str) {

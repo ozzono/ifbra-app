@@ -1,7 +1,11 @@
 <template>
   <div>
     <v-card>
-      <v-app-bar tile fixed>
+      <v-app-bar
+        tile
+        fixed
+        :class="`${!theme.dark ? 'light-blue darken-3' : ''}`"
+      >
         <div class="hidden-md-and-up">
           <v-btn @click="drawer = true">Menu</v-btn>
         </div>
@@ -9,7 +13,14 @@
         <div class="hidden-sm-and-down">
           <v-btn
             depressed
-            active-class="deep-purple--text text--accent-4"
+            :active-class="
+              `${
+                theme.dark
+                  ? 'deep-purple--text text--accent-4'
+                  : 'blue--text text--accent-4'
+              }`
+            "
+            :class="`${!theme.dark ? 'blue--text text--accent-4' : ''}`"
             v-for="(item, i) in menu"
             :key="i"
             :to="item[1]"
@@ -31,11 +42,12 @@
         </v-list>
       </v-navigation-drawer>
     </v-card>
-    <div class="filler" />
+    <div class="filler" :class="`${!theme.dark ? theme.color : ''}`" />
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   data: () => ({
     drawer: false,
@@ -48,7 +60,8 @@ export default {
   }),
   components: {
     Theme: () => import("@/components/Theme")
-  }
+  },
+  computed: mapGetters(["theme"])
 };
 </script>
 
@@ -56,7 +69,7 @@ export default {
 .title {
   padding: 1rem;
 }
-.filler{
+.filler {
   height: 5rem;
 }
 </style>
