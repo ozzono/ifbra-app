@@ -1,5 +1,5 @@
 const state = {
-  theme: { dark: false }
+  theme: { dark: false, color: "blue lighten-5" }
 };
 const actions = {
   setTheme({ commit }, dark) {
