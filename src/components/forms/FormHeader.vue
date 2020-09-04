@@ -1,6 +1,6 @@
 <template>
   <v-card flat>
-    <v-container>
+    <v-container :class="{ 'default-grey': theme.dark }">
       <v-row>
         <v-col cols="8">
           <BaseTextField
@@ -18,18 +18,22 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "FormHeader",
   props: ["title", "subtitle", "comment"],
   components: {
     ChipSwitch: () => import("@/components/ChipSwitch"),
     BaseTextField: () => import("@/components/BaseTextField")
+  },
+  computed: {
+    ...mapGetters(["theme"])
   }
 };
 </script>
 
 <style scoped>
-.chip{
+.chip {
   padding-top: 1.5rem;
 }
 </style>

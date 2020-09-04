@@ -2,10 +2,10 @@
   <div>
     <v-btn
       @click="setTheme()"
-      :class="{ 'white black--text': this.dark }"
+      :class="{ 'white black--text': theme.dark }"
       fab
       small
-      :dark="!this.dark"
+      :dark="!this.theme.dark"
     >
       <v-icon>mdi-theme-light-dark</v-icon>
     </v-btn>
@@ -13,17 +13,22 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   data: () => ({
     dark: false
   }),
   methods: {
     setTheme() {
-      this.dark = !this.dark;
+      this.theme.dark = !this.theme.dark;
       this.$eventHub.$emit("theme");
+      this.dark = !this.dark;
       let el = this.$el.querySelector(":focus");
       if (el) el.blur();
     }
+  },
+  computed: {
+    ...mapGetters(["theme"])
   }
 };
 </script>
