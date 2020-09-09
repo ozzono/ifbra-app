@@ -10,22 +10,36 @@
         />
         <div v-bind:class="{ 'd-none': hide }">
           <div v-for="(funcao, i) in funcoes[0]" :key="i">
-            {{ i + 1 }}. {{ funcao.Tipo }}
-            <div
-              class="d-flex"
+            <v-divider v-if="i > 0" />
+            <v-row>
+              <v-col>
+                <BaseTextField
+                  :title="`${i + 1}. ${funcao.Tipo}`"
+                  subtitle=""
+                  comment=""
+                />
+              </v-col>
+            </v-row>
+            <v-row
               no-gutters
               v-for="(subfuncao, j) in funcao.SubFuncao"
               :key="j"
             >
-              <div cols="pa-1">
-                <RowSwitch></RowSwitch>
-              </div>
-              <div cols="pa-11" class="align-self-center">
-                {{ i + 1 }}.{{ j + 1 }} {{ subfuncao.Tipo }}:
-                {{ subfuncao.Detalhe }}
-              </div>
-            </div>
-            <hr />
+              <v-col
+                cols="2"
+                class="align-center d-flex"
+                :class="`${width >= 960 ? 'big-padding' : 'small-padding'}`"
+              >
+                <RowSwitch />
+              </v-col>
+              <v-col cols="10">
+                <BaseTextField
+                  :title="`${i + 1}.${j + 1} ${subfuncao.Tipo}:`"
+                  :subtitle="`${subfuncao.Detalhe}`"
+                  comment=""
+                />
+              </v-col>
+            </v-row>
           </div>
         </div>
       </v-container>
@@ -35,25 +49,37 @@
 <script>
 /* eslint-disable no-console */
 import Funcoes from "@/assets/json/form2.json";
-import RowSwitch from "@/components/RowSwitch";
-import FormHeader from "@/components/forms/FormHeader";
 import { mapGetters } from "vuex";
 export default {
-  data: () => ({
-    funcoes: Object.values(Funcoes),
-    hide: false
-  }),
+  data: () => ({ funcoes: Object.values(Funcoes), hide: false, width: 0 }),
   components: {
-    RowSwitch: RowSwitch,
-    FormHeader: FormHeader
+    BaseTextField: () => import("@/components/BaseTextField"),
+    RowSwitch: () => import("@/components/RowSwitch"),
+    FormHeader: () => import("@/components/forms/FormHeader")
+  },
+  mounted() {
+    window.addEventListener("resize", this.setWidth);
   },
   methods: {
     showHide(status) {
       this.hide = status;
+    },
+    setWidth() {
+      this.width = window.innerWidth;
     }
+  },
+  created() {
+    this.setWidth();
   },
   computed: mapGetters(["theme"])
 };
 </script>
 
-<style></style>
+<style scoped>
+.big-padding {
+  padding-left: 5rem;
+}
+.small-padding {
+  padding-left: 0.32rem;
+}
+</style>

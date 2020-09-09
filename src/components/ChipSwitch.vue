@@ -1,8 +1,10 @@
 <template>
   <v-card
     flat
-    class="rescale"
-    :class="`${theme.dark ? 'default-grey' : theme.color}`"
+    :class="
+      `${theme.dark ? 'default-grey' : theme.color}
+      ${this.width >= 960 ? 'big-width' : 'small-width'}`
+    "
   >
     <v-card-text>
       <v-btn-toggle dense rounded mandatory v-model="toggle_exclusive">
@@ -22,23 +24,36 @@ import { mapGetters } from "vuex";
 export default {
   data: () => ({
     toggle_exclusive: true,
-    innerValue: false
+    innerValue: false,
+    width: 0
   }),
   props: ["values"],
   methods: {
     status() {
       this.innerValue = !this.innerValue;
       this.$emit("toggle", this.innerValue);
+    },
+    setWidth() {
+      this.width = window.innerWidth;
     }
   },
   computed: {
     ...mapGetters(["theme"])
+  },
+  mounted() {
+    window.addEventListener("resize", this.setWidth);
+  },
+  created() {
+    this.setWidth();
   }
 };
 </script>
 
 <style scoped>
-.rescale {
+.big-width {
+  transform: scale(0.75, 0.75);
+}
+.small-width {
   transform: scale(0.5, 0.5);
 }
 </style>

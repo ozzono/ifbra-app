@@ -18,6 +18,7 @@
                 <v-col class="text-center" :cols="SelectCols * 2">
                   <span>Pontuação</span>
                   <Tooltip
+                    :arrayContent="pontuacao"
                     content="Consulte a legenda para mais critérios de preenchimento da pontuação."
                     mdiIcon="mdi-comment-question-outline"
                   />
@@ -25,6 +26,7 @@
                 <v-col class="text-center" :cols="CheckListCols">
                   <span>Barreiras Ambientais</span>
                   <Tooltip
+                    :arrayContent="barreiras"
                     content="Consulte a legenda para mais informações a respeito das Barreiras Ambientais."
                     mdiIcon="mdi-comment-question-outline"
                   />
@@ -110,6 +112,8 @@
 <script>
 /* eslint-disable no-console */
 import Dominios from "@/assets/json/form3.json";
+import pontuacao from "@/assets/json/inss.json";
+import barreiras from "@/assets/json/barreiras.json";
 import { mapGetters, mapActions } from "vuex";
 export default {
   data: () => ({
@@ -117,6 +121,8 @@ export default {
     SelectCols: 3,
     CheckListCols: 6,
     Dominios: Object.values(Dominios),
+    pontuacao: Object.values(pontuacao),
+    barreiras: Object.values(barreiras),
     Barreiras: ["P e T", "Amb", "A e R", "At", "SS e P"],
     INSS: ["25", "50", "75", "100"],
     hide: false

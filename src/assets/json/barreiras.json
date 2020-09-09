@@ -1,7 +1,22 @@
 [
-    { "MainCol":"P e T", "DescCol":"Produtos e Tecnologia: Qualquer produto, instrumento, equipamento ou tecnologia adaptado ou especialmente projetado para melhorar a funcionalidade de uma pessoa com deficiência. Exclui cuidadores e assistentes pessoais." },
-    { "MainCol":"Amb", "DescCol":"Ambiente: Refere-se ao ambiente natural ou físico. Aspectos geográficos, populacionais, da flora, da fauna, do clima, guerras e conflitos." },
-    { "MainCol":"A e R", "DescCol":"Apoio e Relacionamento: Pessoas ou animais que fornecem apoio físico ou emocional prático, educação, proteção e assistência e de relacionamento com outras pessoas em todos os aspectos da vida diária. Excluir as atitudes das pessoas que fornecem o apoio." },
-    { "MainCol":"At", "DescCol":"Atitude: São as consequências observáveis dos costumes, práticas, ideologias, valores, normas e crenças. Excluir as atitudes da própria pessoa." },
-    { "MainCol":"SS e P", "DescCol":"Serviços, Sistemas e Políticas: Rede de servoços, sistemas e políticas que garantem proteção social." }
+    {
+        "Item":"P e T",
+        "Desc":"Produtos e Tecnologia",
+        "Extras":["Qualquer produto, instrumento, equipamento ou tecnologia adaptado ou especialmente projetado para melhorar a funcionalidade de uma pessoa com deficiência. Exclui cuidadores e assistentes pessoais."]},
+    {
+        "Item":"Amb",
+        "Desc":"Ambiente",
+        "Extras":["Refere-se ao ambiente natural ou físico. Aspectos geográficos, populacionais, da flora, da fauna, do clima, guerras e conflitos."]},
+    {
+        "Item":"A e R",
+        "Desc":"Apoio e Relacionamentos",
+        "Extras":["Pessoas ou animais que fornecem apoio físico ou emocional prático, educação, proteção e assistência e de relacionamento com outras pessoas em todos os aspectos da vida diária. Excluir as atitudes das pessoas que fornecem o apoio."]},
+    {
+        "Item":"At",
+        "Desc":"Atitude",
+        "Extras":["São as consequências observáveis dos costumes, práticas, ideologias, valores, normas e crenças. Excluir as atitudes da própria pessoa."]},
+    {
+        "Item":"SS e P",
+        "Desc":"Serviços, Sistemas e Políticas",
+        "Extras":["Rede de servoços, sistemas e políticas que garantem proteção social."]}
 ]
