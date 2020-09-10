@@ -12,7 +12,7 @@
           <div v-for="(funcao, i) in funcoes[0]" :key="i">
             <v-divider v-if="i > 0" />
             <v-row>
-              <v-col>
+              <v-col class="wrap">
                 <BaseTextField
                   :title="`${i + 1}. ${funcao.Tipo}`"
                   subtitle=""
@@ -70,3 +70,9 @@ export default {
   computed: mapGetters(["theme"])
 };
 </script>
+
+<style scoped>
+.wrap{
+  word-wrap: break-word;
+}
+</style>

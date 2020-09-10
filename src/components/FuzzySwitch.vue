@@ -50,7 +50,6 @@ export default {
           return element._75;
         });
       this.val = _50 || _75;
-      console.log(this.fuzzy)
     }
   },
   computed: {
