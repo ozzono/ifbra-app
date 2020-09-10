@@ -16,10 +16,11 @@
         <v-row align="center" dense class="d-flex">
           <v-col md="3" cols="12">
             <CheckList
-              :innerItems="evaluatorType"
-              innerLabel="Tipo de avaliador"
+              :inner-items="evaluatorType"
+              inner-label="Tipo de avaliador"
               @selected-items="type = $event"
-              ref="checklist"
+              ref="evalType"
+              :inner-hint="hintTypeEval"
             />
           </v-col>
           <v-col md="8" cols="10" class="d-flex">
@@ -28,9 +29,12 @@
               justify-start
               label="Nome do avaliador"
               @keydown.enter="addEval()"
+              :hint="hintEvalName"
+              :persistent-hint="hintEvalName.length > 0"
+              ref="evalName"
             />
           </v-col>
-          <v-col md="1" cols="2" class="d-flex text-center">
+          <v-col md="1" cols="2" class="d-flex justify-center">
             <v-btn @click="addEval()" icon align="center">
               <v-icon>mdi-plus-box</v-icon>
             </v-btn>
@@ -83,7 +87,9 @@ export default {
     evaluatorType: ["Médico", "Assistente Social"],
     name: "",
     type: "",
-    count: 0
+    count: 0,
+    hintTypeEval: "",
+    hintEvalName: ""
   }),
   components: {
     CheckList: () => import("@/components/CheckList"),
@@ -92,6 +98,20 @@ export default {
   methods: {
     ...mapActions(["addEvaluator", "removeEvaluator"]),
     addEval() {
+      if (this.name.length === 0) {
+        this.hintEvalName = "Insira o nome do avaliador";
+        this.$refs.evalName.focus();
+        return;
+      } else {
+        this.hintEvalName = "";
+      }
+      if (this.type.length === 0) {
+        this.hintTypeEval = "Insira tipo de avaliador";
+        this.$refs.evalType.innerFocus();
+        return;
+      } else {
+        this.hintTypeEval = "";
+      }
       const evaluator = {
         id: this.count++,
         type: this.type,
@@ -99,7 +119,7 @@ export default {
       };
       this.addEvaluator(evaluator);
       this.name = "";
-      this.$refs.checklist.clear();
+      this.$refs.evalType.clear();
     }
   },
   computed: mapGetters(["allEvaluators", "theme"])

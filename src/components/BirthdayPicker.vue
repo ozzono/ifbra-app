@@ -1,33 +1,27 @@
 <template>
-  <v-container grid-list-md>
-    <v-layout row wrap>
-      <v-flex>
-        <v-menu
-          ref="menu"
-          v-model="menu"
-          :close-on-content-click="false"
-          :nudge-right="40"
-          transition="scale-transition"
-        >
-          <template v-slot:activator="{ on }">
-            <v-text-field
-              v-model="dateFormatted"
-              label="Date"
-              append-icon="mdi-calendar"
-              @blur="date = parseDate(dateFormatted)"
-              v-on="on"
-            ></v-text-field>
-          </template>
-          <v-date-picker
-            v-model="date"
-            no-title
-            @input="menu = false"
-            locale="pt-BR"
-          ></v-date-picker>
-        </v-menu>
-      </v-flex>
-    </v-layout>
-  </v-container>
+  <v-menu
+    ref="menu"
+    v-model="menu"
+    :close-on-content-click="false"
+    :nudge-right="40"
+    transition="scale-transition"
+  >
+    <template v-slot:activator="{ on }">
+      <v-text-field
+        v-model="dateFormatted"
+        label="Date"
+        append-icon="mdi-calendar"
+        @blur="date = parseDate(dateFormatted)"
+        v-on="on"
+      ></v-text-field>
+    </template>
+    <v-date-picker
+      v-model="date"
+      no-title
+      @input="menu = false"
+      locale="pt-BR"
+    ></v-date-picker>
+  </v-menu>
 </template>
 
 <script>

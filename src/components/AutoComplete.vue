@@ -4,13 +4,15 @@
       <v-col cols="12">
         <v-autocomplete
           :items="innerItems"
-          chips
-          small-chips
           :label="innerLabel"
           :multiple="allowMultiple"
           dense
+          hide-selected
+          :hint="innerHint"
+          :persistent-hint="innerHint.length > 0"
           :clearable="allowMultiple"
-        ></v-autocomplete>
+          :messages="messages"
+        />
         <!-- outlined -->
         <!-- dense -->
       </v-col>
@@ -24,7 +26,7 @@ export default {
   data: () => ({
     value: null
   }),
-  props: ["innerItems", "innerLabel", "allowMultiple"]
+  props: ["innerItems", "innerLabel", "allowMultiple", "innerHint", "messages"]
   // props: {
   //   innerItems: Object,
   //   innerLabel: String,

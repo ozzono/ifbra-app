@@ -9,10 +9,10 @@
     <v-card-text>
       <v-btn-toggle dense rounded mandatory v-model="toggle_exclusive">
         <v-btn @click="status()" :color="!innerValue ? 'primary' : ''">
-          <v-icon>exibir</v-icon>
+          exibir
         </v-btn>
         <v-btn @click="status()" :color="innerValue ? 'primary' : ''">
-          <v-icon>ocultar</v-icon>
+          ocultar
         </v-btn>
       </v-btn-toggle>
     </v-card-text>
@@ -22,6 +22,8 @@
 <script>
 import { mapGetters } from "vuex";
 export default {
+  // TODO: refactor this shitty Switch
+  // Build it from the ground
   data: () => ({
     toggle_exclusive: true,
     innerValue: false,
@@ -51,9 +53,12 @@ export default {
 
 <style scoped>
 .big-width {
-  transform: scale(0.75, 0.75);
+  transform: scale(0.9, 0.9);
 }
 .small-width {
-  transform: scale(0.5, 0.5);
+  transform: scale(0.6, 0.6);
+}
+.wrap {
+  flex-direction: column;
 }
 </style>

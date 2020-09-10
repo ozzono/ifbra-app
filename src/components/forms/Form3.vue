@@ -63,6 +63,7 @@
                     :md="SelectCols"
                   >
                     <CheckList
+                      inner-hint=""
                       class="checklist"
                       :makeDense="true"
                       :inner-items="INSS"
@@ -79,6 +80,7 @@
                     :md="SelectCols"
                   >
                     <CheckList
+                      inner-hint=""
                       class="checklist"
                       :makeDense="true"
                       :inner-items="INSS"
@@ -91,6 +93,7 @@
                   </v-col>
                   <v-col class="align-start" :cols="12" :md="CheckListCols">
                     <CheckList
+                      inner-hint=""
                       class="checklist"
                       :makeDense="true"
                       inner-label="Barreira Ambiental"

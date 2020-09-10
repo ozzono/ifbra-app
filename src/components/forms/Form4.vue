@@ -11,7 +11,11 @@
         <div v-bind:class="{ 'd-none': hide }">
           <v-row class="flex">
             <v-col :cols="12">
-              Domínios e Atividades
+              <BaseTextField
+                title="Domínios e Atividades"
+                subtitle=""
+                comment=""
+              />
             </v-col>
           </v-row>
           <div v-for="(deficiecia, i) in Deficiencias" :key="i">
@@ -67,6 +71,7 @@ export default {
   components: {
     FuzzySwitch: () => import("@/components/FuzzySwitch"),
     RowSwitch: () => import("@/components/RowSwitch"),
+    BaseTextField: () => import("@/components/BaseTextField"),
     FormHeader: () => import("@/components/forms/FormHeader")
   },
   computed: {

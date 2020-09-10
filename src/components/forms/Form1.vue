@@ -17,13 +17,14 @@
               <v-text-field label="Lotação" />
             </v-col>
             <v-col md="3" cols="6">
-              <CheckList :inner-items="sexo" inner-label="Sexo"></CheckList>
+              <CheckList
+                inner-hint=""
+                :inner-items="sexo"
+                inner-label="Sexo"
+              ></CheckList>
             </v-col>
           </v-row>
           <v-row align="center" dense class="flex">
-            <v-col md="3" cols="6">
-              <v-text-field label="Matrícula" />
-            </v-col>
             <v-col md="3" cols="6" justify="space-around">
               <BirthdayPicker
                 inner-label="Data de nascimento"
@@ -44,29 +45,33 @@
               />
             </v-col>
             <v-col md="3" cols="6">
-              <CheckList :inner-items="Form[7]" inner-label="Etnia"></CheckList>
+              <v-text-field label="Matrícula" />
             </v-col>
-          </v-row>
-          <v-row align="center" dense class="flex">
-            <v-card-subtitle>Tipo de Deficiência</v-card-subtitle>
+            <v-col md="3" cols="6">
+              <CheckList
+                inner-hint=""
+                :inner-items="Form[7]"
+                inner-label="Etnia"
+              ></CheckList>
+            </v-col>
           </v-row>
           <v-row align="center" dense class="flex">
             <v-col md="3" cols="6">
               <CheckList
+                inner-hint=""
+                inner-label="Tipo de Deficiência"
                 :inner-items="Form[6]"
                 :allow-multiple="true"
               ></CheckList>
             </v-col>
           </v-row>
           <v-row align="center" dense class="flex">
-            <v-card-subtitle>Diagnóstico Médico</v-card-subtitle>
-          </v-row>
-          <v-row align="center" dense class="flex">
             <v-col md="6" cols="12">
               <AutoComplete
                 :inner-items="CID10[2]"
                 :allow-multiple="true"
-                inner-label="CID"
+                inner-label="Diagnóstico médico"
+                inner-hint="CID"
               />
             </v-col>
           </v-row>
@@ -75,12 +80,13 @@
               <v-text-field label="Local da Avaliação" />
             </v-col>
             <v-col md="2" cols="2">
-              <CheckList :inner-items="uf" inner-label="UF" />
+              <CheckList inner-hint="" :inner-items="uf" inner-label="UF" />
             </v-col>
           </v-row>
           <v-row align="center" dense class="flex">
             <v-col md="3" cols="6">
               <CheckList
+                inner-hint=""
                 :inner-items="Form[8].Informante"
                 inner-label="Quem prestou as informações"
                 @selected-items="setInformante($event)"

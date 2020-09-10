@@ -7,7 +7,10 @@
     :multiple="allowMultiple"
     :clearable="allowMultiple"
     :outlined="makeOutlined"
+    :hint="innerHint"
+    :persistent-hint="innerHint.length > 0"
     @change="$emit('selected-items', selectedItems)"
+    ref="select"
   >
     <template v-if="allowMultiple" v-slot:prepend-item>
       <v-list-item ripple @click="toggle">
@@ -37,7 +40,8 @@ export default {
     "allowMultiple",
     "makeClearable",
     "makeOutlined",
-    "makeDense"
+    "makeDense",
+    "innerHint"
   ],
   computed: {
     allItems() {
@@ -65,6 +69,9 @@ export default {
     },
     clear() {
       this.selectedItems = [];
+    },
+    innerFocus() {
+      this.$refs.select.focus();
     }
   }
 };
