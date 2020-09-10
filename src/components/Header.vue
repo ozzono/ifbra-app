@@ -24,6 +24,8 @@
             v-for="(item, i) in menu"
             :key="i"
             :to="item[1]"
+            class="margin"
+            tile
           >
             {{ item[0] }}
           </v-btn>
@@ -71,5 +73,8 @@ export default {
 }
 .filler {
   height: 5rem;
+}
+.margin{
+  margin-right: 0.2rem;
 }
 </style>

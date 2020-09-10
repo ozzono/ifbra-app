@@ -10,7 +10,7 @@
     <span>
       <div v-if="arrayContent.length > 0">
         <v-row v-for="(row, i) in arrayContent" :key="i">
-          <v-col cols="2" class="align-center text-end d-flex">{{
+          <v-col cols="2" class="align-center justify-center d-flex">{{
             row.Item
           }}</v-col>
           <v-col cols="10">{{ row.Desc }}</v-col>
@@ -35,5 +35,3 @@ export default {
   }
 };
 </script>
-
-<style></style>

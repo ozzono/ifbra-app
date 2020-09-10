@@ -25,11 +25,7 @@
               v-for="(subfuncao, j) in funcao.SubFuncao"
               :key="j"
             >
-              <v-col
-                cols="2"
-                class="align-center d-flex"
-                :class="`${width >= 960 ? 'big-padding' : 'small-padding'}`"
-              >
+              <v-col cols="2" class="align-center d-flex justify-center">
                 <RowSwitch />
               </v-col>
               <v-col cols="10">
@@ -74,12 +70,3 @@ export default {
   computed: mapGetters(["theme"])
 };
 </script>
-
-<style scoped>
-.big-padding {
-  padding-left: 5rem;
-}
-.small-padding {
-  padding-left: 0.32rem;
-}
-</style>

@@ -3,18 +3,22 @@
     <h3 class="text-center">Legenda</h3>
     <v-container>
       <v-card :class="`${!theme.dark ? theme.color : ''}`">
-        <BaseTextField
+        <LighterTextField
           title="Detalhamento de pontuação do INSS"
           comment=""
           subtitle=""
         />
         <v-row>
-          <v-col cols="3" md="2" class="text-center">
+          <v-col
+            cols="2"
+            class="d-flex justify-center align-center"
+            :class="{ 'vertical vertical-pad': width < 960 }"
+          >
             <span>
               Pontuação
             </span>
           </v-col>
-          <v-col class="text-center">
+          <v-col class="d-flex justify-center align-center">
             <span>
               Critério
             </span>
@@ -25,7 +29,6 @@
           <v-row>
             <v-col
               cols="2"
-              md="2"
               class="align-center justify-center d-flex font-weight-bold"
             >
               {{ pont.Item }}
@@ -38,7 +41,7 @@
                   md="2"
                   cols="1"
                 >
-                  <div :class="`${width >= 960 ? '' : 'align-left vertical'}`">
+                  <div :class="{ 'vertical align-left': width < 960 }">
                     Observações
                   </div>
                 </v-col>
@@ -75,26 +78,27 @@
       </v-card>
     </v-container>
     <v-container>
-      <v-card>
-        <v-row>
-          <v-col class="header font-weight-medium text-center">
-            Descrição das Barreiras
-          </v-col>
-        </v-row>
+      <v-card :class="`${!theme.dark ? theme.color : ''}`">
+        <LighterTextField
+          title="Descrição das Barreiras"
+          subtitle=""
+          comment=""
+          colorClass="default-grey"
+        />
         <v-row v-for="(item, i) in BarreirasDesc" :key="i">
-          <v-col class="align-center justify-center d-flex" cols="1" md="2">
-            <span :class="`${width >= 960 ? '' : 'wrap'}`">
+          <v-col class="align-center justify-center d-flex" cols="2">
+            <span :class="{ wrap: width < 960 }">
               {{ item.Item }}
             </span>
           </v-col>
           <v-col
             class="align-center justify-center d-flex"
-            :class="`${width >= 960 ? 'big-padding' : 'vertical'}`"
+            :class="{ vertical: width < 960 }"
             cols="3"
           >
             {{ item.Desc }}
           </v-col>
-          <v-col class="align-center justify-center d-flex">
+          <v-col class="align-center d-flex">
             {{ item.Extras[0] }}
           </v-col>
         </v-row>
@@ -128,26 +132,14 @@ export default {
   },
   computed: mapGetters(["theme"]),
   components: {
-    BaseTextField: () => import("@/components/BaseTextField")
+    LighterTextField: () => import("@/components/LighterTextField")
   }
 };
 </script>
 
 <style scoped>
-.header {
-  padding-left: 1rem;
-}
-.desc {
-  min-width: 3rem;
-}
 h3 {
   padding-top: 1rem;
-}
-.big-padding {
-  padding-left: 5.5rem;
-}
-.small-padding {
-  padding-left: 2rem;
 }
 .vertical {
   transform: rotate(270deg);
@@ -155,5 +147,9 @@ h3 {
 .wrap {
   width: 1ch;
   word-break: break-all;
+}
+.vertical-pad {
+  font-size: 80%;
+  margin-top: 1rem;
 }
 </style>

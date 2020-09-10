@@ -4,7 +4,7 @@
         "Desc":"Não realiza a atividade ou é totalmente dependente de terceiros para realizá-la. Não participa de nenhuma etapa da atividade.",
         "Extras":[
             {
-                "Detalhe":"Se é necessário o auxílio de 2 ou mais pessoas o escore deve ser 25: totalmente dependente.",
+                "Detalhe":"Se é necessário o auxílio de 2 ou mais pessoas o escore deve ser 25 - totalmente dependente.",
                 "Exemplos":[]
             }
         ]
@@ -53,7 +53,7 @@
                 "Exemplos":[]
             },
             {
-                "Detalhe":"Realiza a atividade sem nenhuma modificação, realizando-a da forma e velocidade habitual.",
+                "Detalhe":"Realiza a atividade sem nenhuma modificação, realizando-a com forma e velocidade habitual.",
                 "Exemplos":[]
             }
         ]
