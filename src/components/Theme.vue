@@ -13,6 +13,7 @@
 </template>
 
 <script>
+/* eslint-disable no-console */
 import { mapGetters } from "vuex";
 export default {
   data: () => ({
@@ -29,6 +30,11 @@ export default {
   },
   computed: {
     ...mapGetters(["theme"])
+  },
+  mounted() {
+    if (this.$route.query.dark) {
+      this.setTheme();
+    }
   }
 };
 </script>

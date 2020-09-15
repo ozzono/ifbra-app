@@ -6,15 +6,14 @@
           :items="innerItems"
           :label="innerLabel"
           :multiple="allowMultiple"
-          dense
           hide-selected
           :hint="innerHint"
           :persistent-hint="innerHint.length > 0"
           :clearable="allowMultiple"
           :messages="messages"
+          v-model="text"
+          @blur="$emit('inner-blur', text)"
         />
-        <!-- outlined -->
-        <!-- dense -->
       </v-col>
     </v-row>
   </div>
@@ -24,7 +23,8 @@
 export default {
   name: "AutoComplete",
   data: () => ({
-    value: null
+    value: null,
+    text: ""
   }),
   props: ["innerItems", "innerLabel", "allowMultiple", "innerHint", "messages"]
   // props: {

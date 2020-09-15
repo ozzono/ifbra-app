@@ -11,6 +11,7 @@
     :persistent-hint="innerHint.length > 0"
     @change="$emit('selected-items', selectedItems)"
     ref="select"
+    :rules="isRequired(selectedItems)"
   >
     <template v-if="allowMultiple" v-slot:prepend-item>
       <v-list-item ripple @click="toggle">
@@ -41,7 +42,8 @@ export default {
     "makeClearable",
     "makeOutlined",
     "makeDense",
-    "innerHint"
+    "innerHint",
+    "allowClean" //required by default
   ],
   computed: {
     allItems() {
@@ -72,6 +74,11 @@ export default {
     },
     innerFocus() {
       this.$refs.select.focus();
+    },
+    isRequired(val) {
+      if (!this.allowClean) {
+        return [(val || "").length > 0 || "Campo Obrigatório"];
+      }
     }
   }
 };

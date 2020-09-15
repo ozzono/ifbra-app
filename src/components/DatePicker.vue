@@ -38,7 +38,7 @@ export default {
     },
     date() {
       this.dateFormatted = this.formatDate(this.date);
-      this.$emit("datechange", this.date);
+      this.$emit("date-change", this.date);
     }
   },
   methods: {

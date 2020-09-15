@@ -9,7 +9,7 @@
           @toggle="showHide($event)"
         />
         <div v-bind:class="{ 'd-none': hide }">
-          <div v-for="(funcao, i) in funcoes[0]" :key="i">
+          <div v-for="(funcao, i) in funcoes" :key="i">
             <v-divider v-if="i > 0" />
             <v-row>
               <v-col class="wrap">
@@ -25,8 +25,11 @@
               v-for="(subfuncao, j) in funcao.SubFuncao"
               :key="j"
             >
-              <v-col cols="2" class="align-center d-flex justify-center">
-                <RowSwitch />
+              <v-col
+                cols="2"
+                :class="`align-center d-flex ${width >= 960 ? 'md' : 'sm'}`"
+              >
+                <RowSwitch @switch-change="updateSubFunction({ i: i, j: j })" />
               </v-col>
               <v-col cols="10">
                 <BaseTextField
@@ -45,9 +48,9 @@
 <script>
 /* eslint-disable no-console */
 import Funcoes from "@/assets/json/form2.json";
-import { mapGetters } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 export default {
-  data: () => ({ funcoes: Object.values(Funcoes), hide: false, width: 0 }),
+  data: () => ({ funcoes: Object.values(Funcoes)[0], hide: false, width: 0 }),
   components: {
     BaseTextField: () => import("@/components/BaseTextField"),
     RowSwitch: () => import("@/components/RowSwitch"),
@@ -62,17 +65,22 @@ export default {
     },
     setWidth() {
       this.width = window.innerWidth;
-    }
+    },
+    ...mapActions(["setFunctions", "updateSubFunction"])
   },
   created() {
     this.setWidth();
+    this.setFunctions(this.funcoes);
   },
-  computed: mapGetters(["theme"])
+  computed: mapGetters(["theme", "bodyFunctions"])
 };
 </script>
 
 <style scoped>
-.wrap{
+.wrap {
   word-wrap: break-word;
+}
+.md {
+  padding-left: 2.7rem;
 }
 </style>

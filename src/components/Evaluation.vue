@@ -10,7 +10,10 @@
         <v-row align="center" dense class="d-flex">
           <v-col md="3" cols="6">
             <!-- small col -->
-            <DatePicker innerLabel="Data da Avaliação"></DatePicker>
+            <DatePicker
+              innerLabel="Data da Avaliação"
+              @date-change="setDate($event)"
+            ></DatePicker>
           </v-col>
         </v-row>
         <v-row align="center" dense class="d-flex">
@@ -21,6 +24,7 @@
               @selected-items="type = $event"
               ref="evalType"
               :inner-hint="hintTypeEval"
+              :allow-clean="true"
             />
           </v-col>
           <v-col md="8" cols="10" class="d-flex">
@@ -45,7 +49,6 @@
           :key="evaluator.id"
           align="center"
           dense
-          outlined
           class="d-flex"
         >
           <v-col md="3" cols="6" class="d-flex">
@@ -68,7 +71,7 @@
               class="align-start"
             />
           </v-col>
-          <v-col md="1" cols="1" class="d-flex">
+          <v-col md="1" cols="1" class="d-flex justify-center">
             <v-btn @click="removeEvaluator(evaluator.id)" icon align="center">
               <v-icon>mdi-minus-box</v-icon>
             </v-btn>
@@ -89,14 +92,17 @@ export default {
     type: "",
     count: 0,
     hintTypeEval: "",
-    hintEvalName: ""
+    hintEvalName: "",
+    requiredRule: val => {
+      (val || "").length || "Campo obrigatório";
+    }
   }),
   components: {
     CheckList: () => import("@/components/CheckList"),
     DatePicker: () => import("@/components/DatePicker")
   },
   methods: {
-    ...mapActions(["addEvaluator", "removeEvaluator"]),
+    ...mapActions(["addEvaluator", "removeEvaluator", "setDate"]),
     addEval() {
       if (this.name.length === 0) {
         this.hintEvalName = "Insira o nome do avaliador";
@@ -120,8 +126,9 @@ export default {
       this.addEvaluator(evaluator);
       this.name = "";
       this.$refs.evalType.clear();
-    }
+    },
+    required: val => [(val || "").length > 0 || "Campor obrigatório"]
   },
-  computed: mapGetters(["allEvaluators", "theme"])
+  computed: mapGetters(["allEvaluators", "evalDate", "theme"])
 };
 </script>

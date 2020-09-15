@@ -100,6 +100,7 @@
                       :inner-items="Barreiras"
                       :allow-multiple="true"
                       :make-outlined="true"
+                      @selected-items="addBarrier()"
                     />
                   </v-col>
                 </v-row>
@@ -163,7 +164,7 @@ export default {
       if (this.filledStatus) {
         this.calcScores();
       }
-      this.updateFuzzy({ dominio: dominio, scores: this.allScores });
+      // this.updateFuzzy({ dominio: dominio, scores: this.allScores });
       this.$eventHub.$emit("score");
     }
   },

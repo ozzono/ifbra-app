@@ -31,6 +31,7 @@
           </v-btn>
         </div>
         <v-spacer />
+        <PrintVersion />
         <Theme />
       </v-app-bar>
 
@@ -61,7 +62,8 @@ export default {
     ]
   }),
   components: {
-    Theme: () => import("@/components/Theme")
+    Theme: () => import("@/components/Theme"),
+    PrintVersion: () => import("@/components/PrintVersion")
   },
   computed: mapGetters(["theme"])
 };
