@@ -1,9 +1,12 @@
+/* eslint-disable no-console */
 const state = {
-  evaluators: []
+  evaluators: [],
+  date: ""
 };
 
 const getters = {
-  allEvaluators: state => state.evaluators
+  allEvaluators: state => state.evaluators,
+  evalDate: state => state.date
 };
 
 const actions = {
@@ -14,6 +17,9 @@ const actions = {
   },
   async removeEvaluator({ commit }, id) {
     commit("delEvaluator", id);
+  },
+  setDate({ commit }, date) {
+    commit("mutateDate", date);
   }
 };
 
@@ -21,6 +27,7 @@ const mutations = {
   newEvaluator: (state, evaluator) => {
     state.evaluators.push(evaluator);
   },
+  mutateDate: (state, date) => (state.date = date),
   delEvaluator: (state, id) =>
     (state.evaluators = state.evaluators.filter(
       evaluator => evaluator.id != id

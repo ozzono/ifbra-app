@@ -1,6 +1,8 @@
+/* eslint-disable no-console */
 const state = {
   filled: false,
-  total: {
+  totalScores: [],
+  totalScore: {
     medical: 0,
     social: 0
   },
@@ -8,11 +10,56 @@ const state = {
   linkedScores: []
 };
 const actions = {
-  setScores({ commit }, dominio) {
-    var scores = setValues(dominio);
-    state.scores = scores.dominio;
-    state.linkedScores = scores.linked;
-    commit("mutateScores", state.scores);
+  setScores({ commit }, dominios) {
+    var id = 0;
+    var max = dominios.reduce((output, dominio) => {
+      return output + dominio.SubDominios.length;
+    }, 0);
+    dominios = dominios.reduce((output, dominio) => {
+      return [
+        ...output,
+        {
+          Desc: dominio.Desc,
+          Dominio: dominio.Dominio,
+          SubDominios: dominio.SubDominios.reduce(
+            (innerOutput, { Desc, Detalhe }) => {
+              return [
+                ...innerOutput,
+                {
+                  Desc: Desc,
+                  Detalhe: Detalhe,
+                  id: id++,
+                  next: id === max ? 0 : id,
+                  medical: 1,
+                  social: 1,
+                  barriers: []
+                }
+              ];
+            },
+            []
+          )
+        }
+      ];
+    }, []);
+    var linked = dominios.reduce((output, dominio) => {
+      return [
+        ...output,
+        ...dominio.SubDominios.reduce((innerOutput, { id, next }) => {
+          return [
+            ...innerOutput,
+            {
+              id: id,
+              next: next,
+              medical: 1,
+              social: 1
+            }
+          ];
+        }, [])
+      ];
+    }, []);
+
+    commit("mutateScores", dominios);
+    commit("mutateLinked", linked);
   },
   updateScores({ commit }, score) {
     var value = parseInt(score.value, 10);
@@ -34,99 +81,85 @@ const actions = {
     var i = state.scores[score.i].SubDominios[score.j].id;
     const start = state.linkedScores[i];
     var stop = false;
+    var filled = false;
     while (!stop) {
       if (
-        not0(state.linkedScores[state.linkedScores[i].next].medical) ||
-        not0(state.linkedScores[state.linkedScores[i].next].social)
+        (parseInt(state.linkedScores[state.linkedScores[i].next].medical, 10) ||
+          0) == 0 ||
+        (parseInt(state.linkedScores[state.linkedScores[i].next].social, 10) ||
+          0) == 0
       ) {
-        state.filled = false;
+        filled = false;
         stop = true;
       }
       if (start.id === state.linkedScores[i].next) {
-        state.filled = true;
+        filled = true;
         stop = true;
       }
       i = state.linkedScores[i].next;
     }
-    commit("mutateFilled", state.filled);
+    commit("mutateFilled", filled);
   },
   calcScores({ commit }) {
-    //groups
-    var totalSum = {
-      medical: 0,
-      social: 0
-    };
-    for (let i = 0; i < state.scores.length; i++) {
-      //subgroups
-      var sum = state.scores[i].SubDominios.reduce((accumulator, element) => {
-        return (accumulator = {
-          medical: accumulator.medical + parseInt(element.medical, 10),
-          social: accumulator.social + parseInt(element.social, 10)
-        });
-      });
-      state.scores[i].Average = {
-        medical: sum.medical,
-        social: sum.social
-      };
-      totalSum.medical += parseInt(state.scores[i].Average.medical, 10);
-      totalSum.social += parseInt(state.scores[i].Average.social, 10);
-    }
-    var total = {
-      medical: totalSum.medical,
-      social: totalSum.social
-    };
-    commit("mutateTotal", total);
-    commit("mutateScores", state.scores);
+    commit(
+      "mutateTotals",
+      state.scores.reduce((output, dominio) => {
+        // pass thru every domain
+        return [
+          ...output,
+          {
+            Desc: dominio.Desc, //returns an array with domain name and total
+            total: dominio.SubDominios.reduce(
+              (innerOutput, subDominio) => {
+                return {
+                  //sums the medical and social total score
+                  medical: (innerOutput.medical += parseInt(
+                    subDominio.medical,
+                    10
+                  )),
+                  social: (innerOutput.social += parseInt(
+                    subDominio.social,
+                    10
+                  ))
+                };
+              },
+              {
+                medical: 0,
+                social: 0
+              }
+            )
+          }
+        ];
+      }, [])
+    );
+    commit(
+      "mutateTotal",
+      state.totalScores.reduce(
+        (output, dominio) => {
+          return {
+            medical: (output.medical += dominio.total.medical),
+            social: (output.social += dominio.total.social)
+          };
+        },
+        { medical: 0, social: 0 }
+      )
+    );
+    console.log(state.totalScores);
   }
 };
 const mutations = {
   mutateScores: (state, scores) => (state.scores = scores),
+  mutateLinked: (state, linked) => (state.linkedScores = linked),
   mutateFilled: (state, filled) => (state.filled = filled),
-  mutateTotal: (state, total) => (state.total = total)
+  mutateTotals: (state, total) => (state.totalScores = total),
+  mutateTotal: (state, total) => (state.totalScore = total)
 };
 const getters = {
   filledStatus: state => state.filled,
   allScores: state => state.scores,
-  scoreTotal: state => state.total
+  totalScores: state => state.totalScores,
+  totalScore: state => state.totalScore
 };
-
-function setValues(dominio) {
-  var id = 0;
-  var max = 0;
-  var linked = new Array();
-  dominio.forEach(group => {
-    for (let k = 0; k < group.SubDominios.length; k++) {
-      max++;
-    }
-  });
-  for (let i = 0; i < dominio.length; i++) {
-    for (let j = 0; j < dominio[i].SubDominios.length; j++) {
-      dominio[i].SubDominios[j].id = id++;
-      dominio[i].SubDominios[j].medical = null;
-      dominio[i].SubDominios[j].social = null;
-      if (id === max) {
-        dominio[i].SubDominios[j].next = 0;
-      } else {
-        dominio[i].SubDominios[j].next = id;
-      }
-      var item = {
-        id: dominio[i].SubDominios[j].id,
-        next: dominio[i].SubDominios[j].next,
-        medical: 0,
-        social: 0
-      };
-      linked.push(item);
-    }
-  }
-  return {
-    dominio: dominio,
-    linked: linked
-  };
-}
-
-function not0(input) {
-  return input != null && parseInt(input, 10) === 0;
-}
 
 export default {
   state,
