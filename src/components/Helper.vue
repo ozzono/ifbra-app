@@ -86,13 +86,16 @@
           colorClass="default-grey"
         />
         <v-row v-for="(item, i) in BarreirasDesc" :key="i">
-          <v-col class="align-center justify-center d-flex" cols="2">
+          <v-col
+            class="align-center text-center justify-center d-flex"
+            cols="2"
+          >
             <span :class="{ wrap: width < 960 }">
               {{ item.Item }}
             </span>
           </v-col>
           <v-col
-            class="align-center justify-center d-flex"
+            class="align-center text-center justify-center d-flex"
             :class="{ vertical: width < 960 }"
             cols="3"
           >
