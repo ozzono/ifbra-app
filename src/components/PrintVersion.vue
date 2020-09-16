@@ -110,6 +110,45 @@
                 />
               </v-col>
             </v-row>
+            <div v-for="(dominio, i) in allScores" :key="i">
+              <v-row>
+                <LighterTextField
+                  :title="`${i + 1}. ${dominio.Desc}`"
+                  subtitle=""
+                  comment=""
+                />
+              </v-row>
+              <v-row v-for="(subdominio, j) in dominio.SubDominios" :key="j">
+                <v-col cols="6">
+                  <LighterTextField
+                    :title="`${i + 1}.${j + 1} ${subdominio.Desc}`"
+                    :subtitle="subdominio.Detalhe"
+                    comment=""
+                  />
+                </v-col>
+                <v-col
+                  cols="2"
+                  class="text-center d-flex justify-center align-center"
+                  >Médica: {{ subdominio.medical }}</v-col
+                >
+                <v-col
+                  cols="2"
+                  class="text-center d-flex justify-center align-center"
+                  >Social: {{ subdominio.social }}</v-col
+                >
+                <v-col
+                  cols="2"
+                  class="text-center d-flex justify-center align-center"
+                >
+                  <div v-if="subdominio.barriers.length > 0">
+                    Barreiras:
+                    <span>
+                      {{ subdominio.barriers.join(", ") }}
+                    </span>
+                  </div>
+                </v-col>
+              </v-row>
+            </div>
           </v-container>
           <Report />
           <v-container>
@@ -156,7 +195,8 @@ export default {
     "personal",
     "allEvaluators",
     "evalDate",
-    "bodyFunctions"
+    "bodyFunctions",
+    "allScores"
   ]),
   components: {
     LighterTextField: () => import("@/components/LighterTextField"),

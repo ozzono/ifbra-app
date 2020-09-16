@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 const state = {
-  fuzzy: [],
-  markFuzzy: []
+  fuzzy: []
 };
 // try array.some
 // try array.every
@@ -18,14 +17,6 @@ const actions = {
           dominio: score.Dominio
         };
         return output;
-        // return [
-        //   ...output,
-        //   {
-        //     _50: false,
-        //     _75: false,
-        //     dominio: score.Dominio
-        //   }
-        // ];
       }, [])
     );
   },

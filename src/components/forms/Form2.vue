@@ -50,7 +50,7 @@
 import Funcoes from "@/assets/json/form2.json";
 import { mapActions, mapGetters } from "vuex";
 export default {
-  data: () => ({ funcoes: Object.values(Funcoes)[0], hide: false, width: 0 }),
+  data: () => ({ funcoes: Object.values(Funcoes), hide: false, width: 0 }),
   components: {
     BaseTextField: () => import("@/components/BaseTextField"),
     RowSwitch: () => import("@/components/RowSwitch"),

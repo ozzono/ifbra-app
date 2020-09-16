@@ -144,7 +144,47 @@ const actions = {
         { medical: 0, social: 0 }
       )
     );
-    console.log(state.totalScores);
+  },
+  updateBarrier({ commit }, update) {
+    commit(
+      "mutateScores",
+      state.scores.reduce((output, domain, i) => {
+        return [
+          ...output,
+          i === update.i //changes only the update.i'th domain
+            ? {
+                Desc: domain.Desc,
+                Dominio: domain.Dominio,
+                SubDominios: domain.SubDominios.reduce(
+                  (output, subDominio, j) => {
+                    if (j === update.j) {
+                      //changes only the update.j'th subDomain
+                      subDominio.barriers = update.values.reduce(
+                        (output, value) => {
+                          return [
+                            ...output,
+                            ...update.barriers.reduce((output, barrier) => {
+                              return [
+                                ...output,
+                                ...(value === barrier.Item //matches the incoming barrier values with the detailed barrier object
+                                  ? [barrier.Desc]
+                                  : [])
+                              ];
+                            }, [])
+                          ];
+                        },
+                        []
+                      );
+                    }
+                    return [...output, subDominio];
+                  },
+                  []
+                )
+              }
+            : domain
+        ];
+      }, [])
+    );
   }
 };
 const mutations = {

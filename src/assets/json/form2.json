@@ -1,124 +1,122 @@
-{
-  "Funcao": [
-    {
-      "Tipo": "Funções Mentais",
-      "SubFuncao": [
-        {
-          "Tipo": "Funções Mentais Globais",
-          "Detalhe": "Consciência, orientação, (tempo, lugar, pessoa), intelectuais (inclui desenvolvimento cognitivo e intelectual), psicossociais (inclui autismo), temperamento e personalidade, energia e impulsos, sono."
-        },
-        {
-          "Tipo": "Funções Mentais Específicas",
-          "Detalhe": "Atenção, memória, psicomotoras, emocionais, percepção, pensamento, funções executivas, linguagem, cálculo, sequenciamento de movimentos complexos (inclui apraxia), experiência pessoal e do tempo."
-        }
-      ]
-    },
-    {
-      "Tipo": "Funções Sensoriais e Dor",
-      "SubFuncao": [
-        {
-          "Tipo": "Visão e Funções Relacionadas",
-          "Detalhe": "Acuidade visual, campo visual, funções dos músculos internos e externos do olho, da pálpebra, glândulas lacrimais."
-        },
-        {
-          "Tipo": "Funções Auditivas",
-          "Detalhe": "Detecção, descriminação, localização do som e da fala."
-        },
-        {
-          "Tipo": "Funções Vestibulares",
-          "Detalhe": "Relacionadas à posição, equilíbrio e movimento."
-        },
-        {
-          "Tipo": "Dor",
-          "Detalhe": "Sensação desagradável que indica lesão potencial ou real em alguma parte do corpo. Generalizada ou localizada."
-        },
-        {
-          "Tipo": "Funções Sensoriais adicionais",
-          "Detalhe": "Gustativa, olfativa, proprioceptiva, tátil, à dor, temperatura."
-        }
-      ]
-    },
-    {
-      "Tipo": "Funções da Voz e da Fala",
-      "SubFuncao": [
-        {
-          "Tipo": "Voz, articulação, fluência, ritmo da fala",
-          "Detalhe": ""
-        }
-      ]
-    },
-    {
-      "Tipo": "Funções dos Sistemas Cardiovasculares, Hematológico, Imunológico e Respiratório",
-      "SubFuncao": [
-        {
-          "Tipo": "Funções do Sistema Cardiovascular",
-          "Detalhe": "Função do coração, vasos sanguíneos, pressão arterial."
-        },
-        {
-          "Tipo": "Funções do Sistema Hematológico",
-          "Detalhe": "Produção de sangue, transporte de oxigênio e metabólitos e de coagulação."
-        },
-        {
-          "Tipo": "Função do Sistema Imunológico",
-          "Detalhe": "Resposta imunológica, reações de hipersensibilidade, funções do sistema linfático."
-        },
-        {
-          "Tipo": "Função do Sistema Respiratório",
-          "Detalhe": "Respiratórias, dos músculos respiratórios, da tolerância aos exercícios."
-        }
-      ]
-    },
-    {
-      "Tipo": "Função dos Sistemas Digestivo, Metabólico e Endócrino",
-      "SubFuncao": [
-        {
-          "Tipo": "Funções dos Sistemas Digestivos",
-          "Detalhe": "Ingestão, deglutição, digestivas, assimilação, defecação, manutenção de peso."
-        },
-        {
-          "Tipo": "Função do Metabolismo e Sistema Endócrino",
-          "Detalhe": "Funções metabólicas gerais, equilíbrio hídrico, mineral e eletrolítico, termorreguladoras, das glândulas endócrinas."
-        }
-      ]
-    },
-    {
-      "Tipo": "Funções Genitourinárias e Reprodutivas",
-      "SubFuncao": [
-        {
-          "Tipo": "Funções Urinárias",
-          "Detalhe": "Funções de filtragem, coleta e excreção de urina."
-        },
-        {
-          "Tipo": "Funções Genitais e Reprodutivas",
-          "Detalhe": "Funções mentais e físicas/motoras relacionadas ao ato sexual, da menstruação e da procriação."
-        }
-      ]
-    },
-    {
-      "Tipo": "Funções Neuromusculoesqueléticas e relacionadas ao movimento",
-      "SubFuncao": [
-        {
-          "Tipo": "Funções das Articulações e dos Ossos",
-          "Detalhe": "Mobilidade, estabilidade das articulações e ossos."
-        },
-        {
-          "Tipo": "Funções Musculares",
-          "Detalhe": "Força, tônus e resistência muscular."
-        },
-        {
-          "Tipo": "Funções dos Movimentos",
-          "Detalhe": "Reflexo motor, movimentos involuntários, controle dos movimentos voluntários, padrão de marcha, sensações relacionadas aos músculos e funções do movimento."
-        }
-      ]
-    },
-    {
-      "Tipo": "Funções de Pele e Estruturas Relacionadas",
-      "SubFuncao": [
-        {
-          "Tipo": "Funções da pele, pelos e unhas",
-          "Detalhe": "Protetora, reparadora, sensação relacionada à pele, pelos e unhas."
-        }
-      ]
-    }
-  ]
-}
+[
+  {
+    "Tipo": "Funções Mentais",
+    "SubFuncao": [
+      {
+        "Tipo": "Funções Mentais Globais",
+        "Detalhe": "Consciência, orientação, (tempo, lugar, pessoa), intelectuais (inclui desenvolvimento cognitivo e intelectual), psicossociais (inclui autismo), temperamento e personalidade, energia e impulsos, sono."
+      },
+      {
+        "Tipo": "Funções Mentais Específicas",
+        "Detalhe": "Atenção, memória, psicomotoras, emocionais, percepção, pensamento, funções executivas, linguagem, cálculo, sequenciamento de movimentos complexos (inclui apraxia), experiência pessoal e do tempo."
+      }
+    ]
+  },
+  {
+    "Tipo": "Funções Sensoriais e Dor",
+    "SubFuncao": [
+      {
+        "Tipo": "Visão e Funções Relacionadas",
+        "Detalhe": "Acuidade visual, campo visual, funções dos músculos internos e externos do olho, da pálpebra, glândulas lacrimais."
+      },
+      {
+        "Tipo": "Funções Auditivas",
+        "Detalhe": "Detecção, descriminação, localização do som e da fala."
+      },
+      {
+        "Tipo": "Funções Vestibulares",
+        "Detalhe": "Relacionadas à posição, equilíbrio e movimento."
+      },
+      {
+        "Tipo": "Dor",
+        "Detalhe": "Sensação desagradável que indica lesão potencial ou real em alguma parte do corpo. Generalizada ou localizada."
+      },
+      {
+        "Tipo": "Funções Sensoriais adicionais",
+        "Detalhe": "Gustativa, olfativa, proprioceptiva, tátil, à dor, temperatura."
+      }
+    ]
+  },
+  {
+    "Tipo": "Funções da Voz e da Fala",
+    "SubFuncao": [
+      {
+        "Tipo": "Voz, articulação, fluência, ritmo da fala",
+        "Detalhe": ""
+      }
+    ]
+  },
+  {
+    "Tipo": "Funções dos Sistemas Cardiovasculares, Hematológico, Imunológico e Respiratório",
+    "SubFuncao": [
+      {
+        "Tipo": "Funções do Sistema Cardiovascular",
+        "Detalhe": "Função do coração, vasos sanguíneos, pressão arterial."
+      },
+      {
+        "Tipo": "Funções do Sistema Hematológico",
+        "Detalhe": "Produção de sangue, transporte de oxigênio e metabólitos e de coagulação."
+      },
+      {
+        "Tipo": "Função do Sistema Imunológico",
+        "Detalhe": "Resposta imunológica, reações de hipersensibilidade, funções do sistema linfático."
+      },
+      {
+        "Tipo": "Função do Sistema Respiratório",
+        "Detalhe": "Respiratórias, dos músculos respiratórios, da tolerância aos exercícios."
+      }
+    ]
+  },
+  {
+    "Tipo": "Função dos Sistemas Digestivo, Metabólico e Endócrino",
+    "SubFuncao": [
+      {
+        "Tipo": "Funções dos Sistemas Digestivos",
+        "Detalhe": "Ingestão, deglutição, digestivas, assimilação, defecação, manutenção de peso."
+      },
+      {
+        "Tipo": "Função do Metabolismo e Sistema Endócrino",
+        "Detalhe": "Funções metabólicas gerais, equilíbrio hídrico, mineral e eletrolítico, termorreguladoras, das glândulas endócrinas."
+      }
+    ]
+  },
+  {
+    "Tipo": "Funções Genitourinárias e Reprodutivas",
+    "SubFuncao": [
+      {
+        "Tipo": "Funções Urinárias",
+        "Detalhe": "Funções de filtragem, coleta e excreção de urina."
+      },
+      {
+        "Tipo": "Funções Genitais e Reprodutivas",
+        "Detalhe": "Funções mentais e físicas/motoras relacionadas ao ato sexual, da menstruação e da procriação."
+      }
+    ]
+  },
+  {
+    "Tipo": "Funções Neuromusculoesqueléticas e relacionadas ao movimento",
+    "SubFuncao": [
+      {
+        "Tipo": "Funções das Articulações e dos Ossos",
+        "Detalhe": "Mobilidade, estabilidade das articulações e ossos."
+      },
+      {
+        "Tipo": "Funções Musculares",
+        "Detalhe": "Força, tônus e resistência muscular."
+      },
+      {
+        "Tipo": "Funções dos Movimentos",
+        "Detalhe": "Reflexo motor, movimentos involuntários, controle dos movimentos voluntários, padrão de marcha, sensações relacionadas aos músculos e funções do movimento."
+      }
+    ]
+  },
+  {
+    "Tipo": "Funções de Pele e Estruturas Relacionadas",
+    "SubFuncao": [
+      {
+        "Tipo": "Funções da pele, pelos e unhas",
+        "Detalhe": "Protetora, reparadora, sensação relacionada à pele, pelos e unhas."
+      }
+    ]
+  }
+]

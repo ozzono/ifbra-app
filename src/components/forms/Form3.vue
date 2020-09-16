@@ -100,7 +100,15 @@
                       :inner-items="Barreiras"
                       :allow-multiple="true"
                       :make-outlined="true"
-                      @selected-items="addBarrier()"
+                      @selected-items="
+                        updateBarrier({
+                          i: i,
+                          j: j,
+                          values: $event,
+                          barriers: barreiras
+                        })
+                      "
+                      :allow-clean="true"
                     />
                   </v-col>
                 </v-row>
@@ -144,7 +152,8 @@ export default {
       "cycleScores",
       "calcScores",
       "makeFuzzy",
-      "updateFuzzy"
+      "updateFuzzy",
+      "updateBarrier"
     ]),
     BaseTextFields(i, j, subdominio) {
       return subdominio.Detalhe.length == 0
@@ -164,7 +173,7 @@ export default {
       if (this.filledStatus) {
         this.calcScores();
       }
-      // this.updateFuzzy({ dominio: dominio, scores: this.allScores });
+      this.updateFuzzy({ dominio: dominio, scores: this.allScores });
       this.$eventHub.$emit("score");
     }
   },

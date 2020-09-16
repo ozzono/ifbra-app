@@ -20,13 +20,17 @@
           </v-row>
           <div v-for="(deficiecia, i) in Deficiencias" :key="i">
             <v-divider v-if="i > 0" class="hidden-md-and-up" :inset="true" />
-            <v-row class="align-center justify-center d-flex">
+            <v-row class="align-center text-center justify-center d-flex">
               <v-col class="text-center" md="2" cols="12">
                 Deficiência {{ deficiecia.Desc }}
               </v-col>
               <v-col cols="10">
                 <v-container>
-                  <v-row class="align-center justify-center d-flex" flat tile>
+                  <v-row
+                    class="align-center text-center justify-center d-flex"
+                    flat
+                    tile
+                  >
                     <v-col class="text-center" cols="12" md="4">
                       <RowSwitch :innerLabel="deficiecia.Obs" />
                     </v-col>

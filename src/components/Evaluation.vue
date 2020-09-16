@@ -38,7 +38,11 @@
               ref="evalName"
             />
           </v-col>
-          <v-col md="1" cols="2" class="d-flex justify-center">
+          <v-col
+            md="1"
+            cols="2"
+            class="d-flex justify-center align-center text-center"
+          >
             <v-btn @click="addEval()" icon align="center">
               <v-icon>mdi-plus-box</v-icon>
             </v-btn>

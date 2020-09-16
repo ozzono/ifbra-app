@@ -28,7 +28,6 @@ const actions = {
         ];
       }, [])
     );
-    console.log(state.bodyFunctions);
   },
   updateSubFunction({ commit }, { i, j }) {
     commit(
@@ -59,7 +58,6 @@ const actions = {
         ];
       }, [])
     );
-    console.log(state.bodyFunctions[i]);
   }
 };
 const mutations = {
