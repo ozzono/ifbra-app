@@ -4,7 +4,7 @@
       <v-dialog
         v-model="dialog"
         fullscreen
-        hide-overlay
+        scrollable
         transition="dialog-bottom-transition"
       >
         <template v-slot:activator="{ on, attrs }">
@@ -12,7 +12,7 @@
             <v-icon>mdi-printer</v-icon>
           </v-btn>
         </template>
-        <v-card>
+        <v-card :class="`${theme.dark ? '' : theme.color}`">
           <v-toolbar tile dense dark color="primary print-hidden">
             <v-toolbar-title>Visualizar impressão</v-toolbar-title>
             <v-spacer />
@@ -24,6 +24,7 @@
           <v-card-text>
             <v-container>
               <h1 class="text-center">Avaliação Médica Funcional</h1>
+              <!-- start form 1 -->
               <v-row>
                 <v-col>
                   <LighterTextField
@@ -72,6 +73,9 @@
               <v-row>
                 <v-col>Histórico Clínico: {{ personal.history || "" }}</v-col>
               </v-row>
+              <!-- end form 1 -->
+              <MiniReport />
+              <!-- start form 2 -->
               <v-row>
                 <v-col>
                   <LighterTextField
@@ -101,6 +105,8 @@
                   </v-col>
                 </v-row>
               </div>
+              <!-- end form 2 -->
+              <!-- start form 3 -->
               <v-row>
                 <v-col>
                   <LighterTextField
@@ -131,28 +137,35 @@
                   <v-col
                     cols="2"
                     class="text-center d-flex justify-center align-center"
-                    >Médica: {{ subdominio.medical }}</v-col
                   >
-                  <v-col
-                    cols="2"
-                    class="text-center d-flex justify-center align-center"
-                    >Social: {{ subdominio.social }}</v-col
-                  >
+                    Médica: {{ subdominio.medical }}
+                  </v-col>
                   <v-col
                     cols="2"
                     class="text-center d-flex justify-center align-center"
                   >
-                    <div v-if="subdominio.barriers.length > 0">
-                      Barreiras:
-                      <span>
-                        {{ subdominio.barriers.join(", ") }}
-                      </span>
+                    Social: {{ subdominio.social }}
+                  </v-col>
+                  <v-col
+                    cols="2"
+                    class="text-center d-flex justify-center align-center"
+                  >
+                    <div>
+                      {{
+                        subdominio.barriers.length > 0
+                          ? `Barreira${
+                              subdominio.barriers.length > 1 ? "s" : ""
+                            }: ${subdominio.barriers.join(", ")}`
+                          : "Nenhuma barreira assinalada."
+                      }}
                     </div>
                   </v-col>
                 </v-row>
               </div>
             </v-container>
             <Report />
+            <!-- end form 3 -->
+            <!-- start form 4 -->
             <v-container>
               <v-row>
                 <v-col>
@@ -164,6 +177,8 @@
                 </v-col>
               </v-row>
             </v-container>
+            <!-- end form 4  -->
+            <ScrollTop />
           </v-card-text>
         </v-card>
       </v-dialog>
@@ -204,17 +219,14 @@ export default {
     "allEvaluators",
     "evalDate",
     "bodyFunctions",
-    "allScores"
+    "allScores",
+    "theme"
   ]),
   components: {
+    ScrollTop: () => import("@/components/ScrollTop"),
     LighterTextField: () => import("@/components/LighterTextField"),
+    MiniReport: () => import("@/components/MiniReport"),
     Report: () => import("@/components/Report")
   }
 };
 </script>
-
-<style scoped>
-.print-btn {
-  /* margin-left: 4rem; */
-}
-</style>

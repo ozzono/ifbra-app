@@ -63,11 +63,11 @@
                     :md="SelectCols"
                   >
                     <CheckList
-                      inner-hint=""
+                      inner-label=""
                       class="checklist"
                       :makeDense="true"
                       :inner-items="INSS"
-                      inner-label="Médica"
+                      inner-hint="Médica"
                       :make-outlined="true"
                       @selected-items="
                         refreshScores('medical', i, j, $event, dominio.Dominio)
@@ -80,11 +80,11 @@
                     :md="SelectCols"
                   >
                     <CheckList
-                      inner-hint=""
+                      inner-label=""
                       class="checklist"
                       :makeDense="true"
                       :inner-items="INSS"
-                      inner-label="Social"
+                      inner-hint="Social"
                       :make-outlined="true"
                       @selected-items="
                         refreshScores('social', i, j, $event, dominio.Dominio)
@@ -93,10 +93,10 @@
                   </v-col>
                   <v-col class="align-start" :cols="12" :md="CheckListCols">
                     <CheckList
-                      inner-hint=""
+                      inner-label=""
                       class="checklist"
                       :makeDense="true"
-                      inner-label="Barreira Ambiental"
+                      inner-hint="Barreira Ambiental"
                       :inner-items="Barreiras"
                       :allow-multiple="true"
                       :make-outlined="true"

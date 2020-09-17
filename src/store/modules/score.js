@@ -1,4 +1,10 @@
 /* eslint-disable no-console */
+const ranges = [
+  [0, 5740],
+  [5740, 6355],
+  [6355, 7585],
+  [7585, 8200]
+];
 const state = {
   filled: false,
   totalScores: [],
@@ -7,7 +13,8 @@ const state = {
     social: 0
   },
   scores: [],
-  linkedScores: []
+  linkedScores: [],
+  degree: ""
 };
 const actions = {
   setScores({ commit }, dominios) {
@@ -144,6 +151,11 @@ const actions = {
         { medical: 0, social: 0 }
       )
     );
+    commit(
+      "mutateDegree",
+      getDegree(state.totalScore.medical + state.totalScore.medical)
+    );
+    console.log(state.degree);
   },
   updateBarrier({ commit }, update) {
     commit(
@@ -192,14 +204,35 @@ const mutations = {
   mutateLinked: (state, linked) => (state.linkedScores = linked),
   mutateFilled: (state, filled) => (state.filled = filled),
   mutateTotals: (state, total) => (state.totalScores = total),
-  mutateTotal: (state, total) => (state.totalScore = total)
+  mutateTotal: (state, total) => (state.totalScore = total),
+  mutateDegree: (state, degree) => (state.degree = degree)
 };
 const getters = {
   filledStatus: state => state.filled,
   allScores: state => state.scores,
   totalScores: state => state.totalScores,
-  totalScore: state => state.totalScore
+  totalScore: state => state.totalScore,
+  degree: state => state.degree
 };
+
+function rangeCheck(val, range) {
+  return range[0] <= val && val < range[1];
+}
+
+function getDegree(val) {
+  switch (true) {
+    case rangeCheck(val, ranges[0]):
+      return "grave";
+    case rangeCheck(val, ranges[1]):
+      return "moderada";
+    case rangeCheck(val, ranges[2]):
+      return "leve";
+    case rangeCheck(val, ranges[3]):
+      return "insuficiente";
+    default:
+      break;
+  }
+}
 
 export default {
   state,
