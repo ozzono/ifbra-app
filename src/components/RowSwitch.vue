@@ -11,7 +11,7 @@
 <script>
 export default {
   data: () => ({
-    switchValue: false
+    innerValue: false
   }),
   name: "RowSwitch",
   props: {
@@ -21,8 +21,8 @@ export default {
   },
   methods: {
     changeThis() {
-      this.switchValue = !this.switchValue;
-      this.$emit("switch-change", this.switchValue);
+      this.innerValue = !this.innerValue;
+      this.$emit("switch-change", this.innerValue);
     }
   }
 };

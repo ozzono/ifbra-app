@@ -7,6 +7,7 @@
           v-show="fab"
           fab
           dark
+          small
           fixed
           bottom
           right
