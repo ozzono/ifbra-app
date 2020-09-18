@@ -8,7 +8,6 @@
           comment="Matriz"
           @toggle="showHide($event)"
         />
-        <v-btn @click="log()">meh</v-btn>
         <div v-bind:class="{ 'd-none': hide }">
           <v-row>
             <v-col>Dados do Avaliado</v-col>
