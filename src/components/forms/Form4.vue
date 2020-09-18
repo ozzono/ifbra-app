@@ -18,7 +18,7 @@
               />
             </v-col>
           </v-row>
-          <div v-for="(deficiecia, i) in Deficiencias" :key="i">
+          <div v-for="(deficiecia, i) in Fuzzy" :key="i">
             <v-divider v-if="i > 0" class="hidden-md-and-up" :inset="true" />
             <v-row class="align-center text-center justify-center d-flex">
               <v-col class="text-center" md="2" cols="12">
@@ -32,11 +32,17 @@
                     tile
                   >
                     <v-col class="text-center" cols="12" md="4">
-                      <RowSwitch :innerLabel="deficiecia.Obs" />
+                      <v-switch
+                        @change="updatePrint(i)"
+                        v-model="printFuzzy[i].severe"
+                        :label="deficiecia.Obs"
+                      />
                     </v-col>
                     <v-col cols="12" md="4">
-                      <RowSwitch
-                        innerLabel="Não dispõe de auxílio de terceiros sempre que necessário."
+                      <v-switch
+                        @change="updatePrint(i)"
+                        v-model="printFuzzy[i].needAid"
+                        label="Não dispõe de auxílio de terceiros sempre que necessário."
                       />
                     </v-col>
                     <v-col cols="12" md="4">
@@ -65,16 +71,16 @@
 
 <script>
 /* eslint-disable no-console */
-import Deficiencias from "@/assets/json/form4.json";
-import { mapGetters } from "vuex";
+import Fuzzy from "@/assets/json/form4.json";
+import { mapActions, mapGetters } from "vuex";
 export default {
   data: () => ({
-    Deficiencias: Object.values(Deficiencias),
-    hide: false
+    Fuzzy: Object.values(Fuzzy),
+    hide: false,
+    printFuzzy: {}
   }),
   components: {
     FuzzySwitch: () => import("@/components/FuzzySwitch"),
-    RowSwitch: () => import("@/components/RowSwitch"),
     BaseTextField: () => import("@/components/BaseTextField"),
     FormHeader: () => import("@/components/forms/FormHeader")
   },
@@ -83,14 +89,29 @@ export default {
   },
   methods: {
     strNormalize(str) {
-      return str.normalize("NFD").replace(/[^a-zA-Zs]/g, "");
+      return str
+        .split(" ")
+        .normalize("NFD")
+        .replace(/[^a-zA-Zs]/g, "")
+        .join(" ");
     },
     showHide(status) {
       this.hide = status;
-    }
+    },
+    setFuzzySwitch() {
+      this.printFuzzy = Fuzzy.reduce((output, row) => {
+        return [...output, { Desc: row.Desc, needAid: false, severe: false }];
+      }, []);
+    },
+    updatePrint(i) {
+      this.updatePrintFuzzy(this.printFuzzy[i]);
+    },
+    ...mapActions(["makePrintFuzzy", "updatePrintFuzzy"])
   },
   created() {
     this.$eventHub.$emit("score");
+    this.makePrintFuzzy(Fuzzy);
+    this.setFuzzySwitch();
   }
 };
 </script>
