@@ -155,7 +155,6 @@ const actions = {
       "mutateDegree",
       getDegree(state.totalScore.medical + state.totalScore.medical)
     );
-    console.log(state.degree);
   },
   updateBarrier({ commit }, update) {
     commit(
