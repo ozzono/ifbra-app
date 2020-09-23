@@ -26,11 +26,8 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .wrap-word {
   word-break: keep-all;
-}
-.default-grey {
-  background-color: #121212 !important;
 }
 </style>

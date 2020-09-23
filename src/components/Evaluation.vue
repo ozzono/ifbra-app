@@ -10,10 +10,10 @@
         <v-row align="center" dense class="d-flex">
           <v-col md="3" cols="6">
             <!-- small col -->
-            <DatePicker
-              innerLabel="Data da Avaliação"
+            <DateDialog
+              label="Data da Avaliação"
               @date-change="setDate($event)"
-            ></DatePicker>
+            ></DateDialog>
           </v-col>
         </v-row>
         <v-row align="center" dense class="d-flex">
@@ -103,7 +103,7 @@ export default {
   }),
   components: {
     CheckList: () => import("@/components/CheckList"),
-    DatePicker: () => import("@/components/DatePicker")
+    DateDialog: () => import("@/components/DateDialog")
   },
   methods: {
     ...mapActions(["addEvaluator", "removeEvaluator", "setDate"]),

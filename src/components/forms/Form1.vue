@@ -39,8 +39,8 @@
           </v-row>
           <v-row align="center" dense class="flex">
             <v-col md="3" cols="6" justify="space-around">
-              <BirthdayPicker
-                inner-label="Data de nascimento"
+              <DateDialog
+                label="Data de nascimento"
                 @date-change="calcAge($event)"
                 startYear="70"
                 @date="fieldValues.birthday = $event"
@@ -182,7 +182,7 @@ export default {
     CID10: Object.values(CID10)
   }),
   components: {
-    BirthdayPicker: () => import("@/components/BirthdayPicker"),
+    DateDialog: () => import("@/components/DateDialog"),
     AutoComplete: () => import("@/components/AutoComplete"),
     FormHeader: () => import("@/components/forms/FormHeader"),
     CheckList: () => import("@/components/CheckList")
@@ -198,7 +198,7 @@ export default {
         age--;
       }
       this.idade.number = age;
-      this.idade.text = `${age} anos`;
+      this.idade.text = isNaN(age) ? "Data inválida" : `${age} anos`;
       this.fieldValues.age = age;
     },
     showHide(status) {

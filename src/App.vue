@@ -46,4 +46,7 @@ export default {
     display: contents;
   }
 }
+.default-grey {
+  background-color: #121212 !important;
+}
 </style>
