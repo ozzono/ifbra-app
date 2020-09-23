@@ -243,10 +243,6 @@ export default {
       }
       this.fieldValues.informant.name = this.informante.nome;
     },
-    log() {
-      this.setInfo(this.fieldValues);
-      console.log(this.personal);
-    },
     required: val => [(val || "").length > 0 || "Campo obrigatório!"]
   },
   computed: {

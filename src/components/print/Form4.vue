@@ -103,7 +103,6 @@ export default {
         .join(" ");
     },
     setDomains() {
-      console.log([this.fuzzy, this.printFuzzy]);
       this.fuzzySwitch = this.printFuzzy.reduce(
         (out1, el1) => [
           ...out1,
@@ -115,7 +114,6 @@ export default {
         ],
         []
       );
-      console.log(this.fuzzySwitch);
     }
   },
   created() {

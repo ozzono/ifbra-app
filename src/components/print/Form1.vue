@@ -12,7 +12,13 @@
     <v-row />
     <v-row>
       <v-col v-if="allEvaluators.length > 0">
-        Data da Avaliação: {{ evalDate }}
+        Data da Avaliação:
+        {{
+          evalDate
+            .split("-")
+            .reverse()
+            .join("/")
+        }}
       </v-col>
     </v-row>
     <v-row v-for="evaluator in allEvaluators" :key="evaluator.id">
@@ -66,7 +72,7 @@ export default {
   components: {
     LighterTextField: () => import("@/components/LighterTextField")
   },
-  computed: mapGetters(["personal", "allEvaluators"]),
+  computed: mapGetters(["evalDate", "personal", "allEvaluators"]),
   methods: {
     setBirthday() {
       return (this.personal.birthday || "").length > 0

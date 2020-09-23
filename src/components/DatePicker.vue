@@ -38,12 +38,13 @@ export default {
     },
     date() {
       this.dateFormatted = this.formatDate(this.date);
-      this.$emit("date-change", this.date);
+      // this.$emit("date-change", this.date);
     }
   },
   methods: {
     save(date) {
       this.$refs.menu.save(date);
+      this.$emit("date-change", date);
     },
     formatDate(date) {
       if (!date) return null;

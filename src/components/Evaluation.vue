@@ -133,6 +133,6 @@ export default {
     },
     required: val => [(val || "").length > 0 || "Campor obrigatório"]
   },
-  computed: mapGetters(["allEvaluators", "evalDate", "theme"])
+  computed: mapGetters(["allEvaluators", "theme"])
 };
 </script>
