@@ -182,7 +182,6 @@ export default {
   },
   created() {
     this.setScores(Dominios);
-    this.makeFuzzy(this.allScores);
   }
 };
 </script>

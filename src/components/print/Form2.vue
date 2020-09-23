@@ -9,18 +9,46 @@
         />
       </v-col>
     </v-row>
+    <v-row />
     <div v-for="(bodyFunction, i) in bodyFunctions" :key="i">
-      <v-row v-for="(subFunction, j) in bodyFunction.SubFunction" :key="j">
-        <v-col cols="2" class="d-flex align-center justify-center text-center">
-          <v-switch readonly v-model="subFunction.checked" />
-        </v-col>
+      <v-row>
         <v-col>
           <LighterTextField
-            :title="`${i + 1}.${j + 1} ${subFunction.Type}:`"
-            :subtitle="`${subFunction.Detail}`"
+            :title="`${i + 1}. ${bodyFunction.Type}`"
+            subtitle=""
             comment=""
           />
         </v-col>
+      </v-row>
+      <v-row v-for="(subFunction, j) in bodyFunction.SubFunction" :key="j">
+        <v-card flat tile class="d-flex justify-start text-left">
+          <!-- <v-card
+            flat
+            tile
+            class="d-flex text-center align-center left-pad d-print-none"
+          >
+            <v-switch readonly v-model="subFunction.checked" inset />
+          </v-card> -->
+          <v-card
+            flat
+            tile
+            class="d-flex text-center align-center d-none left-pad"
+          >
+            <p v-if="subFunction.checked">
+              <v-icon>mdi-checkbox-marked</v-icon>
+            </p>
+            <p v-else>
+              <v-icon>mdi-checkbox-blank-outline</v-icon>
+            </p>
+          </v-card>
+          <v-card flat tile>
+            <LighterTextField
+              :title="`${i + 1}.${j + 1} ${subFunction.Type}:`"
+              :subtitle="`${subFunction.Detail}`"
+              comment=""
+            />
+          </v-card>
+        </v-card>
       </v-row>
     </div>
   </div>
@@ -36,4 +64,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.left-pad {
+  padding-left: 3rem;
+}
+</style>

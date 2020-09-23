@@ -9,6 +9,7 @@
         />
       </v-col>
     </v-row>
+    <v-row />
     <v-row>
       <v-col v-if="allEvaluators.length > 0">
         Data da Avaliação: {{ evalDate }}
@@ -35,7 +36,7 @@
             : ""
         }}
       </v-col>
-      <v-col>Idade: {{ personal.age || "" }} anos</v-col>
+      <v-col>Idade: {{ `${personal.age} anos` || "" }}</v-col>
     </v-row>
     <v-row>
       <v-col>Matrícula: {{ personal.registry || "" }}</v-col>

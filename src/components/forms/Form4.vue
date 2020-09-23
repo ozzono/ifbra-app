@@ -48,14 +48,15 @@
                     <v-col cols="12" md="4">
                       <FuzzySwitch
                         :innerLabel="
-                          `Houve pontuação 25 ou 50 em alguma atividade dos domínios ${deficiecia.Dominios.join(
-                            ' ou '
-                          )}; OU Houve pontuação 75 em todas atividade dos domínios ${deficiecia.Dominios.join(
-                            ' ou '
+                          `Houve pontuação 25 ou 50 em alguma atividade dos domínios ${formatDomain(
+                            deficiecia.Dominios
+                          )}; OU Houve pontuação 75 em todas atividade dos domínios ${formatDomain(
+                            deficiecia.Dominios
                           )}`
                         "
                         :dominios="deficiecia.Dominios"
                         :read-only="true"
+                        :normalize="strNormalize"
                       />
                     </v-col>
                   </v-row>
@@ -85,16 +86,23 @@ export default {
     FormHeader: () => import("@/components/forms/FormHeader")
   },
   computed: {
-    ...mapGetters(["fuzzy", "theme"])
+    ...mapGetters(["fuzzy", "theme", "allScores"])
   },
   methods: {
-    strNormalize(str) {
-      return str
+    strNormalize: str =>
+      str
         .split(" ")
-        .normalize("NFD")
-        .replace(/[^a-zA-Zs]/g, "")
-        .join(" ");
-    },
+        .reduce(
+          (output, el) => [
+            ...output,
+            el
+              .normalize("NFD")
+              .replace(/[^a-zA-Zs]/g, "")
+              .toLowerCase()
+          ],
+          []
+        )
+        .join(" "),
     showHide(status) {
       this.hide = status;
     },
@@ -106,12 +114,30 @@ export default {
     updatePrint(i) {
       this.updatePrintFuzzy(this.printFuzzy[i]);
     },
-    ...mapActions(["makePrintFuzzy", "updatePrintFuzzy"])
+    formatDomain(domain) {
+      return domain
+        .reduce(
+          (out, el) => [
+            ...out,
+            this.strNormalize(el) === "socializacao"
+              ? "Socialização e Vida Comunitária"
+              : el
+          ],
+          []
+        )
+        .join(" ou ");
+    },
+    ...mapActions(["makePrintFuzzy", "updatePrintFuzzy", "makeFuzzy"])
   },
   created() {
     this.$eventHub.$emit("score");
     this.makePrintFuzzy(Fuzzy);
     this.setFuzzySwitch();
+    this.makeFuzzy({
+      scores: this.allScores,
+      Fuzzy,
+      normalize: this.strNormalize
+    });
   }
 };
 </script>

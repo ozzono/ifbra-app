@@ -1,5 +1,5 @@
 <template>
-  <v-container class="scroll-y">
+  <v-container class="print-hidden scroll-y">
     <v-layout align-center justify-center>
       <v-flex>
         <v-btn

@@ -6,7 +6,6 @@
     <Form3 />
     <Report />
     <Form4 />
-    <ScrollTop />
   </div>
 </template>
 
@@ -18,8 +17,7 @@ export default {
     Form2: () => import("@/components/forms/Form2"),
     Form3: () => import("@/components/forms/Form3"),
     Report: () => import("@/components/Report"),
-    Form4: () => import("@/components/forms/Form4"),
-    ScrollTop: () => import("@/components/ScrollTop"),
+    Form4: () => import("@/components/forms/Form4")
   }
 };
 </script>

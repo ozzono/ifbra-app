@@ -33,16 +33,30 @@ const actions = {
       }, [])
     );
   },
-  makeFuzzy({ commit }, scores) {
+  makeFuzzy({ commit }, input) {
+    var dominios = input.Fuzzy.reduce((output, element) => {
+      return [
+        ...output,
+        ...element.Dominios.filter(innerEl => {
+          return !output.some(innerOut => innerOut === innerEl);
+        })
+      ];
+    }, []).map(input.normalize);
     commit(
       "mutateFuzzy",
-      scores.reduce((output, score) => {
-        output[`${score.Dominio}`] = {
-          _50: false,
-          _75: false,
-          dominio: score.Dominio
-        };
-        return output;
+      input.scores.reduce((output, score) => {
+        return [
+          ...output,
+          ...(dominios.some(el => input.normalize(score.Dominio) === el)
+            ? [
+                {
+                  Desc: score.Desc,
+                  Dominio: input.normalize(score.Dominio),
+                  switch: false
+                }
+              ]
+            : [])
+        ];
       }, [])
     );
   },
@@ -50,30 +64,35 @@ const actions = {
     var dominio = update.scores.filter(score => {
       return score.Dominio.toLowerCase().includes(update.dominio.toLowerCase());
     })[0];
-    state.fuzzy[update.dominio.toLowerCase()]._50 = dominio.SubDominios.some(
-      subdominio => {
-        return (
-          parseInt(subdominio.medical, 10) <= 50 ||
-          parseInt(subdominio.social, 10) <= 50
-        );
-      }
-    );
-    state.fuzzy[update.dominio.toLowerCase()]._75 = state.fuzzy[
-      update.dominio.toLowerCase()
-    ]._50
-      ? false
-      : (state.fuzzy[
-          update.dominio.toLowerCase()
-        ]._75 = dominio.SubDominios.every(subdominio => {
+    commit(
+      "mutateFuzzy",
+      state.fuzzy.reduce((fuzzyOutput, fuzzyRow) => {
+        var _50 = dominio.SubDominios.some(subdominio => {
           return (
-            parseInt(subdominio.medical, 10) == 75 &&
-            parseInt(subdominio.social, 10) == 75
+            parseInt(subdominio.medical, 10) <= 50 ||
+            parseInt(subdominio.social, 10) <= 50
           );
-        }));
-    state.fuzzy[update.dominio.toLowerCase()].switch =
-      state.fuzzy[update.dominio.toLowerCase()]._50 ||
-      state.fuzzy[update.dominio.toLowerCase()]._75;
-    commit("mutateFuzzy", state.fuzzy);
+        });
+        var _75 = _50
+          ? false
+          : dominio.SubDominios.every(subdominio => {
+              return (
+                parseInt(subdominio.medical, 10) == 75 &&
+                parseInt(subdominio.social, 10) == 75
+              );
+            });
+        return [
+          ...fuzzyOutput,
+          fuzzyRow.Dominio.includes(update.dominio.toLowerCase())
+            ? {
+                Desc: fuzzyRow.Desc,
+                Dominio: fuzzyRow.Dominio,
+                switch: _50 || _75
+              }
+            : fuzzyRow
+        ];
+      }, [])
+    );
   }
 };
 

@@ -20,12 +20,10 @@
         </v-col>
       </v-row>
       <v-row v-for="(subdominio, j) in dominio.SubDominios" :key="j">
+        <v-divider v-if="j > 0" />
         <v-col cols="6">
-          <LighterTextField
-            :title="`${i + 1}.${j + 1} ${subdominio.Desc}`"
-            :subtitle="subdominio.Detalhe"
-            comment=""
-          />
+          <p class="h5 font-weight-regular">{{ `${i + 1}.${j + 1} ${subdominio.Desc}` }}</p>
+          <p class="h6 font-weight-regular">{{ subdominio.Detalhe }}</p>
         </v-col>
         <v-col cols="2" class="text-center d-flex justify-center align-center">
           Médica: {{ subdominio.medical }}

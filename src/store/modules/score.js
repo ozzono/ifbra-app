@@ -37,8 +37,8 @@ const actions = {
                   Detalhe: Detalhe,
                   id: id++,
                   next: id === max ? 0 : id,
-                  medical: 1,
-                  social: 1,
+                  medical: null,
+                  social: null,
                   barriers: []
                 }
               ];
@@ -57,8 +57,8 @@ const actions = {
             {
               id: id,
               next: next,
-              medical: 1,
-              social: 1
+              medical: 0,
+              social: 0
             }
           ];
         }, [])

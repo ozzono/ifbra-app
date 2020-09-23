@@ -35,7 +35,9 @@
         <v-item-group class="btn-group">
           <v-row>
             <v-col>
-              <PrintVersion />
+              <v-btn>
+                <v-icon @click="showPrintView()">mdi-printer</v-icon>
+              </v-btn>
             </v-col>
             <v-col>
               <Theme />
@@ -59,7 +61,8 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+/* eslint-disable no-console */
+import { mapActions, mapGetters } from "vuex";
 export default {
   data: () => ({
     drawer: false,
@@ -72,16 +75,19 @@ export default {
     width: 0
   }),
   components: {
-    Theme: () => import("@/components/Theme"),
-    PrintVersion: () => import("@/components/PrintVersion")
+    Theme: () => import("@/components/Theme")
   },
   computed: mapGetters(["theme"]),
   mounted() {
     window.addEventListener("resize", this.setWidth);
   },
   methods: {
+    ...mapActions(["updatePrintView"]),
     setWidth() {
       this.width = window.innerWidth;
+    },
+    showPrintView() {
+      this.updatePrintView();
     }
   }
 };
