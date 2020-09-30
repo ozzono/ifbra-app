@@ -4,6 +4,7 @@ import Home from "@/components/Home";
 import Helper from "@/components/Helper";
 import Manual from "@/components/Manual";
 import CID10 from "@/components/CID10";
+import Info from "@/components/Info";
 
 Vue.use(Router);
 
@@ -23,6 +24,11 @@ export default new Router({
       path: "/manual",
       name: "manual",
       component: Manual
+    },
+    {
+      path: "/info",
+      name: "info",
+      component: Info
     },
     {
       path: "/cid10",

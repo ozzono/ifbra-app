@@ -8,7 +8,7 @@
         :class="`${!theme.dark ? 'light-blue darken-3' : ''}`"
       >
         <div class="hidden-md-and-up">
-          <v-btn @click="drawer = true">Menu</v-btn>
+          <v-btn @click="drawer = true" tile>Menu</v-btn>
         </div>
         <v-toolbar-title class="title">IFBr-A</v-toolbar-title>
         <div class="hidden-sm-and-down">
@@ -32,17 +32,24 @@
           </v-btn>
         </div>
         <v-spacer />
-        <v-item-group class="btn-group">
-          <v-row>
-            <v-col>
-              <v-btn>
-                <v-icon @click="showPrintView()">mdi-printer</v-icon>
-              </v-btn>
-            </v-col>
-            <v-col>
+        <v-item-group>
+          <v-card class="d-flex flex-row align-center">
+            <v-card flat tile>
+              <div class="hidden-md-and-up">
+                <v-btn text tile small>
+                  <v-icon @click="showPrintView()">mdi-printer</v-icon>
+                </v-btn>
+              </div>
+              <div class="hidden-sm-and-down">
+                <v-btn text tile>
+                  <v-icon @click="showPrintView()">mdi-printer</v-icon>
+                </v-btn>
+              </div>
+            </v-card>
+            <v-card>
               <Theme />
-            </v-col>
-          </v-row>
+            </v-card>
+          </v-card>
         </v-item-group>
       </v-app-bar>
 
@@ -88,6 +95,7 @@ export default {
     },
     showPrintView() {
       this.updatePrintView();
+      this.$eventHub.$emit("force-blur");
     }
   }
 };
@@ -102,8 +110,5 @@ export default {
 }
 .margin {
   margin-right: 0.2rem;
-}
-.btn-group {
-  margin-right: 1rem;
 }
 </style>

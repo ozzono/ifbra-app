@@ -27,7 +27,7 @@
       <!-- </v-card> -->
     </v-row>
 
-    <v-dialog v-model="dialog" width="20rem" @keyup.esc="log(false)">
+    <v-dialog v-model="dialog" width="20rem">
       <v-card class="text-center" flat tile>
         <v-btn tile text block @click="dialogShow(false)">
           Fechar
@@ -61,19 +61,16 @@ export default {
   methods: {
     dialogShow(show) {
       this.dialog = show;
-      this.forceBlur();
-    },
-    log: m => console.log(m),
-    forceBlur() {
-      let el = this.$el.querySelector(":focus");
-      if (el) el.blur();
+      this.$eventHub.$emit("force-blur");
     }
   },
   watch: {
     textDate: function() {
       this.$emit("date-change", this.textDate);
     },
-    dialog: "forceBlur",
+    dialog() {
+      this.$eventHub.$emit("force-blur");
+    },
     date() {
       this.$emit("date", this.date);
       this.textDate = this.date
@@ -86,7 +83,7 @@ export default {
   mounted() {
     // Close modal with 'esc' key
     document.addEventListener("keydown", e => {
-      if (e.keyCode == 27) {
+      if (e.keyCode == 27 && this.dialog) {
         this.dialogShow(false);
       }
     });

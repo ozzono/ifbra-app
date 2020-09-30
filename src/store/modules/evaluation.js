@@ -19,7 +19,6 @@ const actions = {
     commit("delEvaluator", id);
   },
   setDate({ commit }, date) {
-    console.log(date);
     commit("mutateDate", date);
   }
 };

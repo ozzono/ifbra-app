@@ -1,9 +1,13 @@
 <template>
-  <div>CID10 page to be done</div>
+  <v-container>
+    <DevAlert />
+  </v-container>
 </template>
 
 <script>
-export default {};
+export default {
+  components: { DevAlert: () => import("@/components/DevAlert") }
+};
 </script>
 
 <style></style>

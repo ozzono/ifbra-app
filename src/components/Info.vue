@@ -1,22 +1,31 @@
 <template>
   <v-container>
-    <DevAlert />
-    <v-card color="basil" class="d-none">
-      <v-card-title class="text-center justify-center py-6">
-        <h1 class="font-weight-bold display-3 basil--text">BASiL</h1>
+    <v-card>
+      <v-card-title class="text-center justify-center">
+        <h1 class="font-weight-bold display-3">
+          Informações Legais
+        </h1>
       </v-card-title>
 
-      <v-tabs v-model="tab" background-color="transparent" color="basil" grow>
-        <v-tab v-for="item in items" :key="item">
-          {{ item }}
+      <v-tabs v-model="tab" background-color="transparent" grow>
+        <v-tab>
+          Legenda
         </v-tab>
+        <v-tab>Manual</v-tab>
+        <v-tab>CID10</v-tab>
       </v-tabs>
 
       <v-tabs-items v-model="tab">
-        <v-tab-item v-for="item in items" :key="item">
-          <v-card color="basil" flat>
-            <v-card-text>{{ text }}</v-card-text>
+        <v-tab-item>
+          <v-card flat>
+            <Helper />
           </v-card>
+        </v-tab-item>
+        <v-tab-item>
+          <v-card>Manual</v-card>
+        </v-tab-item>
+        <v-tab-item>
+          <v-card>CID10</v-card>
         </v-tab-item>
       </v-tabs-items>
     </v-card>
@@ -28,13 +37,12 @@ export default {
   data() {
     return {
       tab: null,
-      items: ["Appetizers", "Entrees", "Deserts", "Cocktails"],
       text:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
     };
   },
   components: {
-    DevAlert: () => import("@/components/DevAlert")
+    Helper: () => import("@/components/Helper")
   }
 };
 </script>

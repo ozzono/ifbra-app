@@ -36,8 +36,7 @@ export default {
     },
     toTop() {
       this.$vuetify.goTo(0);
-      let el = this.$el.querySelector(":focus");
-      if (el) el.blur();
+      this.$eventHub.$emit("force-blur");
     }
   }
 };

@@ -2,12 +2,12 @@
   <div class="form" :class="`${!theme.dark ? theme.color : ''}`">
     <v-flex>
       <v-container>
-        <v-row align="center" dense class="d-flex">
-          <v-col>
-            <h2 class="text-center">Avaliação Médica e Funcional</h2>
-          </v-col>
+        <v-row dense class="d-flex text-center justify-center">
+          <h1 class="font-weight-bold display-3 basil--text">
+            Avaliação Médica Funcional
+          </h1>
         </v-row>
-        <v-row align="center" dense class="d-flex">
+        <v-row dense class="d-flex text-center justify-start">
           <v-col md="3" cols="6">
             <!-- small col -->
             <DateDialog
@@ -16,7 +16,7 @@
             ></DateDialog>
           </v-col>
         </v-row>
-        <v-row align="center" dense class="d-flex">
+        <v-row dense class="d-flex text-center justify-center">
           <v-col md="3" cols="12">
             <CheckList
               :inner-items="evaluatorType"

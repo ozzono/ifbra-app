@@ -22,17 +22,14 @@
       </v-row>
       <v-row v-for="(subFunction, j) in bodyFunction.SubFunction" :key="j">
         <v-card flat tile class="d-flex justify-start text-left">
-          <!-- <v-card
-            flat
-            tile
-            class="d-flex text-center align-center left-pad d-print-none"
-          >
-            <v-switch readonly v-model="subFunction.checked" inset />
-          </v-card> -->
           <v-card
             flat
             tile
-            class="d-flex text-center align-center d-none left-pad"
+            :class="
+              `d-flex text-center align-center d-none left-pad ${
+                theme.dark ? '' : theme.color
+              }`
+            "
           >
             <p v-if="subFunction.checked">
               <v-icon>mdi-checkbox-marked</v-icon>
@@ -57,7 +54,7 @@
 <script>
 import { mapGetters } from "vuex";
 export default {
-  computed: mapGetters(["bodyFunctions"]),
+  computed: mapGetters(["bodyFunctions", "theme"]),
   components: {
     LighterTextField: () => import("@/components/LighterTextField")
   }
