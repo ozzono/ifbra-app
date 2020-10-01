@@ -56,7 +56,7 @@ export default {
         text: [
           "Documento publicado pelo Ministério da Mulher, Família e dos Direitos Humanos junto à Secretaria Nacional dos Direitos da Pessoa com Deficiência, SNDPD, com apanhado histórico e detalhamento da análise biopsicossocial a partir da utilização do índice de funcionalidade brasileiro."
         ],
-        icon: "mdi-city"
+        icon: "mdi-account-search"
       },
       {
         ref: "portaria",
@@ -66,9 +66,9 @@ export default {
         subtitle:
           "Portaria Interministerial Nº 1 de 2014 que regulou a aplicação do índice",
         text: [
-          "Documento com publicação conjunta do SDH, MPS, MF, MOG e AGU aprova o instrumento destinado à avaliaçãodo segurado da Previdência Social e à identificaçãodos graus de deficiência, bem comodefine impedimento de longo prazo."
+          "Publicação conjunta do SDH, MPS, MF, MOG e AGU que aprova o instrumento destinado à avaliaçãodo segurado da Previdência Social e à identificaçãodos graus de deficiência, bem comodefine impedimento de longo prazo."
         ],
-        icon: "mdi-clipboard-text"
+        icon: "mdi-file-document"
       }
     ]
   }),

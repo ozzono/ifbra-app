@@ -11,13 +11,14 @@
 </template>
 
 <script>
+/* eslint-disable no-console */
 import { mapActions, mapGetters } from "vuex";
 export default {
   components: {
     Header: () => import("@/components/Header"),
     Footer: () => import("@/components/Footer"),
     PrintView: () => import("@/components/print/PrintView"),
-    ScrollTop: () => import("@/components/ScrollTop"),
+    ScrollTop: () => import("@/components/ScrollTop")
   },
   methods: {
     ...mapActions(["updatePrintView"]),
@@ -26,10 +27,16 @@ export default {
     },
     close() {
       this.updatePrintView();
+    },
+    forceBlur() {
+      let el = this.$el.querySelector(":focus");
+      if (el) el.blur();
     }
   },
   created() {
     this.$eventHub.$on("theme", this.setTheme);
+    this.$eventHub.$on("force-blur", this.forceBlur);
+    console.clear()
   },
   computed: mapGetters(["printView"])
 };
