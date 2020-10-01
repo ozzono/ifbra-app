@@ -3,6 +3,7 @@
     <v-row>
       <v-col>
         <LighterTextField
+          text=""
           title="Formulário 3"
           subtitle="Aplicação do Instrumento"
           comment="Matriz"
@@ -13,6 +14,7 @@
       <v-row>
         <v-col>
           <LighterTextField
+            text=""
             :title="`${i + 1}. ${dominio.Desc}`"
             subtitle=""
             comment=""
@@ -22,7 +24,9 @@
       <v-row v-for="(subdominio, j) in dominio.SubDominios" :key="j">
         <v-divider v-if="j > 0" />
         <v-col cols="6">
-          <p class="h5 font-weight-regular">{{ `${i + 1}.${j + 1} ${subdominio.Desc}` }}</p>
+          <p class="h5 font-weight-regular">
+            {{ `${i + 1}.${j + 1} ${subdominio.Desc}` }}
+          </p>
           <p class="h6 font-weight-regular">{{ subdominio.Detalhe }}</p>
         </v-col>
         <v-col cols="2" class="text-center d-flex justify-center align-center">

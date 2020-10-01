@@ -11,6 +11,9 @@
           {{ subtitle }}
           <i v-if="comment.length > 0">({{ comment }})</i>
         </v-card-subtitle>
+        <v-card-text v-for="(item, n) in text" :key="n">
+          {{ item }}
+        </v-card-text>
       </v-card>
     </v-container>
   </v-card>
@@ -20,7 +23,7 @@
 import { mapGetters } from "vuex";
 /* eslint-disable no-console */
 export default {
-  props: ["title", "subtitle", "comment"],
+  props: ["title", "subtitle", "comment", "text"],
   computed: {
     ...mapGetters(["theme"])
   }

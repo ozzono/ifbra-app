@@ -3,6 +3,7 @@
     <v-row>
       <v-col>
         <LighterTextField
+          text=""
           title="Formulário 1"
           subtitle="Identificação do Avaliado e da Avaliação"
           comment="Matriz"

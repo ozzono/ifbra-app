@@ -1,9 +1,9 @@
 <template>
   <div :class="`${!theme.dark ? theme.color : ''}`">
-    <h3 class="text-center">Legenda</h3>
     <v-container>
-      <v-card :class="`${!theme.dark ? theme.color : ''}`">
+      <v-card flat :class="`${!theme.dark ? theme.color : ''}`">
         <LighterTextField
+          text=""
           title="Detalhamento de pontuação do INSS"
           comment=""
           subtitle=""
@@ -78,8 +78,9 @@
       </v-card>
     </v-container>
     <v-container>
-      <v-card :class="`${!theme.dark ? theme.color : ''}`">
+      <v-card flat :class="`${!theme.dark ? theme.color : ''}`">
         <LighterTextField
+          text=""
           title="Descrição das Barreiras"
           subtitle=""
           comment=""

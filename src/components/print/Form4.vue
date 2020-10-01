@@ -3,6 +3,7 @@
     <v-row>
       <v-col>
         <LighterTextField
+          text=""
           title="Formulário 4"
           subtitle="Aplicação do Modelo Linguístico Fuzzy"
           comment=""

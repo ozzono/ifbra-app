@@ -1,42 +1,86 @@
 <template>
-  <v-container>
-    <DevAlert />
-    <v-card color="basil" class="d-none">
-      <v-card-title class="text-center justify-center py-6">
-        <h1 class="font-weight-bold display-3 basil--text">BASiL</h1>
-      </v-card-title>
-
-      <v-tabs v-model="tab" background-color="transparent" color="basil" grow>
-        <v-tab v-for="item in items" :key="item">
-          {{ item }}
-        </v-tab>
-      </v-tabs>
-
-      <v-tabs-items v-model="tab">
-        <v-tab-item v-for="item in items" :key="item">
-          <v-card color="basil" flat>
-            <v-card-text>{{ text }}</v-card-text>
-          </v-card>
-        </v-tab-item>
-      </v-tabs-items>
+  <v-card flat>
+    <v-card
+      flat
+      :class="
+        `d-flex flex-row justify-start align-center ${
+          theme.dark ? '' : theme.color
+        }`
+      "
+      v-for="(item, n) in info"
+      :key="n"
+      @click="newTab(item.ref)"
+    >
+      <ManualIcon
+        :left="true"
+        :ref="item.ref"
+        :icon="item.icon"
+        :url="item.url"
+      />
+      <LighterTextField
+        :title="item.title"
+        :subtitle="item.subtitle"
+        :text="item.text"
+        comment=""
+      />
     </v-card>
-  </v-container>
+  </v-card>
 </template>
 
 <script>
+/* eslint-disable no-console */
+import { mapGetters } from "vuex";
 export default {
-  data() {
-    return {
-      tab: null,
-      items: ["Appetizers", "Entrees", "Deserts", "Cocktails"],
-      text:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-    };
-  },
+  data: () => ({
+    tab: null,
+    info: [
+      {
+        ref: "manual",
+        url:
+          "https://www.iets.org.br/IMG/pdf/if-br_manualaplicacao_-_pesquisa_de_campo_etapa_2.2_-_meta_2_.pdf",
+        title: "Manual de Preenchimento da Avaliação",
+        subtitle:
+          "Conjunto de orientações para preenchimento dos formulários da avaliação.",
+        text: [
+          "Esse manual foi organizado pelo IETS, Instituto de Estudos do Trabalho e Sociedade, com fomento e participação do Ministério dos Direitos Humanos e da Secretaria Nacional de Promoção dos Direitos da Pessoa Idosa (SNDPI)."
+        ],
+        icon: "mdi-book-open-variant"
+      },
+      {
+        ref: "mmfdh",
+        url:
+          "https://www2.camara.leg.br/atividade-legislativa/comissoes/comissoes-permanentes/cpd/audiencias-publicas/audiencias-publicas-2019/apresentacao-liliane-cristina-bernardes-mdh",
+        title: "Análise Biopsicossocial da Deficiência",
+        subtitle:
+          "Abordagem com descrição e histórico da análise biopsicossocial da deficiência no Brasil.",
+        text: [
+          "Documento publicado pelo Ministério da Mulher, Família e dos Direitos Humanos junto à Secretaria Nacional dos Direitos da Pessoa com Deficiência, SNDPD, com apanhado histórico e detalhamento da análise biopsicossocial a partir da utilização do índice de funcionalidade brasileiro."
+        ],
+        icon: "mdi-city"
+      },
+      {
+        ref: "portaria",
+        url:
+          "https://www.in.gov.br/materia/-/asset_publisher/Kujrw0TZC2Mb/content/id/30050742/do1-2014-01-30-portaria-interministerial-n-1-de-27-de-janeiro-de-2014-30050738",
+        title: "Portaria Interministerial",
+        subtitle:
+          "Portaria Interministerial Nº 1 de 2014 que regulou a aplicação do índice",
+        text: [
+          "Documento com publicação conjunta do SDH, MPS, MF, MOG e AGU aprova o instrumento destinado à avaliaçãodo segurado da Previdência Social e à identificaçãodos graus de deficiência, bem comodefine impedimento de longo prazo."
+        ],
+        icon: "mdi-clipboard-text"
+      }
+    ]
+  }),
   components: {
-    DevAlert: () => import("@/components/DevAlert")
+    LighterTextField: () => import("@/components/LighterTextField"),
+    ManualIcon: () => import("@/components/ManualIcon")
+  },
+  computed: mapGetters(["theme"]),
+  methods: {
+    newTab(ref) {
+      this.$refs[ref].newTab();
+    }
   }
 };
 </script>
-
-<style></style>

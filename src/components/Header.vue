@@ -75,9 +75,7 @@ export default {
     drawer: false,
     menu: [
       ["Formulários", "/"],
-      ["Legenda", "legenda"],
-      ["Manual", "manual"],
-      ["CID10", "cid10"]
+      ["Informações", "info"],
     ],
     width: 0
   }),

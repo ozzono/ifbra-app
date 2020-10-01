@@ -3,6 +3,7 @@
     <v-row>
       <v-col>
         <LighterTextField
+          text=""
           title="Formulário 2"
           subtitle="Funções corporais acometidas"
           comment="a ser preenchido pelo médico perito"
@@ -14,6 +15,7 @@
       <v-row>
         <v-col>
           <LighterTextField
+            text=""
             :title="`${i + 1}. ${bodyFunction.Type}`"
             subtitle=""
             comment=""
@@ -40,6 +42,7 @@
           </v-card>
           <v-card flat tile>
             <LighterTextField
+              text=""
               :title="`${i + 1}.${j + 1} ${subFunction.Type}:`"
               :subtitle="`${subFunction.Detail}`"
               comment=""

@@ -1,38 +1,39 @@
 <template>
-  <v-container>
-    <v-card>
-      <v-card-title class="text-center justify-center">
-        <h1 class="font-weight-bold display-3">
-          Informações Legais
-        </h1>
-      </v-card-title>
+  <div :class="`${theme.dark ? '' : theme.color}`">
+    <v-container :class="`${theme.dark ? '' : theme.color}`">
+      <v-card :class="`${theme.dark ? '' : theme.color}`">
+        <v-card-title class="text-center justify-center">
+          <h1 class="font-weight-bold display-3">
+            Informações Legais
+          </h1>
+        </v-card-title>
 
-      <v-tabs v-model="tab" background-color="transparent" grow>
-        <v-tab>
-          Legenda
-        </v-tab>
-        <v-tab>Manual</v-tab>
-        <v-tab>CID10</v-tab>
-      </v-tabs>
+        <v-tabs v-model="tab" background-color="transparent" grow>
+          <v-tab>
+            Legenda
+          </v-tab>
+          <v-tab>Manual e Informações Legais</v-tab>
+          <v-tab>CID10</v-tab>
+        </v-tabs>
 
-      <v-tabs-items v-model="tab">
-        <v-tab-item>
-          <v-card flat>
+        <v-tabs-items v-model="tab">
+          <v-tab-item>
             <Helper />
-          </v-card>
-        </v-tab-item>
-        <v-tab-item>
-          <v-card>Manual</v-card>
-        </v-tab-item>
-        <v-tab-item>
-          <v-card>CID10</v-card>
-        </v-tab-item>
-      </v-tabs-items>
-    </v-card>
-  </v-container>
+          </v-tab-item>
+          <v-tab-item>
+            <Manual />
+          </v-tab-item>
+          <v-tab-item>
+            <v-card>CID10</v-card>
+          </v-tab-item>
+        </v-tabs-items>
+      </v-card>
+    </v-container>
+  </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   data() {
     return {
@@ -42,8 +43,10 @@ export default {
     };
   },
   components: {
-    Helper: () => import("@/components/Helper")
-  }
+    Helper: () => import("@/components/Helper"),
+    Manual: () => import("@/components/Manual"),
+  },
+  computed: mapGetters(["theme"])
 };
 </script>
 
