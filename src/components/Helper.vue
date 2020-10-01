@@ -1,6 +1,6 @@
 <template>
   <div :class="`${!theme.dark ? theme.color : ''}`">
-    <v-container>
+    <v-card>
       <v-card flat :class="`${!theme.dark ? theme.color : ''}`">
         <LighterTextField
           text=""
@@ -76,8 +76,8 @@
           </v-row>
         </div>
       </v-card>
-    </v-container>
-    <v-container>
+    </v-card>
+    <v-card>
       <v-card flat :class="`${!theme.dark ? theme.color : ''}`">
         <LighterTextField
           text=""
@@ -107,7 +107,7 @@
           </v-col>
         </v-row>
       </v-card>
-    </v-container>
+    </v-card>
   </div>
 </template>
 

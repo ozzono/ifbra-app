@@ -1,16 +1,19 @@
 <template>
-  <v-card flat>
+  <v-card flat tile>
+    <!-- :flat="flat[item.ref]" -->
     <v-card
-      flat
+      tile
       :class="
-        `d-flex flex-row justify-start align-center ${
-          theme.dark ? '' : theme.color
-        }`
+        `d-flex flex-row justify-start align-center
+        ${theme.dark ? '' : theme.color}
+        `
       "
       v-for="(item, n) in info"
       :key="n"
       @click="newTab(item.ref)"
     >
+      <!-- @mouseover="log({ item: item.ref, flat: false })"
+      @mouseleave="log({ item: item.ref, flat: true })" -->
       <ManualIcon
         :left="true"
         :ref="item.ref"
@@ -20,7 +23,7 @@
       <LighterTextField
         :title="item.title"
         :subtitle="item.subtitle"
-        :text="item.text"
+        :text="[...item.text, 'Clique para abrir.']"
         comment=""
       />
     </v-card>
@@ -70,7 +73,8 @@ export default {
         ],
         icon: "mdi-file-document"
       }
-    ]
+    ],
+    flat: []
   }),
   components: {
     LighterTextField: () => import("@/components/LighterTextField"),
@@ -79,7 +83,7 @@ export default {
   computed: mapGetters(["theme"]),
   methods: {
     newTab(ref) {
-      this.$refs[ref].newTab();
+      this.$refs[ref][0].newTab();
     }
   }
 };

@@ -1,5 +1,6 @@
 <template>
   <v-card
+    tile
     v-on="on"
     v-bind="bind"
     :class="
@@ -13,7 +14,7 @@
     height="4rem"
     width="5rem"
   >
-    <v-icon x-large :class="`${theme.dark ? 'black--text' : ''}`">{{
+    <v-icon x-large :class="`upper-pad ${theme.dark ? 'black--text' : ''}`">{{
       icon
     }}</v-icon>
   </v-card>
@@ -24,7 +25,7 @@
 import { mapGetters } from "vuex";
 export default {
   name: "ManualIcon",
-  props: ["left", "right", "icon", "on", "bind", "url",],
+  props: ["left", "right", "icon", "on", "bind", "url"],
   computed: mapGetters(["theme"]),
   methods: {
     newTab() {

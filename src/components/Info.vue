@@ -24,7 +24,7 @@
             <Manual />
           </v-tab-item>
           <v-tab-item>
-            <v-card>CID10</v-card>
+            <CID10 />
           </v-tab-item>
         </v-tabs-items>
       </v-card>
@@ -45,6 +45,7 @@ export default {
   components: {
     Helper: () => import("@/components/Helper"),
     Manual: () => import("@/components/Manual"),
+    CID10: () => import("@/components/CID10")
   },
   computed: mapGetters(["theme"])
 };
