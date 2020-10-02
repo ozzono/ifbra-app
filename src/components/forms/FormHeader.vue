@@ -3,21 +3,10 @@
     flat
     :class="
       `d-flex align-center justify-space-between
-      ${theme.dark ? 'default-grey' : theme.color}`
+      ${theme.dark ? '' : theme.color}`
     "
   >
-    <BaseTextField :title="title" :subtitle="subtitle" :comment="comment" />
-    <v-card
-      tile
-      flat
-      :class="`justify-start ${theme.dark ? 'default-grey' : theme.color}`"
-    >
-      <TextSwitch
-        @toggle="$emit('toggle', $event)"
-        :value="['exibir', 'ocultar']"
-        active-color="primary"
-      />
-    </v-card>
+    <LighterTextField :title="title" :subtitle="subtitle" :comment="comment" />
   </v-card>
 </template>
 
@@ -27,8 +16,7 @@ export default {
   name: "FormHeader",
   props: ["title", "subtitle", "comment"],
   components: {
-    TextSwitch: () => import("@/components/TextSwitch"),
-    BaseTextField: () => import("@/components/BaseTextField")
+    LighterTextField: () => import("@/components/LighterTextField")
   },
   computed: {
     ...mapGetters(["theme"])

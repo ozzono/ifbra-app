@@ -36,7 +36,6 @@ export default {
   created() {
     this.$eventHub.$on("theme", this.setTheme);
     this.$eventHub.$on("force-blur", this.forceBlur);
-    console.clear()
   },
   computed: mapGetters(["printView"])
 };

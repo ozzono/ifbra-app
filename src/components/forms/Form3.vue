@@ -11,7 +11,7 @@
         <div v-bind:class="{ 'd-none': hide }">
           <v-row align="center" dense class="flex">
             <v-col :cols="ContentCols">
-              <BaseTextField comment="" title="Domínios e Atividades" />
+              <LighterTextField comment="" title="Domínios e Atividades" />
             </v-col>
             <v-col cols="6">
               <v-row>
@@ -40,7 +40,7 @@
             loading="lazy"
             :key="i"
           >
-            <BaseTextField comment="" :title="`${i + 1}. ${dominio.Desc}`" />
+            <LighterTextField comment="" :title="`${i + 1}. ${dominio.Desc}`" />
             <v-row
               align="center"
               dense
@@ -49,7 +49,7 @@
               :key="j"
             >
               <v-col class="align-start" :cols="ContentCols">
-                <BaseTextField
+                <LighterTextField
                   comment=""
                   :title="`${i + 1}.${j + 1} ${subdominio.Desc}`"
                   :subtitle="subdominio.Detalhe"
@@ -143,7 +143,7 @@ export default {
     FormHeader: () => import("@/components/forms/FormHeader"),
     CheckList: () => import("@/components/CheckList"),
     Tooltip: () => import("@/components/Tooltip"),
-    BaseTextField: () => import("@/components/BaseTextField")
+    LighterTextField: () => import("@/components/LighterTextField")
   },
   methods: {
     ...mapActions([
@@ -155,7 +155,7 @@ export default {
       "updateFuzzy",
       "updateBarrier"
     ]),
-    BaseTextFields(i, j, subdominio) {
+    LighterTextFields(i, j, subdominio) {
       return subdominio.Detalhe.length == 0
         ? { Detail: `${i + 1}.${j + 1} ${subdominio.Desc}`, Desc: "" }
         : {
@@ -172,6 +172,7 @@ export default {
       this.cycleScores(update);
       if (this.filledStatus) {
         this.calcScores();
+        this.$eventHub.$emit("filled");
       }
       this.updateFuzzy({ dominio: dominio, scores: this.allScores });
       this.$eventHub.$emit("score");

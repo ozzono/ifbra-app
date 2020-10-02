@@ -11,7 +11,7 @@
         <div v-bind:class="{ 'd-none': hide }">
           <v-row class="flex">
             <v-col :cols="12">
-              <BaseTextField
+              <LighterTextField
                 title="Domínios e Atividades"
                 subtitle=""
                 comment=""
@@ -82,7 +82,7 @@ export default {
   }),
   components: {
     FuzzySwitch: () => import("@/components/FuzzySwitch"),
-    BaseTextField: () => import("@/components/BaseTextField"),
+    LighterTextField: () => import("@/components/LighterTextField"),
     FormHeader: () => import("@/components/forms/FormHeader")
   },
   computed: {

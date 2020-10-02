@@ -13,7 +13,7 @@
             <v-divider v-if="i > 0" />
             <v-row>
               <v-col class="wrap">
-                <BaseTextField
+                <LighterTextField
                   :title="`${i + 1}. ${funcao.Tipo}`"
                   subtitle=""
                   comment=""
@@ -32,7 +32,7 @@
                 <RowSwitch @switch-change="updateSubFunction({ i: i, j: j })" />
               </v-col>
               <v-col cols="10">
-                <BaseTextField
+                <LighterTextField
                   :title="`${i + 1}.${j + 1} ${subfuncao.Tipo}:`"
                   :subtitle="`${subfuncao.Detalhe}`"
                   comment=""
@@ -52,7 +52,7 @@ import { mapActions, mapGetters } from "vuex";
 export default {
   data: () => ({ funcoes: Object.values(Funcoes), hide: false, width: 0 }),
   components: {
-    BaseTextField: () => import("@/components/BaseTextField"),
+    LighterTextField: () => import("@/components/LighterTextField"),
     RowSwitch: () => import("@/components/RowSwitch"),
     FormHeader: () => import("@/components/forms/FormHeader")
   },

@@ -10,8 +10,6 @@
       "
       @click="newTab('cid10')"
     >
-      <!-- @mouseover="log({ item: item.ref, flat: false })"
-      @mouseleave="log({ item: item.ref, flat: true })" -->
       <ManualIcon
         :left="true"
         ref="cid10"

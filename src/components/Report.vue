@@ -1,20 +1,28 @@
 <template>
   <v-container class="text-center" v-if="filledStatus">
-    <v-card class="text-left">
+    <v-card flat class="text-left">
       <v-card-text>
-        <div class="text-center">
-          <span>
+        <v-card flat class="d-flex justify-center">
+          <v-card flat>
             <h2>Resumo do Índice</h2>
-          </span>
-          <Tooltip
-            class="print-hidden"
-            content="Esse cálculo do índice é temporário e está sujeito a atualização"
-            mdiIcon="mdi-comment-question-outline"
-            :array-content="[]"
-          />
-        </div>
+            <h5>
+              Grau:
+              {{
+                degree.includes("insuficiente")
+                  ? "Pontuação insuficiente para concessão do Benefício"
+                  : `Deficiência ${upperFirst(degree)}`
+              }}
+            </h5>
+          </v-card>
+          <v-spacer />
+          <v-card flat>
+            <v-btn @click="$emit('close')" text>
+              <v-icon>mdi-close</v-icon>
+            </v-btn>
+          </v-card>
+        </v-card>
         <v-row>
-          <v-col class="desc">
+          <v-col>
             <h3>Domínios</h3>
           </v-col>
           <v-col class="text-center" cols="2">Score Médico</v-col>
@@ -26,24 +34,23 @@
           dense
           :key="i"
         >
-          <v-col class="desc text-start">{{ score.Desc }}</v-col>
-          <v-col cols="2">
+          <v-col class="text-start">{{ score.Desc }}</v-col>
+          <v-col cols="2" class="d-flex justify-center align-center">
             {{ score.total.medical }}
           </v-col>
-          <v-col cols="2">
+          <v-col cols="2" class="d-flex justify-center align-center">
             {{ score.total.social }}
           </v-col>
         </v-row>
         <v-divider />
         <v-row class="text-center">
-          <v-col cols="6">TOTAL</v-col>
-          <v-col cols="2">
-            {{ totalScore.medical + totalScore.social }}
+          <v-col cols="8">
+            <h4>TOTAL: {{ totalScore.medical + totalScore.social }}</h4>
           </v-col>
-          <v-col cols="2" class="text-center">
+          <v-col cols="2" class="d-flex justify-center align-center">
             {{ totalScore.medical }}
           </v-col>
-          <v-col cols="2" class="text-center">
+          <v-col cols="2" class="d-flex justify-center align-center">
             {{ totalScore.social }}
           </v-col>
         </v-row>
@@ -56,17 +63,19 @@
 import { mapGetters } from "vuex";
 export default {
   computed: {
-    ...mapGetters(["allScores", "totalScores", "totalScore", "filledStatus"])
+    ...mapGetters([
+      "allScores",
+      "totalScores",
+      "totalScore",
+      "filledStatus",
+      "degree"
+    ])
   },
-  components: {
-    Tooltip: () => import("@/components/Tooltip")
-    // BaseTextField: () => import("@/components/BaseTextField")
+  methods: {
+    upperFirst(val) {
+      if (typeof val !== "string") return undefined;
+      return val.charAt(0).toUpperCase() + val.slice(1);
+    }
   }
 };
 </script>
-
-<style scoped>
-.desc {
-  padding-left: 2rem;
-}
-</style>

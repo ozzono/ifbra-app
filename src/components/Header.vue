@@ -32,6 +32,7 @@
           </v-btn>
         </div>
         <v-spacer />
+        <ReportDialog />
         <v-item-group>
           <v-card class="d-flex flex-row align-center">
             <v-card flat tile>
@@ -75,12 +76,13 @@ export default {
     drawer: false,
     menu: [
       ["Formulários", "/"],
-      ["Informações", "info"],
+      ["Informações", "info"]
     ],
     width: 0
   }),
   components: {
-    Theme: () => import("@/components/Theme")
+    Theme: () => import("@/components/Theme"),
+    ReportDialog: () => import("@/components/ReportDialog")
   },
   computed: mapGetters(["theme"]),
   mounted() {
@@ -104,7 +106,7 @@ export default {
   padding: 1rem;
 }
 .filler {
-  height: 5rem;
+  height: 1.6rem;
 }
 .margin {
   margin-right: 0.2rem;
