@@ -2,8 +2,28 @@
   <v-card :class="`${theme.dark ? '' : theme.color}`">
     <Evaluation />
     <v-container>
-      <v-tabs v-model="tab" background-color="transparent" grow>
+      <v-tabs
+        class="hidden-sm-and-down"
+        v-model="tab"
+        background-color="transparent"
+        grow
+      >
         <v-tab v-for="(item, n) in tabData" :key="n">
+          Formulário {{ n + 1 }}
+        </v-tab>
+      </v-tabs>
+      <v-tabs
+        class="hidden-md-and-up"
+        vertical
+        v-model="tab"
+        grow
+        background-color="transparent"
+      >
+        <v-tab
+          v-for="(item, n) in tabData"
+          :key="n"
+          class="d-flex justify-start"
+        >
           Formulário {{ n + 1 }}
         </v-tab>
       </v-tabs>

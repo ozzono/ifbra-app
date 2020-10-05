@@ -37,6 +37,7 @@
           :allow-multiple="false"
           inner-label="Procurar CID"
           inner-hint="Consulte por código ou descrição de diagnóstico"
+          :make-clearable="true"
         />
       </v-container>
     </v-card>

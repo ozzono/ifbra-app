@@ -42,7 +42,9 @@
               <DateDialog
                 label="Data de nascimento"
                 @date-change="calcAge($event)"
-                startYear="70"
+                :startYear="
+                  (new Date().getFullYear() - 50).toString().slice(-2)
+                "
                 @date="fieldValues.birthday = $event"
               />
             </v-col>

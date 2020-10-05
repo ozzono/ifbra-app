@@ -12,6 +12,7 @@
           v-model="tab"
           background-color="transparent"
           vertical
+          grow
           class="hidden-md-and-up"
         >
           <v-tab class="d-flex justify-start">

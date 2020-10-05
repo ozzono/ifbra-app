@@ -1,7 +1,7 @@
 <template>
   <div :class="`${!theme.dark ? theme.color : ''}`">
     <v-card :class="`${!theme.dark ? theme.color : ''}`">
-      <v-tabs vertical v-model="tab" background-color="transparent">
+      <v-tabs vertical v-model="tab" grow background-color="transparent">
         <v-tab class="d-flex justify-start">
           Detalhamento de pontuação do INSS
         </v-tab>
