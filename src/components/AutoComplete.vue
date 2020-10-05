@@ -13,6 +13,7 @@
           :messages="messages"
           v-model="text"
           @blur="$emit('inner-blur', text)"
+          :rules="required()"
         />
       </v-col>
     </v-row>
@@ -26,11 +27,19 @@ export default {
     value: null,
     text: ""
   }),
-  props: ["innerItems", "innerLabel", "allowMultiple", "innerHint", "messages"]
-  // props: {
-  //   innerItems: Object,
-  //   innerLabel: String,
-  //   allowMultiple: Boolean
-  // }
+  props: [
+    "innerItems",
+    "innerLabel",
+    "allowMultiple",
+    "innerHint",
+    "messages",
+    "require"
+  ],
+  methods: {
+    required() {
+      if (this.require)
+        return [(this.text || "").length > 0 || "Campo obrigatório!"];
+    }
+  }
 };
 </script>

@@ -96,7 +96,7 @@
                 inner-label="Diagnóstico médico"
                 inner-hint="CID"
                 @inner-blur="fieldValues.CID = $event"
-                :rules="required(fieldValues.CID)"
+                :require="true"
               />
             </v-col>
           </v-row>
