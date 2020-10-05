@@ -1,11 +1,13 @@
 <template>
   <v-card :class="`${theme.dark ? '' : theme.color}`">
     <Evaluation />
-    <v-tabs v-model="tab" background-color="transparent" grow>
-      <v-tab v-for="(item, n) in tabData" :key="n">
-        Formulário{{ n + 1 }}
-      </v-tab>
-    </v-tabs>
+    <v-container>
+      <v-tabs v-model="tab" background-color="transparent" grow>
+        <v-tab v-for="(item, n) in tabData" :key="n">
+          Formulário {{ n + 1 }}
+        </v-tab>
+      </v-tabs>
+    </v-container>
 
     <v-tabs-items v-model="tab">
       <v-tab-item>

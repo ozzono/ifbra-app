@@ -19,7 +19,7 @@
                   <span>Pontuação</span>
                   <Tooltip
                     :arrayContent="pontuacao"
-                    content="Consulte a legenda para mais critérios de preenchimento da pontuação."
+                    content="Consulte a legenda nas informações para conhecer os critérios de preenchimento da pontuação."
                     mdiIcon="mdi-comment-question-outline"
                   />
                 </v-col>
@@ -27,7 +27,7 @@
                   <span>Barreiras Ambientais</span>
                   <Tooltip
                     :arrayContent="barreiras"
-                    content="Consulte a legenda para mais informações a respeito das Barreiras Ambientais."
+                    content="Consulte a legenda nas informações para conhecer as informações a respeito das Barreiras Ambientais."
                     mdiIcon="mdi-comment-question-outline"
                   />
                 </v-col>

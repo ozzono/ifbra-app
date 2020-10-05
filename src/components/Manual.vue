@@ -2,6 +2,7 @@
   <v-card flat tile>
     <!-- :flat="flat[item.ref]" -->
     <v-card
+    flat
       tile
       :class="
         `d-flex flex-row justify-start align-center
@@ -12,8 +13,6 @@
       :key="n"
       @click="newTab(item.ref)"
     >
-      <!-- @mouseover="log({ item: item.ref, flat: false })"
-      @mouseleave="log({ item: item.ref, flat: true })" -->
       <ManualIcon
         :left="true"
         :ref="item.ref"

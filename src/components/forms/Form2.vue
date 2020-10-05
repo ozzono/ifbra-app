@@ -6,9 +6,8 @@
           title="Formulário 2"
           subtitle="Funções corporais acometidas"
           comment="a ser preenchido pelo médico perito"
-          @toggle="showHide($event)"
         />
-        <div v-bind:class="{ 'd-none': hide }">
+        <div>
           <div v-for="(funcao, i) in funcoes" :key="i">
             <v-divider v-if="i > 0" />
             <v-row>
@@ -50,7 +49,7 @@
 import Funcoes from "@/assets/json/form2.json";
 import { mapActions, mapGetters } from "vuex";
 export default {
-  data: () => ({ funcoes: Object.values(Funcoes), hide: false, width: 0 }),
+  data: () => ({ funcoes: Object.values(Funcoes), width: 0 }),
   components: {
     LighterTextField: () => import("@/components/LighterTextField"),
     RowSwitch: () => import("@/components/RowSwitch"),
@@ -60,12 +59,10 @@ export default {
     window.addEventListener("resize", this.setWidth);
   },
   methods: {
-    showHide(status) {
-      this.hide = status;
-    },
     setWidth() {
       this.width = window.innerWidth;
     },
+    log: n => console.log(n),
     ...mapActions(["setFunctions", "updateSubFunction"])
   },
   created() {

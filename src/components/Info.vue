@@ -1,7 +1,7 @@
 <template>
   <div :class="`${theme.dark ? '' : theme.color}`">
     <v-container :class="`${theme.dark ? '' : theme.color}`">
-      <v-card :class="`${theme.dark ? '' : theme.color}`">
+      <v-card flat :class="`${theme.dark ? '' : theme.color}`">
         <v-card-title class="text-center justify-center">
           <h1 class="font-weight-bold display-3">
             Informações Legais

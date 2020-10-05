@@ -3,7 +3,7 @@
     <v-flex>
       <v-container>
         <v-row dense class="d-flex text-center justify-center">
-          <h1 class="font-weight-bold display-3 basil--text">
+          <h1 class="pad-top font-weight-bold display-3 basil--text">
             Avaliação Médica Funcional
           </h1>
         </v-row>
@@ -136,3 +136,9 @@ export default {
   computed: mapGetters(["allEvaluators", "theme"])
 };
 </script>
+
+<style scoped>
+.pad-top{
+  margin-top: 1rem;
+}
+</style>
