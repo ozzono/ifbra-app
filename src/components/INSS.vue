@@ -43,9 +43,9 @@
                   </v-list-item>
                   <v-list-group v-if="extra.Exemplos.length > 0">
                     <template v-slot:activator>
-                      <v-list-title>
+                      <v-list-item-title>
                         Exemplo<span v-if="extra.Exemplos.length > 1">s</span>:
-                      </v-list-title>
+                      </v-list-item-title>
                     </template>
                     <v-list-item
                       v-for="(exemplo, k) in extra.Exemplos"

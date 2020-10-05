@@ -14,6 +14,7 @@
 /* eslint-disable no-console */
 import { mapActions, mapGetters } from "vuex";
 export default {
+  data: () => ({ media: null }),
   components: {
     Header: () => import("@/components/Header"),
     Footer: () => import("@/components/Footer"),
@@ -21,8 +22,8 @@ export default {
     ScrollTop: () => import("@/components/ScrollTop")
   },
   methods: {
-    ...mapActions(["updatePrintView"]),
-    setTheme() {
+    ...mapActions(["updatePrintView", "setTheme"]),
+    setVueTheme() {
       this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
     },
     close() {
@@ -34,10 +35,14 @@ export default {
     }
   },
   created() {
-    this.$eventHub.$on("theme", this.setTheme);
+    this.$eventHub.$on("theme", this.setVueTheme);
     this.$eventHub.$on("force-blur", this.forceBlur);
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      this.setTheme(true);
+      this.setVueTheme();
+    }
   },
-  computed: mapGetters(["printView"])
+  computed: mapGetters(["printView", "theme"])
 };
 </script>
 
