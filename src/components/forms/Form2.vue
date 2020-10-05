@@ -62,7 +62,6 @@ export default {
     setWidth() {
       this.width = window.innerWidth;
     },
-    log: n => console.log(n),
     ...mapActions(["setFunctions", "updateSubFunction"])
   },
   created() {

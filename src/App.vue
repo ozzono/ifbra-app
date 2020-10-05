@@ -38,6 +38,7 @@ export default {
     this.$eventHub.$on("theme", this.setVueTheme);
     this.$eventHub.$on("force-blur", this.forceBlur);
     if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      console.log("Enabling dark mode automatically.");
       this.setTheme(true);
       this.setVueTheme();
     }
