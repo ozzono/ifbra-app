@@ -1,9 +1,13 @@
 <template>
   <div :class="`${!theme.dark ? theme.color : ''}`">
-    <v-card>
-      <v-tabs v-model="tab" background-color="transparent">
-        <v-tab>Detalhamento de pontuação do INSS</v-tab>
-        <v-tab>Descrição das Barreiras</v-tab>
+    <v-card :class="`${!theme.dark ? theme.color : ''}`">
+      <v-tabs vertical v-model="tab" background-color="transparent">
+        <v-tab class="d-flex justify-start">
+          Detalhamento de pontuação do INSS
+        </v-tab>
+        <v-tab class="d-flex justify-start">
+          Descrição das Barreiras
+        </v-tab>
       </v-tabs>
       <v-tabs-items v-model="tab">
         <v-tab-item>

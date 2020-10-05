@@ -41,20 +41,19 @@
                   <v-list-item>
                     {{ extra.Detalhe }}
                   </v-list-item>
-                  <v-list-item v-if="extra.Exemplos.length > 0">
-                    <v-list-item-content>
-                      <v-list-item-subtitle>
-                        Exemplo<span v-if="extra.Exemplos.length > 1">s</span
-                        >:</v-list-item-subtitle
-                      >
-                      <v-list-item-subtitle
-                        v-for="(exemplo, k) in extra.Exemplos"
-                        :key="k"
-                      >
-                        - {{ exemplo }}
-                      </v-list-item-subtitle>
-                    </v-list-item-content>
-                  </v-list-item>
+                  <v-list-group v-if="extra.Exemplos.length > 0">
+                    <template v-slot:activator>
+                      <v-list-title>
+                        Exemplo<span v-if="extra.Exemplos.length > 1">s</span>:
+                      </v-list-title>
+                    </template>
+                    <v-list-item
+                      v-for="(exemplo, k) in extra.Exemplos"
+                      :key="k"
+                    >
+                      - {{ exemplo }}
+                    </v-list-item>
+                  </v-list-group>
                 </div>
               </v-list>
             </v-col>

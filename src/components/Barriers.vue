@@ -2,16 +2,12 @@
   <v-card flat :class="`${theme.dark ? '' : theme.color}`">
     <v-row v-for="(item, i) in BarrierDesc" :key="i">
       <v-col class="align-center text-center justify-center d-flex" cols="2">
-        <span :class="{ wrap: width < 960 }">
-          {{ item.Item }}
-        </span>
+        <span class="wrap hidden-md-and-up"> {{ item.Item }} </span>
+        <span class="hidden-sm-and-down"> {{ item.Item }} </span>
       </v-col>
-      <v-col
-        class="align-center text-center justify-center d-flex"
-        :class="{ vertical: width < 960 }"
-        cols="3"
-      >
-        {{ item.Desc }}
+      <v-col class="align-center text-center justify-center d-flex" cols="3">
+        <span class="vertical hidden-md-and-up">{{ item.Desc }}</span>
+        <span class="hidden-sm-and-down">{{ item.Desc }}</span>
       </v-col>
       <v-col class="align-center d-flex">
         {{ item.Extras[0] }}

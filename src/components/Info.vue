@@ -8,12 +8,38 @@
           </h1>
         </v-card-title>
 
-        <v-tabs v-model="tab" background-color="transparent" grow>
+        <v-tabs
+          v-model="tab"
+          background-color="transparent"
+          vertical
+          class="hidden-md-and-up"
+        >
+          <v-tab class="d-flex justify-start">
+            Legenda
+          </v-tab>
+          <v-tab class="d-flex justify-start">
+            Manual e Informações Legais
+          </v-tab>
+          <v-tab class="d-flex justify-start">
+            CID10
+          </v-tab>
+        </v-tabs>
+
+        <v-tabs
+          v-model="tab"
+          background-color="transparent"
+          class="hidden-sm-and-down"
+          grow
+        >
           <v-tab>
             Legenda
           </v-tab>
-          <v-tab>Manual e Informações Legais</v-tab>
-          <v-tab>CID10</v-tab>
+          <v-tab>
+            Manual e Informações Legais
+          </v-tab>
+          <v-tab>
+            CID10
+          </v-tab>
         </v-tabs>
 
         <v-tabs-items v-model="tab">
@@ -37,9 +63,7 @@ import { mapGetters } from "vuex";
 export default {
   data() {
     return {
-      tab: null,
-      text:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      tab: null
     };
   },
   components: {
