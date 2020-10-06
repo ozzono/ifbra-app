@@ -1,48 +1,40 @@
 <template>
-  <div class="form" :class="`${!theme.dark ? theme.color : ''}`">
-    <v-flex>
-      <v-container>
-        <FormHeader
-          title="Formulário 2"
-          subtitle="Funções corporais acometidas"
-          comment="a ser preenchido pelo médico perito"
-        />
-        <div>
-          <div v-for="(funcao, i) in funcoes" :key="i">
-            <v-divider v-if="i > 0" />
-            <v-row>
-              <v-col class="wrap">
-                <LighterTextField
-                  :title="`${i + 1}. ${funcao.Tipo}`"
-                  subtitle=""
-                  comment=""
-                />
-              </v-col>
-            </v-row>
-            <v-row
-              no-gutters
-              v-for="(subfuncao, j) in funcao.SubFuncao"
-              :key="j"
-            >
-              <v-col
-                cols="2"
-                :class="`align-center d-flex ${width >= 960 ? 'md' : 'sm'}`"
-              >
-                <RowSwitch @switch-change="updateSubFunction({ i: i, j: j })" />
-              </v-col>
-              <v-col cols="10">
-                <LighterTextField
-                  :title="`${i + 1}.${j + 1} ${subfuncao.Tipo}:`"
-                  :subtitle="`${subfuncao.Detalhe}`"
-                  comment=""
-                />
-              </v-col>
-            </v-row>
-          </div>
-        </div>
-      </v-container>
-    </v-flex>
-  </div>
+  <v-container>
+    <FormHeader
+      title="Formulário 2"
+      subtitle="Funções corporais acometidas"
+      comment="a ser preenchido pelo médico perito"
+    />
+    <div>
+      <div v-for="(funcao, i) in funcoes" :key="i">
+        <v-divider v-if="i > 0" />
+        <v-row>
+          <v-col class="wrap">
+            <LighterTextField
+              :title="`${i + 1}. ${funcao.Tipo}`"
+              subtitle=""
+              comment=""
+            />
+          </v-col>
+        </v-row>
+        <v-row no-gutters v-for="(subfuncao, j) in funcao.SubFuncao" :key="j">
+          <v-col
+            cols="2"
+            :class="`align-center d-flex ${width >= 960 ? 'md' : 'sm'}`"
+          >
+            <RowSwitch @switch-change="updateSubFunction({ i: i, j: j })" />
+          </v-col>
+          <v-col cols="10">
+            <LighterTextField
+              :title="`${i + 1}.${j + 1} ${subfuncao.Tipo}:`"
+              :subtitle="`${subfuncao.Detalhe}`"
+              comment=""
+            />
+          </v-col>
+        </v-row>
+      </div>
+    </div>
+  </v-container>
 </template>
 <script>
 /* eslint-disable no-console */

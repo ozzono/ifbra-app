@@ -1,21 +1,17 @@
 <template>
-  <v-card flat tile :class="`${theme.dark ? '' : theme.color}`">
-    <v-container :class="`${theme.dark ? '' : theme.color}`">
-      <v-card flat :class="`${theme.dark ? '' : theme.color}`">
-        <v-card-title
-          :class="`${theme.dark ? '' : theme.color}`"
-          class="wrap-word headline"
-          >{{ title }}</v-card-title
-        >
-        <v-card-subtitle class="wrap-word">
-          {{ subtitle }}
-          <i v-if="comment.length > 0">({{ comment }})</i>
-        </v-card-subtitle>
-        <v-card-text v-for="(item, n) in text" :key="n">
-          {{ item }}
-        </v-card-text>
-      </v-card>
-    </v-container>
+  <v-card flat :class="`${theme.dark ? '' : theme.color}`">
+    <v-card-title
+      :class="`${theme.dark ? '' : theme.color}`"
+      class="wrap-word headline"
+      >{{ title }}</v-card-title
+    >
+    <v-card-subtitle class="wrap-word">
+      {{ subtitle }}
+      <i v-if="comment.length > 0">({{ comment }})</i>
+    </v-card-subtitle>
+    <v-card-text v-for="(item, n) in text" :key="n">
+      {{ item }}
+    </v-card-text>
   </v-card>
 </template>
 
