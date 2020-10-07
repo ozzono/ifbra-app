@@ -11,12 +11,9 @@
     "@mdi/font": "^3.9.97",
     "@vue/cli": "^4.5.7",
     "core-js": "^3.6.5",
-    "html2pdf.js": "^0.9.2",
-    "jquery": "^3.5.1",
     "jsonloader": "^1.0.1",
     "roboto-fontface": "^0.10.0",
     "vue": "^2.6.12",
-    "vue-html-to-paper": "^1.3.1",
     "vue-router": "^3.4.6",
     "vuetify": "^2.3.13",
     "vuex": "^3.5.1"
