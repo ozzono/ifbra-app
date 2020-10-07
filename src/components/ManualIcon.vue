@@ -11,12 +11,14 @@
       `
     "
     flat
-    height="4rem"
-    width="5rem"
+    height="3rem"
+    width="3rem"
+    min-height="3rem"
+    min-width="3rem"
   >
-    <v-icon x-large :class="`upper-pad ${theme.dark ? 'black--text' : ''}`">{{
-      icon
-    }}</v-icon>
+    <v-icon x-large :class="`${theme.dark ? 'black--text' : ''}`">
+      {{ icon }}
+    </v-icon>
   </v-card>
 </template>
 
@@ -39,12 +41,12 @@ export default {
 <style scoped>
 .icon-left-card {
   transform: scale(1.5, 1.5);
-  margin-left: 3rem;
+  margin-left: 2rem;
   margin-right: 1.1rem;
 }
 .icon-right-card {
   transform: scale(1.5, 1.5);
   margin-left: 1.1rem;
-  margin-right: 3rem;
+  margin-right: 2rem;
 }
 </style>

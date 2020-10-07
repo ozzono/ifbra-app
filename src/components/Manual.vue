@@ -2,12 +2,11 @@
   <v-card flat tile>
     <!-- :flat="flat[item.ref]" -->
     <v-card
-    flat
+      flat
       tile
       :class="
-        `d-flex flex-row justify-start align-center
-        ${theme.dark ? '' : theme.color}
-        `
+        `d-flex flex-row align-center
+        ${theme.dark ? '' : theme.color}`
       "
       v-for="(item, n) in info"
       :key="n"
