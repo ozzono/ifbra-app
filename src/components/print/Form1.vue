@@ -1,16 +1,9 @@
 <template>
   <div>
-    <v-row>
-      <v-col>
-        <LighterTextField
-          text=""
-          title="Formulário 1"
-          subtitle="Identificação do Avaliado e da Avaliação"
-          comment="Matriz"
-        />
-      </v-col>
-    </v-row>
-    <v-row />
+    <EmptyFormAlert
+      text="Os dados dos avaliadores aparecerão uma vez que forem preenchidos no formulário principal."
+      :show="Object.keys(allEvaluators).length == 0"
+    />
     <v-row>
       <v-col v-if="allEvaluators.length > 0">
         Data da Avaliação:
@@ -27,6 +20,16 @@
       <v-col>Nome do avaliador: {{ evaluator.name }}</v-col>
     </v-row>
     <v-divider v-if="allEvaluators.length > 0" />
+    <v-row>
+      <v-col>
+        <LighterTextField
+          text=""
+          title="Formulário 1"
+          subtitle="Identificação do Avaliado e da Avaliação"
+          comment="Matriz"
+        />
+      </v-col>
+    </v-row>
     <v-row>
       <v-col>Dados do Avaliado</v-col>
     </v-row>
@@ -71,7 +74,8 @@
 import { mapGetters } from "vuex";
 export default {
   components: {
-    LighterTextField: () => import("@/components/LighterTextField")
+    LighterTextField: () => import("@/components/LighterTextField"),
+    EmptyFormAlert: () => import("@/components/print/EmptyFormAlert"),
   },
   computed: mapGetters(["evalDate", "personal", "allEvaluators"]),
   methods: {

@@ -11,6 +11,7 @@
       </v-col>
     </v-row>
     <v-row />
+    <EmptyFormAlert text="" :show="Object.keys(bodyFunctions).length == 0" />
     <div v-for="(bodyFunction, i) in bodyFunctions" :key="i">
       <v-row>
         <v-col>
@@ -34,10 +35,10 @@
             "
           >
             <p v-if="subFunction.checked">
-              <v-icon>mdi-checkbox-marked</v-icon>
+              <v-icon x-large>mdi-checkbox-marked</v-icon>
             </p>
             <p v-else>
-              <v-icon>mdi-checkbox-blank-outline</v-icon>
+              <v-icon x-large>mdi-checkbox-blank-outline</v-icon>
             </p>
           </v-card>
           <v-card flat tile>
@@ -59,7 +60,8 @@ import { mapGetters } from "vuex";
 export default {
   computed: mapGetters(["bodyFunctions", "theme"]),
   components: {
-    LighterTextField: () => import("@/components/LighterTextField")
+    LighterTextField: () => import("@/components/LighterTextField"),
+    EmptyFormAlert: () => import("@/components/print/EmptyFormAlert")
   }
 };
 </script>

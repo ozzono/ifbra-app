@@ -10,6 +10,7 @@
         />
       </v-col>
     </v-row>
+    <EmptyFormAlert text="" :show="Object.keys(printFuzzy).length == 0" />
     <v-row v-for="(row, i) in printFuzzy" :key="i">
       <v-col cols="2" class="d-flex align-">
         <!--  description -->
@@ -24,7 +25,7 @@
           "
         >
           <v-card flat :class="`${theme.dark ? '' : theme.color} right-pad`">
-            <v-icon> {{ checkBox(row.severe) }} </v-icon>
+            <v-icon x-large> {{ checkBox(row.severe) }} </v-icon>
           </v-card>
           <v-card
             flat
@@ -41,7 +42,7 @@
           :class="`${theme.dark ? '' : theme.color} d-flex flex-row align-`"
         >
           <v-card flat :class="`${theme.dark ? '' : theme.color} right-pad`">
-            <v-icon> {{ checkBox(row.needAid) }} </v-icon>
+            <v-icon x-large> {{ checkBox(row.needAid) }} </v-icon>
           </v-card>
           <v-card flat :class="`${theme.dark ? '' : theme.color}`">
             Não dispõe de auxílio de terceiros sempre que necessário.
@@ -54,7 +55,7 @@
           :class="`${theme.dark ? '' : theme.color} d-flex flex-row align-`"
         >
           <v-card flat :class="`${theme.dark ? '' : theme.color} right-pad`">
-            <v-icon> {{ checkBox(fuzzySwitch[i]) }} </v-icon>
+            <v-icon x-large> {{ checkBox(fuzzySwitch[i]) }} </v-icon>
           </v-card>
           <v-card flat :class="`${theme.dark ? '' : theme.color}`">{{
             `Houve pontuação 25 ou 50 em alguma atividade dos domínios ${row.Dominios.reduce(
@@ -92,8 +93,8 @@ export default {
   }),
   computed: mapGetters(["fuzzy", "printFuzzy", "theme"]),
   components: {
-    LighterTextField: () => import("@/components/LighterTextField")
-    // FuzzySwitch: () => import("@/components/FuzzySwitch")
+    LighterTextField: () => import("@/components/LighterTextField"),
+    EmptyFormAlert: () => import("@/components/print/EmptyFormAlert")
   },
   methods: {
     normalize(input) {

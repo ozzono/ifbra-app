@@ -10,6 +10,7 @@
         />
       </v-col>
     </v-row>
+    <EmptyFormAlert text="" :show="Object.keys(allScores).length == 0"/>
     <div v-for="(dominio, i) in allScores" :key="i">
       <v-row>
         <v-col>
@@ -56,7 +57,8 @@ import { mapGetters } from "vuex";
 export default {
   computed: mapGetters(["allScores"]),
   components: {
-    LighterTextField: () => import("@/components/LighterTextField")
+    LighterTextField: () => import("@/components/LighterTextField"),
+    EmptyFormAlert: () => import("@/components/print/EmptyFormAlert")
   }
 };
 </script>

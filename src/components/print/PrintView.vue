@@ -59,7 +59,7 @@ export default {
     Form2: () => import("@/components/print/Form2"),
     Form3: () => import("@/components/print/Form3"),
     Form4: () => import("@/components/print/Form4"),
-    MiniReport: () => import("@/components/MiniReport"),
+    MiniReport: () => import("@/components/print/MiniReport"),
     Report: () => import("@/components/Report")
   },
   mounted() {
