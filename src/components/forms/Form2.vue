@@ -1,40 +1,55 @@
 <template>
-  <v-container>
-    <FormHeader
-      title="Formulário 2"
-      subtitle="Funções corporais acometidas"
-      comment="a ser preenchido pelo médico perito"
-    />
-    <div>
-      <div v-for="(funcao, i) in funcoes" :key="i">
+  <div :class="`${theme.dark ? '' : theme.color}`">
+    <v-container :class="`${theme.dark ? '' : theme.color}`">
+      <FormHeader
+        title="Formulário 2"
+        subtitle="Funções corporais acometidas"
+        comment="a ser preenchido pelo médico perito"
+      />
+      <v-card
+        flat
+        v-for="(funcao, i) in funcoes"
+        :key="i"
+        :class="`${theme.dark ? '' : theme.color}`"
+      >
         <v-divider v-if="i > 0" />
-        <v-row>
-          <v-col class="wrap">
-            <LighterTextField
-              :title="`${i + 1}. ${funcao.Tipo}`"
-              subtitle=""
-              comment=""
-            />
-          </v-col>
-        </v-row>
-        <v-row no-gutters v-for="(subfuncao, j) in funcao.SubFuncao" :key="j">
-          <v-col
-            cols="2"
-            :class="`align-center d-flex ${width >= 960 ? 'md' : 'sm'}`"
+        <v-card flat class="wrap">
+          <LighterTextField
+            :title="`${i + 1}. ${funcao.Tipo}`"
+            subtitle=""
+            comment=""
+          />
+        </v-card>
+        <v-card
+          flat
+          no-gutters
+          v-for="(subfuncao, j) in funcao.SubFuncao"
+          :key="j"
+          :class="
+            `d-flex align-center flex-row pad-me
+            ${theme.dark ? '' : theme.color}`
+          "
+          hover
+          @click="switchRow({ i, j })"
+        >
+          <v-card
+            flat
+            tile
+            :class="`align-center d-flex ${theme.dark ? '' : theme.color}`"
           >
-            <RowSwitch @switch-change="updateSubFunction({ i: i, j: j })" />
-          </v-col>
-          <v-col cols="10">
+            <RowSwitch :ref="`row-${i}-${j}`" />
+          </v-card>
+          <v-card tile flat>
             <LighterTextField
               :title="`${i + 1}.${j + 1} ${subfuncao.Tipo}:`"
               :subtitle="`${subfuncao.Detalhe}`"
               comment=""
             />
-          </v-col>
-        </v-row>
-      </div>
-    </div>
-  </v-container>
+          </v-card>
+        </v-card>
+      </v-card>
+    </v-container>
+  </div>
 </template>
 <script>
 /* eslint-disable no-console */
@@ -54,6 +69,11 @@ export default {
     setWidth() {
       this.width = window.innerWidth;
     },
+    switchRow({ i, j }) {
+      this.$refs[`row-${i}-${j}`.toString()][0].innerChange();
+      this.updateSubFunction({ i: i, j: j });
+      this.$eventHub.$emit("force-blur");
+    },
     ...mapActions(["setFunctions", "updateSubFunction"])
   },
   created() {
@@ -70,5 +90,9 @@ export default {
 }
 .md {
   padding-left: 2.7rem;
+}
+.pad-me {
+  padding-left: 3rem;
+  padding-right: 3rem;
 }
 </style>

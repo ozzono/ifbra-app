@@ -1,17 +1,14 @@
 <template>
   <v-container fluid>
-    <v-switch
-      @change="changeThis()"
-      :v-model="innerModel"
-      :label="innerLabel"
-    />
+    <v-switch v-model="val" />
   </v-container>
 </template>
 
 <script>
+/* eslint-disable no-console */
 export default {
   data: () => ({
-    innerValue: false
+    val: false
   }),
   name: "RowSwitch",
   props: {
@@ -20,9 +17,8 @@ export default {
     innerModel: Boolean
   },
   methods: {
-    changeThis() {
-      this.innerValue = !this.innerValue;
-      this.$emit("switch-change", this.innerValue);
+    innerChange() {
+      this.val = !this.val;
     }
   }
 };

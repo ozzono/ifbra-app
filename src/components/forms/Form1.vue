@@ -1,154 +1,156 @@
 <template>
-  <v-container class="form" :class="`${!theme.dark ? theme.color : ''}`">
-    <FormHeader
-      title="Formulário 1"
-      subtitle="Identificação do Avaliado e da Avaliação"
-      comment="Matriz"
-    />
-    <div :class="{ 'd-none': hide }">
-      <v-row>
-        <v-col>Dados do Avaliado</v-col>
-      </v-row>
-      <v-row align="center" dense class="flex">
-        <v-col md="6" cols="12">
-          <v-text-field
-            v-model="fieldValues.name"
-            :rules="required(fieldValues.name)"
-            label="Nome completo"
-          />
-        </v-col>
-        <v-col md="3" cols="6">
-          <v-text-field
-            v-model="fieldValues.department"
-            :rules="required(fieldValues.department)"
-            label="Lotação"
-          />
-        </v-col>
-        <v-col md="3" cols="6">
-          <CheckList
-            inner-hint=""
-            :inner-items="sexo"
-            inner-label="Sexo"
-            @selected-items="fieldValues.sex = $event"
-            :rules="required(fieldValues.sex)"
-          />
-        </v-col>
-      </v-row>
-      <v-row align="center" dense class="flex">
-        <v-col md="3" cols="6" justify="space-around">
-          <DateDialog
-            label="Data de nascimento"
-            @date-change="calcAge($event)"
-            :startYear="(new Date().getFullYear() - 50).toString().slice(-2)"
-            @date="fieldValues.birthday = $event"
-          />
-        </v-col>
-        <v-col md="3" cols="6">
-          <v-text-field
-            label="Idade"
-            v-model="idade.text"
-            readonly
-            disabled
-            outlined
-            :persistent-hint="idade.text.length == 0"
-            hint="Calculada automaticamente"
-          />
-        </v-col>
-        <v-col md="3" cols="6">
-          <v-text-field
-            v-model="fieldValues.registry"
-            :rules="required(fieldValues.registry)"
-            label="Matrícula"
-          />
-        </v-col>
-        <v-col md="3" cols="6">
-          <CheckList
-            inner-hint=""
-            :inner-items="Form[7]"
-            inner-label="Etnia"
-            @selected-items="fieldValues.ethnicity = $event"
-          />
-        </v-col>
-      </v-row>
-      <v-divider />
-      <v-row>
-        <v-col>Dados da Avaliação</v-col>
-      </v-row>
-      <v-row align="center" dense class="flex">
-        <v-col md="3" cols="6">
-          <CheckList
-            inner-hint=""
-            inner-label="Tipo de Deficiência"
-            :inner-items="Form[6]"
-            :allow-multiple="true"
-            @selected-items="fieldValues.deficiencyType = $event"
-          />
-        </v-col>
-        <v-col md="9" cols="12">
-          <AutoComplete
-            :inner-items="CID10[2]"
-            :allow-multiple="true"
-            inner-label="Diagnóstico médico"
-            inner-hint="CID"
-            @inner-blur="fieldValues.CID = $event"
-            :require="true"
-          />
-        </v-col>
-      </v-row>
-      <v-row align="center" dense class="flex">
-        <v-col md="10" cols="10">
-          <v-text-field
-            v-model="fieldValues.address"
-            :rules="required(fieldValues.address)"
-            label="Local da Avaliação"
-          />
-        </v-col>
-        <v-col md="2" cols="2">
-          <CheckList
-            inner-hint=""
-            :inner-items="uf"
-            inner-label="UF"
-            @selected-items="fieldValues.UF = $event"
-          />
-        </v-col>
-      </v-row>
-      <v-row align="center" dense class="flex">
-        <v-col md="3" cols="6">
-          <CheckList
-            inner-hint=""
-            :inner-items="Form[8].Informante"
-            inner-label="Quem prestou as informações"
-            @selected-items="setInformante($event)"
-          />
-        </v-col>
-        <v-col md="3" cols="6">
-          <v-text-field
-            id="informante"
-            label="Informante"
-            v-model="informante.nome"
-            :readonly="informante.readonly"
-            :disabled="informante.disabled"
-            :hint="informante.hint"
-            :persistent-hint="informante.hint.length > 0"
-            @blur="blurInformante()"
-            ref="informante"
-            v-if="!hideInformante"
-            :rules="required(informante.nome)"
-          />
-        </v-col>
-      </v-row>
-      <v-row align="center" dense class="flex">
-        <v-col md="12" cols="12">
-          <v-textarea
-            clearable
-            label="Histórico clínico e social"
-            v-model="fieldValues.history"
-            :rules="required(fieldValues.history)"
-          />
-        </v-col>
-      </v-row>
-    </div>
-  </v-container>
+  <div :class="`${!theme.dark ? theme.color : ''}`">
+    <v-container class="form" :class="`${!theme.dark ? theme.color : ''}`">
+      <FormHeader
+        title="Formulário 1"
+        subtitle="Identificação do Avaliado e da Avaliação"
+        comment="Matriz"
+      />
+      <div :class="{ 'd-none': hide }">
+        <v-row>
+          <v-col>Dados do Avaliado</v-col>
+        </v-row>
+        <v-row align="center" dense class="flex">
+          <v-col md="6" cols="12">
+            <v-text-field
+              v-model="fieldValues.name"
+              :rules="required(fieldValues.name)"
+              label="Nome completo"
+            />
+          </v-col>
+          <v-col md="3" cols="6">
+            <v-text-field
+              v-model="fieldValues.department"
+              :rules="required(fieldValues.department)"
+              label="Lotação"
+            />
+          </v-col>
+          <v-col md="3" cols="6">
+            <CheckList
+              inner-hint=""
+              :inner-items="sexo"
+              inner-label="Sexo"
+              @selected-items="fieldValues.sex = $event"
+              :rules="required(fieldValues.sex)"
+            />
+          </v-col>
+        </v-row>
+        <v-row align="center" dense class="flex">
+          <v-col md="3" cols="6" justify="space-around">
+            <DateDialog
+              label="Data de nascimento"
+              @date-change="calcAge($event)"
+              :startYear="(new Date().getFullYear() - 50).toString().slice(-2)"
+              @date="fieldValues.birthday = $event"
+            />
+          </v-col>
+          <v-col md="3" cols="6">
+            <v-text-field
+              label="Idade"
+              v-model="idade.text"
+              readonly
+              disabled
+              outlined
+              :persistent-hint="idade.text.length == 0"
+              hint="Calculada automaticamente"
+            />
+          </v-col>
+          <v-col md="3" cols="6">
+            <v-text-field
+              v-model="fieldValues.registry"
+              :rules="required(fieldValues.registry)"
+              label="Matrícula"
+            />
+          </v-col>
+          <v-col md="3" cols="6">
+            <CheckList
+              inner-hint=""
+              :inner-items="Form[7]"
+              inner-label="Etnia"
+              @selected-items="fieldValues.ethnicity = $event"
+            />
+          </v-col>
+        </v-row>
+        <v-divider />
+        <v-row>
+          <v-col>Dados da Avaliação</v-col>
+        </v-row>
+        <v-row align="center" dense class="flex">
+          <v-col md="3" cols="6">
+            <CheckList
+              inner-hint=""
+              inner-label="Tipo de Deficiência"
+              :inner-items="Form[6]"
+              :allow-multiple="true"
+              @selected-items="fieldValues.deficiencyType = $event"
+            />
+          </v-col>
+          <v-col md="9" cols="12">
+            <AutoComplete
+              :inner-items="CID10[2]"
+              :allow-multiple="true"
+              inner-label="Diagnóstico médico"
+              inner-hint="CID"
+              @inner-blur="fieldValues.CID = $event"
+              :require="true"
+            />
+          </v-col>
+        </v-row>
+        <v-row align="center" dense class="flex">
+          <v-col md="10" cols="10">
+            <v-text-field
+              v-model="fieldValues.address"
+              :rules="required(fieldValues.address)"
+              label="Local da Avaliação"
+            />
+          </v-col>
+          <v-col md="2" cols="2">
+            <CheckList
+              inner-hint=""
+              :inner-items="uf"
+              inner-label="UF"
+              @selected-items="fieldValues.UF = $event"
+            />
+          </v-col>
+        </v-row>
+        <v-row align="center" dense class="flex">
+          <v-col md="3" cols="6">
+            <CheckList
+              inner-hint=""
+              :inner-items="Form[8].Informante"
+              inner-label="Quem prestou as informações"
+              @selected-items="setInformante($event)"
+            />
+          </v-col>
+          <v-col md="3" cols="6">
+            <v-text-field
+              id="informante"
+              label="Informante"
+              v-model="informante.nome"
+              :readonly="informante.readonly"
+              :disabled="informante.disabled"
+              :hint="informante.hint"
+              :persistent-hint="informante.hint.length > 0"
+              @blur="blurInformante()"
+              ref="informante"
+              v-if="!hideInformante"
+              :rules="required(informante.nome)"
+            />
+          </v-col>
+        </v-row>
+        <v-row align="center" dense class="flex">
+          <v-col md="12" cols="12">
+            <v-textarea
+              clearable
+              label="Histórico clínico e social"
+              v-model="fieldValues.history"
+              :rules="required(fieldValues.history)"
+            />
+          </v-col>
+        </v-row>
+      </div>
+    </v-container>
+  </div>
 </template>
 
 <script>
