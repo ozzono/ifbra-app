@@ -70,7 +70,8 @@ export default {
       this.width = window.innerWidth;
     },
     switchRow({ i, j }) {
-      this.$refs[`row-${i}-${j}`.toString()][0].innerChange();
+      const ref = `row-${i}-${j}`.toString();
+      this.$refs[ref][0].innerChange();
       this.updateSubFunction({ i: i, j: j });
       this.$eventHub.$emit("force-blur");
     },

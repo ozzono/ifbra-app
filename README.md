@@ -1,31 +1,10 @@
-# app
+# IFBr-A
 
-## favicon source
-> https://icons8.com/icon/18942/form
+Esse projeto consiste na versão digital do formulário do **_Índice de Funcionalidade Brasileiro Adaptado_**.
 
-## Installing node 12.x
-sudo curl -sL https://deb.nodesource.com/setup_12.x | sudo bash -
-sudo aptitude install nodejs -y
+Todo o site foi construído com VueJS e está hospedado no Google Cloud Platform.
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Motivação:
+Esse site foi construído com dois propósitos     básicos:
+- Estudar e aprender VueJS;
+- Otimizar o preenchimento dos formulário com impressão do documento em pdf para utilização em processos de aposentadoria especial em órgãos governamentais federais e no INSS;

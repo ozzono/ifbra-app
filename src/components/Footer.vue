@@ -21,7 +21,7 @@
         flat
         tile
         :class="
-          `d-flex text-center align-center
+          `d-flex text-center align-center right-pad
           ${!theme.dark ? theme.color : ''}
           `
         "

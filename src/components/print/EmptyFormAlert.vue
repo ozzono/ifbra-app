@@ -21,11 +21,6 @@ export default {
   computed: mapGetters(["bodyFunctions"]),
   components: {
     LighterTextField: () => import("@/components/LighterTextField")
-  },
-  created() {
-    console.log("show:", this.show);
   }
 };
 </script>
-
-<style></style>
