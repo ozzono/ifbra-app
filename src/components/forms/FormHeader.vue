@@ -1,6 +1,7 @@
 <template>
   <v-card
     flat
+    tile
     :class="
       `d-flex align-center justify-space-between
       ${theme.dark ? '' : theme.color}`

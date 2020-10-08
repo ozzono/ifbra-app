@@ -8,12 +8,13 @@
       />
       <v-card
         flat
+        tile
         v-for="(funcao, i) in funcoes"
         :key="i"
         :class="`${theme.dark ? '' : theme.color}`"
       >
         <v-divider v-if="i > 0" />
-        <v-card flat class="wrap">
+        <v-card flat tile class="wrap">
           <LighterTextField
             :title="`${i + 1}. ${funcao.Tipo}`"
             subtitle=""
@@ -22,6 +23,7 @@
         </v-card>
         <v-card
           flat
+          tile
           no-gutters
           v-for="(subfuncao, j) in funcao.SubFuncao"
           :key="j"
