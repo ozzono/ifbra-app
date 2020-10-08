@@ -75,7 +75,7 @@ import { mapGetters } from "vuex";
 export default {
   components: {
     LighterTextField: () => import("@/components/LighterTextField"),
-    EmptyFormAlert: () => import("@/components/print/EmptyFormAlert"),
+    EmptyFormAlert: () => import("@/components/print/EmptyFormAlert")
   },
   computed: mapGetters(["evalDate", "personal", "allEvaluators"]),
   methods: {

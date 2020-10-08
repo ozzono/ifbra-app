@@ -1,5 +1,9 @@
 <template>
-  <v-card flat class="d-flex justify-center" v-if="show">
+  <v-card
+    flat
+    :class="`d-flex justify-center ${theme.dark ? '' : theme.color}`"
+    v-if="show"
+  >
     <LighterTextField
       :title="
         text.length > 0
@@ -18,7 +22,7 @@
 import { mapGetters } from "vuex";
 export default {
   props: ["text", "show"],
-  computed: mapGetters(["bodyFunctions"]),
+  computed: mapGetters(["bodyFunctions", "theme"]),
   components: {
     LighterTextField: () => import("@/components/LighterTextField")
   }

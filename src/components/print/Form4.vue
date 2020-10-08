@@ -24,7 +24,11 @@
             `${theme.dark ? '' : theme.color} d-flex justiy-start align-start`
           "
         >
-          <v-card flat :class="`${theme.dark ? '' : theme.color} right-pad`">
+          <v-card
+            flat
+            tile
+            :class="`${theme.dark ? '' : theme.color} right-pad`"
+          >
             <v-icon x-large> {{ checkBox(row.severe) }} </v-icon>
           </v-card>
           <v-card
@@ -41,10 +45,14 @@
           flat
           :class="`${theme.dark ? '' : theme.color} d-flex flex-row align-`"
         >
-          <v-card flat :class="`${theme.dark ? '' : theme.color} right-pad`">
+          <v-card
+            flat
+            tile
+            :class="`${theme.dark ? '' : theme.color} right-pad`"
+          >
             <v-icon x-large> {{ checkBox(row.needAid) }} </v-icon>
           </v-card>
-          <v-card flat :class="`${theme.dark ? '' : theme.color}`">
+          <v-card flat tile :class="`${theme.dark ? '' : theme.color}`">
             Não dispõe de auxílio de terceiros sempre que necessário.
           </v-card>
         </v-card>
@@ -54,10 +62,14 @@
           flat
           :class="`${theme.dark ? '' : theme.color} d-flex flex-row align-`"
         >
-          <v-card flat :class="`${theme.dark ? '' : theme.color} right-pad`">
+          <v-card
+            flat
+            tile
+            :class="`${theme.dark ? '' : theme.color} right-pad`"
+          >
             <v-icon x-large> {{ checkBox(fuzzySwitch[i]) }} </v-icon>
           </v-card>
-          <v-card flat :class="`${theme.dark ? '' : theme.color}`">{{
+          <v-card flat tile :class="`${theme.dark ? '' : theme.color}`">{{
             `Houve pontuação 25 ou 50 em alguma atividade dos domínios ${row.Dominios.reduce(
               (out, el) => [
                 ...out,

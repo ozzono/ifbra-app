@@ -1,6 +1,6 @@
 <template>
   <v-container fluid>
-    <v-switch v-model="val" />
+    <v-switch v-model="val" @click="innerChange" />
   </v-container>
 </template>
 
