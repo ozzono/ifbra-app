@@ -12,8 +12,8 @@
     "@vue/cli": "^4.5.7",
     "roboto-fontface": "^0.10.0",
     "vue": "^2.6.12",
-    "vue-router": "^3.4.3",
-    "vuetify": "^2.3.10",
+    "vue-router": "^3.4.6",
+    "vuetify": "^2.3.13",
     "vuex": "^3.5.1"
   },
   "devDependencies": {
@@ -28,10 +28,8 @@
     "eslint": "^5.16.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-vue": "^5.2.3",
-    "node-sass": "^4.14.1",
     "portal-vue": "^2.1.7",
-    "prettier": "^1.19.1",
-    "sass": "^1.26.10",
+    "sass": "^1.27.0",
     "sass-loader": "^8.0.2",
     "serve": "^11.3.2",
     "vue-cli-plugin-vuetify": "^2.0.7",
