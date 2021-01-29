@@ -1,11 +1,11 @@
 <template>
   <v-container fluid :class="innerClass">
     <v-switch
+      :class="innerClass"
       :readonly="readOnly"
       :disabled="disabled"
       :input-value="val"
       :label="innerLabel"
-      :hint="hint"
     />
   </v-container>
 </template>
@@ -25,7 +25,8 @@ export default {
     "dominios",
     "normalize",
     "hint",
-    "innerClass"
+    "innerClass",
+    "hideDetails"
   ],
   methods: {
     setVal() {

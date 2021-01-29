@@ -33,7 +33,6 @@
                 Observações
               </div>
             </v-col>
-            <v-divider vertical />
             <v-col>
               <v-list :class="`${!theme.dark ? theme.color : ''}`">
                 <div v-for="(extra, j) in pont.Extras" :key="j">

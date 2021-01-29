@@ -18,6 +18,14 @@
               />
             </v-col>
           </v-row>
+          <v-row>
+            <v-col></v-col>
+            <v-col></v-col>
+            <v-col></v-col>
+            <v-col>
+              Marcadores preenchidos automaticamente
+            </v-col>
+          </v-row>
           <div v-for="(deficiecia, i) in Fuzzy" :key="i">
             <v-divider v-if="i > 0" class="hidden-md-and-up" :inset="true" />
             <v-row class="align-center text-center justify-center d-flex">
@@ -31,7 +39,7 @@
                     flat
                     tile
                   >
-                    <v-col class="text-center" cols="12" md="4">
+                    <v-col class="text-center" cols="12" md="3">
                       <v-switch
                         @change="updatePrint(i)"
                         v-model="printFuzzy[i].severe"
@@ -45,9 +53,8 @@
                         label="Não dispõe de auxílio de terceiros sempre que necessário."
                       />
                     </v-col>
-                    <v-col cols="12" md="4">
+                    <v-col cols="12" md="5">
                       <FuzzySwitch
-                        class="unavailable"
                         :innerLabel="
                           `Houve pontuação 25 ou 50 em alguma atividade dos domínios ${formatDomain(
                             deficiecia.Dominios
@@ -55,9 +62,7 @@
                             deficiecia.Dominios
                           )}`
                         "
-                        :disabled="true"
                         :read-only="true"
-                        :hint="fuzzyHint"
                         :dominios="deficiecia.Dominios"
                         :normalize="strNormalize"
                       />
@@ -81,8 +86,7 @@ export default {
   data: () => ({
     Fuzzy: Object.values(Fuzzy),
     hide: false,
-    printFuzzy: {},
-    fuzzyHint: "Campo calculado e preenchido automaticamente"
+    printFuzzy: {}
   }),
   components: {
     FuzzySwitch: () => import("@/components/FuzzySwitch"),
@@ -145,9 +149,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.unavailable:hover {
-  cursor: not-allowed;
-}
-</style>
