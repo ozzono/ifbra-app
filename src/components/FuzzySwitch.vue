@@ -1,6 +1,12 @@
 <template>
-  <v-container fluid>
-    <v-switch :readonly="readOnly" :input-value="val" :label="innerLabel" />
+  <v-container fluid :class="innerClass">
+    <v-switch
+      :readonly="readOnly"
+      :disabled="disabled"
+      :input-value="val"
+      :label="innerLabel"
+      :hint="hint"
+    />
   </v-container>
 </template>
 
@@ -12,7 +18,15 @@ export default {
     val: false
   }),
   name: "FuzzySwitch",
-  props: ["innerLabel", "readOnly", "dominios", "normalize"],
+  props: [
+    "innerLabel",
+    "readOnly",
+    "disabled",
+    "dominios",
+    "normalize",
+    "hint",
+    "innerClass"
+  ],
   methods: {
     setVal() {
       this.val = this.fuzzy
@@ -33,3 +47,8 @@ export default {
   }
 };
 </script>
+<style scoped>
+.unavailable:hover {
+  cursor: not-allowed;
+}
+</style>

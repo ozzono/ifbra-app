@@ -47,6 +47,7 @@
                     </v-col>
                     <v-col cols="12" md="4">
                       <FuzzySwitch
+                        class="unavailable"
                         :innerLabel="
                           `Houve pontuação 25 ou 50 em alguma atividade dos domínios ${formatDomain(
                             deficiecia.Dominios
@@ -54,8 +55,10 @@
                             deficiecia.Dominios
                           )}`
                         "
-                        :dominios="deficiecia.Dominios"
+                        :disabled="true"
                         :read-only="true"
+                        :hint="fuzzyHint"
+                        :dominios="deficiecia.Dominios"
                         :normalize="strNormalize"
                       />
                     </v-col>
@@ -78,7 +81,8 @@ export default {
   data: () => ({
     Fuzzy: Object.values(Fuzzy),
     hide: false,
-    printFuzzy: {}
+    printFuzzy: {},
+    fuzzyHint: "Campo calculado e preenchido automaticamente"
   }),
   components: {
     FuzzySwitch: () => import("@/components/FuzzySwitch"),
@@ -141,3 +145,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.unavailable:hover {
+  cursor: not-allowed;
+}
+</style>
