@@ -109,27 +109,14 @@ export default {
     EmptyFormAlert: () => import("@/components/print/EmptyFormAlert")
   },
   methods: {
-    normalize(input) {
-      return input
-        .split(" ")
-        .reduce((output, item) => {
-          return [
-            ...output,
-            item
-              .normalize("NFD")
-              .replace(/[^a-zA-Zs]/g, "")
-              .toLowerCase()
-          ];
-        }, [])
-        .join(" ");
-    },
     setDomains() {
       this.fuzzySwitch = this.printFuzzy.reduce(
         (out1, el1) => [
           ...out1,
           el1.Dominios.some(domain =>
             this.fuzzy.some(
-              fuzzy => fuzzy.Dominio === this.normalize(domain) && fuzzy.switch
+              fuzzy =>
+                fuzzy.Dominio === this.$custom.normalize(domain) && fuzzy.switch
             )
           )
         ],
@@ -142,6 +129,7 @@ export default {
   created() {
     this.$eventHub.$on("score", this.setDomains);
     this.setDomains();
+    this.normalize = this.$custom.normalize;
   }
 };
 </script>
