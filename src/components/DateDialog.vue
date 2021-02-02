@@ -1,111 +1,77 @@
 <template>
-  <div>
-    <v-row class="hover-pointer" @click="dialogShow(true)">
-      <!-- <v-card tile flat :class=" `d-flex flex-row justify-space-between  ${ !theme.dark ? theme.color : 'default-grey' }` " @click="dialogShow(true)" > -->
-      <v-col class="d-flex justify-center">
-        <v-text-field
-          class="hover-pointer"
-          readonly
-          @focus="dialogShow(true)"
-          v-model="textDate"
-          :label="label"
-        />
-      </v-col>
-      <v-col class="d-flex justify-center" cols="3">
-        <v-btn
-          height="4rem"
-          text
-          tile
-          block
-          depressed
-          dark
-          :class="`${theme.dark ? '' : 'black--text'}`"
-        >
-          <v-icon>mdi-calendar</v-icon>
-        </v-btn>
-      </v-col>
-      <!-- </v-card> -->
-    </v-row>
+  <v-container>
+    <div class="text-center">
+      <v-text-field
+        v-model="date"
+        class="date-field"
+        @click:append="dialog = true"
+        :readonly="readonly"
+        @click="dialog = true"
+        :label="label"
+        append-icon="mdi-calendar"
+      />
+      <v-dialog v-model="dialog" width="20em" height>
+        <v-card>
+          <v-card-text>
+            <v-row justify="center">
+              <v-date-picker
+                @change="showDate"
+                v-model="picker"
+                locale="pt-br"
+                :max="setMaxDate()"
+              />
+            </v-row>
+          </v-card-text>
 
-    <v-dialog v-model="dialog" width="20rem">
-      <v-card class="text-center" flat tile>
-        <v-btn tile text block @click="dialogShow(false)">
-          Fechar
-        </v-btn>
-        <v-card flat tile>
-          <v-date-picker
-            ref="picker"
-            locale="pt-BR"
-            v-model="date"
-            :max="new Date().toISOString().substr(0, 10)"
-          />
+          <v-divider />
+
+          <v-card-actions class="text-center">
+            <v-spacer />
+            <v-btn color="primary" text @click="dialog = false">
+              Fechar
+            </v-btn>
+          </v-card-actions>
         </v-card>
-        <v-btn tile depressed text @click="dialogShow(false)" width="100%">
-          fechar
-        </v-btn>
-      </v-card>
-    </v-dialog>
-  </div>
+      </v-dialog>
+    </div>
+  </v-container>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-/* eslint-disable no-console */
 export default {
-  name: "DateDialog",
   data: () => ({
+    date: "",
     dialog: false,
-    date: new Date().toISOString().substr(0, 10),
-    textDate: ""
+    focused: false,
+    picker: new Date().toISOString().substr(0, 10)
   }),
+  props: ["label", "setMax", "maxDate", "defaultDate", "readonly"],
   methods: {
-    dialogShow(show) {
-      this.dialog = show;
-      this.$eventHub.$emit("force-blur");
-    }
-  },
-  watch: {
-    textDate: function() {
-      this.$emit("date-change", this.textDate);
-    },
-    dialog() {
-      this.$eventHub.$emit("force-blur");
-    },
-    date() {
-      this.$emit("date", this.date);
-      this.textDate = this.date
+    showDate() {
+      this.date = this.picker
         .split("-")
         .reverse()
         .join("/");
-    }
-  },
-  computed: mapGetters(["theme"]),
-  mounted() {
-    // Close modal with 'esc' key
-    document.addEventListener("keydown", e => {
-      if (e.keyCode == 27 && this.dialog) {
-        this.dialogShow(false);
+    },
+    setMaxDate() {
+      if (this.setMax) {
+        if (this.maxDate != undefined) {
+          return this.maxDate;
+        } else {
+          return new Date().toISOString().substr(0, 10);
+        }
       }
-    });
-    if ((parseInt(this.startYear, 10) || 0) > 0) {
-      this.date = new Date(parseInt(this.startYear, 10))
-        .toISOString()
-        .substr(0, 10);
-      // this.$refs.picker.activePicker = "YEAR";
     }
   },
-  props: ["label", "startYear"]
+  watch: {
+    date: function() {
+      this.$emit("inner-date", this.date);
+    }
+  },
+  created() {
+    if (this.defaultDate.length > 0) {
+      this.picker = this.defaultDate;
+    }
+  }
 };
 </script>
-
-<style scoped>
-.left-1-pad {
-  padding-left: 1rem;
-}
-.right-1-pad {
-  padding-right: 1rem;
-}
-.hover-pointer:hover {
-  cursor: pointer;
-}
-</style>
