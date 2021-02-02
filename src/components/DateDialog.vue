@@ -1,40 +1,38 @@
 <template>
-  <v-container>
-    <div class="text-center">
-      <v-text-field
-        v-model="date"
-        class="date-field"
-        @click:append="dialog = true"
-        :readonly="readonly"
-        @click="dialog = true"
-        :label="label"
-        append-icon="mdi-calendar"
-      />
-      <v-dialog v-model="dialog" width="20em" height>
-        <v-card>
-          <v-card-text>
-            <v-row justify="center">
-              <v-date-picker
-                @change="showDate"
-                v-model="picker"
-                locale="pt-br"
-                :max="setMaxDate()"
-              />
-            </v-row>
-          </v-card-text>
+  <div class="text-center">
+    <v-text-field
+      v-model="date"
+      class="date-field"
+      @click:append="dialog = true"
+      :readonly="readonly"
+      @click="dialog = true"
+      :label="label"
+      append-icon="mdi-calendar"
+    />
+    <v-dialog v-model="dialog" width="20em" height>
+      <v-card>
+        <v-card-text>
+          <v-row justify="center">
+            <v-date-picker
+              @change="showDate"
+              v-model="picker"
+              locale="pt-br"
+              :max="setMaxDate()"
+            />
+          </v-row>
+        </v-card-text>
 
-          <v-divider />
+        <v-divider />
 
-          <v-card-actions class="text-center">
-            <v-spacer />
-            <v-btn color="primary" text @click="dialog = false">
-              Fechar
-            </v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
-    </div>
-  </v-container>
+        <v-card-actions class="text-center">
+          <v-spacer />
+          <v-btn color="primary" text @click="dialog = false">
+            Fechar
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+  </div>
 </template>
 
 <script>
