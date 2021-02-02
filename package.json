@@ -12,6 +12,8 @@
     "@vue/cli": "^4.5.11",
     "core-js": "^3.8.3",
     "roboto-fontface": "^0.10.0",
+    "v-mask": "^2.2.4",
+    "vee-validate": "^2.2.15",
     "vue": "^2.6.12",
     "vue-router": "^3.5.1",
     "vuetify": "^2.4.3",

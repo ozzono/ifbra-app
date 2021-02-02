@@ -7,6 +7,9 @@ import personal from "./modules/personal";
 import print from "./modules/print";
 import bodyFunctions from "./modules/bodyFunctions";
 import fuzzy from "./modules/fuzzy";
+import { VueMaskDirective } from "v-mask";
+
+Vue.directive("mask", VueMaskDirective);
 
 Vue.use(Vuex);
 

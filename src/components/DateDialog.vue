@@ -8,9 +8,12 @@
       @click="dialog = true"
       :label="label"
       append-icon="mdi-calendar"
+      return-masked-value
+      v-mask="'##/##/####'"
     />
     <v-dialog v-model="dialog" width="20em" height>
       <v-card>
+        <v-card-title>{{ label }}</v-card-title>
         <v-card-text>
           <v-row justify="center">
             <v-date-picker
@@ -36,6 +39,7 @@
 </template>
 
 <script>
+/* eslint-disable no-console */
 export default {
   data: () => ({
     date: "",
@@ -67,6 +71,10 @@ export default {
     }
   },
   created() {
+    console.log(this.defaultDate);
+    if (this.defaultDate == undefined) {
+      return;
+    }
     if (this.defaultDate.length > 0) {
       this.picker = this.defaultDate;
     }

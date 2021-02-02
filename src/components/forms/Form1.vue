@@ -39,9 +39,10 @@
           <v-col md="3" cols="6" justify="space-around">
             <DateDialog
               label="Data de nascimento"
-              @date-change="calcAge($event)"
-              :startYear="(new Date().getFullYear() - 50).toString().slice(-2)"
+              @inner-date="calcAge($event)"
+              :default-date="(new Date().getFullYear() - 50).toString()"
               @date="fieldValues.birthday = $event"
+              v-validate="'date_format:dd/MM/yyyy|after:afterTarget'"
             />
           </v-col>
           <v-col md="3" cols="6">
@@ -197,6 +198,7 @@ export default {
       this.idade.number = age;
       this.idade.text = isNaN(age) ? "Data inválida" : `${age} anos`;
       this.fieldValues.age = age;
+      console.log(age);
     },
     showHide(status) {
       this.hide = status;
