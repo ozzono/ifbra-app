@@ -11,9 +11,8 @@ const getters = {
 
 const actions = {
   async addEvaluator({ commit }, evaluator) {
-    if (evaluator.name.length > 0 && evaluator.type.length > 0) {
-      commit("newEvaluator", evaluator);
-    }
+    console.log;
+    commit("newEvaluator", evaluator);
   },
   async removeEvaluator({ commit }, id) {
     commit("delEvaluator", id);

@@ -12,22 +12,13 @@
             <!-- small col -->
             <DateDialog
               label="Data da Avaliação"
-              @date-change="setDate($event)"
-            ></DateDialog>
+              @inner-date="setDate($event)"
+            />
           </v-col>
         </v-row>
         <v-row dense class="d-flex text-center justify-center">
-          <v-col md="3" cols="12">
-            <CheckList
-              :inner-items="evaluatorType"
-              inner-label="Tipo de avaliador"
-              @selected-items="type = $event"
-              ref="evalType"
-              :inner-hint="hintTypeEval"
-              :allow-clean="true"
-            />
-          </v-col>
-          <v-col md="8" cols="10" class="d-flex">
+          <!-- eval name -->
+          <v-col md="7" cols="10" class="d-flex">
             <v-text-field
               v-model="name"
               justify-start
@@ -38,6 +29,30 @@
               ref="evalName"
             />
           </v-col>
+          <!-- eval type -->
+          <v-col md="2" cols="10">
+            <CheckList
+              :inner-items="evaluatorType"
+              inner-label="Tipo de avaliador"
+              @selected-items="type = $event"
+              ref="evalType"
+              :inner-hint="hintTypeEval"
+              :allow-clean="true"
+            />
+          </v-col>
+          <!-- eval registry -->
+          <v-col md="2" cols="2">
+            <v-text-field
+              v-model="registry.value"
+              justify-start
+              :label="registryType"
+              @keydown.enter="addEval()"
+              :hint="hintEvalValue"
+              :persistent-hint="hintEvalValue.length > 0"
+              ref="evalValue"
+            />
+          </v-col>
+          <!-- eval button -->
           <v-col
             md="1"
             cols="2"
@@ -55,7 +70,17 @@
           dense
           class="d-flex"
         >
-          <v-col md="3" cols="6" class="d-flex">
+          <v-col md="7" cols="5" class="d-flex">
+            <v-text-field
+              :value="evaluator.name"
+              label="Nome do avaliador"
+              rows="1"
+              disabled
+              auto-grow
+              class="align-start"
+            />
+          </v-col>
+          <v-col md="2" cols="6" class="d-flex">
             <v-text-field
               :value="evaluator.type"
               label="Tipo de avaliador"
@@ -65,10 +90,10 @@
               class="align-start"
             />
           </v-col>
-          <v-col md="8" cols="5" class="d-flex">
+          <v-col md="2" cols="5" class="d-flex">
             <v-text-field
-              :value="evaluator.name"
-              label="Nome do avaliador"
+              :value="evaluator.registry.value"
+              :label="evaluator.registry.label"
               rows="1"
               disabled
               auto-grow
@@ -92,11 +117,17 @@ import { mapActions, mapGetters } from "vuex";
 export default {
   data: () => ({
     evaluatorType: ["Médico", "Assistente Social"],
+    registryType: "Registro profissional",
     name: "",
     type: "",
+    registry: {
+      value: "",
+      label: ""
+    },
     count: 0,
     hintTypeEval: "",
     hintEvalName: "",
+    hintEvalValue: "",
     requiredRule: val => {
       (val || "").length || "Campo obrigatório";
     }
@@ -115,6 +146,7 @@ export default {
       } else {
         this.hintEvalName = "";
       }
+
       if (this.type.length === 0) {
         this.hintTypeEval = "Insira tipo de avaliador";
         this.$refs.evalType.innerFocus();
@@ -122,23 +154,56 @@ export default {
       } else {
         this.hintTypeEval = "";
       }
+
+      if (this.registry.value.length === 0) {
+        this.hintEvalValue = "Insira registro profissional";
+        this.$refs.evalValue.innerFocus();
+        return;
+      } else {
+        this.hintEvalValue = "";
+      }
       const evaluator = {
-        id: this.count++,
+        id: this.count,
         type: this.type,
+        registry: this.registry,
         name: this.name
       };
+      this.count++;
       this.addEvaluator(evaluator);
       this.name = "";
+      this.registryType = "Registro profissional";
+      this.registry = {
+        value: "",
+        label: ""
+      };
       this.$refs.evalType.clear();
+      console.log(this.allEvaluators);
     },
     required: val => [(val || "").length > 0 || "Campor obrigatório"]
+  },
+  watch: {
+    type: function() {
+      if (this.$custom.normalize(this.type).toLowerCase() === "medico") {
+        this.registryType = "CRM";
+        this.registry.label = "CRM";
+      }
+      if (
+        this.$custom
+          .normalize(this.type)
+          .toLowerCase()
+          .includes("social")
+      ) {
+        this.registryType = "CRESS";
+        this.registry.label = "CRESS";
+      }
+    }
   },
   computed: mapGetters(["allEvaluators", "theme"])
 };
 </script>
 
 <style scoped>
-.pad-top{
+.pad-top {
   margin-top: 1rem;
 }
 </style>

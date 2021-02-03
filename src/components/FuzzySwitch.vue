@@ -23,7 +23,6 @@ export default {
     "readOnly",
     "disabled",
     "dominios",
-    "normalize",
     "hint",
     "innerClass",
     "hideDetails"
@@ -34,7 +33,8 @@ export default {
         .filter(fuzzyEl =>
           this.dominios.some(
             domainEl =>
-              this.normalize(domainEl) === this.normalize(fuzzyEl.Dominio)
+              this.$custom.normalize(domainEl) ===
+              this.$custom.normalize(fuzzyEl.Dominio)
           )
         )
         .some(el => el.switch);

@@ -64,7 +64,6 @@
                         "
                         :read-only="true"
                         :dominios="deficiecia.Dominios"
-                        :normalize="strNormalize"
                       />
                     </v-col>
                   </v-row>
@@ -97,20 +96,6 @@ export default {
     ...mapGetters(["fuzzy", "theme", "allScores"])
   },
   methods: {
-    strNormalize: str =>
-      str
-        .split(" ")
-        .reduce(
-          (output, el) => [
-            ...output,
-            el
-              .normalize("NFD")
-              .replace(/[^a-zA-Zs]/g, "")
-              .toLowerCase()
-          ],
-          []
-        )
-        .join(" "),
     showHide(status) {
       this.hide = status;
     },
@@ -127,7 +112,7 @@ export default {
         .reduce(
           (out, el) => [
             ...out,
-            this.strNormalize(el) === "socializacao"
+            this.$custom.normalize(el) === "socializacao"
               ? "Socialização e Vida Comunitária"
               : el
           ],
@@ -144,7 +129,7 @@ export default {
     this.makeFuzzy({
       scores: this.allScores,
       Fuzzy,
-      normalize: this.strNormalize
+      normalize: this.$custom.normalize
     });
   }
 };

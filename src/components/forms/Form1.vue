@@ -42,7 +42,6 @@
               @inner-date="calcAge($event)"
               :default-date="(new Date().getFullYear() - 50).toString()"
               @date="fieldValues.birthday = $event"
-              v-validate="'date_format:dd/MM/yyyy|after:afterTarget'"
             />
           </v-col>
           <v-col md="3" cols="6">
@@ -198,27 +197,12 @@ export default {
       this.idade.number = age;
       this.idade.text = isNaN(age) ? "Data inválida" : `${age} anos`;
       this.fieldValues.age = age;
-      console.log(age);
     },
     showHide(status) {
       this.hide = status;
     },
-    normalize(input) {
-      return input
-        .split(" ")
-        .reduce((output, item) => {
-          return [
-            ...output,
-            item
-              .normalize("NFD")
-              .replace(/[^a-zA-Zs]/g, "")
-              .toLowerCase()
-          ];
-        }, [])
-        .join(" ");
-    },
     setInformante(informante) {
-      if (this.normalize(informante) != "a propria pessoa") {
+      if (this.$custom.normalize(informante) != "a propria pessoa") {
         this.informante.readonly = false;
         this.informante.disabled = false;
         this.informante.hint = "Insira o nome do informante";

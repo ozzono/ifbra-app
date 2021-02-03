@@ -36,10 +36,11 @@
         tile
         :class="`btn d-flex align-center ${!theme.dark ? theme.color : ''}`"
       >
-        <a
-          href="https://www.linkedin.com/in/hugo-virg%C3%ADlio-guedes-brand%C3%A3o-ab6a5158/"
-        >
-          Hugo Virgílio <v-icon dense>mdi-linkedin-box</v-icon>
+        <a href="https://www.linkedin.com/in/hugo-virgilio/">
+          Hugo Virgílio&nbsp;
+        </a>
+        <a href="https://www.linkedin.com/in/hugo-virgilio/">
+          <v-icon dense>mdi-linkedin-box</v-icon>
         </a>
       </v-card>
       <span class="hidden-sm-and-down">—</span>
@@ -52,7 +53,10 @@
         "
       >
         <a href="https://github.com/synini/ifbra-app">
-          Código aberto <v-icon dense>mdi-github-circle</v-icon>
+          Código aberto&nbsp;
+        </a>
+        <a href="https://github.com/synini/ifbra-app">
+          <v-icon dense>mdi-github-circle</v-icon>
         </a>
       </v-card>
       <v-card

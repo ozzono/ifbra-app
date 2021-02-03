@@ -71,7 +71,6 @@ export default {
     }
   },
   created() {
-    console.log(this.defaultDate);
     if (this.defaultDate == undefined) {
       return;
     }
