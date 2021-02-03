@@ -85,16 +85,47 @@
               @selected-items="fieldValues.deficiencyType = $event"
             />
           </v-col>
-          <v-col md="9" cols="12">
+          <v-col md="8" cols="10">
             <AutoComplete
-              :inner-items="CID10[2]"
-              :allow-multiple="true"
+              :allow-multiple="false"
               inner-label="Diagnóstico médico"
-              inner-hint="CID"
-              @inner-blur="fieldValues.CID = $event"
+              :inner-hint="cidHint"
+              @inner-change="cid = $event"
+              @refill-cid="CID10[2] = $event"
               :require="true"
+              ref="cid"
             />
           </v-col>
+          <v-col
+            md="1"
+            cols="2"
+            class="d-flex justify-center align-center text-center"
+          >
+            <v-btn @click="addCID()" icon align="center">
+              <v-icon>mdi-plus-box</v-icon>
+            </v-btn>
+          </v-col>
+          <v-row
+            v-if="this.fieldValues.CID.length > 0"
+            align="center"
+            dense
+            class="flex"
+          >
+            <v-col>
+              <v-flex
+                v-for="cid in this.fieldValues.CID"
+                class="flex-row"
+                :key="cid"
+              >
+                <v-flex>
+                  {{ cid }}
+                </v-flex>
+                <v-flex>
+                  <v-icon>mdi-minus-box</v-icon>
+                </v-flex>
+              </v-flex>
+            </v-col>
+          </v-row>
         </v-row>
         <v-row align="center" dense class="flex">
           <v-col md="10" cols="10">
@@ -163,6 +194,8 @@ export default {
     idade: { number: 0, text: "" },
     sexo: ["Masculino", "Feminino"],
     hide: false,
+    cid: "",
+    cidHint: "CID",
     hideInformante: false,
     informante: {
       tipo: "",
@@ -174,7 +207,9 @@ export default {
     uf: "AC,AL,AP,AM,BA,CE,DF,ES,GO,MA,MT,MG,MS,PB,PR,PE,PI,RJ,RN,RS,RO,RR,SC,SP,SE,TO".split(
       ","
     ),
-    fieldValues: {},
+    fieldValues: {
+      CID: []
+    },
     Form: Object.values(Form),
     CID10: Object.values(CID10)
   }),
@@ -185,7 +220,7 @@ export default {
     CheckList: () => import("@/components/CheckList")
   },
   methods: {
-    ...mapActions(["setInfo"]),
+    ...mapActions(["setInfo", "unlistCID", "refilCID", "fillCID"]),
     calcAge(date) {
       var today = new Date();
       var birthDate = new Date(date);
@@ -226,10 +261,33 @@ export default {
       }
       this.fieldValues.informant.name = this.informante.nome;
     },
-    required: val => [(val || "").length > 0 || "Campo obrigatório!"]
+    required: val => [(val || "").length > 0 || "Campo obrigatório!"],
+    addCID() {
+      if (this.cid.length > 0) {
+        this.fieldValues.CID.push(this.cid);
+        console.log(this.fieldValues.CID);
+        this.$refs.cid.clear();
+        this.unlistCID(this.cid);
+        this.cidHint = "CID";
+      } else {
+        this.$refs.cid.focus();
+        this.cidHint = "Informe o CID";
+      }
+    },
+    delCID(cid) {
+      this.fieldValues.CID.filter(element => {
+        if (element != cid) {
+          return element;
+        }
+      });
+      this.refillCID(cid);
+    }
   },
   computed: {
     ...mapGetters(["theme", "personal"])
+  },
+  created() {
+    this.fillCID(CID10.list);
   }
 };
 </script>

@@ -7,6 +7,7 @@ import personal from "./modules/personal";
 import print from "./modules/print";
 import bodyFunctions from "./modules/bodyFunctions";
 import fuzzy from "./modules/fuzzy";
+import cid from "./modules/cid";
 import { VueMaskDirective } from "v-mask";
 
 Vue.directive("mask", VueMaskDirective);
@@ -21,6 +22,7 @@ export default new Vuex.Store({
     personal,
     print,
     bodyFunctions,
-    fuzzy
+    fuzzy,
+    cid
   }
 });

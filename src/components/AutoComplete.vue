@@ -3,7 +3,7 @@
     <v-row align="center">
       <v-col cols="12">
         <v-autocomplete
-          :items="innerItems"
+          :items="allCID"
           :label="innerLabel"
           :multiple="allowMultiple"
           hide-selected
@@ -12,8 +12,10 @@
           :clearable="allowMultiple"
           :messages="messages"
           v-model="text"
-          @blur="$emit('inner-blur', text)"
-          :rules="required()"
+          chips
+          dense
+          @change="$emit('inner-change', text)"
+          ref="field"
         />
       </v-col>
     </v-row>
@@ -21,25 +23,26 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+/* eslint-disable no-console */
 export default {
   name: "AutoComplete",
   data: () => ({
     value: null,
     text: ""
   }),
-  props: [
-    "innerItems",
-    "innerLabel",
-    "allowMultiple",
-    "innerHint",
-    "messages",
-    "require"
-  ],
+  props: ["innerLabel", "allowMultiple", "innerHint", "messages", "require"],
   methods: {
-    required() {
-      if (this.require)
-        return [(this.text || "").length > 0 || "Campo obrigatório!"];
+    clear() {
+      this.text = "";
+    },
+    focus() {
+      console.log("focusing");
+      this.$refs.field.focus();
     }
+  },
+  computed: {
+    ...mapGetters(["allCID"])
   }
 };
 </script>
