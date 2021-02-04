@@ -3,13 +3,14 @@
     <Evaluation />
     <v-container>
       <v-tabs
-        class="hidden-sm-and-down"
+        class="hidden-sm-and-down tab-title"
         v-model="tab"
         background-color="transparent"
         grow
       >
-        <v-tab v-for="(item, n) in tabData" :key="n">
-          Formulário {{ n + 1 }}
+        <v-tab v-for="(item, n) in tabData" :key="n" width="100%">
+          <TabTitle :title="`Formulário ${n + 1}`" />
+          <!-- Formulário {{ n + 1 }} -->
         </v-tab>
       </v-tabs>
       <v-tabs
@@ -51,6 +52,7 @@ import { mapGetters } from "vuex";
 export default {
   components: {
     Evaluation: () => import("@/components/Evaluation"),
+    TabTitle: () => import("@/components/TabTitle"),
     Form1: () => import("@/components/forms/Form1"),
     Form2: () => import("@/components/forms/Form2"),
     Form3: () => import("@/components/forms/Form3"),
@@ -85,5 +87,8 @@ export default {
   .print-hidden {
     display: none;
   }
+}
+.tab-title {
+  font-size: 3em;
 }
 </style>
