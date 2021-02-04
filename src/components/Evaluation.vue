@@ -1,5 +1,5 @@
 <template>
-  <div class="form" :class="`${!theme.dark ? theme.color : ''}`">
+  <div :class="`form ${!theme.dark ? theme.color : ''}`">
     <v-flex>
       <v-container>
         <v-row dense class="d-flex text-center justify-center">

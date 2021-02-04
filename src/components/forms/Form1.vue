@@ -111,19 +111,14 @@
             dense
             class="flex"
           >
-            <v-col>
-              <v-flex
-                v-for="cid in this.fieldValues.CID"
-                class="flex-row"
-                :key="cid"
-              >
-                <v-flex>
-                  {{ cid }}
-                </v-flex>
-                <v-flex>
-                  <v-icon>mdi-minus-box</v-icon>
-                </v-flex>
-              </v-flex>
+            <v-col
+              class="flex"
+              v-for="cid in this.fieldValues.CID"
+              :key="cid"
+              cols="6"
+              md="3"
+            >
+              <CIDFlex @inner-click="delCID(cid)" :text="cid" />
             </v-col>
           </v-row>
         </v-row>
@@ -217,10 +212,11 @@ export default {
     DateDialog: () => import("@/components/DateDialog"),
     AutoComplete: () => import("@/components/AutoComplete"),
     FormHeader: () => import("@/components/forms/FormHeader"),
-    CheckList: () => import("@/components/CheckList")
+    CheckList: () => import("@/components/CheckList"),
+    CIDFlex: () => import("@/components/CIDFlex")
   },
   methods: {
-    ...mapActions(["setInfo", "unlistCID", "refilCID", "fillCID"]),
+    ...mapActions(["setInfo", "unlistCID", "refillCID", "fillCID"]),
     calcAge(date) {
       var today = new Date();
       var birthDate = new Date(date);
@@ -263,19 +259,24 @@ export default {
     },
     required: val => [(val || "").length > 0 || "Campo obrigatório!"],
     addCID() {
-      if (this.cid.length > 0) {
+      if (
+        this.cid.length > 0 &&
+        !this.fieldValues.CID.some(element => {
+          return element === this.cid;
+        })
+      ) {
         this.fieldValues.CID.push(this.cid);
-        console.log(this.fieldValues.CID);
         this.$refs.cid.clear();
         this.unlistCID(this.cid);
         this.cidHint = "CID";
+        this.cid = "";
       } else {
         this.$refs.cid.focus();
         this.cidHint = "Informe o CID";
       }
     },
     delCID(cid) {
-      this.fieldValues.CID.filter(element => {
+      this.fieldValues.CID = this.fieldValues.CID.filter(element => {
         if (element != cid) {
           return element;
         }
@@ -291,3 +292,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.cidcard {
+  /* padding-left: 2em; */
+}
+</style>

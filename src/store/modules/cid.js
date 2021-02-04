@@ -26,7 +26,13 @@ const actions = {
     );
   },
   refillCID({ commit }, cid) {
-    console.log(this.$custom);
+    if (
+      state.cid.some(element => {
+        return element === cid;
+      })
+    ) {
+      return;
+    }
     var arr = JSON.parse(JSON.stringify(state.cid));
     const length = arr.length;
     if (arr[0] > cid) {
