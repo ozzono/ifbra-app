@@ -47,11 +47,11 @@
           <v-col md="3" cols="6">
             <v-text-field
               label="Idade"
-              v-model="idade.text"
+              v-model="idade"
               readonly
               disabled
               outlined
-              :persistent-hint="idade.text.length == 0"
+              :persistent-hint="idade.length == 0"
               hint="Calculada automaticamente"
             />
           </v-col>
@@ -186,7 +186,7 @@ import CID10 from "@/assets/json/cid10.min.json";
 import { mapActions, mapGetters } from "vuex";
 export default {
   data: () => ({
-    idade: { number: 0, text: "" },
+    idade: "",
     sexo: ["Masculino", "Feminino"],
     hide: false,
     cid: "",
@@ -218,16 +218,26 @@ export default {
   methods: {
     ...mapActions(["setInfo", "unlistCID", "refillCID", "fillCID"]),
     calcAge(date) {
+      const splitted = date.split("/");
+      var day = `${parseInt(splitted[0], 10) + 1}`.padStart(2, "0");
+      const month = `${parseInt(splitted[1], 10)}`.padStart(2, "0");
+      const year = `${parseInt(splitted[2], 10)}`.padStart(2, "0");
+      date = `${year}-${month}-${day++}`;
       var today = new Date();
-      var birthDate = new Date(date);
-      var age = today.getFullYear() - birthDate.getFullYear();
-      var m = today.getMonth() - birthDate.getMonth();
-      if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+      var birthday = new Date(
+        date
+          .split("/")
+          .reverse()
+          .join("-")
+      );
+      var age = today.getFullYear() - birthday.getFullYear();
+      var m = today.getMonth() - birthday.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < birthday.getDate())) {
         age--;
       }
-      this.idade.number = age;
-      this.idade.text = isNaN(age) ? "Data inválida" : `${age} anos`;
+      this.idade = isNaN(age) ? "Data inválida" : `${age} anos`;
       this.fieldValues.age = age;
+      this.fieldValues.birthday = birthday.toISOString().substr(0, 10);
     },
     showHide(status) {
       this.hide = status;
@@ -282,6 +292,60 @@ export default {
         }
       });
       this.refillCID(cid);
+    },
+    updatePrintView() {
+      if (this.fieldValues.name === undefined) {
+        console.log("undefined fieldValues.name");
+        return;
+      }
+      if (this.fieldValues.CID === undefined) {
+        console.log("undefined fieldValues.CID");
+        return;
+      }
+      if (this.fieldValues.registry === undefined) {
+        console.log("undefined fieldValues.registry");
+        return;
+      }
+      if (this.fieldValues.sex === undefined) {
+        console.log("undefined fieldValues.sex");
+        return;
+      }
+      if (this.fieldValues.ethnicity === undefined) {
+        console.log("undefined fieldValues.ethnicity");
+        return;
+      }
+      if (this.fieldValues.deficiencyType === undefined) {
+        console.log("undefined fieldValues.deficiencyType");
+        return;
+      }
+      if (this.fieldValues.history === undefined) {
+        console.log("undefined fieldValues.history");
+        return;
+      }
+      if (this.fieldValues.birthday === undefined) {
+        console.log("undefined fieldValues.birthday");
+        return;
+      }
+      if (this.fieldValues.informant === undefined) {
+        console.log("undefined fieldValues.informant");
+        return;
+      }
+      if (this.fieldValues.age === undefined) {
+        console.log("undefined fieldValues.age");
+        return;
+      }
+      this.setInfo({
+        name: this.fieldValues.name,
+        CID: this.fieldValues.CID,
+        registry: this.fieldValues.registry,
+        sex: this.fieldValues.sex,
+        ethnicity: this.fieldValues.ethnicity,
+        deficiencyType: this.fieldValues.deficiencyType,
+        history: this.fieldValues.history,
+        birthday: this.fieldValues.birthday,
+        informant: this.fieldValues.informant,
+        age: this.fieldValues.age
+      });
     }
   },
   computed: {
@@ -289,6 +353,11 @@ export default {
   },
   created() {
     this.fillCID(CID10.list);
+  },
+  watch: {
+    fieldValues() {
+      this.updatePrintView();
+    }
   }
 };
 </script>

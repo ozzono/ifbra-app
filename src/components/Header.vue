@@ -94,6 +94,7 @@ export default {
       this.width = window.innerWidth;
     },
     showPrintView() {
+      this.$eventHub.$emit("update-printview");
       this.updatePrintView();
       this.$eventHub.$emit("force-blur");
     }

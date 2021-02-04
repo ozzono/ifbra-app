@@ -21,6 +21,7 @@
       <v-card
         flat
         tile
+        v-if="!hideButton"
         :class="
           `${!theme.dark ? theme.color : ''} d-flex justify-right minux-btn`
         "
@@ -37,7 +38,7 @@
 <script>
 import { mapGetters } from "vuex";
 export default {
-  props: ["text"],
+  props: ["text","hideButton"],
   computed: {
     ...mapGetters(["theme"])
   }

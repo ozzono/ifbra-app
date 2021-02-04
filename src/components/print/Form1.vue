@@ -16,8 +16,11 @@
       </v-col>
     </v-row>
     <v-row v-for="evaluator in allEvaluators" :key="evaluator.id">
-      <v-col cols="4">Tipo de avaliador: {{ evaluator.type }}</v-col>
-      <v-col>Nome do avaliador: {{ evaluator.name }}</v-col>
+      <v-col>Nome do avaliador:<br />{{ evaluator.name }}</v-col>
+      <v-col cols="3">Tipo de avaliador:<br />{{ evaluator.type }}</v-col>
+      <v-col cols="3">
+        Registro Profissional:<br />{{ evaluator.registry.value }}
+      </v-col>
     </v-row>
     <v-divider v-if="allEvaluators.length > 0" />
     <v-row>
@@ -38,12 +41,12 @@
       <v-col>
         Nascimento:
         {{
-          (this.personal.birthday || "").length > 0
+          this.personal.birthday.length > 0
             ? this.personal.birthday
                 .split("-")
                 .reverse()
                 .join("/")
-            : ""
+            : "pppp"
         }}
       </v-col>
       <v-col>Idade: {{ `${personal.age} anos` || "" }}</v-col>
@@ -77,17 +80,7 @@ export default {
     LighterTextField: () => import("@/components/LighterTextField"),
     EmptyFormAlert: () => import("@/components/print/EmptyFormAlert")
   },
-  computed: mapGetters(["evalDate", "personal", "allEvaluators"]),
-  methods: {
-    setBirthday() {
-      return (this.personal.birthday || "").length > 0
-        ? this.personal.birthday
-            .split("-")
-            .reverse()
-            .join("/")
-        : "";
-    }
-  }
+  computed: mapGetters(["evalDate", "personal", "allEvaluators"])
 };
 </script>
 
