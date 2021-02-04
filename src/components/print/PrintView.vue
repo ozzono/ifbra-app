@@ -4,6 +4,14 @@
       <PrintBar />
       <v-container id="printSection">
         <h1 class="text-center">Avaliação Médica Funcional</h1>
+        <h3 class="text-center">
+          <a
+            href="https://www.in.gov.br/materia/-/asset_publisher/Kujrw0TZC2Mb/content/id/30050742/do1-2014-01-30-portaria-interministerial-n-1-de-27-de-janeiro-de-2014-30050738"
+            target="_blank"
+          >
+            Portaria Interministerial
+          </a>
+        </h3>
         <Form1 />
         <v-divider />
         <MiniReport />

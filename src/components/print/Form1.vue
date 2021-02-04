@@ -46,17 +46,18 @@
                 .split("-")
                 .reverse()
                 .join("/")
-            : "pppp"
+            : ""
         }}
       </v-col>
-      <v-col>Idade: {{ `${personal.age} anos` || "" }}</v-col>
+      <v-col>
+        Idade: {{ personal.age.length > 0 ? `${personal.age} anos` : "" }}
+      </v-col>
     </v-row>
     <v-row>
       <v-col>Matrícula: {{ personal.registry || "" }}</v-col>
       <v-col>Sexo: {{ personal.sex || "" }}</v-col>
       <v-col>Etnia: {{ personal.ethnicity || "" }}</v-col>
     </v-row>
-    <v-divider />
     <v-row>
       <v-col>
         Tipo{{ personal.deficiencyType.length > 1 ? "s" : "" || "" }} de
