@@ -2,7 +2,7 @@
 
 const joinSplice = function(array, index, item) {
   array.join();
-  array.splice(index + 1, 0, item);
+  array.splice(index, 0, item);
   array.join();
   return array;
 };
