@@ -223,7 +223,7 @@ function getDegree(val) {
     case rangeCheck(val, ranges[0]):
       return "grave";
     case rangeCheck(val, ranges[1]):
-      return "moderada";
+      return "moderado";
     case rangeCheck(val, ranges[2]):
       return "leve";
     case rangeCheck(val, ranges[3]):

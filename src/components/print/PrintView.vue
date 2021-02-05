@@ -24,6 +24,8 @@
       <v-container>
         <v-divider />
         <Form4 />
+        <v-divider />
+        <ClassificationBoard />
       </v-container>
     </v-card>
   </div>
@@ -68,6 +70,7 @@ export default {
     Form3: () => import("@/components/print/Form3"),
     Form4: () => import("@/components/print/Form4"),
     MiniReport: () => import("@/components/print/MiniReport"),
+    ClassificationBoard: () => import("@/components/print/ClassificationBoard"),
     Report: () => import("@/components/Report")
   },
   mounted() {
