@@ -78,10 +78,10 @@
         tile
         :class="`d-flex align-center ${!theme.dark ? theme.color : ''}`"
       >
-        <a href="https://github.com/synini/ifbra-app">
+        <a href="https://github.com/ozzono/ifbra-app">
           Código aberto&nbsp;
         </a>
-        <a href="https://github.com/synini/ifbra-app">
+        <a href="https://github.com/ozzono/ifbra-app">
           <v-icon dense>mdi-github-circle</v-icon>
         </a>
       </v-card>
@@ -93,7 +93,7 @@
 import { mapGetters } from "vuex";
 export default {
   data: () => ({
-    width: ""
+    width: "flex-column"
   }),
   name: "VuetifyFooter",
   computed: mapGetters(["theme"]),
