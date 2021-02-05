@@ -7,9 +7,11 @@
   >
     <v-card
       :class="
-        `d-flex flex-row justify-center align-center ${
-          !theme.dark ? theme.color : ''
-        }`
+        `d-flex
+        justify-center align-center
+        ${!theme.dark ? theme.color : ''}
+        ${width < 960 ? 'flex-column' : 'flex-row'}
+        `
       "
       cols="12"
       width="100%"
@@ -27,15 +29,30 @@
         "
       >
         {{ new Date().getFullYear() }}
-        <span class="left-pad right-pad hidden-sm-and-down">—</span>
-        Desenvolvido por
       </v-card>
       <v-card
         height="3rem"
         flat
         tile
-        :class="`btn d-flex align-center ${!theme.dark ? theme.color : ''}`"
+        :class="
+          `d-flex text-center align-center right-pad
+          ${!theme.dark ? theme.color : ''}
+          `
+        "
       >
+        <v-icon class="hidden-sm-and-down">mdi-ray-vertex</v-icon>
+      </v-card>
+      <v-card
+        height="3rem"
+        flat
+        tile
+        :class="
+          `d-flex text-center align-center right-pad
+          ${!theme.dark ? theme.color : ''}
+          `
+        "
+      >
+        <span class="right-pad">Desenvolvido por</span>
         <a href="https://www.linkedin.com/in/hugo-virgilio/">
           Hugo Virgílio&nbsp;
         </a>
@@ -43,14 +60,23 @@
           <v-icon dense>mdi-linkedin-box</v-icon>
         </a>
       </v-card>
-      <span class="hidden-sm-and-down">—</span>
       <v-card
         height="3rem"
         flat
         tile
         :class="
-          `d-flex align-center left-pad ${!theme.dark ? theme.color : ''}`
+          `d-flex text-center align-center right-pad
+          ${!theme.dark ? theme.color : ''}
+          `
         "
+      >
+        <v-icon class="hidden-sm-and-down">mdi-ray-vertex</v-icon>
+      </v-card>
+      <v-card
+        height="3rem"
+        flat
+        tile
+        :class="`d-flex align-center ${!theme.dark ? theme.color : ''}`"
       >
         <a href="https://github.com/synini/ifbra-app">
           Código aberto&nbsp;
@@ -59,22 +85,6 @@
           <v-icon dense>mdi-github-circle</v-icon>
         </a>
       </v-card>
-      <v-card
-        height="3rem"
-        flat
-        tile
-        :class="`d-flex align-center ${!theme.dark ? theme.color : ''}`"
-      >
-      </v-card>
-      <v-card
-        height="3rem"
-        flat
-        tile
-        :class="
-          `d-flex align-center left-pad ${!theme.dark ? theme.color : ''}`
-        "
-      >
-      </v-card>
     </v-card>
   </v-footer>
 </template>
@@ -82,8 +92,19 @@
 <script>
 import { mapGetters } from "vuex";
 export default {
+  data: () => ({
+    width: ""
+  }),
   name: "VuetifyFooter",
-  computed: mapGetters(["theme"])
+  computed: mapGetters(["theme"]),
+  methods: {
+    setWidth() {
+      this.width = window.innerWidth;
+    }
+  },
+  mounted() {
+    window.addEventListener("resize", this.setWidth);
+  }
 };
 </script>
 
@@ -92,6 +113,6 @@ export default {
   padding-left: 1rem;
 }
 .right-pad {
-  padding-right: 1rem;
+  padding-right: 0.3rem;
 }
 </style>
