@@ -48,6 +48,9 @@ export default {
 </script>
 
 <style>
+@page {
+  margin: 0;
+}
 @media only print {
   .print-hidden {
     display: none;

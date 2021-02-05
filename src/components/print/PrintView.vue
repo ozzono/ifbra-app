@@ -2,7 +2,7 @@
   <div :class="`print-btn ${!printView ? 'd-none' : ''}`">
     <v-card :class="`${theme.dark ? '' : theme.color}`">
       <PrintBar />
-      <v-container id="printSection">
+      <v-container id="print-section">
         <h1 class="text-center">Avaliação Médica Funcional</h1>
         <h3 class="text-center">
           <a
@@ -13,19 +13,19 @@
           </a>
         </h3>
         <Form1 />
-        <v-divider />
+        <v-divider class="divider" />
         <MiniReport />
-        <v-divider />
+        <v-divider class="divider" />
         <Form2 />
-        <v-divider />
+        <v-divider class="divider" />
         <Form3 />
-      </v-container>
-      <Report />
-      <v-container>
-        <v-divider />
-        <Form4 />
-        <v-divider />
+        <Report />
+        <v-divider class="divider" />
+        <p style="page-break-before: always" />
         <ClassificationBoard />
+        <v-divider class="divider" />
+        <Form4 />
+        <v-divider class="divider" />
       </v-container>
     </v-card>
   </div>
@@ -82,3 +82,13 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.divider {
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+}
+.print-section{
+  margin: 2em;
+}
+</style>

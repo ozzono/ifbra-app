@@ -16,7 +16,7 @@
         <!--  description -->
         {{ row.Desc }}
       </v-col>
-      <v-col cols="2">
+      <v-col cols="3">
         <!-- severity -->
         <v-card
           flat
@@ -39,7 +39,7 @@
           </v-card>
         </v-card>
       </v-col>
-      <v-col cols="2">
+      <v-col cols="3">
         <!-- need aid -->
         <v-card
           flat
