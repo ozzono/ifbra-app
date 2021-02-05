@@ -361,9 +361,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.cidcard {
-  /* padding-left: 2em; */
-}
-</style>

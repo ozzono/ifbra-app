@@ -10,16 +10,9 @@
 import { mapGetters } from "vuex";
 /* eslint-disable no-console */
 export default {
-  data: () => ({
-    isHovering: false,
-    customColor: ""
-  }),
   props: ["title"],
   computed: {
     ...mapGetters(["theme"])
-  },
-  created() {
-    this.$eventHub.$on("theme", this.setVueTheme);
   }
 };
 </script>

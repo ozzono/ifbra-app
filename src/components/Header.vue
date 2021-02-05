@@ -8,7 +8,9 @@
         :class="`${!theme.dark ? 'light-blue darken-3' : ''}`"
       >
         <div class="hidden-md-and-up">
-          <v-btn @click="drawer = true" tile>Menu</v-btn>
+          <v-btn @click="drawer = true" tile small depressed text>
+            <v-icon>mdi-menu</v-icon>
+          </v-btn>
         </div>
         <v-toolbar-title class="title">IFBr-A</v-toolbar-title>
         <div class="hidden-sm-and-down">
@@ -32,17 +34,27 @@
           </v-btn>
         </div>
         <v-spacer />
+        <PrivacyAlert />
         <ReportDialog />
         <v-item-group>
           <v-card class="d-flex flex-row align-center">
             <v-card flat tile>
               <div class="hidden-md-and-up">
-                <v-btn text tile small>
+                <v-btn
+                  :class="`${theme.dark ? 'black-bg' : 'white-bg'}`"
+                  text
+                  tile
+                  small
+                >
                   <v-icon @click="showPrintView()">mdi-printer</v-icon>
                 </v-btn>
               </div>
               <div class="hidden-sm-and-down">
-                <v-btn text tile>
+                <v-btn
+                  :class="`${theme.dark ? 'black-bg' : 'white-bg'}`"
+                  text
+                  tile
+                >
                   <v-icon @click="showPrintView()">mdi-printer</v-icon>
                 </v-btn>
               </div>
@@ -76,12 +88,14 @@ export default {
     drawer: false,
     menu: [
       ["Formulários", "/"],
-      ["Informações", "info"]
+      ["Informações", "info"],
+      ["Privacidade", "lgpd"]
     ],
     width: 0
   }),
   components: {
     Theme: () => import("@/components/Theme"),
+    PrivacyAlert: () => import("@/components/PrivacyAlert"),
     ReportDialog: () => import("@/components/ReportDialog")
   },
   computed: mapGetters(["theme"]),
@@ -111,5 +125,11 @@ export default {
 }
 .margin {
   margin-right: 0.2rem;
+}
+.black-bg {
+  background-color: black;
+}
+.white-bg {
+  background-color: white;
 }
 </style>

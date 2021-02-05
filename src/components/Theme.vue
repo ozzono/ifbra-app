@@ -24,15 +24,11 @@
 /* eslint-disable no-console */
 import { mapGetters } from "vuex";
 export default {
-  data: () => ({
-    dark: false
-  }),
   methods: {
     setTheme() {
       this.$eventHub.$emit("force-blur");
       this.theme.dark = !this.theme.dark;
       this.$eventHub.$emit("theme");
-      this.dark = !this.dark;
     }
   },
   computed: {
