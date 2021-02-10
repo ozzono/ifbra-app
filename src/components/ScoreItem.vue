@@ -56,7 +56,6 @@ export default {
         dominio: this.scoreData.dominio
       };
       if (["25", "50", "75"].includes(this.selected)) {
-        console.log("fuzzyfy");
         this.$eventHub.$emit("fuzzyfy", {
           value: this.selected,
           dominios: [this.scoreData.dominio]
@@ -78,9 +77,14 @@ export default {
       if (
         update.dominios.some(element => {
           return element === this.scoreData.dominio;
-        })
+        }) &&
+        (this.selected > update.value ||
+          this.selected.length > update.value.length ||
+          Array.isArray(this.selected))
       ) {
-        this.selected = update.value;
+        {
+          this.selected = update.value;
+        }
       }
     },
     toggle() {
