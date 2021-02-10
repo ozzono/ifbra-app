@@ -48,7 +48,7 @@
                     </v-col>
                     <v-col cols="12" md="4">
                       <v-switch
-                        @change="switched(deficiecia.Dominios, i)"
+                        @click="switched(deficiecia.Dominios, i)"
                         v-model="printFuzzy[i].needAid"
                         label="Não dispõe de auxílio de terceiros sempre que necessário."
                       />
@@ -112,6 +112,12 @@ export default {
           dominios: dominios,
           normalize: this.$custom.normalize
         });
+        this.$eventHub.$emit(
+          "fuzzyfy",
+          dominios.reduce((output, element) => {
+            return [...output, this.$custom.normalize(element).toLowerCase()];
+          }, [])
+        );
       }
     },
     updatePrint(i) {

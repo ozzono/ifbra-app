@@ -62,16 +62,19 @@
                     cols="6"
                     :md="SelectCols"
                   >
-                    <CheckList
+                    <ScoreItem
                       inner-label=""
                       class="checklist"
                       :makeDense="true"
                       :inner-items="INSS"
                       inner-hint="Médica"
                       :make-outlined="true"
-                      @selected-items="
-                        refreshScores('medical', i, j, $event, dominio.Dominio)
-                      "
+                      :score-data="{
+                        column: 'social',
+                        i: i,
+                        j: j,
+                        dominio: dominio.Dominio
+                      }"
                     />
                   </v-col>
                   <v-col
@@ -79,16 +82,19 @@
                     cols="6"
                     :md="SelectCols"
                   >
-                    <CheckList
+                    <ScoreItem
                       inner-label=""
                       class="checklist"
                       :makeDense="true"
                       :inner-items="INSS"
                       inner-hint="Social"
                       :make-outlined="true"
-                      @selected-items="
-                        refreshScores('social', i, j, $event, dominio.Dominio)
-                      "
+                      :score-data="{
+                        column: 'social',
+                        i: i,
+                        j: j,
+                        dominio: dominio.Dominio
+                      }"
                     />
                   </v-col>
                   <v-col class="align-start" :cols="12" :md="CheckListCols">
@@ -137,11 +143,15 @@ export default {
     barreiras: Object.values(barreiras),
     Barreiras: ["P e T", "Amb", "A e R", "At", "SS e P"],
     INSS: ["25", "50", "75", "100"],
-    hide: false
+    hide: false,
+    refreshScores:function(){
+      
+    }
   }),
   components: {
     FormHeader: () => import("@/components/forms/FormHeader"),
     CheckList: () => import("@/components/CheckList"),
+    ScoreItem: () => import("@/components/ScoreItem"),
     Tooltip: () => import("@/components/Tooltip"),
     LighterTextField: () => import("@/components/LighterTextField")
   },
@@ -166,17 +176,6 @@ export default {
     showHide(status) {
       this.hide = status;
     },
-    refreshScores(col, i, j, value, dominio) {
-      const update = { col: col, i: i, j: j, value: value, dominio: dominio };
-      this.updateScores(update);
-      this.cycleScores(update);
-      if (this.filledStatus) {
-        this.calcScores();
-        this.$eventHub.$emit("filled");
-      }
-      this.updateFuzzy({ dominio: dominio, scores: this.allScores });
-      this.$eventHub.$emit("score");
-    }
   },
   computed: {
     ...mapGetters(["filledStatus", "allScores", "fuzzy", "theme"])
