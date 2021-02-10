@@ -55,6 +55,13 @@ export default {
         value: this.selected,
         dominio: this.scoreData.dominio
       };
+      if (["25", "50", "75"].includes(this.selected)) {
+        console.log("fuzzyfy");
+        this.$eventHub.$emit("fuzzyfy", {
+          value: this.selected,
+          dominios: [this.scoreData.dominio]
+        });
+      }
       this.updateScores(update);
       this.cycleScores(update);
       if (this.filledStatus) {
@@ -67,13 +74,13 @@ export default {
       });
       this.$eventHub.$emit("score");
     },
-    applyFuzzy(dominios) {
+    applyFuzzy(update) {
       if (
-        dominios.some(element => {
+        update.dominios.some(element => {
           return element === this.scoreData.dominio;
         })
       ) {
-        this.selected = "25";
+        this.selected = update.value;
       }
     },
     toggle() {

@@ -112,12 +112,12 @@ export default {
           dominios: dominios,
           normalize: this.$custom.normalize
         });
-        this.$eventHub.$emit(
-          "fuzzyfy",
-          dominios.reduce((output, element) => {
+        this.$eventHub.$emit("fuzzyfy", {
+          value: 25,
+          dominios: dominios.reduce((output, element) => {
             return [...output, this.$custom.normalize(element).toLowerCase()];
           }, [])
-        );
+        });
       }
     },
     updatePrint(i) {
