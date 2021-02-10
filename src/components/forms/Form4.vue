@@ -23,7 +23,7 @@
             <v-col></v-col>
             <v-col></v-col>
             <v-col>
-              Marcadores preenchidos automaticamente
+              Os marcadores dessa coluna são preenchidos automaticamente
             </v-col>
           </v-row>
           <div v-for="(deficiecia, i) in Fuzzy" :key="i">
@@ -41,14 +41,14 @@
                   >
                     <v-col class="text-center" cols="12" md="3">
                       <v-switch
-                        @change="updatePrint(i)"
+                        @change="switched(deficiecia.Dominios, i)"
                         v-model="printFuzzy[i].severe"
                         :label="deficiecia.Obs"
                       />
                     </v-col>
                     <v-col cols="12" md="4">
                       <v-switch
-                        @change="updatePrint(i)"
+                        @change="switched(deficiecia.Dominios, i)"
                         v-model="printFuzzy[i].needAid"
                         label="Não dispõe de auxílio de terceiros sempre que necessário."
                       />
@@ -85,6 +85,7 @@ export default {
   data: () => ({
     Fuzzy: Object.values(Fuzzy),
     hide: false,
+    load: false,
     printFuzzy: {}
   }),
   components: {
@@ -104,6 +105,15 @@ export default {
         return [...output, { Desc: row.Desc, needAid: false, severe: false }];
       }, []);
     },
+    switched(dominios, i) {
+      this.updatePrint(i);
+      if (this.printFuzzy[i].severe || this.printFuzzy[i].needAid) {
+        this.fuzzyfy({
+          dominios: dominios,
+          normalize: this.$custom.normalize
+        });
+      }
+    },
     updatePrint(i) {
       this.updatePrintFuzzy(this.printFuzzy[i]);
     },
@@ -120,7 +130,12 @@ export default {
         )
         .join(" ou ");
     },
-    ...mapActions(["makePrintFuzzy", "updatePrintFuzzy", "makeFuzzy"])
+    ...mapActions([
+      "makePrintFuzzy",
+      "updatePrintFuzzy",
+      "makeFuzzy",
+      "fuzzyfy"
+    ])
   },
   created() {
     this.$eventHub.$emit("score");

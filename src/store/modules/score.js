@@ -17,6 +17,24 @@ const state = {
   degree: ""
 };
 const actions = {
+  fuzzyfy({ commit }, forceFuzzy) {
+    const dominios = forceFuzzy.dominios.reduce((out, dominio) => {
+      return [...out, forceFuzzy.normalize(dominio)];
+    }, []);
+    commit(
+      "mutateScores",
+      state.scores.reduce((output, score) => {
+        if (score.Dominio === dominios[0] || score.Dominio === dominios[1]) {
+          score.SubDominios.reduce((out, sub) => {
+            sub.medical = 25;
+            sub.social = 25;
+            return [...out, sub];
+          }, []);
+        }
+        return [...output, score];
+      }, [])
+    );
+  },
   setScores({ commit }, dominios) {
     var id = 0;
     var max = dominios.reduce((output, dominio) => {

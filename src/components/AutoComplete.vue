@@ -37,7 +37,6 @@ export default {
       this.text = "";
     },
     focus() {
-      console.log("focusing");
       this.$refs.field.focus();
     }
   },

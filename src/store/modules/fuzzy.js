@@ -64,35 +64,33 @@ const actions = {
     var dominio = update.scores.filter(score => {
       return score.Dominio.toLowerCase().includes(update.dominio.toLowerCase());
     })[0];
-    commit(
-      "mutateFuzzy",
-      state.fuzzy.reduce((fuzzyOutput, fuzzyRow) => {
-        var _50 = dominio.SubDominios.some(subdominio => {
-          return (
-            parseInt(subdominio.medical, 10) <= 50 ||
-            parseInt(subdominio.social, 10) <= 50
-          );
-        });
-        var _75 = _50
-          ? false
-          : dominio.SubDominios.every(subdominio => {
-              return (
-                parseInt(subdominio.medical, 10) == 75 &&
-                parseInt(subdominio.social, 10) == 75
-              );
-            });
-        return [
-          ...fuzzyOutput,
-          fuzzyRow.Dominio.includes(update.dominio.toLowerCase())
-            ? {
-                Desc: fuzzyRow.Desc,
-                Dominio: fuzzyRow.Dominio,
-                switch: _50 || _75
-              }
-            : fuzzyRow
-        ];
-      }, [])
-    );
+    const newscore = state.fuzzy.reduce((fuzzyOutput, fuzzyRow) => {
+      var has25or50 = dominio.SubDominios.some(subdominio => {
+        return (
+          parseInt(subdominio.medical, 10) <= 50 ||
+          parseInt(subdominio.social, 10) <= 50
+        );
+      });
+      var has75 = has25or50
+        ? false
+        : dominio.SubDominios.every(subdominio => {
+            return (
+              parseInt(subdominio.medical, 10) == 75 &&
+              parseInt(subdominio.social, 10) == 75
+            );
+          });
+      return [
+        ...fuzzyOutput,
+        fuzzyRow.Dominio.includes(update.dominio.toLowerCase())
+          ? {
+              Desc: fuzzyRow.Desc,
+              Dominio: fuzzyRow.Dominio,
+              switch: has25or50 || has75
+            }
+          : fuzzyRow
+      ];
+    }, []);
+    commit("mutateFuzzy", newscore);
   }
 };
 

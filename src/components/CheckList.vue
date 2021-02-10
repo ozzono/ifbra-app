@@ -9,7 +9,6 @@
     :outlined="makeOutlined"
     :hint="innerHint"
     :persistent-hint="innerHint.length > 0"
-    @change="$emit('selected-items', selectedItems)"
     ref="select"
     :rules="isRequired(selectedItems)"
   >
@@ -79,6 +78,15 @@ export default {
       if (!this.allowClean) {
         return [(val || "").length > 0 || "Campo Obrigatório"];
       }
+    },
+    changed(value) {
+      this.$emit("selected-items", value);
+      this.$emit("changed", "changed");
+    }
+  },
+  watch: {
+    selectedItems() {
+      this.changed(this.selectedItems);
     }
   }
 };

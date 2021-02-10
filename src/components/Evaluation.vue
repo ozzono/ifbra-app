@@ -177,7 +177,6 @@ export default {
         label: ""
       };
       this.$refs.evalType.clear();
-      console.log(this.allEvaluators);
     },
     required: val => [(val || "").length > 0 || "Campor obrigatório"]
   },

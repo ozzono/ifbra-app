@@ -37,7 +37,7 @@
       <v-tab-item>
         <Form2 />
       </v-tab-item>
-      <v-tab-item>
+      <v-tab-item eager>
         <Form3 />
       </v-tab-item>
       <v-tab-item>
@@ -48,6 +48,7 @@
 </template>
 
 <script>
+/* eslint-disable no-console */
 import { mapGetters } from "vuex";
 export default {
   components: {
@@ -77,7 +78,8 @@ export default {
         subtitle: "Aplicação do Modelo Linguístico Fuzzy",
         comment: ""
       }
-    ]
+    ],
+    eager: [false, false, false]
   }),
   computed: mapGetters(["theme"])
 };

@@ -19,7 +19,6 @@ const state = {
 };
 const actions = {
   setInfo({ commit }, info) {
-    console.log(info)
     commit("mutateInfo", info);
   }
 };

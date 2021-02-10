@@ -16,6 +16,7 @@
               v-model="fieldValues.name"
               :rules="required(fieldValues.name)"
               label="Nome completo"
+              @change="updatePrintView()"
             />
           </v-col>
           <v-col md="3" cols="6">
@@ -23,6 +24,7 @@
               v-model="fieldValues.department"
               :rules="required(fieldValues.department)"
               label="Lotação"
+              @change="updatePrintView()"
             />
           </v-col>
           <v-col md="3" cols="6">
@@ -31,6 +33,7 @@
               :inner-items="sexo"
               inner-label="Sexo"
               @selected-items="fieldValues.sex = $event"
+              @changed="updatePrintView()"
               :rules="required(fieldValues.sex)"
             />
           </v-col>
@@ -53,6 +56,7 @@
               outlined
               :persistent-hint="idade.length == 0"
               hint="Calculada automaticamente"
+              @change="updatePrintView()"
             />
           </v-col>
           <v-col md="3" cols="6">
@@ -60,6 +64,7 @@
               v-model="fieldValues.registry"
               :rules="required(fieldValues.registry)"
               label="Matrícula"
+              @change="updatePrintView()"
             />
           </v-col>
           <v-col md="3" cols="6">
@@ -68,10 +73,11 @@
               :inner-items="Form[7]"
               inner-label="Etnia"
               @selected-items="fieldValues.ethnicity = $event"
+              @changed="updatePrintView()"
             />
           </v-col>
         </v-row>
-        <v-divider />
+        <v-divider class="divider" />
         <v-row>
           <v-col>Dados da Avaliação</v-col>
         </v-row>
@@ -83,6 +89,7 @@
               :inner-items="Form[6]"
               :allow-multiple="true"
               @selected-items="fieldValues.deficiencyType = $event"
+              @changed="updatePrintView()"
             />
           </v-col>
           <v-col md="8" cols="10">
@@ -128,6 +135,7 @@
               v-model="fieldValues.address"
               :rules="required(fieldValues.address)"
               label="Local da Avaliação"
+              @change="updatePrintView()"
             />
           </v-col>
           <v-col md="2" cols="2">
@@ -136,6 +144,7 @@
               :inner-items="uf"
               inner-label="UF"
               @selected-items="fieldValues.UF = $event"
+              @changed="updatePrintView()"
             />
           </v-col>
         </v-row>
@@ -146,6 +155,7 @@
               :inner-items="Form[8].Informante"
               inner-label="Quem prestou as informações"
               @selected-items="setInformante($event)"
+              @changed="updatePrintView()"
             />
           </v-col>
           <v-col md="3" cols="6">
@@ -161,6 +171,7 @@
               ref="informante"
               v-if="!hideInformante"
               :rules="required(informante.nome)"
+              @change="updatePrintView()"
             />
           </v-col>
         </v-row>
@@ -171,6 +182,7 @@
               label="Histórico clínico e social"
               v-model="fieldValues.history"
               :rules="required(fieldValues.history)"
+              @change="updatePrintView()"
             />
           </v-col>
         </v-row>
@@ -216,7 +228,13 @@ export default {
     CIDFlex: () => import("@/components/CIDFlex")
   },
   methods: {
-    ...mapActions(["setInfo", "unlistCID", "refillCID", "fillCID"]),
+    ...mapActions([
+      "setInfo",
+      "unlistCID",
+      "refillCID",
+      "fillCID",
+      "setDeficiencies"
+    ]),
     calcAge(date) {
       const splitted = date.split("/");
       var day = `${parseInt(splitted[0], 10) + 1}`.padStart(2, "0");
@@ -238,6 +256,7 @@ export default {
       this.idade = isNaN(age) ? "Data inválida" : `${age} anos`;
       this.fieldValues.age = age;
       this.fieldValues.birthday = birthday.toISOString().substr(0, 10);
+      this.updatePrintView();
     },
     showHide(status) {
       this.hide = status;
@@ -284,6 +303,7 @@ export default {
         this.$refs.cid.focus();
         this.cidHint = "Informe o CID";
       }
+      this.updatePrintView();
     },
     delCID(cid) {
       this.fieldValues.CID = this.fieldValues.CID.filter(element => {
@@ -294,44 +314,47 @@ export default {
       this.refillCID(cid);
     },
     updatePrintView() {
+      if (this.fieldValues.deficiencyType === undefined) {
+        return;
+      }
+      this.setDeficiencies(
+        this.fieldValues.deficiencyType.reduce((output, element) => {
+          return [
+            ...output,
+            {
+              label: this.$custom.normalize(
+                element.split(" ")[0].toLowerCase()
+              ),
+              text: element
+            }
+          ];
+        }, [])
+      );
       if (this.fieldValues.name === undefined) {
-        console.log("undefined fieldValues.name");
         return;
       }
       if (this.fieldValues.CID === undefined) {
-        console.log("undefined fieldValues.CID");
         return;
       }
       if (this.fieldValues.registry === undefined) {
-        console.log("undefined fieldValues.registry");
         return;
       }
       if (this.fieldValues.sex === undefined) {
-        console.log("undefined fieldValues.sex");
         return;
       }
       if (this.fieldValues.ethnicity === undefined) {
-        console.log("undefined fieldValues.ethnicity");
-        return;
-      }
-      if (this.fieldValues.deficiencyType === undefined) {
-        console.log("undefined fieldValues.deficiencyType");
         return;
       }
       if (this.fieldValues.history === undefined) {
-        console.log("undefined fieldValues.history");
         return;
       }
       if (this.fieldValues.birthday === undefined) {
-        console.log("undefined fieldValues.birthday");
         return;
       }
       if (this.fieldValues.informant === undefined) {
-        console.log("undefined fieldValues.informant");
         return;
       }
       if (this.fieldValues.age === undefined) {
-        console.log("undefined fieldValues.age");
         return;
       }
       this.setInfo({
@@ -349,15 +372,16 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(["theme", "personal"])
+    ...mapGetters(["theme", "personal", "deficiencies"])
   },
   created() {
     this.fillCID(CID10.list);
-  },
-  watch: {
-    fieldValues() {
-      this.updatePrintView();
-    }
   }
 };
 </script>
+
+<style scoped>
+.divider {
+  margin-bottom: 1em;
+}
+</style>

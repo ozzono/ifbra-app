@@ -12,5 +12,8 @@ export const custom = {
         ];
       }, [])
       .join(" ");
+  },
+  sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
 };
