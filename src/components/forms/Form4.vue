@@ -1,7 +1,7 @@
 <template>
   <div class="form" :class="`${!theme.dark ? theme.color : ''}`">
     <div class="text-center">
-      <v-dialog v-model="dialog" max-width="75%">
+      <v-dialog v-model="dialog" max-width="77%">
         <v-card>
           <v-card-title class="headline">
             Aplicação automática do modelo Fuzzy
@@ -26,8 +26,10 @@
                 </v-col>
               </v-row>
               <v-row v-for="(deficiencia, i) in Fuzzy" :key="i">
-                <v-col cols="4">{{ deficiencia.Desc }}</v-col>
-                <v-col cols="8">{{ deficiencia.Dominios.join(" e ") }}</v-col>
+                <v-col cols="6" md="4">{{ deficiencia.Desc }}</v-col>
+                <v-col cols="6" md="8">
+                  {{ deficiencia.Dominios.join(" e ") }}
+                </v-col>
               </v-row>
             </div>
           </v-card-text>
