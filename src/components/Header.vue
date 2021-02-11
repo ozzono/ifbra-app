@@ -89,7 +89,8 @@ export default {
     menu: [
       ["Formulários", "/"],
       ["Informações", "info"],
-      ["Privacidade", "lgpd"]
+      ["Privacidade", "lgpd"],
+      ["Contribua", "apoio"]
     ],
     width: 0
   }),

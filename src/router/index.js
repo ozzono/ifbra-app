@@ -6,6 +6,7 @@ import Manual from "@/components/Manual";
 import CID10 from "@/components/CID10";
 import Info from "@/components/Info";
 import LGPD from "@/components/LGPD";
+import BackMeUp from "@/components/BackMeUp";
 
 Vue.use(Router);
 
@@ -40,6 +41,11 @@ export default new Router({
       path: "/lgpd",
       name: "LGPD",
       component: LGPD
-    }
+    },
+    {
+      path: "/apoio",
+      name: "Contribua",
+      component: BackMeUp
+    },
   ]
 });
