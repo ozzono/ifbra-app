@@ -42,25 +42,19 @@ export default {
       if (this.someItems) return "mdi-minus-box";
       return "mdi-checkbox-blank-outline";
     },
-    ...mapGetters(["allScores"])
+    ...mapGetters(["allScores", "personal"])
   },
 
   methods: {
     // refreshScores(col, i, j, dominio) {
     refreshScores() {
       const update = {
-        col: this.scoreData.col,
+        col: this.scoreData.column,
         i: this.scoreData.i,
         j: this.scoreData.j,
         value: this.selected,
         dominio: this.scoreData.dominio
       };
-      if (["25", "50", "75"].includes(this.selected)) {
-        this.$eventHub.$emit("fuzzyfy", {
-          value: this.selected,
-          dominios: [this.scoreData.dominio]
-        });
-      }
       this.updateScores(update);
       this.cycleScores(update);
       if (this.filledStatus) {
@@ -73,17 +67,23 @@ export default {
       });
       this.$eventHub.$emit("score");
     },
-    applyFuzzy(update) {
+    applyFuzzy(dominios) {
+      dominios = dominios.map(dominio =>
+        this.$custom.normalize(dominio).toLowerCase()
+      );
       if (
-        update.dominios.some(element => {
+        dominios.some(element => {
           return element === this.scoreData.dominio;
-        }) &&
-        (this.selected > update.value ||
-          this.selected.length > update.value.length ||
-          Array.isArray(this.selected))
+        })
       ) {
-        {
-          this.selected = update.value;
+        const value = this.allScores.reduce((output, element) => {
+          if (element.Dominio === this.scoreData.dominio) {
+            output = element.min;
+          }
+          return output;
+        }, 101);
+        if (value != null) {
+          this.selected = `${value}`;
         }
       }
     },

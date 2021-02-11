@@ -24,14 +24,19 @@ const actions = {
     commit(
       "mutateScores",
       state.scores.reduce((output, score) => {
-        if (score.Dominio === dominios[0] || score.Dominio === dominios[1]) {
+        if (
+          (score.Dominio === dominios[0] || score.Dominio === dominios[1]) &&
+          score.min != null
+        ) {
           score.SubDominios.reduce((out, sub) => {
-            sub.medical = 25;
-            sub.social = 25;
+            sub.medical = score.min;
+            sub.social = score.min;
             return [...out, sub];
           }, []);
         }
-        return [...output, score];
+        {
+          return [...output, score];
+        }
       }, [])
     );
   },
@@ -62,7 +67,8 @@ const actions = {
               ];
             },
             []
-          )
+          ),
+          min: null
         }
       ];
     }, []);
@@ -100,6 +106,18 @@ const actions = {
         state.scores[score.i].SubDominios[score.j].id
       ].social = value;
     }
+    state.scores[score.i].min = state.scores[score.i].SubDominios.reduce(
+      (output, element) => {
+        if (output > element.medical && element.medical != null) {
+          output = element.medical;
+        }
+        if (output > element.social && element.social != null) {
+          output = element.social;
+        }
+        return output;
+      },
+      100
+    );
     commit("mutateScores", state.scores);
   },
   cycleScores({ commit }, score) {

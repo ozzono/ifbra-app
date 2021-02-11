@@ -228,13 +228,7 @@ export default {
     CIDFlex: () => import("@/components/CIDFlex")
   },
   methods: {
-    ...mapActions([
-      "setInfo",
-      "unlistCID",
-      "refillCID",
-      "fillCID",
-      "setDeficiencies"
-    ]),
+    ...mapActions(["setInfo", "unlistCID", "refillCID", "fillCID"]),
     calcAge(date) {
       const splitted = date.split("/");
       var day = `${parseInt(splitted[0], 10) + 1}`.padStart(2, "0");
@@ -314,60 +308,17 @@ export default {
       this.refillCID(cid);
     },
     updatePrintView() {
-      if (this.fieldValues.deficiencyType === undefined) {
-        return;
-      }
-      this.setDeficiencies(
-        this.fieldValues.deficiencyType.reduce((output, element) => {
-          return [
-            ...output,
-            {
-              label: this.$custom.normalize(
-                element.split(" ")[0].toLowerCase()
-              ),
-              text: element
-            }
-          ];
-        }, [])
-      );
-      if (this.fieldValues.name === undefined) {
-        return;
-      }
-      if (this.fieldValues.CID === undefined) {
-        return;
-      }
-      if (this.fieldValues.registry === undefined) {
-        return;
-      }
-      if (this.fieldValues.sex === undefined) {
-        return;
-      }
-      if (this.fieldValues.ethnicity === undefined) {
-        return;
-      }
-      if (this.fieldValues.history === undefined) {
-        return;
-      }
-      if (this.fieldValues.birthday === undefined) {
-        return;
-      }
-      if (this.fieldValues.informant === undefined) {
-        return;
-      }
-      if (this.fieldValues.age === undefined) {
-        return;
-      }
       this.setInfo({
-        name: this.fieldValues.name,
-        CID: this.fieldValues.CID,
-        registry: this.fieldValues.registry,
-        sex: this.fieldValues.sex,
-        ethnicity: this.fieldValues.ethnicity,
-        deficiencyType: this.fieldValues.deficiencyType,
-        history: this.fieldValues.history,
-        birthday: this.fieldValues.birthday,
-        informant: this.fieldValues.informant,
-        age: this.fieldValues.age
+        name: this.fieldValues.name || "",
+        CID: this.fieldValues.CID || "",
+        registry: this.fieldValues.registry || "",
+        sex: this.fieldValues.sex || "",
+        ethnicity: this.fieldValues.ethnicity || "",
+        deficiencyType: this.fieldValues.deficiencyType || "",
+        history: this.fieldValues.history || "",
+        birthday: this.fieldValues.birthday || "",
+        informant: this.fieldValues.informant || "",
+        age: this.fieldValues.age || ""
       });
     }
   },

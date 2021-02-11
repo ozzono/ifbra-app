@@ -41,14 +41,14 @@
                   >
                     <v-col class="text-center" cols="12" md="3">
                       <v-switch
-                        @change="switched(deficiecia.Dominios, i)"
+                        @change="switched(deficiecia, i)"
                         v-model="printFuzzy[i].severe"
                         :label="deficiecia.Obs"
                       />
                     </v-col>
                     <v-col cols="12" md="4">
                       <v-switch
-                        @click="switched(deficiecia.Dominios, i)"
+                        @click="switched(deficiecia, i)"
                         v-model="printFuzzy[i].needAid"
                         label="Não dispõe de auxílio de terceiros sempre que necessário."
                       />
@@ -94,7 +94,7 @@ export default {
     FormHeader: () => import("@/components/forms/FormHeader")
   },
   computed: {
-    ...mapGetters(["fuzzy", "theme", "allScores"])
+    ...mapGetters(["fuzzy", "theme", "allScores", "personal"])
   },
   methods: {
     showHide(status) {
@@ -105,19 +105,19 @@ export default {
         return [...output, { Desc: row.Desc, needAid: false, severe: false }];
       }, []);
     },
-    switched(dominios, i) {
+    switched(deficiency, i) {
       this.updatePrint(i);
-      if (this.printFuzzy[i].severe || this.printFuzzy[i].needAid) {
+      if (
+        (this.printFuzzy[i].severe || this.printFuzzy[i].needAid) &&
+        this.personal.deficiencyType.some(el1 => {
+          return deficiency.Type === this.$custom.normalize(el1).toLowerCase();
+        })
+      ) {
         this.fuzzyfy({
-          dominios: dominios,
+          dominios: deficiency.Dominios,
           normalize: this.$custom.normalize
         });
-        this.$eventHub.$emit("fuzzyfy", {
-          value: 25,
-          dominios: dominios.reduce((output, element) => {
-            return [...output, this.$custom.normalize(element).toLowerCase()];
-          }, [])
-        });
+        this.$eventHub.$emit("fuzzyfy", deficiency.Dominios);
       }
     },
     updatePrint(i) {

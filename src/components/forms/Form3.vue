@@ -70,7 +70,7 @@
                       inner-hint="Médica"
                       :make-outlined="true"
                       :score-data="{
-                        column: 'social',
+                        column: 'medical',
                         i: i,
                         j: j,
                         dominio: dominio.Dominio
