@@ -1,5 +1,49 @@
 <template>
   <div class="form" :class="`${!theme.dark ? theme.color : ''}`">
+    <div class="text-center">
+      <v-dialog v-model="dialog" max-width="75%">
+        <v-card>
+          <v-card-title class="headline">
+            Aplicação automática do modelo Fuzzy
+          </v-card-title>
+
+          <v-card-text>
+            Ao assinalar severidade ou necessidade de auxílio para uma
+            deficiência marcada no formulário de identificação, Formulário 1, as
+            pontuações do Formulário 3 para os respectivos domínios sensíveis
+            serão modificados automaticamente utilizando o menor valor marcado.
+            <v-divider class="topbottom-margin" />
+            <v-row>
+              <v-col>
+                Esse alerta aperecerá apenas uma vez após carregar a página.
+              </v-col>
+            </v-row>
+            <v-divider class="topbottom-margin" />
+            <div class="text-center">
+              <v-row>
+                <v-col>
+                  Relação de deficiência e respectivos domínios sensíveis
+                </v-col>
+              </v-row>
+              <v-row v-for="(deficiencia, i) in Fuzzy" :key="i">
+                <v-col cols="4">{{ deficiencia.Desc }}</v-col>
+                <v-col cols="8">{{ deficiencia.Dominios.join(" e ") }}</v-col>
+              </v-row>
+            </div>
+          </v-card-text>
+
+          <v-divider />
+
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn color="primary" text @click="dialog = false">
+              Ciente
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+    </div>
+
     <v-flex>
       <v-container>
         <FormHeader
@@ -26,11 +70,11 @@
               Os marcadores dessa coluna são preenchidos automaticamente
             </v-col>
           </v-row>
-          <div v-for="(deficiecia, i) in Fuzzy" :key="i">
+          <div v-for="(deficiencia, i) in Fuzzy" :key="i">
             <v-divider v-if="i > 0" class="hidden-md-and-up" :inset="true" />
             <v-row class="align-center text-center justify-center d-flex">
               <v-col class="text-center" md="2" cols="12">
-                Deficiência {{ deficiecia.Desc }}
+                Deficiência {{ deficiencia.Desc }}
               </v-col>
               <v-col cols="10">
                 <v-container>
@@ -41,14 +85,14 @@
                   >
                     <v-col class="text-center" cols="12" md="3">
                       <v-switch
-                        @change="switched(deficiecia, i)"
+                        @change="switched(deficiencia, i)"
                         v-model="printFuzzy[i].severe"
-                        :label="deficiecia.Obs"
+                        :label="deficiencia.Obs"
                       />
                     </v-col>
                     <v-col cols="12" md="4">
                       <v-switch
-                        @click="switched(deficiecia, i)"
+                        @click="switched(deficiencia, i)"
                         v-model="printFuzzy[i].needAid"
                         label="Não dispõe de auxílio de terceiros sempre que necessário."
                       />
@@ -57,13 +101,13 @@
                       <FuzzySwitch
                         :innerLabel="
                           `Houve pontuação 25 ou 50 em alguma atividade dos domínios ${formatDomain(
-                            deficiecia.Dominios
+                            deficiencia.Dominios
                           )}; OU Houve pontuação 75 em todas atividade dos domínios ${formatDomain(
-                            deficiecia.Dominios
+                            deficiencia.Dominios
                           )}`
                         "
                         :read-only="true"
-                        :dominios="deficiecia.Dominios"
+                        :dominios="deficiencia.Dominios"
                       />
                     </v-col>
                   </v-row>
@@ -86,6 +130,8 @@ export default {
     Fuzzy: Object.values(Fuzzy),
     hide: false,
     load: false,
+    dialog: false,
+    openDialog: true,
     printFuzzy: {}
   }),
   components: {
@@ -113,6 +159,9 @@ export default {
           return deficiency.Type === this.$custom.normalize(el1).toLowerCase();
         })
       ) {
+        if (this.openDialog) {
+          this.dialog = true;
+        }
         this.fuzzyfy({
           dominios: deficiency.Dominios,
           normalize: this.$custom.normalize
@@ -143,6 +192,13 @@ export default {
       "fuzzyfy"
     ])
   },
+  watch: {
+    dialog() {
+      if (!this.dialog) {
+        this.openDialog = false;
+      }
+    }
+  },
   created() {
     this.$eventHub.$emit("score");
     this.makePrintFuzzy(Fuzzy);
@@ -155,3 +211,13 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.topbottom-margin {
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+.bottom-margin {
+  margin-bottom: 1em;
+}
+</style>
