@@ -1,6 +1,6 @@
 ---
 name: Reportar um erro
 about: Use este modelo para reportar um erro.
-title: "[DATE]: [FEATURE NAME]"
+title: "[DATA]: [ERRO]"
 labels: bug
 ---
