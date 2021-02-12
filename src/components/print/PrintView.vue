@@ -32,7 +32,6 @@
 </template>
 
 <script>
-/* eslint-disable no-console */
 import { mapActions, mapGetters } from "vuex";
 export default {
   data: () => ({
@@ -88,7 +87,7 @@ export default {
   margin-bottom: 0.5em;
   margin-top: 0.5em;
 }
-.print-section{
+.print-section {
   margin: 2em;
 }
 </style>

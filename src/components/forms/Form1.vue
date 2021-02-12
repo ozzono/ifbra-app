@@ -192,7 +192,6 @@
 </template>
 
 <script>
-/* eslint-disable no-console */
 import Form from "@/assets/json/form1.json";
 import CID10 from "@/assets/json/cid10.min.json";
 import { mapActions, mapGetters } from "vuex";

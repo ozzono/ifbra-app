@@ -54,7 +54,6 @@
   </div>
 </template>
 <script>
-/* eslint-disable no-console */
 import Funcoes from "@/assets/json/form2.json";
 import { mapActions, mapGetters } from "vuex";
 export default {

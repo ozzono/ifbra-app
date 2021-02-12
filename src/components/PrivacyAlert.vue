@@ -30,7 +30,6 @@
 </template>
 <script>
 import { mapGetters } from "vuex";
-/* eslint-disable no-console */
 export default {
   data: () => ({
     dialog: false

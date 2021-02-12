@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-
 const joinSplice = function(array, index, item) {
   array.join();
   array.splice(index, 0, item);

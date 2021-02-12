@@ -14,7 +14,6 @@
 
 <script>
 import { mapActions, mapGetters } from "vuex";
-/* eslint-disable no-console */
 export default {
   name: "CheckList",
   data: () => ({

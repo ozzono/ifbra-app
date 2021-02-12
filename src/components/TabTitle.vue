@@ -8,7 +8,6 @@
 
 <script>
 import { mapGetters } from "vuex";
-/* eslint-disable no-console */
 export default {
   props: ["title"],
   computed: {

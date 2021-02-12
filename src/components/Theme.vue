@@ -21,7 +21,6 @@
 </template>
 
 <script>
-/* eslint-disable no-console */
 import { mapGetters } from "vuex";
 export default {
   methods: {

@@ -45,7 +45,6 @@
 </template>
 
 <script>
-/* eslint-disable no-console */
 import CID10 from "@/assets/json/cid10.min.json";
 import { mapGetters } from "vuex";
 export default {

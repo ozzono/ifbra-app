@@ -124,7 +124,6 @@
 </template>
 
 <script>
-/* eslint-disable no-console */
 import Fuzzy from "@/assets/json/form4.json";
 import { mapActions, mapGetters } from "vuex";
 export default {

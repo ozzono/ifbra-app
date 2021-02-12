@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 const ranges = [
   [0, 5740],
   [5740, 6355],

@@ -128,7 +128,6 @@
   </div>
 </template>
 <script>
-/* eslint-disable no-console */
 import Dominios from "@/assets/json/form3.json";
 import pontuacao from "@/assets/json/inss.json";
 import barreiras from "@/assets/json/barreiras.json";
@@ -143,10 +142,7 @@ export default {
     barreiras: Object.values(barreiras),
     Barreiras: ["P e T", "Amb", "A e R", "At", "SS e P"],
     INSS: ["25", "50", "75", "100"],
-    hide: false,
-    refreshScores:function(){
-      
-    }
+    hide: false
   }),
   components: {
     FormHeader: () => import("@/components/forms/FormHeader"),
@@ -175,7 +171,7 @@ export default {
     },
     showHide(status) {
       this.hide = status;
-    },
+    }
   },
   computed: {
     ...mapGetters(["filledStatus", "allScores", "fuzzy", "theme"])

@@ -44,7 +44,6 @@
 </template>
 
 <script>
-/* eslint-disable no-console */
 import { mapActions, mapGetters } from "vuex";
 export default {
   computed: mapGetters(["printView", "theme"]),

@@ -64,7 +64,6 @@
 </template>
 
 <script>
-/* eslint-disable no-console */
 import { mapGetters } from "vuex";
 import INSSDesc from "@/assets/json/inss.json";
 export default {
