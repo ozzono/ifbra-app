@@ -9,11 +9,40 @@
         </v-card-title>
         <v-card-text>
           <h3>
+            <v-row>
+              <v-col md="6" cols="12" class="d-flex justify-center">
+                <v-btn
+                  color="warning"
+                  @click="
+                    open(
+                      'https://github.com/ozzono/ifbra-app/issues/new?assignees=&labels=bug&template=bug_report.md&title=%5BDATA%5D%3A+%5BERRO%5D'
+                    )
+                  "
+                >
+                  Clique aqui para sugerir uma modificação
+                </v-btn>
+              </v-col>
+              <v-col md="6" cols="12" class="d-flex justify-center">
+                <v-btn
+                  color="error"
+                  @click="
+                    open(
+                      'https://github.com/ozzono/ifbra-app/issues/new?assignees=&labels=feature&template=feature_request.md&title=%5BDATA%5D%3A+%5BMELHORIA%5D'
+                    )
+                  "
+                >
+                  Clique aqui para reportar um erro
+                </v-btn>
+              </v-col>
+            </v-row>
+            <v-divider class="divider" />
             <p>
               Essa página é desenvolvida de forma autônoma e independe, sem
               exibição de anúncios ou coleta de dados e é mantida exclusivamente
               a partir das doações feitas pelos seus usuários.
             </p>
+          </h3>
+          <h3 class="text-center">
             <p>Para doar, escolha uma das opções abaixo.</p>
           </h3>
           <v-card
@@ -99,6 +128,9 @@ export default {
       this.$eventHub.$emit("force-blur");
       navigator.clipboard.writeText("ifbra@outlook.com");
       this.dialog = true;
+    },
+    open(link) {
+      window.open(link);
     }
   },
   watch: {
@@ -122,5 +154,9 @@ export default {
 }
 .pointer {
   cursor: pointer;
+}
+.divider {
+  margin-bottom: 1em;
+  margin-top: 1em;
 }
 </style>
