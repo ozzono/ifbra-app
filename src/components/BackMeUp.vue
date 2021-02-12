@@ -16,17 +16,19 @@
                   width="100%"
                   color="warning"
                   height="3em"
+                  hover
                   @click="
                     open(
                       'https://github.com/ozzono/ifbra-app/issues/new?assignees=&labels=bug&template=bug_report.md&title=%5BDATA%5D%3A+%5BERRO%5D'
                     )
                   "
                 >
-                  Clique aqui para sugerir uma modificação
+                  Sugerir uma modificação
                 </v-card>
               </v-col>
               <v-col md="4" cols="12" class="d-flex justify-center">
                 <v-card
+                  hover
                   height="3em"
                   class="d-flex justify-center align-center"
                   color="error"
@@ -37,7 +39,7 @@
                     )
                   "
                 >
-                  Clique aqui para reportar um erro
+                  Reportar um erro
                 </v-card>
               </v-col>
               <v-col md="4" cols="12" class="d-flex justify-center">
@@ -46,7 +48,7 @@
                   class="d-flex justify-center align-center"
                   color="primary"
                   width="100%"
-                  @click="open('mailto:ifbra@outlook.com')"
+                  href="mailto:ifbra@outlook.com"
                 >
                   Enviar um email
                 </v-card>
@@ -65,6 +67,7 @@
           <v-card
             flat
             tile
+            hover
             @click="apoia()"
             :class="`padding pointer ${theme.dark ? '' : theme.color}`"
           >
@@ -92,6 +95,7 @@
           </v-card>
           <v-card
             flat
+            hover
             tile
             @click="clipboard()"
             :class="`padding pointer ${theme.dark ? '' : theme.color}`"
