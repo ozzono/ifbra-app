@@ -11,8 +11,11 @@
           <h3>
             <v-row>
               <v-col md="6" cols="12" class="d-flex justify-center">
-                <v-btn
+                <v-card
+                  class="text-center d-flex align-center justify-center"
+                  width="100%"
                   color="warning"
+                  height="3em"
                   @click="
                     open(
                       'https://github.com/ozzono/ifbra-app/issues/new?assignees=&labels=bug&template=bug_report.md&title=%5BDATA%5D%3A+%5BERRO%5D'
@@ -20,11 +23,14 @@
                   "
                 >
                   Clique aqui para sugerir uma modificação
-                </v-btn>
+                </v-card>
               </v-col>
               <v-col md="6" cols="12" class="d-flex justify-center">
-                <v-btn
+                <v-card
+                  height="3em"
+                  class="d-flex justify-center align-center"
                   color="error"
+                  width="100%"
                   @click="
                     open(
                       'https://github.com/ozzono/ifbra-app/issues/new?assignees=&labels=feature&template=feature_request.md&title=%5BDATA%5D%3A+%5BMELHORIA%5D'
@@ -32,7 +38,7 @@
                   "
                 >
                   Clique aqui para reportar um erro
-                </v-btn>
+                </v-card>
               </v-col>
             </v-row>
             <v-divider class="divider" />
@@ -91,7 +97,7 @@
               <v-col cols="12" md="7">
                 <v-card tile flat :class="`${theme.dark ? '' : theme.color}`">
                   <v-card-title>
-                    Contribua com um PIX de qualquer valor.
+                    Contribua com um PIX de qualquer valor
                   </v-card-title>
                   <v-card-text>
                     Para contribuir com PIX, utilize a chave
