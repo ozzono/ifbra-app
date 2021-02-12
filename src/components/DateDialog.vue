@@ -11,7 +11,7 @@
       return-masked-value
       v-mask="'##/##/####'"
     />
-    <v-dialog v-model="dialog" width="20em" height>
+    <v-dialog v-model="dialog" width="20em">
       <v-card>
         <v-card-title>{{ label }}</v-card-title>
         <v-card-text>
