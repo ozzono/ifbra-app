@@ -10,7 +10,7 @@
         <v-card-text>
           <h3>
             <v-row>
-              <v-col md="6" cols="12" class="d-flex justify-center">
+              <v-col md="4" cols="12" class="d-flex justify-center">
                 <v-card
                   class="text-center d-flex align-center justify-center"
                   width="100%"
@@ -25,7 +25,7 @@
                   Clique aqui para sugerir uma modificação
                 </v-card>
               </v-col>
-              <v-col md="6" cols="12" class="d-flex justify-center">
+              <v-col md="4" cols="12" class="d-flex justify-center">
                 <v-card
                   height="3em"
                   class="d-flex justify-center align-center"
@@ -38,6 +38,17 @@
                   "
                 >
                   Clique aqui para reportar um erro
+                </v-card>
+              </v-col>
+              <v-col md="4" cols="12" class="d-flex justify-center">
+                <v-card
+                  height="3em"
+                  class="d-flex justify-center align-center"
+                  color="primary"
+                  width="100%"
+                  @click="open('mailto:ifbra@outlook.com')"
+                >
+                  Enviar um email
                 </v-card>
               </v-col>
             </v-row>
@@ -137,6 +148,9 @@ export default {
     },
     open(link) {
       window.open(link);
+    },
+    mail() {
+      location.href = "mailto:ifbra@outlook.com";
     }
   },
   watch: {

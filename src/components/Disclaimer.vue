@@ -1,7 +1,7 @@
 <template>
   <v-card>
-    <v-card-title>
-      <span>Alerta de Privacidade "LGPD"</span>
+    <v-card-title class="d-flex justify-center">
+      <h1>Alerta de Privacidade "LGPD"</h1>
     </v-card-title>
     <v-card-text>
       <div>
@@ -36,8 +36,13 @@
             Nosso contato & seus direitos:
             <ul>
               <li>
-                Set the content filtering level to restrict appts that can be
-                downloaded;
+                Nosso contato:
+                <a href="mailto:ifbra@outlook.com">ifbra@outlook.com</a>
+              </li>
+              <li>
+                Você tem o direito de não fornecer dados pessoais, seja em razão
+                da navegação ou em razão do preenchimento de dados sensíveis,
+                necessários para calcular o IFBr-A.
               </li>
             </ul>
           </li>
@@ -67,7 +72,7 @@
               </li>
 
               <li>
-                O código dessa página está aperto e disponível para consulta no
+                O código dessa página está aberto e disponível para consulta no
                 <a href="https://github.com/ozzono/ifbra-app" target="_blank">
                   GitHub</a
                 >;
