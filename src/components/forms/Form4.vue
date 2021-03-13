@@ -64,16 +64,12 @@
               />
             </v-col>
           </v-row>
-          <v-row>
-            <v-col></v-col>
-            <v-col></v-col>
-            <v-col></v-col>
-            <v-col>
-              Os marcadores dessa coluna são preenchidos automaticamente
-            </v-col>
-          </v-row>
           <div v-for="(deficiencia, i) in Fuzzy" :key="i">
-            <v-divider v-if="i > 0" class="hidden-md-and-up" :inset="true" />
+            <v-divider
+              v-if="i > 0"
+              class="hidden-md-and-up topbottom-margin"
+              inset
+            />
             <v-row class="align-center text-center justify-center d-flex">
               <v-col class="text-center" md="2" cols="12">
                 Deficiência {{ deficiencia.Desc }}
@@ -100,17 +96,50 @@
                       />
                     </v-col>
                     <v-col cols="12" md="5">
-                      <FuzzySwitch
-                        :innerLabel="
-                          `Houve pontuação 25 ou 50 em alguma atividade dos domínios ${formatDomain(
-                            deficiencia.Dominios
-                          )}; OU Houve pontuação 75 em todas atividade dos domínios ${formatDomain(
-                            deficiencia.Dominios
-                          )}`
-                        "
-                        :read-only="true"
-                        :dominios="deficiencia.Dominios"
-                      />
+                      <v-hover>
+                        <template v-slot:default="{ hover }">
+                          <v-card
+                            class="mx-auto"
+                            flat
+                            @click="overlay = !overlay"
+                            :class="`${!theme.dark ? theme.color : ''}`"
+                          >
+                            <FuzzySwitch
+                              :innerLabel="
+                                `Houve pontuação 25 ou 50 em alguma atividade dos domínios ${formatDomain(
+                                  deficiencia.Dominios
+                                )}; OU Houve pontuação 75 em todas atividade dos domínios ${formatDomain(
+                                  deficiencia.Dominios
+                                )}`
+                              "
+                              :read-only="true"
+                              :dominios="deficiencia.Dominios"
+                            />
+
+                            <v-fade-transition>
+                              <v-overlay
+                                v-if="hover"
+                                absolute
+                                class="d-flex align-center justify-center"
+                              >
+                                <v-card
+                                  flat
+                                  class="pad-me"
+                                  :color="
+                                    `${
+                                      !theme.dark
+                                        ? 'blue-grey ligthen-4'
+                                        : 'blue-grey darken-2'
+                                    }`
+                                  "
+                                >
+                                  Campo preenchido automaticamente.
+                                </v-card>
+                              </v-overlay>
+                            </v-fade-transition>
+                          </v-card>
+                        </template>
+                      </v-hover>
                     </v-col>
                   </v-row>
                 </v-container>
@@ -133,6 +162,7 @@ export default {
     load: false,
     dialog: false,
     openDialog: true,
+    overlay: false,
     printFuzzy: {}
   }),
   components: {
@@ -186,6 +216,10 @@ export default {
         )
         .join(" ou ");
     },
+    overTheLay() {
+      this.overlay = !this.overlay;
+      this.$eventHub.$emit("force-blur");
+    },
     ...mapActions([
       "makePrintFuzzy",
       "updatePrintFuzzy",
@@ -197,6 +231,13 @@ export default {
     dialog() {
       if (!this.dialog) {
         this.openDialog = false;
+      }
+    },
+    overlay() {
+      if (this.overlay) {
+        setTimeout(() => {
+          this.overlay = false;
+        }, 2000);
       }
     }
   },
@@ -220,5 +261,8 @@ export default {
 }
 .bottom-margin {
   margin-bottom: 1em;
+}
+.pad-me {
+  padding: 0.75em 2em;
 }
 </style>
