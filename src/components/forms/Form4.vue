@@ -101,7 +101,6 @@
                           <v-card
                             class="mx-auto"
                             flat
-                            @click="overlay = !overlay"
                             :class="`${!theme.dark ? theme.color : ''}`"
                           >
                             <FuzzySwitch
