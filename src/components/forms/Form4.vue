@@ -11,11 +11,13 @@
             Ao assinalar severidade ou necessidade de auxílio para uma
             deficiência marcada no formulário de identificação, Formulário 1, as
             pontuações do Formulário 3 para os respectivos domínios sensíveis
-            serão modificados automaticamente utilizando o menor valor marcado.
+            serão modificadas automaticamente utilizando o menor valor marcado
+            do domínio em questão.
             <v-divider class="topbottom-margin" />
             <v-row>
               <v-col>
-                Esse alerta aperecerá sempre que algum campo do Formulário 2 sofrer modificação automática.
+                Esse alerta aperecerá sempre que algum campo do Formulário 2
+                sofrer modificação automática.
               </v-col>
             </v-row>
             <v-divider class="topbottom-margin" />
