@@ -67,7 +67,7 @@ export default {
     FormHeader: () => import("@/components/forms/FormHeader")
   },
   mounted() {
-    window.addEventListener("resize", this.setWidth);
+    this.$eventHub.$on("resize", this.setWidth);
   },
   methods: {
     setWidth() {

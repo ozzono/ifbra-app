@@ -34,8 +34,8 @@
           </v-btn>
         </div>
         <v-spacer />
-        <PrivacyAlert />
         <ReportDialog />
+        <PrivacyAlert />
         <v-item-group>
           <v-card class="d-flex flex-row align-center">
             <v-card flat tile>
@@ -100,7 +100,7 @@ export default {
   },
   computed: mapGetters(["theme"]),
   mounted() {
-    window.addEventListener("resize", this.setWidth);
+    this.$eventHub.$on("resize", this.setWidth);
   },
   methods: {
     ...mapActions(["updatePrintView"]),

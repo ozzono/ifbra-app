@@ -1,5 +1,6 @@
 <template>
   <v-select
+    class="score-item"
     :dense="makeDense"
     :label="innerLabel"
     v-model="selected"
@@ -13,6 +14,7 @@
 </template>
 
 <script>
+/* eslint-disable no-console */
 import { mapActions, mapGetters } from "vuex";
 export default {
   name: "CheckList",
@@ -41,7 +43,7 @@ export default {
       if (this.someItems) return "mdi-minus-box";
       return "mdi-checkbox-blank-outline";
     },
-    ...mapGetters(["allScores", "personal"])
+    ...mapGetters(["allScores", "personal", "totalScores", "filledStatus"])
   },
 
   methods: {
@@ -56,9 +58,12 @@ export default {
       };
       this.updateScores(update);
       this.cycleScores(update);
+
       if (this.filledStatus) {
+        console.log("calcscores");
         this.calcScores();
         this.$eventHub.$emit("filled");
+        console.log(this.totalScores);
       }
       this.updateFuzzy({
         dominio: this.scoreData.dominio,
@@ -110,7 +115,7 @@ export default {
       // this.$emit("selected-items", value);
       this.$emit("changed", "changed");
     },
-    ...mapActions(["updateScores", "cycleScores", "updateFuzzy"])
+    ...mapActions(["updateScores", "cycleScores", "updateFuzzy", "calcScores"])
   },
   watch: {
     selected() {

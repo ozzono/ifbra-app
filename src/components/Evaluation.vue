@@ -8,7 +8,7 @@
           </h1>
         </v-row>
         <v-row dense class="d-flex text-center justify-start">
-          <v-col md="3" cols="6">
+          <v-col md="3" cols="12">
             <!-- small col -->
             <DateDialog
               label="Data da Avaliação"
@@ -18,7 +18,7 @@
         </v-row>
         <v-row dense class="d-flex text-center justify-center">
           <!-- eval name -->
-          <v-col md="7" cols="10" class="d-flex">
+          <v-col md="7" cols="12" class="d-flex">
             <v-text-field
               v-model="name"
               justify-start
@@ -30,7 +30,7 @@
             />
           </v-col>
           <!-- eval type -->
-          <v-col md="2" cols="10">
+          <v-col md="2" cols="7">
             <CheckList
               :inner-items="evaluatorType"
               inner-label="Tipo de avaliador"
@@ -41,7 +41,7 @@
             />
           </v-col>
           <!-- eval registry -->
-          <v-col md="2" cols="2">
+          <v-col md="2" cols="4">
             <v-text-field
               v-model="registry.value"
               justify-start
@@ -55,7 +55,7 @@
           <!-- eval button -->
           <v-col
             md="1"
-            cols="2"
+            cols="1"
             class="d-flex justify-center align-center text-center"
           >
             <v-btn @click="addEval()" icon align="center">
@@ -70,7 +70,7 @@
           dense
           class="d-flex"
         >
-          <v-col md="7" cols="5" class="d-flex">
+          <v-col md="7" cols="12" class="d-flex">
             <v-text-field
               :value="evaluator.name"
               label="Nome do avaliador"

@@ -43,7 +43,7 @@ export default {
     ...mapGetters(["theme"])
   },
   mounted() {
-    window.addEventListener("resize", this.setWidth);
+    this.$eventHub.$on("resize", this.setWidth);
   },
   created() {
     this.setWidth();

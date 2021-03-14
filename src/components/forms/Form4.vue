@@ -15,7 +15,7 @@
             <v-divider class="topbottom-margin" />
             <v-row>
               <v-col>
-                Esse alerta aperecerá apenas uma vez após carregar a página.
+                Esse alerta aperecerá sempre que algum campo do Formulário 2 sofrer modificação automática.
               </v-col>
             </v-row>
             <v-divider class="topbottom-margin" />
@@ -162,6 +162,7 @@ export default {
     dialog: false,
     openDialog: true,
     overlay: false,
+    width: window.innerWidth,
     printFuzzy: {}
   }),
   components: {
@@ -189,9 +190,7 @@ export default {
           return deficiency.Type === this.$custom.normalize(el1).toLowerCase();
         })
       ) {
-        if (this.openDialog) {
-          this.dialog = true;
-        }
+        this.dialog = true;
         this.fuzzyfy({
           dominios: deficiency.Dominios,
           normalize: this.$custom.normalize
@@ -219,6 +218,7 @@ export default {
       this.overlay = !this.overlay;
       this.$eventHub.$emit("force-blur");
     },
+    setWidth: () => (this.width = window.innerWidth),
     ...mapActions([
       "makePrintFuzzy",
       "updatePrintFuzzy",
@@ -227,11 +227,6 @@ export default {
     ])
   },
   watch: {
-    dialog() {
-      if (!this.dialog) {
-        this.openDialog = false;
-      }
-    },
     overlay() {
       if (this.overlay) {
         setTimeout(() => {

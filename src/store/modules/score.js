@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const ranges = [
   [0, 5740],
   [5740, 6355],
@@ -135,12 +136,19 @@ const actions = {
         stop = true;
       }
       if (start.id === state.linkedScores[i].next) {
-        filled = true;
+        if (
+          state.linkedScores[i].medical != 0 &&
+          state.linkedScores[i].social != 0
+        ) {
+          filled = true;
+        }
         stop = true;
       }
       i = state.linkedScores[i].next;
     }
-    commit("mutateFilled", filled);
+    if (filled) {
+      commit("mutateFilled", filled);
+    }
   },
   calcScores({ commit }) {
     commit(
@@ -153,6 +161,17 @@ const actions = {
             Desc: dominio.Desc, //returns an array with domain name and total
             total: dominio.SubDominios.reduce(
               (innerOutput, subDominio) => {
+                console.log({
+                  //sums the medical and social total score
+                  medical: (innerOutput.medical += parseInt(
+                    subDominio.medical,
+                    10
+                  )),
+                  social: (innerOutput.social += parseInt(
+                    subDominio.social,
+                    10
+                  ))
+                });
                 return {
                   //sums the medical and social total score
                   medical: (innerOutput.medical += parseInt(

@@ -50,7 +50,7 @@ export default {
     }
   },
   mounted() {
-    window.addEventListener("resize", this.setWidth);
+    this.$eventHub.$on("resize", this.setWidth);
   },
   created() {
     this.setWidth();

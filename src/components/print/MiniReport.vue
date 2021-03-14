@@ -1,6 +1,8 @@
 <template>
   <v-card
     tile
+    flat
+    outlined
     :class="`text-h6 font-wight-medium ${theme.dark ? '' : theme.color}`"
   >
     <div class="d-flex justify-center align-center">

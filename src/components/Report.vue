@@ -1,6 +1,6 @@
 <template>
   <v-container class="text-center" v-if="filledStatus">
-    <v-card flat class="text-left">
+    <v-card flat :outlined="makeOutlined" class="text-left">
       <v-card-text>
         <v-card flat class="d-flex justify-center">
           <v-card flat>
@@ -15,7 +15,7 @@
             </h5>
           </v-card>
           <v-spacer />
-          <v-card flat>
+          <v-card flat v-if="isDialog">
             <v-btn @click="$emit('close')" text>
               <v-icon>mdi-close</v-icon>
             </v-btn>
@@ -62,6 +62,7 @@
 <script>
 import { mapGetters } from "vuex";
 export default {
+  props: ["isDialog", "makeOutlined"],
   computed: {
     ...mapGetters([
       "allScores",

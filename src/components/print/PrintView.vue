@@ -12,19 +12,19 @@
             Portaria Interministerial Nº 1, de 27 de Janeiro DE 2014
           </a>
         </h3>
-        <Form1 />
-        <v-divider class="divider" />
         <MiniReport />
+        <v-divider class="divider" />
+        <Form1 />
         <v-divider class="divider" />
         <Form2 />
         <v-divider class="divider" />
         <Form3 />
-        <Report />
-        <v-divider class="divider" />
-        <p style="page-break-before: always" />
-        <ClassificationBoard />
         <v-divider class="divider" />
         <Form4 />
+        <v-divider class="divider" />
+        <p style="page-break-before: always" />
+        <Report :make-outlined="true" />
+        <ClassificationBoard />
         <v-divider class="divider" />
       </v-container>
     </v-card>

@@ -32,6 +32,9 @@ export default {
     forceBlur() {
       let el = this.$el.querySelector(":focus");
       if (el) el.blur();
+    },
+    setWidth() {
+      this.$eventHub.$emit("resize");
     }
   },
   created() {
@@ -43,14 +46,14 @@ export default {
       this.setVueTheme();
     }
   },
+  mounted() {
+    window.addEventListener("resize", this.setWidth);
+  },
   computed: mapGetters(["printView", "theme"])
 };
 </script>
 
 <style>
-@page {
-  margin: 0;
-}
 @media only print {
   .print-hidden {
     display: none;

@@ -156,7 +156,6 @@ export default {
       "setScores",
       "updateScores",
       "cycleScores",
-      "calcScores",
       "makeFuzzy",
       "updateFuzzy",
       "updateBarrier"
