@@ -21,20 +21,39 @@ const actions = {
     const dominios = forceFuzzy.dominios.reduce((out, dominio) => {
       return [...out, forceFuzzy.normalize(dominio)];
     }, []);
+    console.log(dominios)
+    var newScore={}
     commit(
       "mutateScores",
       state.scores.reduce((output, score) => {
+        var hasNew=false
         if (
           (score.Dominio === dominios[0] || score.Dominio === dominios[1]) &&
           score.min != null
         ) {
-          score.SubDominios.reduce((out, sub) => {
-            sub.medical = score.min;
-            sub.social = score.min;
-            return [...out, sub];
+          hasNew=true
+          console.log("min: ",score.min)
+          newScore=score.SubDominios.reduce((out, sub) => {
+            var newsub = {
+              Desc:     sub.Desc,
+              Detalhe:  sub.Detalhe,
+              id:       sub.id,
+              next:     sub.next,
+              medical:  score.min.medical,
+              social:   score.min.social,
+              barriers: sub.barriers,
+            }
+            newsub=JSON.parse(JSON.stringify(newsub))
+            console.log(newsub)
+
+            return [...out, newsub];
           }, []);
         }
         {
+          if (hasNew){
+            score.SubDominios=newScore
+            console.log("newScore: ",newScore)
+          }
           return [...output, score];
         }
       }, [])
@@ -94,29 +113,21 @@ const actions = {
   },
   updateScores({ commit }, score) {
     var value = parseInt(score.value, 10);
-    if (score.col === "medical") {
-      state.scores[score.i].SubDominios[score.j].medical = value;
-      state.linkedScores[
-        state.scores[score.i].SubDominios[score.j].id
-      ].medical = value;
-    }
-    if (score.col === "social") {
-      state.scores[score.i].SubDominios[score.j].social = value;
-      state.linkedScores[
-        state.scores[score.i].SubDominios[score.j].id
-      ].social = value;
-    }
+    state.scores[score.i].SubDominios[score.j][score.col] = value;
+    state.linkedScores[state.scores[score.i].SubDominios[score.j].id ][score.col] = value;
+
     state.scores[score.i].min = state.scores[score.i].SubDominios.reduce(
       (output, element) => {
-        if (output > element.medical && element.medical != null) {
-          output = element.medical;
+        if (output.medical > element.medical && element.medical != null) {
+          output.medical = element.medical;
         }
-        if (output > element.social && element.social != null) {
-          output = element.social;
+        if (output.social > element.social && element.social != null) {
+          output.social = element.social;
         }
         return output;
       },
-      100
+      // 100
+      {medical:100,social:100}
     );
     commit("mutateScores", state.scores);
   },

@@ -47,7 +47,6 @@ export default {
   },
 
   methods: {
-    // refreshScores(col, i, j, dominio) {
     refreshScores() {
       const update = {
         col: this.scoreData.column,
