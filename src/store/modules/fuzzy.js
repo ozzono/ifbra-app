@@ -1,8 +1,25 @@
 const state = {
   fuzzy: [],
-  printFuzzy: []
+  printFuzzy: [],
+  fuzzyType:{}
 };
 const actions = {
+  makeFuzzyType({commit},fuzzyData){
+    commit(
+      "mutateFuzzyType",
+      fuzzyData.reduce((output,row)=>{
+        output[row.Type]=false
+        return output
+      },{})
+    )
+  },
+  updateFuzzyType({commit},type){
+    state.fuzzyType[type]=true
+    commit(
+      "mutateFuzzyType",
+      state.fuzzyType
+    )
+  },
   makePrintFuzzy({ commit }, fuzzyData) {
     commit(
       "mutatePrint",
@@ -94,12 +111,14 @@ const actions = {
 };
 
 const mutations = {
-  mutateFuzzy: (state, fuzzy) => (state.fuzzy = fuzzy),
-  mutatePrint: (state, printFuzzy) => (state.printFuzzy = printFuzzy)
+  mutateFuzzyType: (state,fuzzyType)   =>  (state.fuzzyType   = fuzzyType),
+  mutateFuzzy:     (state, fuzzy)      =>  (state.fuzzy       = fuzzy),
+  mutatePrint:     (state, printFuzzy) =>  (state.printFuzzy  = printFuzzy)
 };
 const getters = {
-  fuzzy: state => state.fuzzy,
-  printFuzzy: state => state.printFuzzy
+  fuzzy:      state => state.fuzzy,
+  printFuzzy: state => state.printFuzzy,
+  fuzzyType:  state => state.fuzzyType
 };
 
 export default {

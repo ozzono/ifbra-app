@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 const ranges = [
   [0, 5740],
   [5740, 6355],
@@ -21,7 +20,6 @@ const actions = {
     const dominios = forceFuzzy.dominios.reduce((out, dominio) => {
       return [...out, forceFuzzy.normalize(dominio)];
     }, []);
-    console.log(dominios)
     var newScore={}
     commit(
       "mutateScores",
@@ -32,27 +30,18 @@ const actions = {
           score.min != null
         ) {
           hasNew=true
-          console.log("min: ",score.min)
           newScore=score.SubDominios.reduce((out, sub) => {
-            var newsub = {
-              Desc:     sub.Desc,
-              Detalhe:  sub.Detalhe,
-              id:       sub.id,
-              next:     sub.next,
-              medical:  score.min.medical,
-              social:   score.min.social,
-              barriers: sub.barriers,
+            sub.min={
+              medical: score.min.medical,
+              social: score.min.social
             }
-            newsub=JSON.parse(JSON.stringify(newsub))
-            console.log(newsub)
 
-            return [...out, newsub];
+            return [...out, sub];
           }, []);
         }
         {
           if (hasNew){
             score.SubDominios=newScore
-            console.log("newScore: ",newScore)
           }
           return [...output, score];
         }
@@ -87,7 +76,10 @@ const actions = {
             },
             []
           ),
-          min: null
+          min: {
+            medical:100,
+            social:100
+          }
         }
       ];
     }, []);
@@ -172,17 +164,6 @@ const actions = {
             Desc: dominio.Desc, //returns an array with domain name and total
             total: dominio.SubDominios.reduce(
               (innerOutput, subDominio) => {
-                console.log({
-                  //sums the medical and social total score
-                  medical: (innerOutput.medical += parseInt(
-                    subDominio.medical,
-                    10
-                  )),
-                  social: (innerOutput.social += parseInt(
-                    subDominio.social,
-                    10
-                  ))
-                });
                 return {
                   //sums the medical and social total score
                   medical: (innerOutput.medical += parseInt(

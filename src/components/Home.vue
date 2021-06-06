@@ -40,7 +40,7 @@
       <v-tab-item eager>
         <Form3 />
       </v-tab-item>
-      <v-tab-item>
+      <v-tab-item eager>
         <Form4 />
       </v-tab-item>
     </v-tabs-items>
