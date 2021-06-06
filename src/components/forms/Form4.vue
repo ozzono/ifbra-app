@@ -114,6 +114,7 @@
                                 )}`
                               "
                               :read-only="true"
+                              :deficiency-type="deficiencia.Type"
                               :dominios="deficiencia.Dominios"
                             />
 
@@ -173,7 +174,7 @@ export default {
     FormHeader: () => import("@/components/forms/FormHeader")
   },
   computed: {
-    ...mapGetters(["fuzzy", "theme", "allScores", "personal"])
+    ...mapGetters(["fuzzy", "theme", "allScores", "personal","fuzzyType"])
   },
   methods: {
     showHide(status) {
@@ -187,10 +188,12 @@ export default {
     switched(deficiency, i) {
       this.updatePrint(i);
       if (
-        (this.printFuzzy[i].severe || this.printFuzzy[i].needAid) &&
+        this.printFuzzy[i].severe &&
+        this.printFuzzy[i].needAid &&
         this.personal.deficiencyType.some(el1 => {
-          return deficiency.Type === this.$custom.normalize(el1).toLowerCase();
-        })
+          return deficiency.Type === this.$custom.normalize(el1).toLowerCase().split(" ou ")[0];
+        }) &&
+        this.fuzzyType[deficiency.Type]
       ) {
         this.dialog = true;
         this.fuzzyfy({
@@ -223,6 +226,7 @@ export default {
     setWidth: () => (this.width = window.innerWidth),
     ...mapActions([
       "makePrintFuzzy",
+      "makeFuzzyType",
       "updatePrintFuzzy",
       "makeFuzzy",
       "fuzzyfy"
@@ -246,6 +250,7 @@ export default {
       Fuzzy,
       normalize: this.$custom.normalize
     });
+    this.makeFuzzyType(Fuzzy)
   }
 };
 </script>

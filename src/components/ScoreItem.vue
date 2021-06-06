@@ -14,7 +14,6 @@
 </template>
 
 <script>
-/* eslint-disable no-console */
 import { mapActions, mapGetters } from "vuex";
 export default {
   name: "CheckList",
@@ -47,7 +46,6 @@ export default {
   },
 
   methods: {
-    // refreshScores(col, i, j, dominio) {
     refreshScores() {
       const update = {
         col: this.scoreData.column,
@@ -60,10 +58,8 @@ export default {
       this.cycleScores(update);
 
       if (this.filledStatus) {
-        console.log("calcscores");
         this.calcScores();
         this.$eventHub.$emit("filled");
-        console.log(this.totalScores);
       }
       this.updateFuzzy({
         dominio: this.scoreData.dominio,
@@ -82,10 +78,10 @@ export default {
       ) {
         const value = this.allScores.reduce((output, element) => {
           if (element.Dominio === this.scoreData.dominio) {
-            output = element.min;
+            output = element.min[this.scoreData.column];
           }
           return output;
-        }, 101);
+        }, 100);
         if (value != null) {
           this.selected = `${value}`;
         }
@@ -112,7 +108,6 @@ export default {
       }
     },
     changed() {
-      // this.$emit("selected-items", value);
       this.$emit("changed", "changed");
     },
     ...mapActions(["updateScores", "cycleScores", "updateFuzzy", "calcScores"])

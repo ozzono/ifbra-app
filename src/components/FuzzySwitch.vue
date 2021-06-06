@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 export default {
   data: () => ({
     val: false
@@ -22,11 +22,13 @@ export default {
     "readOnly",
     "disabled",
     "dominios",
+    "deficiencyType",
     "hint",
     "innerClass",
     "hideDetails"
   ],
   methods: {
+    ...mapActions(["updateFuzzyType"]),
     setVal() {
       this.val = this.fuzzy
         .filter(fuzzyEl =>
@@ -37,6 +39,10 @@ export default {
           )
         )
         .some(el => el.switch);
+      this.$eventHub.$emit("fuzzyScore",this.dominios)
+      if (this.val){
+        this.updateFuzzyType(this.deficiencyType)
+      }
     }
   },
   computed: {
