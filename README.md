@@ -2,7 +2,7 @@
 
 Esse projeto consiste na versão digital do formulário do **_Índice de Funcionalidade Brasileiro Adaptado_**.
 
-Todo o site foi construído com VueJS e está hospedado no Google Cloud Platform.
+Todo o site foi construído com VueJS e está hospedado na Vercel.
 
 ## Motivação:
 Esse site foi construído com dois propósitos     básicos:
