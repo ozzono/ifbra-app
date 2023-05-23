@@ -210,7 +210,7 @@ export default {
       disabled: true,
       hint: ""
     },
-    uf: "AC,AL,AP,AM,BA,CE,DF,ES,GO,MA,MT,MG,MS,PB,PR,PE,PI,RJ,RN,RS,RO,RR,SC,SP,SE,TO".split(
+    uf: "AC,AL,AP,AM,BA,CE,DF,ES,GO,MA,MT,MG,MS,PA,PB,PR,PE,PI,RJ,RN,RS,RO,RR,SC,SP,SE,TO".split(
       ","
     ),
     fieldValues: {
